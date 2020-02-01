@@ -12,7 +12,8 @@ class DosingMain extends StatefulWidget {
 
 class _DosingMainState extends State<DosingMain> {
 
-var interventions = ["Anaphylaxis", "Intubation", "Resuscitation","Haemorrhage","Antidotes","Infusions"];
+var interventions = ["Anaphylaxis", "Haemorrhage", "Resuscitation","Seizures/Neurology","Intubation","Electrolyte Abnormalities","Antidotes","Push-Dode Pressors","Infusions"];
+var intColors = [Colors.red,Colors.brown,Colors.red,Colors.green,Colors.blueAccent,Colors.purple,Colors.orange,Colors.pinkAccent,Colors.brown];
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,7 @@ var interventions = ["Anaphylaxis", "Intubation", "Resuscitation","Haemorrhage",
                             },
                             child: Container(alignment: Alignment.center,
                                 color: Color(0xfff2f2f2),
-                            child: Text(interventions[index]))
+                            child: Text(interventions[index], textAlign: TextAlign.center,style: TextStyle(color: intColors[index],fontSize: 20.0)))
                         );
                       },
                   childCount: interventions.length,
@@ -75,5 +76,18 @@ var interventions = ["Anaphylaxis", "Intubation", "Resuscitation","Haemorrhage",
             ],
           )
           );
+  }
+}
+
+class PlusMinus extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/plusminus.png');
+    Image image = Image(image: assetImage);
+    return Container(alignment: Alignment.center,
+        width: 500,
+        height: 60,
+        color: Colors.white,
+        child: image);
   }
 }

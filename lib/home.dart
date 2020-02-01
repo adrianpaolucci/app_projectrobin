@@ -45,30 +45,35 @@ class Home extends StatelessWidget {
                       }),
                       SizedBox(
                           height: 30),
-                      Container(
-                        alignment: Alignment.center,
-                        height: 30,
-                        width: 500,
-                        color: Color(0xfff2f2f2),
-                      ),
-                     Container(
-                          alignment: Alignment.topCenter,
-                          height: 70,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: new Container(
+                                margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                                child: Divider(
+                                  color: Colors.black,
+                                  height: 36,
+                                )),
+                          ),
+                          Container(color: Color(0xfff2f2f2),child: Text("OR", style: TextStyle(fontSize: 18.0))),
+                          Expanded(
+                            child: new Container(
+                                margin: const EdgeInsets.only(left: 20.0, right: 10.0),
+                                child: Divider(
+                                  color: Colors.black,
+                                  height: 36,
+                                )),
+                          ),
+                        ]),
+                        Container(
+                          alignment: Alignment.center,
+                          height: 30,
                           width: 500,
-                          color: Color(0xfff2f2f2),
-                          child: Text(
-                            "OR",
-                            textDirection: TextDirection.ltr,
-                            style: TextStyle(
-                                fontSize: 28.0),
-                          )
-                      ),
+                        ),
                       CalendarImage(),
                       Container(
                         alignment: Alignment.center,
                         height: 70,
                         width: 500,
-                        color: Color(0xfff2f2f2),
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -209,7 +214,6 @@ class CalendarImage extends StatelessWidget {
     return Container(alignment: Alignment.center,
         width: 500,
         height: 80,
-        color: Color(0xfff2f2f2),
         child: image);
   }
 }

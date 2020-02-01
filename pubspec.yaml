@@ -44,6 +44,7 @@ flutter:
   assets:
     - images/calendar_icon.png
     - images/kg_icon.png
+    - images/plusminus.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
