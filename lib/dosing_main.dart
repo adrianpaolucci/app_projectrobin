@@ -1,7 +1,13 @@
 import 'package:app_search_bar/anaphylaxis.dart';
-import 'package:app_search_bar/home.dart';
 import 'package:flutter/material.dart';
+import 'package:app_search_bar/intubation.dart';
+import 'package:app_search_bar/home2.dart';
 
+var interventions = ["Anaphylaxis", "Haemorrhage", "Resuscitation","Seizures/Neurology","Intubation","Electrolyte Abnormalities","Antidotes","Push-Dode Pressors","Infusions"];
+var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),];
+var intColors = [Colors.red,Colors.brown,Colors.red,Colors.green,Colors.blueAccent,Colors.purple,Colors.orange,Colors.pinkAccent,Colors.brown];
+var int = "";
+var specificColor = null;
 
 class DosingMain extends StatefulWidget {
   @override
@@ -12,8 +18,6 @@ class DosingMain extends StatefulWidget {
 
 class _DosingMainState extends State<DosingMain> {
 
-var interventions = ["Anaphylaxis", "Haemorrhage", "Resuscitation","Seizures/Neurology","Intubation","Electrolyte Abnormalities","Antidotes","Push-Dode Pressors","Infusions"];
-var intColors = [Colors.red,Colors.brown,Colors.red,Colors.green,Colors.blueAccent,Colors.purple,Colors.orange,Colors.pinkAccent,Colors.brown];
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +57,10 @@ var intColors = [Colors.red,Colors.brown,Colors.red,Colors.green,Colors.blueAcce
                       (context, index) {
                         return GestureDetector(
                             onTap: () {
+                              int = interventions[index];
+                              specificColor = intColors[index];
                               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return Anaphylaxis();
+                                return pages[index];
                               }
                               )
                               );

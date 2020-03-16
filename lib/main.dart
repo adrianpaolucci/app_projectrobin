@@ -1,5 +1,6 @@
+import 'package:app_search_bar/home2.dart';
 import 'package:flutter/material.dart';
-import 'package:app_search_bar/home.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Pediatric Dosing",
-      home: Home(),
+      home: Home2(),
     );
   }
 }

@@ -1,11 +1,21 @@
+import 'dart:io';
+import 'package:app_search_bar/home2.dart';
 import 'package:flutter/material.dart';
-import 'package:app_search_bar/home.dart';
 import 'package:app_search_bar/dosing_main.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 
-class Anaphylaxis extends StatelessWidget {
+
+class Anaphylaxis extends StatefulWidget {
 
   @override
+  AnaphylaxisState createState() => AnaphylaxisState();
+  }
+
+class AnaphylaxisState extends State<Anaphylaxis> {
+  @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -20,14 +30,14 @@ class Anaphylaxis extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Container(height: 100, width: 130, color: Color(0xfff2f2f2),
-                    child: Center(child: Text("$weight"))
+                Container(height: 100, width: data.size.width/5, color: Color(0xfff2f2f2),
+                    child: Center(child: Text("$weight kg"))
                 ),
-                Container(height: 100, width: 130, color: Color(0xfff2f2f2),
+                Container(height: 100, width: 0.6*data.size.width, color: Color(0xfff2f2f2),
                     child: Center(child:
-                    Text("Anaphylaxis",style: TextStyle(color: Colors.red,fontSize: 24.0),textAlign: TextAlign.center,))
+                    Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
                 ),
-                Container(height: 100, width: 130, color: Color(0xfff2f2f2),
+                Container(height: 100, width: data.size.width/5, color: Color(0xfff2f2f2),
                     child: Center(child:
                     GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
                     onTap: () {
@@ -69,10 +79,10 @@ class Anaphylaxis extends StatelessWidget {
                       Column(children: <Widget>[
                         Container(height: 30,
                             child: Center(child:
-                            Text("Sample Amount in mL",textAlign: TextAlign.center, style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),))),
+                            Text("$weight mL",textAlign: TextAlign.center, style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),))),
                         Container(height: 30,
                             child: Center(child:
-                            Text("Sample Dilution of 1:1000",textAlign: TextAlign.center, style: TextStyle()))),
+                            Text("Dilute by 1:10 in Saline",textAlign: TextAlign.center, style: TextStyle()))),
                       ],
                       )
                     ],
