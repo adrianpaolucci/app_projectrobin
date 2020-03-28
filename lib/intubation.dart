@@ -267,18 +267,19 @@ class IntubationState extends State<Intubation> {
 
 void propofolErrorAlert(BuildContext context) {
   final data = MediaQuery.of(context);
-  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child:
       CupertinoAlertDialog(
-          content: Container(padding: EdgeInsets.all(20.0),
+          content: Container(
               margin: EdgeInsets.all(5),
-              color: Color(0xffa6a6a6),
               width: 0.7 * data.size.width,
               child: Column(children: <Widget>[
-                    Text("ALERT :", style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
-                    Text("Cannot use Propofol when weight is less than 10 kg"),
-            FlatButton(child: Text("Okay"),
+                    Text("Alert", style: TextStyle(fontWeight: FontWeight.bold,
+                        fontSize: 22)),
+                    SizedBox(height: 10),
+                    Text("Cannot use Propofol when weight is less than 10 kg",style: TextStyle(fontSize: 16),)])),
+            /*FlatButton(color: Color(0xfff2f2f2),
+                child: Text("Okay"),
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.black)
@@ -288,7 +289,15 @@ void propofolErrorAlert(BuildContext context) {
                 }),
           ]
           )
-          )
+          ),*/
+        actions: <Widget>[CupertinoDialogAction(
+          isDefaultAction: true,
+          child: Text("Okay"),
+            onPressed: () {
+              Navigator.pop(context);
+            }
+        )
+        ],
       )
   );
 

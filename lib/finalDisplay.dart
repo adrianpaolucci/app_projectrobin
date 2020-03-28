@@ -24,8 +24,12 @@ class FinalDisplayState extends State<FinalDisplay> {
         backgroundColor: Colors.white
       ),
       body: SingleChildScrollView(child: Center(child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          children: IntubationFinal(context)
+      Column(children: <Widget>[ExpansionTile(
+            title: Text("Intubation"),
+            children: IntubationFinal(context),
+          ),
+        Divider(thickness: 1.0, color: Colors.black),
+          ]
       ),
       )
       )
@@ -34,21 +38,22 @@ class FinalDisplayState extends State<FinalDisplay> {
 }
 
 IntubationFinal(BuildContext context) {
-  var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),propofolDisplay(context),propofolDisplay(context),propofolDisplay(context)];
+  final data = MediaQuery.of(context);
+  var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context)];
   var paralyticWidgets = [propofolDisplay(context),propofolDisplay(context),propofolDisplay(context),propofolDisplay(context),propofolDisplay(context),propofolDisplay(context)];
   List<Widget>intubationList = [];
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
       intubationList.add(inductionWidgets[i]);
-      intubationList.add(Divider(thickness: 1.0, color: Colors.black));
+      intubationList.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
     }
   }
   for (var i = 0; i < paralyticAgents.length; i++) {
     if (paralyticBoolean[i] == true) {
       intubationList.add(paralyticWidgets[i]);
-      intubationList.add(Divider(thickness: 1.0, color: Colors.black));
     }
   }
+  intubationList.removeLast();
   return intubationList;
 }
 
@@ -58,16 +63,17 @@ ketamineDisplay(BuildContext context) {
   var currentData = ketamineData[weightIndex];
 
   var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
     Text("Ketamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(20.0),
+    Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       color: Color(0xffa6a6a6),
-      width: 0.9 * data.size.width,
+      width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Dilution", style: TextStyle(
+            Text("Dilute", style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold)),
             Text("${currentData[1]} mg in ${currentData[3]} mL"),
             Text("OR"),
@@ -81,7 +87,7 @@ ketamineDisplay(BuildContext context) {
           style: TextStyle(decoration: TextDecoration.underline)),
       TextSpan(text: "")
     ])),
-    SizedBox(height: 30)]);
+    SizedBox(height: 15)]);
   return popup;
 }
 
@@ -90,24 +96,121 @@ propofolDisplay(BuildContext context) {
   var currentData = propofolData[weightIndex];
 
   var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
     Text("Propofol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(20.0),
+    Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       color: Color(0xffa6a6a6),
-      width: 0.7 * data.size.width,
+      width: 0.8 * data.size.width,
+      child:
+      Column(children: <Widget>[
+            Text("${currentData[1]} mg in ${currentData[2]} mL"),
+            Text("Undiluted", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+        SizedBox(height: 5),
+        Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Text("Risk CVS"),Text("\u2193", style: TextStyle(fontSize: 22))])
+      ]),
+    ),
+    Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
+  style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+thiopentoneDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = thiopentoneData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Thiopentone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      color: Color(0xffa6a6a6),
+      width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("${currentData[1]} mg in ${currentData[2]} mL"),
-            Text("Undiluted", style: TextStyle(
+            Text("Reconstitute", style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[3]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} mg in ${currentData[4]} mL"),
+            SizedBox(height: 5),
+            Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Text("Risk CVS"),Text("\u2193", style: TextStyle(fontSize: 22))])
           ]
       ),
     ),
     Text.rich(TextSpan(text: "", children:
     <TextSpan>[
-      TextSpan(text: "Administer ${currentData[2]} mL of undiluted\n solution",
+      TextSpan(text: "Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
+          style: TextStyle(decoration: TextDecoration.underline)),
+      TextSpan(text: "")
+    ])),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+fentanylBolusDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = fentanylBolusData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Fentanyl (Bolus)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      color: Color(0xffa6a6a6),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Dilute", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[3]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} mg in ${currentData[4]} mL"),
+          ]
+      ),
+    ),
+    Text.rich(TextSpan(text: "", children:
+    <TextSpan>[
+      TextSpan(text: "Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
+          style: TextStyle(decoration: TextDecoration.underline)),
+      TextSpan(text: "")
+    ])),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+midazolamDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = midazolamData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Midazolam", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      color: Color(0xffa6a6a6),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("${currentData[3]}", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[4]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} mg in ${currentData[5]} mL"),
+          ]
+      ),
+    ),
+    Text.rich(TextSpan(text: "", children:
+    <TextSpan>[
+      TextSpan(text: "Administer ${currentData[4]} - ${currentData[5]} mL of diluted solution",
           style: TextStyle(decoration: TextDecoration.underline)),
       TextSpan(text: "")
     ])),

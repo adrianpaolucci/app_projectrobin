@@ -171,32 +171,14 @@ void weightBox(BuildContext context) {
         );
       },
     ),
-    Row(
-        children: <Widget>[
-          SizedBox(height: 20),
-          Expanded(
-              child: Divider()
-          ),
-          Text("OR"),
-          Expanded(
-              child: Divider()
-          ),
-          SizedBox(height: 50)
-        ])]))).values.toList();
-chooseWeightPopup.add(Column(children: <Widget>[FlatButton(child: Text("Back"),
-    shape: RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(18.0),
-        side: BorderSide(color: Colors.black)
-    ),
-    onPressed: () {
-      Navigator.pop(context);
-    }),]));
-  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+  SizedBox(height: 30)]))).values.toList();
+
+  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child:
       CupertinoAlertDialog(
           title: Text("Choose Weight"),
           content: Column(children: <Widget>[
-            Container(padding: EdgeInsets.all(20.0),
+            Container(padding: EdgeInsets.only(top: 30),
               margin: EdgeInsets.all(5),
               width: 0.7 * data.size.width,
               child: Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -205,7 +187,15 @@ chooseWeightPopup.add(Column(children: <Widget>[FlatButton(child: Text("Back"),
               ),
             ),
           ]
-          )
+          ),
+        actions: <Widget>[CupertinoDialogAction(
+            isDefaultAction: true,
+            child: Text("Back"),
+            onPressed: () {
+              Navigator.pop(context);
+            }
+        )
+        ],
       ));
 
 
