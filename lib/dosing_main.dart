@@ -3,9 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/home2.dart';
 
-var interventions = ["Anaphylaxis", "Haemorrhage", "Resuscitation","Seizures/Neurology","Intubation","Electrolyte Abnormalities","Antidotes","Push-Dode Pressors","Infusions"];
-var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),];
-var intColors = [Colors.red,Colors.brown,Colors.red,Colors.green,Colors.blueAccent,Colors.purple,Colors.orange,Colors.pinkAccent,Colors.brown];
+var interventions = ["Anaphylaxis", "Resuscitation",
+                      "Management of Shock","Bleeding",
+                      "Intubation","Seizures/Neurology",
+                      "Asthma","Infection",
+                      "Antidotes", "Electrolye Abnormalities"
+                      ];
+
+var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
+
+var intColors = [Colors.red,Colors.red,
+                 Colors.red,Colors.red,
+                 Colors.indigo,Colors.green,
+                 Colors.indigoAccent,Colors.orangeAccent,
+                 Colors.orange,Colors.purple
+                  ];
+
 var int = "";
 var specificColor;
 

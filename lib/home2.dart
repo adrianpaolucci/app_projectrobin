@@ -30,6 +30,7 @@ final allWeights = [2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.5,6.0,7.0,8.0,9.0,10.0,11.0,12
 var weight = 0.0;
 var specificRange = [];
 var refColor;
+var weightIndex;
 class Home2State extends State<Home2> {
 
   final ageWeightList =
@@ -87,7 +88,7 @@ class Home2State extends State<Home2> {
                 delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       var textBox = ageWeightList[index];
-                      var childBox = null;
+                      var childBox;
                       if (index.isOdd) {
                           childBox = Container(
                             decoration: BoxDecoration(border: Border.all(
@@ -153,6 +154,43 @@ class Home2State extends State<Home2> {
 
 void weightBox(BuildContext context) {
   final data = MediaQuery.of(context);
+
+  List<Widget> chooseWeightPopup = specificRange.asMap().map((i, specificRange) => MapEntry(i, Column(children: <Widget>[
+    GestureDetector(child:
+    Container(decoration: BoxDecoration(color: Colors.grey,border: Border.all(),borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        padding: EdgeInsets.all(20.0),
+        child:
+        Text(specificRange.toString() + " kg",style: TextStyle(fontSize: 18))),
+      onTap: () {
+        weight = specificRange;
+        weightIndex = allWeights.indexOf(weight);
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DosingMain();
+        }
+        )
+        );
+      },
+    ),
+    Row(
+        children: <Widget>[
+          SizedBox(height: 20),
+          Expanded(
+              child: Divider()
+          ),
+          Text("OR"),
+          Expanded(
+              child: Divider()
+          ),
+          SizedBox(height: 50)
+        ])]))).values.toList();
+chooseWeightPopup.add(Column(children: <Widget>[FlatButton(child: Text("Back"),
+    shape: RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(18.0),
+        side: BorderSide(color: Colors.black)
+    ),
+    onPressed: () {
+      Navigator.pop(context);
+    }),]));
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
       child:
       CupertinoAlertDialog(
@@ -163,33 +201,7 @@ void weightBox(BuildContext context) {
               width: 0.7 * data.size.width,
               child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: specificRange.map((specificRange) => (Column(children: <Widget>[
-                    GestureDetector(child:
-                    Container(decoration: BoxDecoration(color: Colors.grey,border: Border.all(),borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                      padding: EdgeInsets.all(20.0),
-                      child:
-                      Text(specificRange.toString() + " kg",style: TextStyle(fontSize: 18))),
-                        onTap: () {
-                          weight = specificRange;
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return DosingMain();
-                          }
-                          )
-                          );
-                        },
-                    ),
-                    Row(
-                        children: <Widget>[
-                          SizedBox(height: 20),
-                          Expanded(
-                              child: Divider()
-                          ),
-                          Text("OR"),
-                          Expanded(
-                              child: Divider()
-                          ),
-                          SizedBox(height: 50)
-                        ])]))).toList()
+                  children: chooseWeightPopup
               ),
             ),
           ]

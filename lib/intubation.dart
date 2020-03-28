@@ -1,11 +1,11 @@
 import 'dart:ui';
+import 'package:app_search_bar/finalDisplay.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/dosing_main.dart';
 import 'package:flutter/widgets.dart';
 import 'package:app_search_bar/home2.dart';
 import 'data.dart';
-
 
 Color getColor(i) {
   if (i % 2 == 0) {
@@ -40,69 +40,58 @@ class IntubationState extends State<Intubation> {
 
 
     final data = MediaQuery.of(context);
-    List<IntubationAgent> paralyticAgents = [];
-    List<IntubationAgent> inductionAgents = [];
-
-    for (var i = 0; i < allAgents.length; i++) {
-      if (allAgents[i].type == "Induction") {
-        inductionAgents.add(allAgents[i]);
-      }
-      else {
-        paralyticAgents.add(allAgents[i]);
-      }
-    }
 
 
-
-    List<Widget> inductionAgentCells = inductionAgents.asMap().map((i,inductionAgent) =>
+    List<Widget> inductionAgentCells = inductionAgents.asMap().map((i,inductionAgents) =>
         MapEntry(i, GestureDetector(
             child: Container(width: 9*data.size.width/10, height: 40,
                 decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                  Text('${inductionAgent.name}'),
-                  Text("${inductionAgent.value}"),
+                  Text(inductionAgents),
                   Checkbox(
-                      value: inductionAgent.boolean,
+                      value: inductionBoolean[i],
                       onChanged: (bool newValue){
-                        _scaffoldKey.currentState.hideCurrentSnackBar();
-                        inductionAgentName = inductionAgent.name;
-                        inductionAmount = inductionAgent.value;
-                        if (newValue == true) {
-                          boolCount += 1;
+                        if (inductionAgents == "Propofol" && weight < 10.0) {
+                            propofolErrorAlert(context);
                         }
                         else {
-                          boolCount -=1;
+                          _scaffoldKey.currentState.hideCurrentSnackBar();
+                          inductionAgentName = inductionAgents;
+                          if (newValue == true) {
+                            boolCount += 1;
+                          }
+                          else {
+                            boolCount -= 1;
+                          }
+                          buildSnackBar(context);
+                          setState(() {
+                            inductionBoolean[i] = newValue;
+                          }
+                          );
                         }
-                        buildSnackBar(context);
-                        setState(() {
-                          inductionAgent.boolean = newValue;
-                        }
-                        );
                       }),
                 ],
                 )
             ),
                 onTap: () {
-              inductionAgent.boolean = !inductionAgent.boolean;
+              inductionBoolean[i] = !inductionBoolean[i];
                 }  ))).values.toList();
 
     inductionAgentCells.insert(0,GestureDetector(child: Text("Select Drug from below", style: TextStyle(color: Colors.indigoAccent))));
 
 
-    List<Widget> paralyticCells = paralyticAgents.asMap().map((i,paralyticAgent)=>
+    List<Widget> paralyticCells = paralyticAgents.asMap().map((i,paralyticAgents)=>
         MapEntry(i, GestureDetector(child: Container(width: 9*data.size.width/10, height: 40,
         decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-          Text('${paralyticAgent.name}'),
-          Text("${paralyticAgent.value}"),
+          Text(paralyticAgents),
           Checkbox(
-              value: paralyticAgent.boolean,
+              value: paralyticBoolean[i],
               onChanged: (bool newValue){
                 _scaffoldKey.currentState.hideCurrentSnackBar();
-                paralyticAgentName = paralyticAgent.name;
-                paralyticAmount = paralyticAgent.value;
+                paralyticAgentName = paralyticAgents;
                 if (newValue == true) {
                   boolCount += 1;
                 }
@@ -111,7 +100,7 @@ class IntubationState extends State<Intubation> {
                 }
                 buildSnackBar(context);
                 setState(() {
-                  paralyticAgent.boolean = newValue;
+                  paralyticBoolean[i] = newValue;
                 }
                 );
               }),
@@ -262,85 +251,46 @@ class IntubationState extends State<Intubation> {
         content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
           Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
         GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
-        onTap: () {alertDialog(context);
-        }
-        )
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return FinalDisplay();
+          })
+          );
+        })
         ]
         ),
-        duration: const Duration(minutes: 5));
+        duration: const Duration(minutes: 20));
     _scaffoldKey.currentState.showSnackBar(snackBar);
   }
 }
 
 
-void alertDialog(BuildContext context) {
+void propofolErrorAlert(BuildContext context) {
   final data = MediaQuery.of(context);
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-  child:
-  CupertinoAlertDialog(
-      title: Text(intubationMap['ketamine']['name']),
-      content: Column(children: <Widget>[
-        Container(padding: EdgeInsets.all(20.0),
-          margin: EdgeInsets.all(5),
-          color: Color(0xffa6a6a6),
-          width: 0.7 * data.size.width,
-          child:
-          Column(crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Dilute", style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
-                Text("200 mg in 20 mL"),
-                Text("OR"),
-                Text("100 mg in 10 mL"),
-              ]
-          ),
-        ),
-        Text.rich(TextSpan(text: "", children:
-        <TextSpan>[
-          TextSpan(text: "Amount: ",
-              style: TextStyle(decoration: TextDecoration.underline)),
-          TextSpan(text: inductionAmount)
-        ])),
-        SizedBox(height: 15),
-        Divider(thickness: 1.0, color: Colors.black),
-        SizedBox(height: 15),
-        Text(paralyticAgentName, style: TextStyle(fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold)),
-        SizedBox(height: 15),
-        Container(padding: EdgeInsets.all(20.0),
-          margin: EdgeInsets.all(5),
-          color: Color(0xffa6a6a6),
-          width: 0.7 * data.size.width,
-          child:
-          Column(crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Dilute", style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
-                Text("200 mg in 20 mL"),
-                Text("OR"),
-                Text("100 mg in 10 mL"),
-              ]
-          ),
-        ),
-        Text.rich(TextSpan(text: "", children:
-        <TextSpan>[
-          TextSpan(text: "Amount: ",
-              style: TextStyle(decoration: TextDecoration.underline)),
-          TextSpan(text: paralyticAmount)
-        ])),
-        SizedBox(height: 15),
-        FlatButton(child: Text("Okay"),
-            shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.black)
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
-      ]
+      child:
+      CupertinoAlertDialog(
+          content: Container(padding: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(5),
+              color: Color(0xffa6a6a6),
+              width: 0.7 * data.size.width,
+              child: Column(children: <Widget>[
+                    Text("ALERT :", style: TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text("Cannot use Propofol when weight is less than 10 kg"),
+            FlatButton(child: Text("Okay"),
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(18.0),
+                    side: BorderSide(color: Colors.black)
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+          ]
+          )
+          )
       )
-  ));
+  );
 
   showCupertinoDialog(context: context, builder: (BuildContext context) => popup);
 }
