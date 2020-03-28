@@ -7,7 +7,7 @@ var interventions = ["Anaphylaxis", "Haemorrhage", "Resuscitation","Seizures/Neu
 var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),];
 var intColors = [Colors.red,Colors.brown,Colors.red,Colors.green,Colors.blueAccent,Colors.purple,Colors.orange,Colors.pinkAccent,Colors.brown];
 var int = "";
-var specificColor = null;
+var specificColor;
 
 class DosingMain extends StatefulWidget {
   @override

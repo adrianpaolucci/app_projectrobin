@@ -15,6 +15,7 @@ Color getColor(i) {
   }
 }
 
+
 class Intubation extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -22,19 +23,36 @@ class Intubation extends StatefulWidget {
   }
 }
 
+var boolCount = 0;
+String inductionAgentName;
+String inductionAmount;
+String paralyticAgentName;
+String paralyticAmount;
+
+
 class IntubationState extends State<Intubation> {
+
+
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
 
-    final data = MediaQuery.of(context);
 
-    List<IntubationAgent> inductionAgents = [
-      IntubationAgent(name: "Ketamine", value: "3.5 - 7.5 mg", boolean: true),
-      IntubationAgent(name: "Propofol", value: "3.5 - 7.5 mg", boolean: true),
-      IntubationAgent(name: "Thiopentone", value: "8.8 - 17.5 mg", boolean: false),
-      IntubationAgent(name: "Fentanyl", value: "7 μg", boolean: false),
-      IntubationAgent(name: "Midazolam", value: "0.35 mg", boolean: false),
-    ];
+    final data = MediaQuery.of(context);
+    List<IntubationAgent> paralyticAgents = [];
+    List<IntubationAgent> inductionAgents = [];
+
+    for (var i = 0; i < allAgents.length; i++) {
+      if (allAgents[i].type == "Induction") {
+        inductionAgents.add(allAgents[i]);
+      }
+      else {
+        paralyticAgents.add(allAgents[i]);
+      }
+    }
+
+
 
     List<Widget> inductionAgentCells = inductionAgents.asMap().map((i,inductionAgent) =>
         MapEntry(i, GestureDetector(
@@ -46,29 +64,31 @@ class IntubationState extends State<Intubation> {
                   Text("${inductionAgent.value}"),
                   Checkbox(
                       value: inductionAgent.boolean,
-                      onChanged: (newValue){
+                      onChanged: (bool newValue){
+                        _scaffoldKey.currentState.hideCurrentSnackBar();
+                        inductionAgentName = inductionAgent.name;
+                        inductionAmount = inductionAgent.value;
+                        if (newValue == true) {
+                          boolCount += 1;
+                        }
+                        else {
+                          boolCount -=1;
+                        }
+                        buildSnackBar(context);
                         setState(() {
                           inductionAgent.boolean = newValue;
                         }
                         );
                       }),
                 ],
-                )),
+                )
+            ),
                 onTap: () {
               inductionAgent.boolean = !inductionAgent.boolean;
-                  alertDialog(context);
                 }  ))).values.toList();
 
     inductionAgentCells.insert(0,GestureDetector(child: Text("Select Drug from below", style: TextStyle(color: Colors.indigoAccent))));
 
-
-    List<IntubationAgent> paralyticAgents = [
-      IntubationAgent(name: "Suxamethonium", value: "3.5 - 7.5 mg", boolean: false),
-      IntubationAgent(name: "Roceronium", value: "3.5 - 7.5 mg", boolean: false),
-      IntubationAgent(name: "Vecuronium", value: "3.5 - 7.5 mg", boolean: false)
-    ];
-
-bool testVal = false;
 
     List<Widget> paralyticCells = paralyticAgents.asMap().map((i,paralyticAgent)=>
         MapEntry(i, GestureDetector(child: Container(width: 9*data.size.width/10, height: 40,
@@ -76,16 +96,36 @@ bool testVal = false;
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
           Text('${paralyticAgent.name}'),
-          Text("${paralyticAgent.value}")
-        ],
+          Text("${paralyticAgent.value}"),
+          Checkbox(
+              value: paralyticAgent.boolean,
+              onChanged: (bool newValue){
+                _scaffoldKey.currentState.hideCurrentSnackBar();
+                paralyticAgentName = paralyticAgent.name;
+                paralyticAmount = paralyticAgent.value;
+                if (newValue == true) {
+                  boolCount += 1;
+                }
+                else {
+                  boolCount -=1;
+                }
+                buildSnackBar(context);
+                setState(() {
+                  paralyticAgent.boolean = newValue;
+                }
+                );
+              }),
+        ]
         )),
         onTap: () {
-          alertDialog(context);
+          buildSnackBar(context);
         }  ))).values.toList();
 
    paralyticCells.insert(0,GestureDetector(child: Text("Select Drug from below", style: TextStyle(color: Colors.indigoAccent))));
+   paralyticCells.add(GestureDetector(child: Container(height: 50)));
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
@@ -206,7 +246,7 @@ bool testVal = false;
                   paralyticCells
               ),
               Divider(thickness: 1.0, color: Colors.black),
-              Text("")
+              SizedBox(height: data.size.height/3)
             ],
             ),
             ]
@@ -216,6 +256,20 @@ bool testVal = false;
     );
   }
 
+  buildSnackBar(BuildContext context) {
+    final snackBar = SnackBar(
+        backgroundColor: Colors.white,
+        content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
+          Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
+        GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
+        onTap: () {alertDialog(context);
+        }
+        )
+        ]
+        ),
+        duration: const Duration(minutes: 5));
+    _scaffoldKey.currentState.showSnackBar(snackBar);
+  }
 }
 
 
@@ -224,7 +278,7 @@ void alertDialog(BuildContext context) {
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
   child:
   CupertinoAlertDialog(
-      title: Text("Ketamine"),
+      title: Text(intubationMap['ketamine']['name']),
       content: Column(children: <Widget>[
         Container(padding: EdgeInsets.all(20.0),
           margin: EdgeInsets.all(5),
@@ -246,8 +300,36 @@ void alertDialog(BuildContext context) {
         <TextSpan>[
           TextSpan(text: "Amount: ",
               style: TextStyle(decoration: TextDecoration.underline)),
-          TextSpan(text: "0.35 - 0.7 mL")
+          TextSpan(text: inductionAmount)
         ])),
+        SizedBox(height: 15),
+        Divider(thickness: 1.0, color: Colors.black),
+        SizedBox(height: 15),
+        Text(paralyticAgentName, style: TextStyle(fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 15),
+        Container(padding: EdgeInsets.all(20.0),
+          margin: EdgeInsets.all(5),
+          color: Color(0xffa6a6a6),
+          width: 0.7 * data.size.width,
+          child:
+          Column(crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Dilute", style: TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.bold)),
+                Text("200 mg in 20 mL"),
+                Text("OR"),
+                Text("100 mg in 10 mL"),
+              ]
+          ),
+        ),
+        Text.rich(TextSpan(text: "", children:
+        <TextSpan>[
+          TextSpan(text: "Amount: ",
+              style: TextStyle(decoration: TextDecoration.underline)),
+          TextSpan(text: paralyticAmount)
+        ])),
+        SizedBox(height: 15),
         FlatButton(child: Text("Okay"),
             shape: RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(18.0),
@@ -255,11 +337,10 @@ void alertDialog(BuildContext context) {
             ),
             onPressed: () {
               Navigator.pop(context);
-            })
+            }),
       ]
       )
   ));
 
   showCupertinoDialog(context: context, builder: (BuildContext context) => popup);
 }
-
