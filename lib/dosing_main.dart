@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/home2.dart';
 
-var interventions = ["Anaphylaxis", "Resuscitation",
+var interventions = [
+                      "Anaphylaxis", "Resuscitation",
                       "Management of Shock","Bleeding",
                       "Intubation","Seizures/Neurology",
                       "Asthma","Infection",
@@ -12,12 +13,13 @@ var interventions = ["Anaphylaxis", "Resuscitation",
 
 var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
 
-var intColors = [Colors.red,Colors.red,
+var intColors = [
+                 Colors.red,Colors.red,
                  Colors.red,Colors.red,
                  Colors.indigo,Colors.green,
                  Colors.indigoAccent,Colors.orangeAccent,
                  Colors.orange,Colors.purple
-                  ];
+                ];
 
 var int = "";
 var specificColor;
@@ -50,13 +52,12 @@ class _DosingMainState extends State<DosingMain> {
                 itemExtent: 50.0,
                 delegate: SliverChildListDelegate([
                   Container(
+                      alignment: Alignment.centerLeft,
                       width: 50,
                       height: 1000,
                       padding: EdgeInsets.only(left: 20, top: 20),
-                      child: Text(
-                          "Calculations rounded to $weight kg",
-                      textAlign: TextAlign.left,
-                      textDirection: TextDirection.ltr),
+                      child: Text("Calculations rounded to $weight kg",
+                      textDirection: TextDirection.ltr, style: TextStyle(fontSize: 18),),
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,

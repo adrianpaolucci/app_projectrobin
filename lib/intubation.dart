@@ -245,7 +245,7 @@ class IntubationState extends State<Intubation> {
     );
   }
 
-  buildSnackBar(BuildContext context) {
+ void buildSnackBar(BuildContext context) {
     final snackBar = SnackBar(
         backgroundColor: Colors.white,
         content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[

@@ -51,9 +51,9 @@ class Home2State extends State<Home2> {
   "14 years","50kg",
   "Adult","70 kg"*/
 
-  final boxColors =
-  [Colors.redAccent,Colors.white,
-  Colors.redAccent, Colors.white,
+  final boxColors = [
+    Colors.redAccent,Colors.white,
+    Colors.redAccent, Colors.white,
     Colors.redAccent,Colors.white,
     Colors.redAccent, Colors.white,
     Colors.redAccent,Colors.white,
