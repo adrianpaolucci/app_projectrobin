@@ -17,7 +17,7 @@ class FinalDisplayState extends State<FinalDisplay> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          "Selections: ",
+          "Selections",
           style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.white
       ),
