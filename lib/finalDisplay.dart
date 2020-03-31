@@ -22,7 +22,13 @@ class FinalDisplayState extends State<FinalDisplay> {
         backgroundColor: Colors.white
       ),
       body: SingleChildScrollView(child: Center(child:
-      Column(children: <Widget>[ExpansionTile(
+      Column(children: <Widget>[
+        Divider(thickness: 1.0, color: Colors.black),
+        ExpansionTile(title: Text("Anaphylaxis")),
+        Divider(thickness: 1.0, color: Colors.black),
+        SizedBox(height: 10),
+        Divider(thickness: 1.0, color: Colors.black),
+        ExpansionTile(
             title: Text("Intubation"),
             children: intubationFinal(context),
           ),
@@ -39,7 +45,7 @@ intubationFinal(BuildContext context) {
   final data = MediaQuery.of(context);
   var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context)];
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
-  List<Widget>intubationList = intubationInfo(context);
+  List<Widget>intubationList = intubationEquipmentInfo(context);
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
       intubationList.add(inductionWidgets[i]);
@@ -322,7 +328,7 @@ atracuriumDisplay(BuildContext context) {
   return popup;
 }
 
-intubationInfo(BuildContext context) {
+intubationEquipmentInfo(BuildContext context) {
   final data = MediaQuery.of(context);
 
   firstTextSpan(firstString, secondString) {
@@ -339,7 +345,7 @@ intubationInfo(BuildContext context) {
   }
 
   etTubeDisplayBox(tubeType,tubeSize) {
-    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
+    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: 0.95*data.size.width, height: 25,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
           Text(tubeType,style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
           Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold))
@@ -351,20 +357,22 @@ intubationInfo(BuildContext context) {
   var box = [
         Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
         SizedBox(height: 10),
-        firstTextSpan("Depth",": 9 - 9.5 cm to lip, 11 cm to nose"),
+        firstTextSpan("Depth",
+            ":  " + ettDepthOral[weightIndex][1].toString() + " cm to lip, " +
+                ettDepthNasal[weightIndex][1].toString() + " cm to nose"),
         SizedBox(height: 10),
-        firstTextSpan("LMA Size", ": 1"),
+        firstTextSpan("LMA Size", ":  " + lmaSize[weightIndex][1].toString()),
         SizedBox(height: 10),
-        firstTextSpan("Laryngoscope", ": 0"),
+        firstTextSpan("Laryngoscope", ":  " + layngoscope[weightIndex][1].toString()),
         SizedBox(height: 10),
-        firstTextSpan("Suction", ": 6 Fr"),
+        firstTextSpan("Suction", ":  " + suction[weightIndex][1].toString() + " Fr"),
         SizedBox(height: 20),
         Text("ET Tubes", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-        etTubeDisplayBox("Uncuffed", "3.5"),
+        etTubeDisplayBox("Uncuffed", ettUncuffedSize[weightIndex][1].toString()),
         SizedBox(height: 15),
-        etTubeDisplayBox("Microcuff", "3"),
+        etTubeDisplayBox("Microcuff", ettMicroCuffSize[weightIndex][1].toString()),
         SizedBox(height: 15),
-        etTubeDisplayBox("Cuffed", "N/A")
+        etTubeDisplayBox("Cuffed", ettCuffedSize[weightIndex][1].toString())
   ];
   box.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
 

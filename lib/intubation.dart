@@ -216,7 +216,7 @@ class IntubationState extends State<Intubation> {
             Column(children: <Widget>[
                   SizedBox(height: 30),
                   Divider(thickness: 1.0, color: Colors.black),
-                  ExpansionTile(
+                 /* ExpansionTile(
                     title: Text("Intubation Equipment"),
                     children: <Widget>[
                       Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
@@ -285,7 +285,7 @@ class IntubationState extends State<Intubation> {
                       ),
               Divider(thickness: 1.0, color: Colors.black),
               PlusMinus(),
-              Divider(thickness: 1.0, color: Colors.black),
+              Divider(thickness: 1.0, color: Colors.black),*/
               ExpansionTile(
                 title: Text("Induction Agents"),
                 children: <Widget>[GestureDetector(child: Text("Select Drug from below",
