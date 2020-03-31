@@ -2,10 +2,10 @@ import 'dart:ui';
 import 'package:app_search_bar/finalDisplay.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:app_search_bar/dosing_main.dart';
+import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/widgets.dart';
-import 'package:app_search_bar/home2.dart';
-import 'data.dart';
+import 'package:app_search_bar/homeScreen.dart';
+import 'intubationData.dart';
 
 Color getColor(i) {
   if (i % 2 == 0) {
@@ -215,98 +215,28 @@ class IntubationState extends State<Intubation> {
             ),
             Column(children: <Widget>[
                   SizedBox(height: 30),
-                  Divider(thickness: 1.0, color: Colors.black),
-                 /* ExpansionTile(
-                    title: Text("Intubation Equipment"),
-                    children: <Widget>[
-                      Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                        SizedBox(height: 10),
-                        Text.rich(
-                            TextSpan(
-                                text: "",
-                                children: <TextSpan>[
-                                  TextSpan(text: "Depth",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-                                  TextSpan(text: ": 9 - 9.5 cm to lip, 11 cm to nose", style: TextStyle(fontSize: 16))
-                                ]
-                            )
-                        ),
-                        SizedBox(height: 10),
-                        Text.rich(
-                            TextSpan(
-                                text: "",
-                                children: <TextSpan>[
-                                  TextSpan(text: "LMA Size",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-                                  TextSpan(text: ": 1", style: TextStyle(fontSize: 16))
-                                ]
-                            )
-                        ),
-                        SizedBox(height: 10),
-                        Text.rich(
-                            TextSpan(
-                                text: "",
-                                children: <TextSpan>[
-                                  TextSpan(text: "Laryngoscope",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-                                  TextSpan(text: ": 0", style: TextStyle(fontSize: 16))
-                                ]
-                            )
-                        ),
-                        SizedBox(height: 10),
-                        Text.rich(
-                            TextSpan(
-                                text: "",
-                                children: <TextSpan>[
-                                  TextSpan(text: "Suction",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-                                  TextSpan(text: ": 6 Fr", style: TextStyle(fontSize: 16))
-                                ]
-                            )
-                        ),
-                        SizedBox(height: 20),
-                      Text("ET Tubes", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                      Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
-                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-                          Text("Uncuffed",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
-                          Text("3.5", style: TextStyle(fontWeight: FontWeight.bold))
-                          ])),
-                      SizedBox(height: 15),
-                      Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
-                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-                            Text("Microcuff",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
-                            Text("3", style: TextStyle(fontWeight: FontWeight.bold))
-                          ]
-                          )
-                      ),
-                      SizedBox(height: 15),
-                      Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
-                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-                            Text("Cuffed",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
-                            Text("N/A", style: TextStyle(fontWeight: FontWeight.bold))
-                            ])),
-                      ],
-                      ),
-              Divider(thickness: 1.0, color: Colors.black),
-              PlusMinus(),
-              Divider(thickness: 1.0, color: Colors.black),*/
-              ExpansionTile(
-                title: Text("Induction Agents"),
-                children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                                      style: TextStyle(color: Colors.indigoAccent))),
-                                    SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
-                ],
-              ),
-              Divider(thickness: 1.0, color: Colors.black),
-              PlusMinus(),
-              Divider(thickness: 1.0,color: Colors.black),
-              ExpansionTile(
-                title: Text("Paralytic Agents"),
-                children: <Widget> [
-                  GestureDetector(child: Text("Select Drug from below",
-                      style: TextStyle(color: Colors.indigoAccent))),
-                  SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
-                ]
-              ),
-              Divider(thickness: 1.0, color: Colors.black),
-              SizedBox(height: data.size.height/3)
-            ],
+                  adrianDivider(),
+                  ExpansionTile(
+                    title: Text("Induction Agents"),
+                    children: <Widget>[GestureDetector(child: Text("Select Drug from below",
+                                          style: TextStyle(color: Colors.indigoAccent))),
+                                        SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
+                    ],
+                  ),
+                  adrianDivider(),
+                  PlusMinus(),
+                  adrianDivider(),
+                  ExpansionTile(
+                    title: Text("Paralytic Agents"),
+                    children: <Widget> [
+                      GestureDetector(child: Text("Select Drug from below",
+                          style: TextStyle(color: Colors.indigoAccent))),
+                      SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
+                    ]
+                  ),
+                  adrianDivider(),
+                  SizedBox(height: data.size.height/3)
+              ],
             ),
             ]
         ),
@@ -330,19 +260,11 @@ void propofolErrorAlert(BuildContext context) {
                     Text("Alert", style: TextStyle(fontWeight: FontWeight.bold,
                         fontSize: 22)),
                     SizedBox(height: 10),
-                    Text("Cannot use Propofol when weight is less than 10 kg",style: TextStyle(fontSize: 16),)])),
-            /*FlatButton(color: Color(0xfff2f2f2),
-                child: Text("Okay"),
-                shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.black)
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
-          ]
-          )
-          ),*/
+                    Text("Cannot use Propofol when weight is less than 10 kg",
+                      style: TextStyle(fontSize: 16),)
+                ]
+              )
+          ),
         actions: <Widget>[CupertinoDialogAction(
           isDefaultAction: true,
           child: Text("Okay"),

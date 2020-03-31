@@ -1,7 +1,12 @@
 import 'package:app_search_bar/anaphylaxis.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
-import 'package:app_search_bar/home2.dart';
+import 'package:app_search_bar/homeScreen.dart';
+
+adrianDivider() {
+  var divider = Divider(thickness: 1.0, color: Colors.black);
+  return divider;
+}
 
 var interventions = [
                       "Anaphylaxis", "Resuscitation",

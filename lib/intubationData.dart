@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'homeScreen.dart';
 
 //induction initialisation
 final inductionAgents = ["Ketamine","Propofol","Thiopentone","Fentanyl (Bolus)","Midazolam", "Fentanyl (Infusion)"];
@@ -31,3 +33,318 @@ final ettDepthNasal = [[2, 10], [2.5, 10], [3, 11], [3.5, 11], [4, 11], [4.5, 12
 final suction = [[2, '4 - 5'], [2.5, '4 - 5'], [3, 6], [3.5, 6], [4, 6], [4.5, 6], [5, 6], [5.5, 6], [6, 8], [7, 8], [8, 8], [9, 8], [10, 10], [11, 10], [12, 10], [13, 10], [14, 10], [15, 10], [16, 10], [17, 10], [18, 10], [19, 10], [20, 10], [22, 10], [24, 10], [26, 10], [28, 10], [30, '10 - 12'], [35, '10 - 12'], [40, '10 -1 2'], [45, '10-12'], [50, '10-12'], [55, 12], [60, 12], [65, 12], [70, 12], [75, 12], [80, 12]];
 final layngoscope = [[2, 0], [2.5, 0], [3, 0], [3.5, 0], [4, 0], [4.5, 0], [5, 0], [5.5, 0], [6, 1], [7, 1], [8, 1], [9, 1], [10, 1], [11, '1 - 2'], [12, 2], [13, 2], [14, 2], [15, 2], [16, 2], [17, 2], [18, 2], [19, 2], [20, 2], [22, 2], [24, 2], [26, 2], [28, 2], [30, 3], [35, 3], [40, 3], [45, 3], [50, 3], [55, 3], [60, 3], [65, '3-4'], [70, '3-4'], [75, '3-4'], [80, '3-4']];
 final lmaSize = [[2, 1], [2.5, 1], [3, 1], [3.5, 1], [4, 1], [4.5, 1], [5, 1], [5.5, 1], [6, 1.5], [7, 1.5], [8, 1.5], [9, 1.5], [10, '1.5 - 2'], [11, 2], [12, 2], [13, 2], [14, 2], [15, 2], [16, 2], [17, 2], [18, 2], [19, '2 - 2.5'], [20, '2 - 2.5'], [22, 2.5], [24, 2.5], [26, 2.5], [28, 2.5], [30, '2.5 - 3'], [35, 3], [40, 3], [45, 3], [50, '3-4'], [55, 4], [60, 4], [65, 4], [70, 4], [75, '4-5'], [80, 5]];
+
+
+ketamineDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = ketamineData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Ketamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      margin: EdgeInsets.all(5),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Dilute", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[3]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} mg in ${currentData[4]} mL"),
+          ]
+      ),
+    ),
+    Text("Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
+        style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+propofolDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = propofolData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Propofol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(children: <Widget>[
+        Text("${currentData[1]} mg in ${currentData[2]} mL"),
+        Text("Undiluted", style: TextStyle(
+            fontSize: 16, fontWeight: FontWeight.bold)),
+        SizedBox(height: 5),
+        Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Text("Risk CVS"),Text("\u2193", style: TextStyle(fontSize: 22))])
+      ]),
+    ),
+    Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
+        style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+thiopentoneDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = thiopentoneData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Thiopentone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Reconstitute", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[3]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} mg in ${currentData[4]} mL"),
+            SizedBox(height: 5),
+            Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Text("Risk CVS"),Text("\u2193", style: TextStyle(fontSize: 22))])
+          ]
+      ),
+    ),
+    Text( "Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
+        style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+fentanylBolusDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = fentanylBolusData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Fentanyl (Bolus)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Dilute", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} \u03bcg in ${currentData[3]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} \u03bcg in ${currentData[4]} mL"),
+          ]
+      ),
+    ),
+    Text.rich(TextSpan(text: "", children:
+    <TextSpan>[
+      TextSpan(text: "Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
+          style: TextStyle(decoration: TextDecoration.underline)),
+      TextSpan(text: "")
+    ])),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+midazolamDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = midazolamData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Midazolam", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("${currentData[3]}", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[4]} mL"),
+            Text("OR"),
+            Text("${currentData[2]} mg in ${currentData[5]} mL"),
+          ]
+      ),
+    ),
+    Text.rich(TextSpan(text: "", children:
+    <TextSpan>[
+      TextSpan(text: "Administer ${currentData[4]} - ${currentData[5]} mL of diluted solution",
+          style: TextStyle(decoration: TextDecoration.underline)),
+      TextSpan(text: "")
+    ])),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+suxamethoniumDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = suxamethoniumData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Suxamethonium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Dilute", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[2]} mg in ${currentData[3]} mL")
+          ]
+      ),
+    ),
+    Text.rich(TextSpan(text: "", children:
+    <TextSpan>[
+      TextSpan(text: "Administer ${currentData[3]} mL of diluted solution",
+          style: TextStyle(decoration: TextDecoration.underline)),
+      TextSpan(text: "")
+    ])),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+rocuroniumDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = rocuroniumData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Rocuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(children: <Widget>[
+        Text("${currentData[1]} mg in ${currentData[2]} mL"),
+        Text("Undiluted", style: TextStyle(
+            fontSize: 16, fontWeight: FontWeight.bold))
+      ]),
+    ),
+    Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
+        style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+vecuroniumDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = vecuroniumData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Vecuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Reconstitute", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[2]} mL"),
+            SizedBox(height: 5)
+          ]
+      ),
+    ),
+    Text( "Administer ${currentData[2]} mL of diluted solution",
+        style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+atracuriumDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = atracuriumData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Atracurium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("${currentData[2]}", style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold)),
+            Text("${currentData[1]} mg in ${currentData[3]} mL")
+          ]
+      ),
+    ),
+
+    Text("Administer ${currentData[3]} mL of diluted solution",
+        style: TextStyle(decoration: TextDecoration.underline)),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
+intubationEquipmentInfo(BuildContext context) {
+  final data = MediaQuery.of(context);
+
+  firstTextSpan(firstString, secondString) {
+    var textBox = Text.rich(
+        TextSpan(
+            text: "",
+            children: <TextSpan>[
+              TextSpan(text: firstString,style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
+              TextSpan(text: secondString, style: TextStyle(fontSize: 16))
+            ]
+        )
+    );
+    return textBox;
+  }
+
+  etTubeDisplayBox(tubeType,tubeSize) {
+    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: 0.95*data.size.width, height: 25,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
+          Text(tubeType,style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
+          Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold))
+        ]));
+    return box;
+  }
+
+
+  var box = [
+    Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+    SizedBox(height: 10),
+    firstTextSpan("Depth",
+        ":  " + ettDepthOral[weightIndex][1].toString() + " cm to lip, " +
+            ettDepthNasal[weightIndex][1].toString() + " cm to nose"),
+    SizedBox(height: 10),
+    firstTextSpan("LMA Size", ":  " + lmaSize[weightIndex][1].toString()),
+    SizedBox(height: 10),
+    firstTextSpan("Laryngoscope", ":  " + layngoscope[weightIndex][1].toString()),
+    SizedBox(height: 10),
+    firstTextSpan("Suction", ":  " + suction[weightIndex][1].toString() + " Fr"),
+    SizedBox(height: 20),
+    Text("ET Tubes", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+    etTubeDisplayBox("Uncuffed", ettUncuffedSize[weightIndex][1].toString()),
+    SizedBox(height: 15),
+    etTubeDisplayBox("Microcuff", ettMicroCuffSize[weightIndex][1].toString()),
+    SizedBox(height: 15),
+    etTubeDisplayBox("Cuffed", ettCuffedSize[weightIndex][1].toString())
+  ];
+  box.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
+
+  return box;
+}

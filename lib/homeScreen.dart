@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_search_bar/dosing_main.dart';
+import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
@@ -161,9 +161,6 @@ class Home2State extends State<Home2> {
   }
 }
 
-
-
-
 void weightBox(BuildContext context) {
   final data = MediaQuery.of(context);
 
@@ -209,8 +206,5 @@ void weightBox(BuildContext context) {
         )
         ],
       ));
-
-
-
   showCupertinoDialog(context: context, builder: (BuildContext context) => popup);
 }

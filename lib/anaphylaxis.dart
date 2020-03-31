@@ -1,6 +1,6 @@
-import 'package:app_search_bar/home2.dart';
+import 'package:app_search_bar/homeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:app_search_bar/dosing_main.dart';
+import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
@@ -54,7 +54,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
             Column(
               children: <Widget>[
                 SizedBox(height:20),
-                Divider(thickness: 1.0, color: Colors.black),
+                adrianDivider(),
                 ExpansionTile(
                   title: Text("IM Adrenaline"),
                   children: <Widget>[
@@ -69,9 +69,9 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                     )
                   ],
                 ),
-                Divider(thickness: 1.0, color: Colors.black),
+                adrianDivider(),
                 PlusMinus(),
-                Divider(thickness: 1.0, color: Colors.black),
+                adrianDivider(),
                 ExpansionTile(
                     title: Text("IV Fluid Bolus"),
                     children: <Widget>[
@@ -87,7 +87,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                     ],
                     backgroundColor: Color(0xfff2f2f2)
                 ),
-                Divider(thickness: 1.0, color: Colors.black),
+                adrianDivider(),
               ],
             )
           ],

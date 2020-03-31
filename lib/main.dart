@@ -1,4 +1,4 @@
-import 'package:app_search_bar/home2.dart';
+import 'package:app_search_bar/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -15,3 +15,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
