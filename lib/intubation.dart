@@ -15,6 +15,25 @@ Color getColor(i) {
   }
 }
 
+final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+void buildSnackBar(BuildContext context) {
+  final snackBar = SnackBar(
+      backgroundColor: Colors.white,
+      content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
+        Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
+        GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FinalDisplay();
+              })
+              );
+            })
+      ]
+      ),
+      duration: const Duration(minutes: 20));
+  _scaffoldKey.currentState.showSnackBar(snackBar);
+}
 
 class Intubation extends StatefulWidget {
   @override
@@ -32,15 +51,10 @@ String paralyticAmount;
 
 class IntubationState extends State<Intubation> {
 
-
-
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
 
-
     final data = MediaQuery.of(context);
-
 
     List<Widget> inductionAgentCells = inductionAgents.asMap().map((i,inductionAgents) =>
         MapEntry(i, GestureDetector(
@@ -57,7 +71,6 @@ class IntubationState extends State<Intubation> {
                         }
                         else {
                           _scaffoldKey.currentState.hideCurrentSnackBar();
-                          inductionAgentName = inductionAgents;
                           if (newValue == true) {
                             boolCount += 1;
                           }
@@ -75,8 +88,25 @@ class IntubationState extends State<Intubation> {
                 )
             ),
                 onTap: () {
-              inductionBoolean[i] = !inductionBoolean[i];
-                }  ))).values.toList();
+                      if (inductionAgents == "Propofol" && weight < 10.0) {
+                             propofolErrorAlert(context);
+                          }
+                       else {
+                           _scaffoldKey.currentState.hideCurrentSnackBar();
+                           if (inductionBoolean[i] == false) {
+                            boolCount += 1;
+                            }
+                           else {
+                          boolCount -= 1;
+                            }
+                        buildSnackBar(context);
+                        setState(() {
+                          inductionBoolean[i] = !inductionBoolean[i];
+                        }
+                        );
+                      }
+                })
+        )).values.toList();
 
     inductionAgentCells.insert(0,GestureDetector(child: Text("Select Drug from below", style: TextStyle(color: Colors.indigoAccent))));
 
@@ -107,7 +137,18 @@ class IntubationState extends State<Intubation> {
         ]
         )),
         onTap: () {
+          _scaffoldKey.currentState.hideCurrentSnackBar();
+          if (paralyticBoolean[i] == false) {
+              boolCount += 1;
+          }
+          else {
+            boolCount -= 1;
+          }
           buildSnackBar(context);
+          setState(() {
+            paralyticBoolean[i] = !paralyticBoolean[i];
+          }
+          );
         }  ))).values.toList();
 
    paralyticCells.insert(0,GestureDetector(child: Text("Select Drug from below", style: TextStyle(color: Colors.indigoAccent))));
@@ -127,14 +168,14 @@ class IntubationState extends State<Intubation> {
         child: Column(
           children: <Widget>[
             Row(children: <Widget>[
-              Container(height: 100, width: data.size.width/5, color: Color(0xfff2f2f2),
-                  child: Center(child: Text("$weight kg"))
+              Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
+                  child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
               ),
-              Container(height: 100, width: 0.6*data.size.width, color: Color(0xfff2f2f2),
+              Container(height: 100, width: 0.4*data.size.width, color: Color(0xfff2f2f2),
                   child: Center(child:
                   Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
               ),
-              Container(height: 100, width: data.size.width/5, color: Color(0xfff2f2f2),
+              Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
                   child: Center(child:
                   GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
                       onTap: () {
@@ -244,25 +285,8 @@ class IntubationState extends State<Intubation> {
       )
     );
   }
-
- void buildSnackBar(BuildContext context) {
-    final snackBar = SnackBar(
-        backgroundColor: Colors.white,
-        content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-          Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
-        GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FinalDisplay();
-          })
-          );
-        })
-        ]
-        ),
-        duration: const Duration(minutes: 20));
-    _scaffoldKey.currentState.showSnackBar(snackBar);
-  }
 }
+
 
 
 void propofolErrorAlert(BuildContext context) {

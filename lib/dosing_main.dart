@@ -31,8 +31,8 @@ class DosingMain extends StatefulWidget {
   }
 }
 
-class _DosingMainState extends State<DosingMain> {
 
+class _DosingMainState extends State<DosingMain> {
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _DosingMainState extends State<DosingMain> {
                       height: 1000,
                       padding: EdgeInsets.only(left: 20, top: 20),
                       child: Text("Calculations rounded to $weight kg",
-                      textDirection: TextDirection.ltr, style: TextStyle(fontSize: 18),),
+                      textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),),
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,
@@ -98,6 +98,7 @@ class _DosingMainState extends State<DosingMain> {
           );
   }
 }
+
 
 class PlusMinus extends StatelessWidget {
   @override

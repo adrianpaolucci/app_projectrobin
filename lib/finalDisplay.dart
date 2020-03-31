@@ -17,7 +17,7 @@ class FinalDisplayState extends State<FinalDisplay> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          "Selections",
+          "Selections for $weight kg",
           style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.white
       ),
@@ -39,7 +39,7 @@ intubationFinal(BuildContext context) {
   final data = MediaQuery.of(context);
   var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context)];
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
-  List<Widget>intubationList = [];
+  List<Widget>intubationList = intubationInfo(context);
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
       intubationList.add(inductionWidgets[i]);
@@ -52,7 +52,9 @@ intubationFinal(BuildContext context) {
       intubationList.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
     }
   }
-  intubationList.removeLast();
+  if (intubationList.isNotEmpty) {
+    intubationList.removeLast();
+  }
   return intubationList;
 }
 
@@ -65,8 +67,8 @@ ketamineDisplay(BuildContext context) {
     SizedBox(height: 15),
     Text("Ketamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -318,4 +320,71 @@ atracuriumDisplay(BuildContext context) {
           style: TextStyle(decoration: TextDecoration.underline)),
     SizedBox(height: 15)]);
   return popup;
+}
+
+intubationInfo(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var box = [
+        Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+        SizedBox(height: 10),
+        Text.rich(
+        TextSpan(
+               text: "",
+                children: <TextSpan>[
+                  TextSpan(text: "Depth",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
+                  TextSpan(text: ": 9 - 9.5 cm to lip, 11 cm to nose", style: TextStyle(fontSize: 16))
+                 ]
+                )),
+        SizedBox(height: 10),
+        Text.rich(
+          TextSpan(
+          text: "",
+           children: <TextSpan>[
+             TextSpan(text: "LMA Size",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
+           TextSpan(text: ": 1", style: TextStyle(fontSize: 16))
+          ]
+          )),
+        SizedBox(height: 10),
+        Text.rich(
+        TextSpan(text: "",
+        children: <TextSpan>[
+        TextSpan(text: "Laryngoscope",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
+        TextSpan(text: ": 0", style: TextStyle(fontSize: 16))
+        ]
+        )
+        ),
+        SizedBox(height: 10),
+              Text.rich(
+              TextSpan(
+              text: "",
+              children: <TextSpan>[
+              TextSpan(text: "Suction",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
+              TextSpan(text: ": 6 Fr", style: TextStyle(fontSize: 16))
+              ]
+              )
+              ),
+        SizedBox(height: 20),
+        Text("ET Tubes", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+        Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
+        Text("Uncuffed",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
+        Text("3.5", style: TextStyle(fontWeight: FontWeight.bold))
+        ])),
+        SizedBox(height: 15),
+        Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
+        Text("Microcuff",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
+        Text("3", style: TextStyle(fontWeight: FontWeight.bold))
+        ]
+        )
+        ),
+        SizedBox(height: 15),
+        Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
+        Text("Cuffed",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
+        Text("N/A", style: TextStyle(fontWeight: FontWeight.bold))
+        ])),
+  ];
+  box.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
+  return box;
 }

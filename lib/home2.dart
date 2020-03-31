@@ -83,7 +83,7 @@ class Home2State extends State<Home2> {
     appBar: AppBar(centerTitle: true,
       backgroundColor: Colors.white,
       title: Text(
-        "Age / Weight Estimation",
+        "         Age                      Approx. Weight   ",
         style: TextStyle(
           color: Colors.black,
         ),
