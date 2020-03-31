@@ -97,7 +97,7 @@ propofolDisplay(BuildContext context) {
     Text("Propofol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(children: <Widget>[
@@ -123,7 +123,7 @@ thiopentoneDisplay(BuildContext context) {
     Text("Thiopentone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -154,7 +154,7 @@ fentanylBolusDisplay(BuildContext context) {
     Text("Fentanyl (Bolus)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,7 +187,7 @@ midazolamDisplay(BuildContext context) {
     Text("Midazolam", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -220,7 +220,7 @@ suxamethoniumDisplay(BuildContext context) {
     Text("Suxamethonium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -251,7 +251,7 @@ rocuroniumDisplay(BuildContext context) {
     Text("Rocuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(children: <Widget>[
@@ -275,7 +275,7 @@ vecuroniumDisplay(BuildContext context) {
     Text("Vecuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -303,7 +303,7 @@ atracuriumDisplay(BuildContext context) {
     Text("Atracurium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      color: Color(0xffa6a6a6),
+      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -324,67 +324,50 @@ atracuriumDisplay(BuildContext context) {
 
 intubationInfo(BuildContext context) {
   final data = MediaQuery.of(context);
+
+  firstTextSpan(firstString, secondString) {
+    var textBox = Text.rich(
+        TextSpan(
+            text: "",
+            children: <TextSpan>[
+              TextSpan(text: firstString,style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
+              TextSpan(text: secondString, style: TextStyle(fontSize: 16))
+            ]
+        )
+    );
+    return textBox;
+  }
+
+  etTubeDisplayBox(tubeType,tubeSize) {
+    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
+          Text(tubeType,style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
+          Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold))
+        ]));
+   return box;
+  }
+
+
   var box = [
         Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
         SizedBox(height: 10),
-        Text.rich(
-        TextSpan(
-               text: "",
-                children: <TextSpan>[
-                  TextSpan(text: "Depth",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-                  TextSpan(text: ": 9 - 9.5 cm to lip, 11 cm to nose", style: TextStyle(fontSize: 16))
-                 ]
-                )),
+        firstTextSpan("Depth",": 9 - 9.5 cm to lip, 11 cm to nose"),
         SizedBox(height: 10),
-        Text.rich(
-          TextSpan(
-          text: "",
-           children: <TextSpan>[
-             TextSpan(text: "LMA Size",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-           TextSpan(text: ": 1", style: TextStyle(fontSize: 16))
-          ]
-          )),
+        firstTextSpan("LMA Size", ": 1"),
         SizedBox(height: 10),
-        Text.rich(
-        TextSpan(text: "",
-        children: <TextSpan>[
-        TextSpan(text: "Laryngoscope",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-        TextSpan(text: ": 0", style: TextStyle(fontSize: 16))
-        ]
-        )
-        ),
+        firstTextSpan("Laryngoscope", ": 0"),
         SizedBox(height: 10),
-              Text.rich(
-              TextSpan(
-              text: "",
-              children: <TextSpan>[
-              TextSpan(text: "Suction",style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-              TextSpan(text: ": 6 Fr", style: TextStyle(fontSize: 16))
-              ]
-              )
-              ),
+        firstTextSpan("Suction", ": 6 Fr"),
         SizedBox(height: 20),
         Text("ET Tubes", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-        Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-        Text("Uncuffed",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
-        Text("3.5", style: TextStyle(fontWeight: FontWeight.bold))
-        ])),
+        etTubeDisplayBox("Uncuffed", "3.5"),
         SizedBox(height: 15),
-        Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-        Text("Microcuff",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
-        Text("3", style: TextStyle(fontWeight: FontWeight.bold))
-        ]
-        )
-        ),
+        etTubeDisplayBox("Microcuff", "3"),
         SizedBox(height: 15),
-        Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: data.size.width, height: 25,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-        Text("Cuffed",style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
-        Text("N/A", style: TextStyle(fontWeight: FontWeight.bold))
-        ])),
+        etTubeDisplayBox("Cuffed", "N/A")
   ];
   box.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
+
   return box;
 }
+
