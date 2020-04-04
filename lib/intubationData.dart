@@ -233,11 +233,12 @@ rocuroniumDisplay(BuildContext context) {
       Column(children: <Widget>[
         Text("${currentData[1]} mg in ${currentData[2]} mL"),
         Text("Undiluted", style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold))
+            fontSize: 16, fontWeight: FontWeight.bold)),
+        SizedBox(height: 10),
+        Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
+            style: TextStyle(decoration: TextDecoration.underline)),
       ]),
     ),
-    Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
-        style: TextStyle(decoration: TextDecoration.underline)),
     SizedBox(height: 15)]);
   return popup;
 }

@@ -11,26 +11,6 @@ class Home2 extends StatefulWidget {
   }
 }
 
-final ranges = [
-  [2.0,2.5,3.0,3.5],[2.0,2.5,3.0,3.5],
-  [4.0,4.5,5.0],[4.0,4.5,5.0],
-  [5.5,6.0,6.5],[5.5,6.0,6.5],
-  [7.0,8.0],[7.0,8.0],
-  [9.0,10.0],[9.0,10.0],
-  [10.0,11.0,12.0],[10.0,11.0,12.0],
-  [11.0,12.0,13.0],[11.0,12.0,13.0],
-  [13.0,14.0,15.0],[13.0,14.0,15.0],
-  [15.0,16.0,17.0],[15.0,16.0,17.0],
-  [18.0,19.0,20.0],[18.0,19.0,20.0],
-  [22.0,24.0,26.0,28.0],[22.0,24.0,26.0,28.0],
-  [28.0,30.0,35.0],[28.0,30.0,35.0],
-  [35.0,40.0],[35.0,40.0],
-  [45.0,50.0,55.0,60.0],[45.0,50.0,55.0,60.0],
-  [65.0,70.0,75.0,80.0],[65.0,70.0,75.0,80.0]
-];
-
-
-
 final allWeights = [2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.5,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,
                     20.0,22.0,24.0,26.0,28.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0];
 var weight = 0.0;
@@ -76,9 +56,70 @@ class Home2State extends State<Home2> {
     Colors.orange,Colors.white
   ];
 
+  final ranges = [
+    [2.0,2.5,3.0,3.5],[2.0,2.5,3.0,3.5],
+    [4.0,4.5,5.0],[4.0,4.5,5.0],
+    [5.5,6.0,6.5],[5.5,6.0,6.5],
+    [7.0,8.0],[7.0,8.0],
+    [9.0,10.0],[9.0,10.0],
+    [10.0,11.0,12.0],[10.0,11.0,12.0],
+    [11.0,12.0,13.0],[11.0,12.0,13.0],
+    [13.0,14.0,15.0],[13.0,14.0,15.0],
+    [15.0,16.0,17.0],[15.0,16.0,17.0],
+    [18.0,19.0,20.0],[18.0,19.0,20.0],
+    [22.0,24.0,26.0,28.0],[22.0,24.0,26.0,28.0],
+    [28.0,30.0,35.0],[28.0,30.0,35.0],
+    [35.0,40.0],[35.0,40.0],
+    [45.0,50.0,55.0,60.0],[45.0,50.0,55.0,60.0],
+    [65.0,70.0,75.0,80.0],[65.0,70.0,75.0,80.0]
+  ];
+
   @override
   Widget build(BuildContext context) {
+
     final data = MediaQuery.of(context);
+
+    sliverBox(index, textBox) {
+      var childBox;
+      if (index.isOdd) {
+        childBox = Container(
+            decoration: BoxDecoration(border: Border.all(
+                color: Colors.grey), color: Colors.white),
+            alignment: Alignment.center,
+            child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
+              Container(width: data.size.width / 12,
+                  color: boxColors[index]),
+              Text(textBox,
+                  style: TextStyle(
+                      color: Colors.black, fontSize: 18.0)
+              ),
+              Icon(Icons.arrow_forward_ios)
+            ]
+            )
+        );
+      }
+      else {
+        childBox = Container(
+            decoration: BoxDecoration(border: Border.all(
+                color: Colors.grey), color: Colors.white),
+            alignment: Alignment.center,
+            child:
+            Row(children: <Widget>[
+              Container(width: data.size.width / 12,
+                  color: boxColors[index]),
+              Container(width: data.size.width / 12),
+              Text(textBox,
+                  style: TextStyle(
+                      color: Colors.black, fontSize: 18.0))
+            ]
+            )
+        );
+      }
+      return childBox;
+    }
+
+
     return Scaffold(
     appBar: AppBar(centerTitle: true,
       backgroundColor: Colors.white,
@@ -100,47 +141,12 @@ class Home2State extends State<Home2> {
                 delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       var textBox = ageWeightList[index];
-                      var childBox;
-                      if (index.isOdd) {
-                          childBox = Container(
-                            decoration: BoxDecoration(border: Border.all(
-                                color: Colors.grey), color: Colors.white),
-                            alignment: Alignment.center,
-                            child:
-                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-                              Container(width: data.size.width / 12,
-                                  color: boxColors[index]),
-                              Text(textBox,
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18.0)),
-                              Icon(Icons.arrow_forward_ios)
-                            ]
-                            )
-                        );
-                      }
-                      else {
-                          childBox = Container(
-                            decoration: BoxDecoration(border: Border.all(
-                                color: Colors.grey), color: Colors.white),
-                            alignment: Alignment.center,
-                            child:
-                            Row(children: <Widget>[
-                              Container(width: data.size.width / 12,
-                                  color: boxColors[index]),
-                              Container(width: data.size.width / 12),
-                              Text(textBox,
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18.0))
-                            ]
-                            )
-                        );
-                      }
                       return GestureDetector(
                           onTap: () {
                             specificRange = ranges[index];
                               return weightBox(context);
                           },
-                        child: childBox
+                        child: sliverBox(index, textBox)
                       );
                     },
                   childCount: ageWeightList.length
