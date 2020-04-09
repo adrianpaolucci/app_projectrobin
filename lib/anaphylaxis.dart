@@ -41,7 +41,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                     GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return DosingMain();
+                      return InterventionMain();
                       }
                     )
                     );

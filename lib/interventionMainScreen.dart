@@ -2,11 +2,14 @@ import 'package:app_search_bar/anaphylaxis.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/homeScreen.dart';
+import 'asthma.dart';
 
 adrianDivider() {
   var divider = Divider(thickness: 1.0, color: Colors.black);
   return divider;
 }
+
+final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 var interventions = [
                       "Anaphylaxis", "Resuscitation",
@@ -16,7 +19,7 @@ var interventions = [
                       "Antidotes", "Electrolye Abnormalities"
                       ];
 
-var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
+var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Asthma(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
 
 var intColors = [
                  Colors.red,Colors.red,
@@ -29,7 +32,7 @@ var intColors = [
 var int = "";
 var specificColor;
 
-class DosingMain extends StatefulWidget {
+class InterventionMain extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _DosingMainState();
@@ -37,11 +40,12 @@ class DosingMain extends StatefulWidget {
 }
 
 
-class _DosingMainState extends State<DosingMain> {
+class _DosingMainState extends State<InterventionMain> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:app_search_bar/asthmaData.dart';
 import 'package:app_search_bar/finalDisplay.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ Color getColor(i) {
   }
 }
 
-final _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
 class Intubation extends StatefulWidget {
   @override
@@ -30,6 +31,10 @@ String inductionAmount;
 String paralyticAgentName;
 String paralyticAmount;
 
+final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+
 class IntubationState extends State<Intubation> {
 
   @override
@@ -38,6 +43,7 @@ class IntubationState extends State<Intubation> {
     final data = MediaQuery.of(context);
 
     void buildSnackBar(BuildContext context) {
+
       final snackBar = SnackBar(
           backgroundColor: Colors.white,
           content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
@@ -45,21 +51,31 @@ class IntubationState extends State<Intubation> {
                 alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),
                 child: Text("Clear All",
                     style: TextStyle(color: Colors.black))
-                ),
+            ),
                 onTap: () {
                   _scaffoldKey.currentState.hideCurrentSnackBar();
                   boolCount = 0;
                   for (var i = 0; i < inductionBoolean.length; i++) {
                     setState(() {
                       inductionBoolean[i] = false;
-                    }
-                    );
+                    });
                   }
                   for (var i = 0; i < paralyticBoolean.length; i++) {
                     setState(() {
                       paralyticBoolean[i] = false;
-                    }
-                    );
+                    });
+
+                  }
+                  for (var i = 0; i < asthmaDrugBoolean.length; i++) {
+                    setState(() {
+                      asthmaDrugBoolean[i] = false;
+                    });
+
+                  }
+                  for (var i = 0; i < asthmaCorticoBoolean.length; i++) {
+                    setState(() {
+                      asthmaCorticoBoolean[i] = false;
+                    });
                   }
                   buildSnackBar(context);
                 }),
@@ -133,49 +149,50 @@ class IntubationState extends State<Intubation> {
         });
 
     var paralyticAgentCells = ListView.builder(
-      shrinkWrap: true,
-      itemCount: paralyticAgents.length,
-      itemBuilder: (BuildContext context, var i) {
-        return GestureDetector(child: Container(width: 9*data.size.width/10, height: 40,
-            decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-              Text(paralyticAgents[i]),
-              Checkbox(
-                  value: paralyticBoolean[i],
-                  onChanged: (bool newValue){
-                    _scaffoldKey.currentState.hideCurrentSnackBar();
-                    paralyticAgentName = paralyticAgents[i];
-                    if (newValue == true) {
-                      boolCount += 1;
-                    }
-                    else {
-                      boolCount -=1;
-                    }
-                    buildSnackBar(context);
-                    setState(() {
-                      paralyticBoolean[i] = newValue;
-                    }
-                    );
-                  }),
-            ]
-            )),
-            onTap: () {
-              _scaffoldKey.currentState.hideCurrentSnackBar();
-              if (paralyticBoolean[i] == false) {
-                boolCount += 1;
+        shrinkWrap: true,
+        itemCount: paralyticAgents.length,
+        itemBuilder: (BuildContext context, var i) {
+          return GestureDetector(child: Container(width: 9*data.size.width/10, height: 40,
+              decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
+                Text(paralyticAgents[i]),
+                Checkbox(
+                    value: paralyticBoolean[i],
+                    onChanged: (bool newValue){
+                      _scaffoldKey.currentState.hideCurrentSnackBar();
+                      paralyticAgentName = paralyticAgents[i];
+                      if (newValue == true) {
+                        boolCount += 1;
+                      }
+                      else {
+                        boolCount -=1;
+                      }
+                      buildSnackBar(context);
+                      setState(() {
+                        paralyticBoolean[i] = newValue;
+                      }
+                      );
+                    }),
+              ]
+              )),
+              onTap: () {
+                _scaffoldKey.currentState.hideCurrentSnackBar();
+                if (paralyticBoolean[i] == false) {
+                  boolCount += 1;
+                }
+                else {
+                  boolCount -= 1;
+                }
+                buildSnackBar(context);
+                setState(() {
+                  paralyticBoolean[i] = !paralyticBoolean[i];
+                });
               }
-              else {
-                boolCount -= 1;
-              }
-              buildSnackBar(context);
-              setState(() {
-                paralyticBoolean[i] = !paralyticBoolean[i];
-              });
+          );
         }
-        );
-      }
     );
+
 
     return Scaffold(
       key: _scaffoldKey,
@@ -203,7 +220,7 @@ class IntubationState extends State<Intubation> {
                   GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return DosingMain();
+                          return InterventionMain();
                         }
                         )
                         );
