@@ -151,11 +151,11 @@ class Home2State extends State<Home2> {
                     },
                   childCount: ageWeightList.length
                 ),
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: data.size.width*0.5 - 5,
-                  crossAxisSpacing: 5.0,
-                  childAspectRatio: 3,
-                  mainAxisSpacing: 5.0
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 5.0,
+                    crossAxisSpacing: 5.0,
+                    childAspectRatio: 3,
                 )
               )
         ]
@@ -188,18 +188,19 @@ weightBox(BuildContext context) {
           )
           );
         },
-      ));
+      )
+    );
     chooseWeightPopup.add(SizedBox(height: 30));
   }
   chooseWeightPopup.removeLast();
 
-  var boxHeight = data.size.height*(0.1 + specificRange.length/10);
+  var boxHeight = 50.0*chooseWeightPopup.length + 10.0;
 
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child: AlertDialog(
           title: Text("Choose Weight"),
-        content:
-              Container(
+        content: Container(height: boxHeight, child: Column(children: chooseWeightPopup)),
+        /*Container(
                 height: boxHeight,
                 alignment: Alignment.center,
                 margin: EdgeInsets.all(5),
@@ -208,7 +209,7 @@ weightBox(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: chooseWeightPopup
                 ),
-              ),
+              ),*/
         actions: <Widget>[
           FlatButton(child: Text("Back", style: TextStyle(fontSize: 18)), onPressed: () {
             Navigator.pop(context);

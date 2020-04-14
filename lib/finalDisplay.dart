@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'package:app_search_bar/intubationData.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
+import 'asthmaData.dart';
 
 class FinalDisplay extends StatefulWidget {
   @override
@@ -34,6 +35,13 @@ class FinalDisplayState extends State<FinalDisplay> {
             children: intubationFinal(context),
           ),
         adrianDivider(),
+        SizedBox(height: 10),
+        adrianDivider(),
+        ExpansionTile(
+          title: Text("Asthma"),
+          children: asthmaFinal(context),
+        ),
+        adrianDivider(),
           ]
       ),
       )
@@ -63,6 +71,22 @@ intubationFinal(BuildContext context) {
     intubationList.removeLast();
   }
   return intubationList;
+}
+
+asthmaFinal(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var asthmaDrugWidgets = [inhaledSalbutamolDisplay(context),inhaledIpratropiumDisplay(context),inhaledSalbutamolDisplay(context),inhaledSalbutamolDisplay(context),inhaledSalbutamolDisplay(context)];
+  List<Widget>asthmaList = [];
+  for (var i = 0; i < asthmaDrugs.length; i++) {
+    if (asthmaDrugBoolean[i]==true) {
+      asthmaList.add(asthmaDrugWidgets[i]);
+      asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (asthmaList.isNotEmpty) {
+    asthmaList.removeLast();
+  }
+  return asthmaList;
 }
 
 

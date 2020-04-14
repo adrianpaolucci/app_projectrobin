@@ -1,11 +1,11 @@
 import 'package:app_search_bar/asthmaData.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/material.dart';
-
 import 'finalDisplay.dart';
 import 'homeScreen.dart';
 import 'intubation.dart';
 import 'intubationData.dart';
+import 'dart:ui';
 
 class Asthma extends StatefulWidget {
   @override
@@ -88,6 +88,10 @@ class AsthmaState extends State<Asthma> {
                     Checkbox(
                         value: asthmaDrugBoolean[i],
                         onChanged: (bool newValue){
+                          if (weight < 10.0) {
+                            asthmuaDrugErrorAlert(context, i);
+                          }
+                          else {
                           _scaffoldKey.currentState.hideCurrentSnackBar();
                           if (newValue == true) {
                             boolCount += 1;
@@ -100,24 +104,32 @@ class AsthmaState extends State<Asthma> {
                             asthmaDrugBoolean[i] = newValue;
                           }
                           );
-                        }),
+                        }
+                        }
+                        ),
                   ],
                   )
               ),
               onTap: () {
-                _scaffoldKey.currentState.hideCurrentSnackBar();
-                if (asthmaDrugBoolean[i] == false) {
-                  boolCount += 1;
+                if (weight < 10.0) {
+                  asthmuaDrugErrorAlert(context, i);
                 }
                 else {
-                  boolCount -= 1;
+                  _scaffoldKey.currentState.hideCurrentSnackBar();
+                  if (asthmaDrugBoolean[i] == false) {
+                    boolCount += 1;
+                  }
+                  else {
+                    boolCount -= 1;
+                  }
+                  buildSnackBar(context);
+                  setState(() {
+                    asthmaDrugBoolean[i] = !asthmaDrugBoolean[i];
+                  }
+                  );
                 }
-                buildSnackBar(context);
-                setState(() {
-                  asthmaDrugBoolean[i] = !asthmaDrugBoolean[i];
-                }
-                );
-              });
+              }
+              );
         });
 
     var asthmaCorticoCells = ListView.builder(
@@ -243,4 +255,24 @@ buildNavigationBar() {
       ]
   );
   return navBar;
+}
+
+void asthmuaDrugErrorAlert(BuildContext context, i) {
+  final data = MediaQuery.of(context);
+  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+      child:
+      AlertDialog(
+        title: Text("Alert"),
+        content: Text("Cannot use ${asthmaDrugs[i]} when weight is less than 10.0 kg"),
+        actions: <Widget>[
+          FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.pop(context);
+              }
+          )
+        ],
+      )
+  );
+
+  showDialog(context: context, builder: (BuildContext context) => popup);
 }
