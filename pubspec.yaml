@@ -42,6 +42,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+   - family:  MyFlutterApp
+     fonts:
+      - asset: fonts/MyFlutterApp.ttf
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/calendar_icon.png
@@ -70,6 +75,6 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

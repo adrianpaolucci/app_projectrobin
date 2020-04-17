@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'intubationData.dart';
 
+
 Color getColor(i) {
   if (i % 2 == 0) {
     return Color(0xffa6a6a6);
@@ -25,13 +26,13 @@ class Intubation extends StatefulWidget {
   }
 }
 
-var boolCount = 0;
+
 String inductionAgentName;
 String inductionAmount;
 String paralyticAgentName;
 String paralyticAmount;
 
-final _scaffoldKey = GlobalKey<ScaffoldState>();
+final scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 
@@ -53,7 +54,7 @@ class IntubationState extends State<Intubation> {
                     style: TextStyle(color: Colors.black))
             ),
                 onTap: () {
-                  _scaffoldKey.currentState.hideCurrentSnackBar();
+                  scaffoldKey.currentState.hideCurrentSnackBar();
                   boolCount = 0;
                   for (var i = 0; i < inductionBoolean.length; i++) {
                     setState(() {
@@ -90,7 +91,7 @@ class IntubationState extends State<Intubation> {
           ]
           ),
           duration: const Duration(minutes: 20));
-      _scaffoldKey.currentState.showSnackBar(snackBar);
+      scaffoldKey.currentState.showSnackBar(snackBar);
     }
 
     var inductionAgentCells = ListView.builder(
@@ -110,7 +111,7 @@ class IntubationState extends State<Intubation> {
                                         propofolErrorAlert(context);
                                       }
                                       else {
-                                        _scaffoldKey.currentState.hideCurrentSnackBar();
+                                        scaffoldKey.currentState.hideCurrentSnackBar();
                                         if (newValue == true) {
                                           boolCount += 1;
                                         }
@@ -132,7 +133,7 @@ class IntubationState extends State<Intubation> {
                               propofolErrorAlert(context);
                             }
                             else {
-                              _scaffoldKey.currentState.hideCurrentSnackBar();
+                              scaffoldKey.currentState.hideCurrentSnackBar();
                               if (inductionBoolean[i] == false) {
                                 boolCount += 1;
                               }
@@ -160,7 +161,7 @@ class IntubationState extends State<Intubation> {
                 Checkbox(
                     value: paralyticBoolean[i],
                     onChanged: (bool newValue){
-                      _scaffoldKey.currentState.hideCurrentSnackBar();
+                      scaffoldKey.currentState.hideCurrentSnackBar();
                       paralyticAgentName = paralyticAgents[i];
                       if (newValue == true) {
                         boolCount += 1;
@@ -177,7 +178,7 @@ class IntubationState extends State<Intubation> {
               ]
               )),
               onTap: () {
-                _scaffoldKey.currentState.hideCurrentSnackBar();
+                scaffoldKey.currentState.hideCurrentSnackBar();
                 if (paralyticBoolean[i] == false) {
                   boolCount += 1;
                 }
@@ -195,7 +196,7 @@ class IntubationState extends State<Intubation> {
 
 
     return Scaffold(
-      key: _scaffoldKey,
+      key: scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
@@ -231,31 +232,39 @@ class IntubationState extends State<Intubation> {
             ]
             ),
             Column(children: <Widget>[
-                  SizedBox(height: 30),
-                  adrianDivider(),
-                  ExpansionTile(
-                    title: Text("Induction Agents"),
-                    children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                                          style: TextStyle(color: Colors.indigoAccent))),
-                                        SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
-                    ],
-                  ),
-                  adrianDivider(),
-                  PlusMinus(),
-                  adrianDivider(),
-                  ExpansionTile(
-                    title: Text("Paralytic Agents"),
-                    children: <Widget> [
-                      GestureDetector(child: Text("Select Drug from below",
-                          style: TextStyle(color: Colors.indigoAccent))),
-                      SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
-                    ]
-                  ),
-                  adrianDivider(),
-                  SizedBox(height: data.size.height/3)
-              ],
+              SizedBox(height: 30),
+              adrianDivider(),
+              ExpansionTile(
+                initiallyExpanded: true,
+                title: Text("Intubation Equipment Info"),
+                children: intubationEquipmentInfo(context),
+              ),
+              adrianDivider(),
+              SizedBox(height: 10),
+              adrianDivider(),
+              ExpansionTile(
+                title: Text("Induction Agents"),
+                children: <Widget>[GestureDetector(child: Text("Select Drug from below",
+                    style: TextStyle(color: Colors.indigoAccent))),
+                  SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
+                ],
+              ),
+              adrianDivider(),
+              PlusMinus(),
+              adrianDivider(),
+              ExpansionTile(
+                  title: Text("Paralytic Agents"),
+                  children: <Widget> [
+                    GestureDetector(child: Text("Select Drug from below",
+                        style: TextStyle(color: Colors.indigoAccent))),
+                    SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
+                  ]
+              ),
+              adrianDivider(),
+              SizedBox(height: data.size.height/3)
+            ],
             ),
-            ]
+          ]
         ),
       ),
       )

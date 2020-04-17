@@ -75,11 +75,18 @@ intubationFinal(BuildContext context) {
 
 asthmaFinal(BuildContext context) {
   final data = MediaQuery.of(context);
-  var asthmaDrugWidgets = [inhaledSalbutamolDisplay(context),inhaledIpratropiumDisplay(context),inhaledSalbutamolDisplay(context),inhaledSalbutamolDisplay(context),inhaledSalbutamolDisplay(context)];
+  var asthmaDrugWidgets = [inhaledSalbutamolDisplay(context),inhaledIpratropiumDisplay(context),ivMagnesiumDisplay(context),ivAminophyllineDisplay(context),asthmaAdrenalineDisplay(context)];
+  var asthmaCortisoWidgets = [methylprednisoloneDisplay(context),dexamethasoneDisplay(context),hydrocortisoneDisplay(context),prednisoloneDisplay(context)];
   List<Widget>asthmaList = [];
   for (var i = 0; i < asthmaDrugs.length; i++) {
     if (asthmaDrugBoolean[i]==true) {
       asthmaList.add(asthmaDrugWidgets[i]);
+      asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  for (var i = 0; i < asthmaCorticos.length; i++) {
+    if (asthmaCorticoBoolean[i] == true){
+      asthmaList.add(asthmaCortisoWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
   }

@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'asthma.dart';
+import 'seizuresNeurology.dart';
+
+
+var boolCount = 0;
 
 adrianDivider() {
   var divider = Divider(thickness: 1.0, color: Colors.black);
@@ -16,11 +20,10 @@ var interventions = [
                       "Management of Shock","Bleeding",
                       "Intubation","Seizures/Neurology",
                       "Asthma","Infection",
-                      "Antidotes", "Electrolye Abnormalities"
+                      "Antidotes", "Electrolye Abnormalities",
                       ];
 
-var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),Anaphylaxis(),Asthma(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
-
+var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),SeizuresNeurology(),Asthma(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
 var intColors = [
                  Colors.red,Colors.red,
                  Colors.red,Colors.red,
@@ -63,10 +66,14 @@ class _DosingMainState extends State<InterventionMain> {
                   Container(
                       alignment: Alignment.centerLeft,
                       width: 50,
-                      height: 1000,
                       padding: EdgeInsets.only(left: 20, top: 20),
-                      child: Text("Calculations rounded to $weight kg",
-                      textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),),
+                      child: Row(children: <Widget>[
+
+                        Text("Calculations rounded to $weight kg",
+                      textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),
+                      ),
+                      ]
+                      )
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,

@@ -5,6 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:app_search_bar/blocs/theme.dart';
 
+pixelsToTextSize(pixel) {
+    var textSize = 4*pixel/3;
+    return textSize.roundToDouble();
+}
 
 void main() => runApp(MyApp());
 

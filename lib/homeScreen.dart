@@ -1,3 +1,4 @@
+import 'package:app_search_bar/main.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,7 @@ class Home2 extends StatefulWidget {
     return Home2State();
   }
 }
+
 
 final allWeights = [2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.5,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,
                     20.0,22.0,24.0,26.0,28.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0];
@@ -92,7 +94,7 @@ class Home2State extends State<Home2> {
                   color: boxColors[index]),
               Text(textBox,
                   style: TextStyle(
-                      color: Colors.black, fontSize: 18.0)
+                      color: Colors.black, fontSize: pixelsToTextSize(data.size.height/54.5))
               ),
               Icon(Icons.arrow_forward_ios)
             ]
@@ -111,7 +113,7 @@ class Home2State extends State<Home2> {
               Container(width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
-                      color: Colors.black, fontSize: 18.0))
+                      color: Colors.black, fontSize: pixelsToTextSize(data.size.height/54.5)))
             ]
             )
         );
@@ -126,6 +128,7 @@ class Home2State extends State<Home2> {
       title: Text(
         "         Age                      Approx. Weight   ",
         style: TextStyle(
+          fontSize: pixelsToTextSize(data.size.height/50),
           color: Colors.black,
         ),
         textAlign: TextAlign.center,
@@ -153,8 +156,8 @@ class Home2State extends State<Home2> {
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 5.0,
-                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: data.size.width/78.6,
+                    crossAxisSpacing: data.size.width/78.6,
                     childAspectRatio: 3,
                 )
               )
@@ -175,10 +178,10 @@ weightBox(BuildContext context) {
   for (var i = 0; i < specificRange.length; i++) {
     chooseWeightPopup.add(
       GestureDetector(child:
-      Container(decoration: BoxDecoration(color: Colors.grey,border: Border.all(),borderRadius: BorderRadius.all(Radius.circular(10.0))),
-          padding: EdgeInsets.all(20.0),
+      Container(decoration: BoxDecoration(color: Color(0xfff2f2f2),border: Border.all(),borderRadius: BorderRadius.all(Radius.circular(data.size.width/40))),
+          padding: EdgeInsets.all(data.size.width/20),
           child:
-          Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: 18))),
+          Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5)))),
         onTap: () {
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
@@ -190,16 +193,16 @@ weightBox(BuildContext context) {
         },
       )
     );
-    chooseWeightPopup.add(SizedBox(height: 30));
+    chooseWeightPopup.add(SizedBox(height: data.size.width/13));
   }
   chooseWeightPopup.removeLast();
 
-  var boxHeight = 50.0*chooseWeightPopup.length + 10.0;
+  var boxHeight = data.size.height*(0.125*specificRange.length + 0.125);
 
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child: AlertDialog(
-          title: Text("Choose Weight"),
-        content: Container(height: boxHeight, child: Column(children: chooseWeightPopup)),
+          title: Text("Choose Weight", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/50))),
+        content: Container(alignment: Alignment.center, height: boxHeight, child: Column(children: chooseWeightPopup)),
         /*Container(
                 height: boxHeight,
                 alignment: Alignment.center,
@@ -211,7 +214,7 @@ weightBox(BuildContext context) {
                 ),
               ),*/
         actions: <Widget>[
-          FlatButton(child: Text("Back", style: TextStyle(fontSize: 18)), onPressed: () {
+          FlatButton(child: Text("Back", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))), onPressed: () {
             Navigator.pop(context);
           }
           )
