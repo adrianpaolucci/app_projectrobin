@@ -14,6 +14,14 @@ class SeizuresNeurology extends StatefulWidget {
   }
 }
 
+final seizureNeurologyIcons = [Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]), Icon(MyFlutterApp.syringe),
+                              Icon(MyFlutterApp.pipette), Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]),
+                              Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
+                              Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.syringe),
+                              Icon(MyFlutterApp.pipette),Icon(MyFlutterApp.pipette),
+                              Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
+                              Icon(MyFlutterApp.pipette)];
+
 final scaffoldKey = GlobalKey<ScaffoldState>();
 
 class SeizuresNeurologyState extends State<SeizuresNeurology> {
@@ -95,7 +103,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   delegate: SliverChildBuilderDelegate(
                         (context, i) {
                           return Column(children: <Widget> [
-                            Icon(MyFlutterApp.syringe, size: 30),
+                            SizedBox(height: 5),
+                            seizureNeurologyIcons[i],
                             RaisedButton(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0)
