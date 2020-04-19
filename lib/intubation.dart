@@ -7,6 +7,9 @@ import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'intubationData.dart';
+import 'seizuresNeurology.dart';
+import 'seizuresNeurologyData.dart';
+
 
 
 Color getColor(i) {
@@ -17,7 +20,8 @@ Color getColor(i) {
   }
 }
 
-
+final allDrugs = [asthmaDrugs,asthmaCorticos,inductionAgents,paralyticAgents,seizuresNeurologyDrugs];
+final allDrugBooleans = [asthmaDrugBoolean,asthmaCorticoBoolean,inductionBoolean,paralyticBoolean,seizuresNeurologyBoolean];
 
 class Intubation extends StatefulWidget {
   @override
@@ -37,6 +41,19 @@ final scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 class IntubationState extends State<Intubation> {
+
+  clearAll() {
+    setState(() {
+      items = badger.setBadge(items, "0", 1);
+    });
+    for (var i = 0; i < allDrugs.length; i++) {
+      var subLength = allDrugs[i].length;
+      for (var j = 0; j < allDrugs[i].length; j++) {
+        allDrugBooleans[i][j] = false;
+      }
+    }
+    boolCount = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -205,69 +222,55 @@ class IntubationState extends State<Intubation> {
           style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(child: Material(
-        child: Column(
-          children: <Widget>[
-            Row(children: <Widget>[
-              Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-                  child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
-              ),
-              Container(height: 100, width: 0.4*data.size.width, color: Color(0xfff2f2f2),
-                  child: Center(child:
-                  Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
-              ),
-              Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-                  child: Center(child:
-                  GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return InterventionMain();
-                        }
-                        )
-                        );
-                      }
+        body: SingleChildScrollView(child: Material(
+          child: Column(
+              children: <Widget>[
+                Row(children: <Widget>[
+                  Container(height: 100, width: 0.7*data.size.width, color: Color(0xfff2f2f2),
+                      child: Center(child:
+                      Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
+                  ),
+                  Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
+                      child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
                   )
-                  )
-              )
-            ]
-            ),
-            Column(children: <Widget>[
-              SizedBox(height: 30),
-              adrianDivider(),
-              ExpansionTile(
-                initiallyExpanded: true,
-                title: Text("Intubation Equipment Info"),
-                children: intubationEquipmentInfo(context),
-              ),
-              adrianDivider(),
-              SizedBox(height: 10),
-              adrianDivider(),
-              ExpansionTile(
-                title: Text("Induction Agents"),
-                children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                    style: TextStyle(color: Colors.indigoAccent))),
-                  SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
-                ],
-              ),
-              adrianDivider(),
-              PlusMinus(),
-              adrianDivider(),
-              ExpansionTile(
-                  title: Text("Paralytic Agents"),
-                  children: <Widget> [
-                    GestureDetector(child: Text("Select Drug from below",
+                ]
+                ),
+                Column(children: <Widget>[
+                  SizedBox(height: 30),
+                  adrianDivider(),
+                  ExpansionTile(
+                    title: Text("Intubation Equipment Info"),
+                    children: intubationEquipmentInfo(context),
+                  ),
+                  adrianDivider(),
+                  SizedBox(height: 10),
+                  adrianDivider(),
+                  ExpansionTile(
+                    title: Text("Induction Agents"),
+                    children: <Widget>[GestureDetector(child: Text("Select Drug from below",
                         style: TextStyle(color: Colors.indigoAccent))),
-                    SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
-                  ]
-              ),
-              adrianDivider(),
-              SizedBox(height: data.size.height/3)
-            ],
-            ),
-          ]
+                      SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
+                    ],
+                  ),
+                  adrianDivider(),
+                  PlusMinus(),
+                  adrianDivider(),
+                  ExpansionTile(
+                      title: Text("Paralytic Agents"),
+                      children: <Widget> [
+                        GestureDetector(child: Text("Select Drug from below",
+                            style: TextStyle(color: Colors.indigoAccent))),
+                        SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
+                      ]
+                  ),
+                  adrianDivider(),
+                  SizedBox(height: data.size.height/3)
+                ],
+                ),
+              ]
+          ),
         ),
-      ),
-      )
+        )
     );
   }
 }

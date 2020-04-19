@@ -61,7 +61,7 @@ class _DosingMainState extends State<InterventionMain> {
           CustomScrollView(
             slivers: <Widget>[
               SliverFixedExtentList(
-                itemExtent: 50.0,
+                itemExtent: 50,
                 delegate: SliverChildListDelegate([
                   Container(
                       alignment: Alignment.centerLeft,

@@ -190,25 +190,13 @@ class AsthmaState extends State<Asthma> {
         body: SingleChildScrollView(child: Material(
             child: Column(
                 children: <Widget>[
-                  Row(children: <Widget>[Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-                      child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
-                  ),
-                    Container(height: 100, width: 0.4*data.size.width, color: Color(0xfff2f2f2),
+                  Row(children: <Widget>[
+                    Container(height: 100, width: 0.7*data.size.width, color: Color(0xfff2f2f2),
                         child: Center(child:
                         Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
                     ),
                     Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-                        child: Center(child:
-                        GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return InterventionMain();
-                              }
-                              )
-                              );
-                            }
-                        )
-                        )
+                        child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
                     )
                   ]
                   ),

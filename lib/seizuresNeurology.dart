@@ -32,27 +32,24 @@ List<BottomNavigationBarItem> items = [
 
 
 final seizureNeurologyIcons = [Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]), Icon(MyFlutterApp.syringe),
-                              Icon(MyFlutterApp.pipette), Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]),
-                              Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
-                              Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.syringe),
-                              Icon(MyFlutterApp.pipette),Icon(MyFlutterApp.pipette),
-                              Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
-                              Icon(MyFlutterApp.pipette)];
+  Icon(MyFlutterApp.pipette), Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]),
+  Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
+  Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.syringe),
+  Icon(MyFlutterApp.pipette),Icon(MyFlutterApp.pipette),
+  Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
+  Icon(MyFlutterApp.pipette)];
 
 
 class SeizuresNeurologyState extends State<SeizuresNeurology> {
-
-
-
 
   clearAll() {
     setState(() {
       items = badger.setBadge(items, "0", 1);
     });
     for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
-        setState(() {
-          seizuresNeurologyBoolean[i] = false;
-        });
+      setState(() {
+        seizuresNeurologyBoolean[i] = false;
+      });
     }
     boolCount = 0;
   }
@@ -98,72 +95,89 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
         ),
         body: CustomScrollView(
             slivers: <Widget>[
-              SliverPadding(
-                padding: EdgeInsets.only(bottom: data.size.width/2),
-                sliver: SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                        (context, i) {
-                          return Column(children: <Widget> [
-                            SizedBox(height: 5),
-                            seizureNeurologyIcons[i],
-                            RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0)
-                                ),
-                                child: Text("${seizuresNeurologyDrugs[i]}", textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 16.0),),
-                                color: seizuresNeurologyBoolean[i] ? Color(0xffaccef7) : Color(0xfff2f2f2),
-                                onPressed: () {
-                                  print(boolCount);
-                                  if (seizuresNeurologyDrugs[i] == "Pyridoxine" && weight >= 10) {
-                                    pyridoxineErrorAlert(context);
-                                  }
-                                  else {
-                                  items[0] = clearAllIcon;
-                                  items[2] = confirmIcon;
-                                  if (seizuresNeurologyBoolean[i] == false) {
-                                    boolCount += 1;
-                                  }
-                                  else {
-                                    boolCount -= 1;
-                                  }
-                                  setState(() {
-                                    seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
-                                    items = badger.setBadge(items, "$boolCount", 1);
-                                  });
-                                  print(boolCount);
-                                }
-                                }
-                            ),
-                            IconButton(icon: Icon(Icons.cancel),
-                                color: seizuresNeurologyBoolean[i] ? Colors.black : Colors.white,
-                                onPressed: () {
-                                    if (seizuresNeurologyBoolean[i] == true) {
-                                      print(boolCount);
-                                    boolCount -= 1;
-                                    setState(() {
-                                      items = badger.setBadge(items, "$boolCount", 1);
-                                      seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
-                                    });
-                                    print(boolCount);
-                                  }
-                                })
-                          ]
-                          );
-                        },
-                    childCount: seizuresNeurologyDrugs.length,
+              SliverFixedExtentList(
+                itemExtent: 100,
+                delegate: SliverChildListDelegate([
+                  Row(children: <Widget>[
+                    Container(height: 100, width: 0.7*data.size.width, color: Color(0xfff2f2f2),
+                        child: Center(child:
+                        Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
+                    ),
+                    Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
+                        child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
+                    )
+                  ]
                   ),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20.0,
-                      crossAxisSpacing: 0,
-                      childAspectRatio: 1.5
-                  ),
-                ),
-              )
-            ]
-        )
-    );
+                ]),
+              ),
+                   SliverPadding(
+                     padding: EdgeInsets.only(top: 20),
+                    sliver:
+                   SliverGrid(
+                        delegate: SliverChildBuilderDelegate(
+                              (context, i) {
+                                return Column(children: <Widget> [
+                                  SizedBox(height: 5),
+                                  seizureNeurologyIcons[i],
+                                  RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10.0)
+                                      ),
+                                      child: Text("${seizuresNeurologyDrugs[i]}", textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 16.0),),
+                                      color: seizuresNeurologyBoolean[i] ? Color(0xffaccef7) : Color(0xfff2f2f2),
+                                      onPressed: () {
+                                        print(boolCount);
+                                        if (seizuresNeurologyDrugs[i] == "Pyridoxine" && weight >= 10) {
+                                          pyridoxineErrorAlert(context);
+                                        }
+                                        else {
+                                          items[0] = clearAllIcon;
+                                          items[2] = confirmIcon;
+                                          if (seizuresNeurologyBoolean[i] == false) {
+                                            boolCount += 1;
+                                          }
+                                          else {
+                                            boolCount -= 1;
+                                          }
+                                          setState(() {
+                                            seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
+                                            items = badger.setBadge(items, "$boolCount", 1);
+                                          });
+                                          print(boolCount);
+                                        }
+                                      }
+                                  ),
+                                  IconButton(icon: Icon(Icons.cancel),
+                                      color: seizuresNeurologyBoolean[i] ? Colors.black : Colors.white,
+                                      onPressed: () {
+                                        if (seizuresNeurologyBoolean[i] == true) {
+                                          print(boolCount);
+                                          boolCount -= 1;
+                                          setState(() {
+                                            items = badger.setBadge(items, "$boolCount", 1);
+                                            seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
+                                          });
+                                          print(boolCount);
+                                        }
+                                      })
+                                ]
+                                );
+                              },
+                          childCount: seizuresNeurologyDrugs.length,
+                        ),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 20.0,
+                            crossAxisSpacing: 0,
+                            childAspectRatio: 1.5
+                        ),
+                      ),
+                   )
+    ]
+    )
+
+              );
   }
 }
 
