@@ -3,6 +3,7 @@ import 'package:app_search_bar/homeScreen.dart';
 import 'package:app_search_bar/intubationData.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
 import 'asthmaData.dart';
+import 'seizuresNeurologyData.dart';
 
 class FinalDisplay extends StatefulWidget {
   @override
@@ -42,6 +43,13 @@ class FinalDisplayState extends State<FinalDisplay> {
           children: asthmaFinal(context),
         ),
         adrianDivider(),
+        SizedBox(height: 10),
+        adrianDivider(),
+        ExpansionTile(
+          title: Text("Seizures and Neurology"),
+          children: sAndNFinal(context),
+        ),
+        adrianDivider()
           ]
       ),
       )
@@ -94,6 +102,22 @@ asthmaFinal(BuildContext context) {
     asthmaList.removeLast();
   }
   return asthmaList;
+}
+
+sAndNFinal(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var sAndNWidgets = [sAndNMidazolamIVDisplay(context),sAndNMidazolamIBDisplay(context),sAndNDiazepamDisplay(context),sAndNLorazepamDisplay(context),sAndNFosphenytoinDisplay(context),sAndNPhenytoinDisplay(context),sAndNPhenobarbitoneDisplay(context),sAndNLevetiracemDisplay(context),sAndNValproateDisplay(context),sAndNPyridoxineDisplay(context),sAndNMidazolamInfusionDisplay(context),sAndNHypertonicSalineDisplay(context),sAndNMannitolDisplay(context)];
+  List<Widget>sAndNList = [];
+  for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
+    if (seizuresNeurologyBoolean[i] == true) {
+      sAndNList.add(sAndNWidgets[i]);
+      sAndNList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (sAndNList.isNotEmpty){
+    sAndNList.removeLast();
+  }
+  return sAndNList;
 }
 
 

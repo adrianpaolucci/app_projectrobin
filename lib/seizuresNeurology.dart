@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'homeScreen.dart';
 import 'icons/my_flutter_app_icons.dart';
 import 'seizuresNeurologyData.dart';
 import 'interventionMainScreen.dart';
 import 'intubationData.dart';
 import 'asthmaData.dart';
 import 'finalDisplay.dart';
+import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
+import 'dart:ui';
 
 class SeizuresNeurology extends StatefulWidget {
   @override
@@ -13,6 +16,20 @@ class SeizuresNeurology extends StatefulWidget {
     return SeizuresNeurologyState();
   }
 }
+
+BottomNavigationBadge badger = BottomNavigationBadge(
+    backgroundColor: Colors.red,
+    badgeShape: BottomNavigationBadgeShape.circle,
+    textColor: Colors.white,
+    position: BottomNavigationBadgePosition.topRight,
+    textSize: 12);
+
+List<BottomNavigationBarItem> items = [
+  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.cancel), onPressed: () {},), title: Text("Clear All")),
+  BottomNavigationBarItem(icon: Icon(Icons.format_list_numbered), title: Text("Drugs")),
+  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.check), onPressed: () {},), title: Text("Confirm"))
+];
+
 
 final seizureNeurologyIcons = [Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]), Icon(MyFlutterApp.syringe),
                               Icon(MyFlutterApp.pipette), Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]),
@@ -22,71 +39,55 @@ final seizureNeurologyIcons = [Row(mainAxisAlignment: MainAxisAlignment.center,c
                               Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
                               Icon(MyFlutterApp.pipette)];
 
-final scaffoldKey = GlobalKey<ScaffoldState>();
 
 class SeizuresNeurologyState extends State<SeizuresNeurology> {
+
+
+
+
+  clearAll() {
+    setState(() {
+      items = badger.setBadge(items, "0", 1);
+    });
+    for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
+        setState(() {
+          seizuresNeurologyBoolean[i] = false;
+        });
+    }
+    boolCount = 0;
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
+
     final data = MediaQuery.of(context);
-    void buildSnackBar(BuildContext context) {
 
-      final snackBar = SnackBar(
-          backgroundColor: Colors.white,
-          content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-            GestureDetector(child: Container(
-                alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),
-                child: Text("Clear All",
-                    style: TextStyle(color: Colors.black))
-            ),
-                onTap: () {
-                  scaffoldKey.currentState.hideCurrentSnackBar();
-                  boolCount = 0;
-                  for (var i = 0; i < inductionBoolean.length; i++) {
-                    setState(() {
-                      inductionBoolean[i] = false;
-                    });
-                  }
-                  for (var i = 0; i < paralyticBoolean.length; i++) {
-                    setState(() {
-                      paralyticBoolean[i] = false;
-                    });
+    var clearAllIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              clearAll();
+            }),
+        title: Text("Clear All"));
 
-                  }
-                  for (var i = 0; i < asthmaDrugBoolean.length; i++) {
-                    setState(() {
-                      asthmaDrugBoolean[i] = false;
-                    });
-
-                  }
-                  for (var i = 0; i < asthmaCorticoBoolean.length; i++) {
-                    setState(() {
-                      asthmaCorticoBoolean[i] = false;
-                    });
-                  }
-                  for (var i = 0; i < seizuresNeurologyBoolean.length; i++) {
-                    setState(() {
-                      seizuresNeurologyBoolean[i] = false;
-                    });
-                  }
-                  buildSnackBar(context);
-                }),
-            Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
-            GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FinalDisplay();
-                  })
-                  );
-                })
-          ]
-          ),
-          duration: const Duration(minutes: 20));
-      scaffoldKey.currentState.showSnackBar(snackBar);
-    }
+    var confirmIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.check),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FinalDisplay();
+              })
+              );
+            }),
+        title: Text("Confirm"));
 
     return Scaffold(
-        key: scaffoldKey,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          items: items,
+        ),
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: Colors.black),
@@ -113,33 +114,39 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                                   style: TextStyle(fontSize: 16.0),),
                                 color: seizuresNeurologyBoolean[i] ? Color(0xffaccef7) : Color(0xfff2f2f2),
                                 onPressed: () {
-                                  scaffoldKey.currentState.hideCurrentSnackBar();
+                                  print(boolCount);
+                                  if (seizuresNeurologyDrugs[i] == "Pyridoxine" && weight >= 10) {
+                                    pyridoxineErrorAlert(context);
+                                  }
+                                  else {
+                                  items[0] = clearAllIcon;
+                                  items[2] = confirmIcon;
                                   if (seizuresNeurologyBoolean[i] == false) {
                                     boolCount += 1;
                                   }
                                   else {
                                     boolCount -= 1;
                                   }
-                                  buildSnackBar(context);
                                   setState(() {
                                     seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
+                                    items = badger.setBadge(items, "$boolCount", 1);
                                   });
+                                  print(boolCount);
+                                }
                                 }
                             ),
                             IconButton(icon: Icon(Icons.cancel),
                                 color: seizuresNeurologyBoolean[i] ? Colors.black : Colors.white,
                                 onPressed: () {
-                                  scaffoldKey.currentState.hideCurrentSnackBar();
-                                  if (seizuresNeurologyBoolean[i] == false) {
-                                    boolCount += 1;
-                                  }
-                                  else {
+                                    if (seizuresNeurologyBoolean[i] == true) {
+                                      print(boolCount);
                                     boolCount -= 1;
+                                    setState(() {
+                                      items = badger.setBadge(items, "$boolCount", 1);
+                                      seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
+                                    });
+                                    print(boolCount);
                                   }
-                                  buildSnackBar(context);
-                                  setState(() {
-                                    seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
-                                  });
                                 })
                           ]
                           );
@@ -160,3 +167,24 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
   }
 }
 
+void pyridoxineErrorAlert(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+      child:
+      AlertDialog(
+        title: Text("Alert"),
+        content:
+        Text("Cannot use Pyridoxine when weight is 10 kg or more",
+            style: TextStyle(fontSize: 16)),
+        actions: <Widget>[
+          FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.pop(context);
+              }
+          )
+        ],
+      )
+  );
+
+  showDialog(context: context, builder: (BuildContext context) => popup);
+}
