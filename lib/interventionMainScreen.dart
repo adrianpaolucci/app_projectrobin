@@ -1,4 +1,5 @@
 import 'package:app_search_bar/anaphylaxis.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/homeScreen.dart';
@@ -68,8 +69,8 @@ class _DosingMainState extends State<InterventionMain> {
                       width: 50,
                       padding: EdgeInsets.only(left: 20, top: 20),
                       child: Row(children: <Widget>[
-
-                        Text("Calculations rounded to $weight kg",
+                        Icon(CupertinoIcons.bookmark, size: 30),
+                        Text("   $weight kg",
                       textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),
                       ),
                       ]
@@ -77,15 +78,19 @@ class _DosingMainState extends State<InterventionMain> {
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,
-                    child: Text("Choose an Intervention",
-                    textAlign: TextAlign.center,)
+                    child: Text("Select an Intervention Below",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontStyle: FontStyle.italic, color: Colors.blue, fontWeight: FontWeight.bold))
                   )
                 ]),
               ),
+              SliverPadding(
+                padding: EdgeInsets.only(top: 20),
+              sliver:
               SliverGrid(
                 delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return GestureDetector(
+                        return InkWell(
                             onTap: () {
                               int = interventions[index];
                               specificColor = intColors[index];
@@ -95,19 +100,41 @@ class _DosingMainState extends State<InterventionMain> {
                               )
                               );
                             },
-                            child: Container(alignment: Alignment.center,
-                                color: Color(0xfff2f2f2),
-                            child: Text(interventions[index], textAlign: TextAlign.center,style: TextStyle(color: intColors[index],fontSize: 20.0)))
+                            child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: Material(
+                              color: Colors.white,
+                              elevation: 14.0,
+                              shadowColor: Color(0x802196F3),
+                              borderRadius: BorderRadius.circular(18.0),
+                              child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Center(
+                                              child:  Text(interventions[index], textAlign: TextAlign.center,style: TextStyle(color: intColors[index],fontSize: 16.0))),
+
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                )
+                              )
+                            ),
                         );
-                      },
+                        },
                   childCount: interventions.length,
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
+                  crossAxisSpacing: 0,
                   childAspectRatio: 2.0,
                 ),
+              )
               )
             ],
           )

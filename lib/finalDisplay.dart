@@ -32,6 +32,7 @@ class FinalDisplayState extends State<FinalDisplay> {
         SizedBox(height: 10),
         adrianDivider(),
         ExpansionTile(
+          initiallyExpanded: true,
             title: Text("Intubation"),
             children: intubationFinal(context),
           ),
