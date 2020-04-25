@@ -6,7 +6,11 @@ import 'package:app_search_bar/homeScreen.dart';
 import 'asthma.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'seizuresNeurology.dart';
-
+import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
+import 'finalDisplay.dart';
+import 'seizuresNeurologyData.dart';
+import 'intubationData.dart';
+import 'asthmaData.dart';
 
 var boolCount = 0;
 
@@ -25,6 +29,9 @@ var interventions = [
                       "Antidotes", "Electrolye Abnormalities",
                       ];
 
+final allDrugs = [asthmaDrugs,asthmaCorticos,inductionAgents,paralyticAgents,seizuresNeurologyDrugs];
+final allDrugBooleans = [asthmaDrugBoolean,asthmaCorticoBoolean,inductionBoolean,paralyticBoolean,seizuresNeurologyBoolean];
+
 var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),SeizuresNeurology(),Asthma(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
 var intColors = [
                  Colors.red,Colors.red,
@@ -33,6 +40,19 @@ var intColors = [
                  Colors.indigoAccent,Colors.orangeAccent,
                  Colors.orange,Colors.purple
                 ];
+
+BottomNavigationBadge badger = BottomNavigationBadge(
+    backgroundColor: Colors.red,
+    badgeShape: BottomNavigationBadgeShape.circle,
+    textColor: Colors.white,
+    position: BottomNavigationBadgePosition.topRight,
+    textSize: 12);
+
+List<BottomNavigationBarItem> items = [
+  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.cancel), onPressed: () {},), title: Text("Clear All")),
+  BottomNavigationBarItem(icon: Icon(Icons.format_list_numbered), title: Text("Drugs")),
+  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.check), onPressed: () {},), title: Text("Confirm"))
+];
 
 var int = "";
 var specificColor;
@@ -49,9 +69,48 @@ class _DosingMainState extends State<InterventionMain> {
 
   @override
   Widget build(BuildContext context) {
+
+    clearAll() {
+      for (var i = 0; i < allDrugs.length; i++) {
+        for (var j = 0; j < allDrugs[i].length; j++) {
+          setState(() {
+            items = badger.removeBadge(items, 1);
+            allDrugBooleans[i][j] = false;
+          });
+        }
+      }
+      boolCount = 0;
+    }
+
     final data = MediaQuery.of(context);
+    var clearAllIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              clearAll();
+            }),
+        title: Text("Clear All"));
+
+    var confirmIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.check),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FinalDisplay();
+              })
+              );
+            }),
+        title: Text("Confirm"));
+
+    items[0] = clearAllIcon;
+    items[2] = confirmIcon;
+
     return Scaffold(
       key: _scaffoldKey,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          items: items,
+        ),
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
@@ -62,7 +121,7 @@ class _DosingMainState extends State<InterventionMain> {
       ),
       floatingActionButton: Opacity(
         opacity: 0.7,
-          child: FabCircularMenu(
+              child: FabCircularMenu(
               fabColor: Color(0xffcccccc),
               ringColor: Colors.white,
               fabOpenIcon: Icon(Icons.settings),

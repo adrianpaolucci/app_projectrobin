@@ -115,58 +115,58 @@ class IntubationState extends State<Intubation> {
         shrinkWrap: true,
         itemCount: inductionAgents.length,
         itemBuilder: (BuildContext context, var i) {
-                return GestureDetector(
-                          child:Container(width: 9*data.size.width/10,height: 40,
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  color: getColor(i)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                                Text(inductionAgents[i]),
-                                Switch(
-                                    activeColor: Color(0xff39e600),
-                                    value: inductionBoolean[i],
-                                    onChanged: (bool newValue){
-                                      if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                                        propofolErrorAlert(context);
-                                      }
-                                      else {
-                                        scaffoldKey.currentState.hideCurrentSnackBar();
-                                        if (newValue == true) {
-                                          boolCount += 1;
-                                        }
-                                        else {
-                                          boolCount -= 1;
-                                        }
-                                        buildSnackBar(context);
-                                        setState(() {
-                                          inductionBoolean[i] = newValue;
-                                        }
-                                        );
-                                      }
-                                    }),
-                              ],
-                              )
-                          ),
-                          onTap: () {
-                            if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                              propofolErrorAlert(context);
+          return GestureDetector(
+              child:Container(width: 9*data.size.width/10,height: 40,
+                  decoration: BoxDecoration(
+                      border: Border.all(),
+                      color: getColor(i)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
+                    Text(inductionAgents[i]),
+                    Switch(
+                        activeColor: Color(0xff39e600),
+                        value: inductionBoolean[i],
+                        onChanged: (bool newValue){
+                          if (inductionAgents[i] == "Propofol" && weight < 10.0) {
+                            propofolErrorAlert(context);
+                          }
+                          else {
+                            scaffoldKey.currentState.hideCurrentSnackBar();
+                            if (newValue == true) {
+                              boolCount += 1;
                             }
                             else {
-                              scaffoldKey.currentState.hideCurrentSnackBar();
-                              if (inductionBoolean[i] == false) {
-                                boolCount += 1;
-                              }
-                              else {
-                                boolCount -= 1;
-                              }
-                              buildSnackBar(context);
-                              setState(() {
-                                inductionBoolean[i] = !inductionBoolean[i];
-                              }
-                              );
+                              boolCount -= 1;
                             }
-                          });
+                            buildSnackBar(context);
+                            setState(() {
+                              inductionBoolean[i] = newValue;
+                            }
+                            );
+                          }
+                        }),
+                  ],
+                  )
+              ),
+              onTap: () {
+                if (inductionAgents[i] == "Propofol" && weight < 10.0) {
+                  propofolErrorAlert(context);
+                }
+                else {
+                  scaffoldKey.currentState.hideCurrentSnackBar();
+                  if (inductionBoolean[i] == false) {
+                    boolCount += 1;
+                  }
+                  else {
+                    boolCount -= 1;
+                  }
+                  buildSnackBar(context);
+                  setState(() {
+                    inductionBoolean[i] = !inductionBoolean[i];
+                  }
+                  );
+                }
+              });
         });
 
     var paralyticAgentCells = ListView.builder(
@@ -217,15 +217,15 @@ class IntubationState extends State<Intubation> {
 
 
     return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          "PediDosED",
-          style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.white,
-      ),
+        key: scaffoldKey,
+        appBar: AppBar(
+          centerTitle: true,
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text(
+            "PediDosED",
+            style: TextStyle(color: Colors.black),),
+          backgroundColor: Colors.white,
+        ),
         body: SingleChildScrollView(child: Material(
           child: Column(
               children: <Widget>[

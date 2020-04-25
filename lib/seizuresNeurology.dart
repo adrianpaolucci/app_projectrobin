@@ -12,6 +12,7 @@ import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'dart:ui';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+
 class SeizuresNeurology extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -20,19 +21,6 @@ class SeizuresNeurology extends StatefulWidget {
 }
 
 
-
-BottomNavigationBadge badger = BottomNavigationBadge(
-    backgroundColor: Colors.red,
-    badgeShape: BottomNavigationBadgeShape.circle,
-    textColor: Colors.white,
-    position: BottomNavigationBadgePosition.topRight,
-    textSize: 12);
-
-List<BottomNavigationBarItem> items = [
-  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.cancel), onPressed: () {},), title: Text("Clear All")),
-  BottomNavigationBarItem(icon: Icon(Icons.format_list_numbered), title: Text("Drugs")),
-  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.check), onPressed: () {},), title: Text("Confirm"))
-];
 
 
 final seizureNeurologyIcons = [Icon(MyFlutterApp.pipette, color: Colors.white), Icon(MyFlutterApp.syringe),
@@ -48,9 +36,6 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
 
     clearAll() {
       for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
