@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'asthma.dart';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'seizuresNeurology.dart';
 
 
@@ -48,6 +49,7 @@ class _DosingMainState extends State<InterventionMain> {
 
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -57,6 +59,21 @@ class _DosingMainState extends State<InterventionMain> {
           "PediDosED",
           style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.white,
+      ),
+      floatingActionButton: Opacity(
+        opacity: 0.7,
+          child: FabCircularMenu(
+              fabColor: Color(0xffcccccc),
+              ringColor: Colors.white,
+              fabOpenIcon: Icon(Icons.settings),
+              animationDuration: Duration(milliseconds: 500),
+              fabOpenColor: Color(0xffccccc),
+              children: [
+        IconButton(icon: Icon(Icons.settings),iconSize: 35,),
+        IconButton(icon: Icon(Icons.question_answer),iconSize: 35,),
+        IconButton(icon: Icon(Icons.book),iconSize: 35)
+      ]
+      )
       ),
       body:
           CustomScrollView(

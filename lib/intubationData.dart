@@ -320,9 +320,9 @@ intubationEquipmentInfo(BuildContext context) {
   }
 
   etTubeDisplayBox(tubeType,tubeSize) {
-    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffa6a6a6)),width: 0.95*data.size.width, height: 25,
+    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffcccccc)),width: 0.95*data.size.width, height: 25,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-          Text(tubeType,style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline),),
+          Text(tubeType, style: TextStyle(fontSize: 15)),
           Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold))
         ]));
     return box;

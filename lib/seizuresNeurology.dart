@@ -35,8 +35,8 @@ List<BottomNavigationBarItem> items = [
 ];
 
 
-final seizureNeurologyIcons = [Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]), Icon(MyFlutterApp.syringe),
-  Icon(MyFlutterApp.pipette), Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette)]),
+final seizureNeurologyIcons = [Icon(MyFlutterApp.pipette, color: Colors.white), Icon(MyFlutterApp.syringe),
+  Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette),
   Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
   Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.syringe),
   Icon(MyFlutterApp.pipette),Icon(MyFlutterApp.pipette),
@@ -53,11 +53,9 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
 
 
     clearAll() {
-      setState(() {
-        items = badger.setBadge(items, "0", 1);
-      });
       for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
         setState(() {
+          items = badger.removeBadge(items, 1);
           seizuresNeurologyBoolean[i] = false;
         });
       }
@@ -85,11 +83,14 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
             }),
         title: Text("Confirm"));
 
+    items[0] = clearAllIcon;
+    items[2] = confirmIcon;
+
     MyItems(i, IconData icon, String heading, var colour) {
       return
         GestureDetector(
             child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 child:
                 Material(
                   color: seizuresNeurologyBoolean[i] ? Color(0xffc7defa) : Colors.white,
@@ -118,11 +119,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                                 color: colour,
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Icon(icon,
-                                      color: Colors.white,
-                                      size: 25
-                                  ),
+                                  padding: EdgeInsets.all(4.0),
+                                  child: i % 2 == 0 ? Icon(MyFlutterApp.syringe, size: 30, color: Colors.white) : Icon(MyFlutterApp.pipette, size: 25, color: Colors.white)
                                 ),
                               ),
                             ],
@@ -138,8 +136,6 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                 pyridoxineErrorAlert(context);
               }
               else {
-                items[0] = clearAllIcon;
-                items[2] = confirmIcon;
                 if (seizuresNeurologyBoolean[i] == false) {
                   boolCount += 1;
                 }
@@ -150,6 +146,13 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   seizuresNeurologyBoolean[i] = !seizuresNeurologyBoolean[i];
                   items = badger.setBadge(items, "$boolCount", 1);
                 });
+                if (boolCount == 0) {
+                  for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
+                    setState(() {
+                      items = badger.removeBadge(items,1);
+                    });
+                  }
+                }
                 print(boolCount);
               }
             }

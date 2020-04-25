@@ -14,9 +14,9 @@ import 'seizuresNeurologyData.dart';
 
 Color getColor(i) {
   if (i % 2 == 0) {
-    return Color(0xffa6a6a6);
+    return Color(0xffcccccc);
   } else {
-    return Color(0xfff2f2f2);
+    return Color(0xffe6e6e6);
   }
 }
 
@@ -117,11 +117,14 @@ class IntubationState extends State<Intubation> {
         itemBuilder: (BuildContext context, var i) {
                 return GestureDetector(
                           child:Container(width: 9*data.size.width/10,height: 40,
-                              decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
+                              decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  color: getColor(i)),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                                 Text(inductionAgents[i]),
-                                Checkbox(
+                                Switch(
+                                    activeColor: Color(0xff39e600),
                                     value: inductionBoolean[i],
                                     onChanged: (bool newValue){
                                       if (inductionAgents[i] == "Propofol" && weight < 10.0) {
@@ -175,7 +178,8 @@ class IntubationState extends State<Intubation> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                 Text(paralyticAgents[i]),
-                Checkbox(
+                Switch(
+                    activeColor: Color(0xff39e600),
                     value: paralyticBoolean[i],
                     onChanged: (bool newValue){
                       scaffoldKey.currentState.hideCurrentSnackBar();
@@ -237,14 +241,14 @@ class IntubationState extends State<Intubation> {
                 ),
                 Column(children: <Widget>[
                   SizedBox(height: 30),
-                  adrianDivider(),
+                  Divider(thickness: 1.0),
                   ExpansionTile(
                     title: Text("Intubation Equipment Info"),
                     children: intubationEquipmentInfo(context),
                   ),
-                  adrianDivider(),
+                  Divider(thickness: 1.0),
                   SizedBox(height: 10),
-                  adrianDivider(),
+                  Divider(thickness: 1.0),
                   ExpansionTile(
                     title: Text("Induction Agents"),
                     children: <Widget>[GestureDetector(child: Text("Select Drug from below",
@@ -252,9 +256,9 @@ class IntubationState extends State<Intubation> {
                       SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
                     ],
                   ),
-                  adrianDivider(),
+                  Divider(thickness: 1.0),
                   PlusMinus(),
-                  adrianDivider(),
+                  Divider(thickness: 1.0),
                   ExpansionTile(
                       title: Text("Paralytic Agents"),
                       children: <Widget> [
@@ -263,7 +267,7 @@ class IntubationState extends State<Intubation> {
                         SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
                       ]
                   ),
-                  adrianDivider(),
+                  Divider(thickness: 1.0),
                   SizedBox(height: data.size.height/3)
                 ],
                 ),

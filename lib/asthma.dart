@@ -201,8 +201,8 @@ class AsthmaState extends State<Asthma> {
                   ]
                   ),
                   Column(children: <Widget>[
-                    SizedBox(height: 30),
-                    adrianDivider(),
+                    SizedBox(height: 10),
+                    Divider(thickness: 1.0),
                     ExpansionTile(
                       title: Text("General Drugs"),
                       children: <Widget>[GestureDetector(child: Text("Select Drug from below",
@@ -210,9 +210,9 @@ class AsthmaState extends State<Asthma> {
                         SizedBox(width: 9*data.size.width/10, child: asthmaDrugCells)
                       ],
                     ),
-                    adrianDivider(),
+                    Divider(thickness: 1.0),
                     PlusMinus(),
-                    adrianDivider(),
+                    Divider(thickness: 1.0),
                     ExpansionTile(
                         title: Text("Corticosteroids"),
                         children: <Widget> [
@@ -221,7 +221,7 @@ class AsthmaState extends State<Asthma> {
                           SizedBox(width: 9*data.size.width/10, child: asthmaCorticoCells)
                         ]
                     ),
-                    adrianDivider(),
+                    Divider(thickness: 1.0),
                     SizedBox(height: data.size.height/3)
                   ],
                   ),

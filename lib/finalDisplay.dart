@@ -4,6 +4,7 @@ import 'package:app_search_bar/intubationData.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
 import 'asthmaData.dart';
 import 'seizuresNeurologyData.dart';
+import 'package:flutter/cupertino.dart';
 
 class FinalDisplay extends StatefulWidget {
   @override
@@ -12,9 +13,15 @@ class FinalDisplay extends StatefulWidget {
   }
 }
 
+var displayBools = [false,false,false,false,false,false,false,false,false,false];
+List<Widget> list = [];
+
 class FinalDisplayState extends State<FinalDisplay> {
   @override
   Widget build(BuildContext context) {
+
+    showFinalDropdowns(context);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -25,38 +32,48 @@ class FinalDisplayState extends State<FinalDisplay> {
         backgroundColor: Colors.white
       ),
       body: SingleChildScrollView(child: Center(child:
-      Column(children: <Widget>[
-        adrianDivider(),
-        ExpansionTile(title: Text("Anaphylaxis")),
-        adrianDivider(),
-        SizedBox(height: 10),
-        adrianDivider(),
-        ExpansionTile(
-          initiallyExpanded: true,
-            title: Text("Intubation"),
-            children: intubationFinal(context),
-          ),
-        adrianDivider(),
-        SizedBox(height: 10),
-        adrianDivider(),
-        ExpansionTile(
-          title: Text("Asthma"),
-          children: asthmaFinal(context),
-        ),
-        adrianDivider(),
-        SizedBox(height: 10),
-        adrianDivider(),
-        ExpansionTile(
-          title: Text("Seizures and Neurology"),
-          children: sAndNFinal(context),
-        ),
-        adrianDivider()
-          ]
+      Column(children: list
       ),
       )
       )
     );
   }
+}
+
+void showFinalDropdowns(BuildContext context) {
+  list = [];
+  var allFinalDisplays = [intubationFinal(context),intubationFinal(context),
+    intubationFinal(context),intubationFinal(context),
+    intubationFinal(context),sAndNFinal(context),
+    asthmaFinal(context),intubationFinal(context),
+    intubationFinal(context),intubationFinal(context)];
+
+  list.add(
+    Container(
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.only(left: 20, top: 20),
+      child: Row(children: <Widget>[
+        Icon(CupertinoIcons.bookmark, size: 30),
+        Text("   $weight kg",
+          textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),
+        ),
+      ]
+      )
+  ));
+  list.add(SizedBox(height:10));
+
+  for (var i = 0; i < interventions.length; i++) {
+    if (displayBools[i] == true) {
+     // list.add(Divider(thickness: 1.0, color: Colors.black));
+      list.add(ExpansionTile(
+        title: Text("${interventions[i]}"),
+        children: allFinalDisplays[i],
+      ));
+      //list.add(Divider(thickness: 1.0, color: Colors.black));
+      list.add(Divider());
+    }
+  }
+  list.toList();
 }
 
 intubationFinal(BuildContext context) {
@@ -66,6 +83,7 @@ intubationFinal(BuildContext context) {
   List<Widget>intubationList = intubationEquipmentInfo(context);
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
+      displayBools[4] = true;
       intubationList.add(inductionWidgets[i]);
       intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -89,6 +107,7 @@ asthmaFinal(BuildContext context) {
   List<Widget>asthmaList = [];
   for (var i = 0; i < asthmaDrugs.length; i++) {
     if (asthmaDrugBoolean[i]==true) {
+      displayBools[6] = true;
       asthmaList.add(asthmaDrugWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -111,6 +130,7 @@ sAndNFinal(BuildContext context) {
   List<Widget>sAndNList = [];
   for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
     if (seizuresNeurologyBoolean[i] == true) {
+      displayBools[5] = true;
       sAndNList.add(sAndNWidgets[i]);
       sAndNList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -119,6 +139,10 @@ sAndNFinal(BuildContext context) {
     sAndNList.removeLast();
   }
   return sAndNList;
+}
+
+finalSelectionDisplay() {
+
 }
 
 

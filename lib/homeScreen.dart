@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 
+
 class Home2 extends StatefulWidget {
   State<StatefulWidget> createState() {
     return Home2State();
@@ -125,7 +126,17 @@ class Home2State extends State<Home2> {
     return Scaffold(
     appBar: AppBar(centerTitle: true,
       backgroundColor: Colors.white,
-      title: Text(
+      title: Container(
+        child: Row(
+          children: <Widget>[
+          SizedBox(width: data.size.width/5),
+          Icon(Icons.calendar_today, color: Colors.black, size: 35),
+          SizedBox(width: data.size.width/2.6),
+          Icon(CupertinoIcons.bookmark, color: Colors.black, size: 35,),
+        ],
+        )
+        ,)
+    ),/*Text(
         "         Age                      Approx. Weight   ",
         style: TextStyle(
           fontSize: pixelsToTextSize(data.size.height/50),
@@ -133,7 +144,7 @@ class Home2State extends State<Home2> {
         ),
         textAlign: TextAlign.center,
       ),
-      ),
+      ),*/
       body: Row(children: <Widget>[
       Container(
           color: Colors.grey,
@@ -177,11 +188,12 @@ weightBox(BuildContext context) {
 
   for (var i = 0; i < specificRange.length; i++) {
     chooseWeightPopup.add(
-      GestureDetector(child:
-      Container(decoration: BoxDecoration(color: Color(0xfff2f2f2),border: Border.all(),borderRadius: BorderRadius.all(Radius.circular(data.size.width/40))),
+      InkWell(child:
+          Material(elevation: 14, shadowColor: Color(0x802196F3), child:
+      Container(decoration: BoxDecoration(color: Color(0xfff2f2f2),borderRadius: BorderRadius.all(Radius.circular(data.size.width/30))),
           padding: EdgeInsets.all(data.size.width/20),
           child:
-          Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5)))),
+          Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))))),
         onTap: () {
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
@@ -197,12 +209,11 @@ weightBox(BuildContext context) {
   }
   chooseWeightPopup.removeLast();
 
-  var boxHeight = data.size.height*(0.125*specificRange.length + 0.125);
-
+  var boxHeight = data.size.height*(0.1 +  0.1*specificRange.length);
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child: AlertDialog(
           title: Text("Choose Weight", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/50))),
-        content: Container(alignment: Alignment.center, height: boxHeight, child: Column(children: chooseWeightPopup)),
+        content: Container(height: boxHeight, child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,children: chooseWeightPopup)),
         /*Container(
                 height: boxHeight,
                 alignment: Alignment.center,
