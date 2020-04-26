@@ -7,6 +7,7 @@ import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'intubationData.dart';
+import 'allDrugData.dart';
 import 'seizuresNeurology.dart';
 import 'seizuresNeurologyData.dart';
 
@@ -20,8 +21,6 @@ Color getColor(i) {
   }
 }
 
-final allDrugs = [asthmaDrugs,asthmaCorticos,inductionAgents,paralyticAgents,seizuresNeurologyDrugs];
-final allDrugBooleans = [asthmaDrugBoolean,asthmaCorticoBoolean,inductionBoolean,paralyticBoolean,seizuresNeurologyBoolean];
 
 class Intubation extends StatefulWidget {
   @override
@@ -30,6 +29,7 @@ class Intubation extends StatefulWidget {
   }
 }
 
+//strings used for printing
 
 String inductionAgentName;
 String inductionAmount;
@@ -42,107 +42,88 @@ final scaffoldKey = GlobalKey<ScaffoldState>();
 
 class IntubationState extends State<Intubation> {
 
-  clearAll() {
-    setState(() {
-      items = badger.setBadge(items, "0", 1);
-    });
-    for (var i = 0; i < allDrugs.length; i++) {
-      var subLength = allDrugs[i].length;
-      for (var j = 0; j < allDrugs[i].length; j++) {
-        allDrugBooleans[i][j] = false;
-      }
-    }
-    boolCount = 0;
-  }
+  //clears all drugs selected and turns their booleans to false
+  //should also clear the checkboxes/switches/highlighted boxes that would occur when a drug is selected
+
 
   @override
   Widget build(BuildContext context) {
 
     final data = MediaQuery.of(context);
 
-    void buildSnackBar(BuildContext context) {
-
-      final snackBar = SnackBar(
-          backgroundColor: Colors.white,
-          content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-            GestureDetector(child: Container(
-                alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),
-                child: Text("Clear All",
-                    style: TextStyle(color: Colors.black))
-            ),
-                onTap: () {
-                  scaffoldKey.currentState.hideCurrentSnackBar();
-                  boolCount = 0;
-                  for (var i = 0; i < inductionBoolean.length; i++) {
-                    setState(() {
-                      inductionBoolean[i] = false;
-                    });
-                  }
-                  for (var i = 0; i < paralyticBoolean.length; i++) {
-                    setState(() {
-                      paralyticBoolean[i] = false;
-                    });
-
-                  }
-                  for (var i = 0; i < asthmaDrugBoolean.length; i++) {
-                    setState(() {
-                      asthmaDrugBoolean[i] = false;
-                    });
-
-                  }
-                  for (var i = 0; i < asthmaCorticoBoolean.length; i++) {
-                    setState(() {
-                      asthmaCorticoBoolean[i] = false;
-                    });
-                  }
-                  buildSnackBar(context);
-                }),
-            Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
-            GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FinalDisplay();
-                  })
-                  );
-                })
-          ]
-          ),
-          duration: const Duration(minutes: 20));
-      scaffoldKey.currentState.showSnackBar(snackBar);
+    clearAll() {
+      for (var i = 0; i < allDrugs.length; i++) {
+        for (var j = 0; j < allDrugs[i].length; j++) {
+          setState(() {
+            allDrugBooleans[i][j] = false;
+            items = badger.removeBadge(items, 1);
+          });
+        }
+      }
+      boolCount = 0;
     }
+
+    var clearAllIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              clearAll();
+            }),
+        title: Text("Clear All"));
+
+    var confirmIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.check),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FinalDisplay();
+              })
+              );
+            }),
+        title: Text("Confirm"));
+
+    items[0] = clearAllIcon;
+    items[2] = confirmIcon;
+
+    //these are the cells that sit in the Expansion boxes for each type of drug
 
     var inductionAgentCells = ListView.builder(
         shrinkWrap: true,
         itemCount: inductionAgents.length,
         itemBuilder: (BuildContext context, var i) {
           return GestureDetector(
-              child:Container(width: 9*data.size.width/10,height: 40,
+              child: Container(width: 9*data.size.width/10,height: 40,
+                  margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
-                      border: Border.all(),
+                    borderRadius: BorderRadius.circular(10),
                       color: getColor(i)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Text(inductionAgents[i]),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0),
+                      child: Text(inductionAgents[i]),
+                    ),
                     Switch(
                         activeColor: Color(0xff39e600),
-                        value: inductionBoolean[i],
+                        value: allDrugBooleans[3][i],
                         onChanged: (bool newValue){
                           if (inductionAgents[i] == "Propofol" && weight < 10.0) {
                             propofolErrorAlert(context);
                           }
                           else {
-                            scaffoldKey.currentState.hideCurrentSnackBar();
                             if (newValue == true) {
                               boolCount += 1;
                             }
                             else {
                               boolCount -= 1;
                             }
-                            buildSnackBar(context);
                             setState(() {
-                              inductionBoolean[i] = newValue;
+                              items = badger.setBadge(items, "$boolCount", 1);
+                              allDrugBooleans[3][i] = newValue;
+                            });
+                            if (boolCount == 0) {
+                              clearAll();
                             }
-                            );
                           }
                         }),
                   ],
@@ -153,18 +134,20 @@ class IntubationState extends State<Intubation> {
                   propofolErrorAlert(context);
                 }
                 else {
-                  scaffoldKey.currentState.hideCurrentSnackBar();
-                  if (inductionBoolean[i] == false) {
+                  if (allDrugBooleans[3][i] == false) {
                     boolCount += 1;
                   }
                   else {
                     boolCount -= 1;
                   }
-                  buildSnackBar(context);
                   setState(() {
-                    inductionBoolean[i] = !inductionBoolean[i];
+                    allDrugBooleans[3][i] = !allDrugBooleans[3][i];
+                    items = badger.setBadge(items, "$boolCount", 1);
                   }
                   );
+                  if (boolCount == 0) {
+                    clearAll();
+                  }
                 }
               });
         });
@@ -173,16 +156,22 @@ class IntubationState extends State<Intubation> {
         shrinkWrap: true,
         itemCount: paralyticAgents.length,
         itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(child: Container(width: 9*data.size.width/10, height: 40,
-              decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
+          return GestureDetector(
+              child: Container(width: 9*data.size.width/10, height: 40,
+              margin: EdgeInsets.symmetric(vertical: 2.5),
+              decoration: BoxDecoration(
+                  color: getColor(i),
+                  borderRadius: BorderRadius.circular(10.0)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                Text(paralyticAgents[i]),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(paralyticAgents[i]),
+                ),
                 Switch(
                     activeColor: Color(0xff39e600),
-                    value: paralyticBoolean[i],
+                    value: allDrugBooleans[4][i],
                     onChanged: (bool newValue){
-                      scaffoldKey.currentState.hideCurrentSnackBar();
                       paralyticAgentName = paralyticAgents[i];
                       if (newValue == true) {
                         boolCount += 1;
@@ -190,26 +179,31 @@ class IntubationState extends State<Intubation> {
                       else {
                         boolCount -=1;
                       }
-                      buildSnackBar(context);
                       setState(() {
-                        paralyticBoolean[i] = newValue;
+                        items = badger.setBadge(items, "$boolCount", 1);
+                        allDrugBooleans[3][i] = newValue;
                       }
                       );
+                      if (boolCount == 0) {
+                        clearAll();
+                      }
                     }),
               ]
               )),
               onTap: () {
-                scaffoldKey.currentState.hideCurrentSnackBar();
-                if (paralyticBoolean[i] == false) {
+                if (allDrugBooleans[4][i] == false) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
-                buildSnackBar(context);
                 setState(() {
-                  paralyticBoolean[i] = !paralyticBoolean[i];
+                  items = badger.setBadge(items, "$boolCount", 1);
+                  allDrugBooleans[4][i] = !allDrugBooleans[4][i];
                 });
+                if (boolCount == 0) {
+                  clearAll();
+                }
               }
           );
         }
@@ -217,7 +211,10 @@ class IntubationState extends State<Intubation> {
 
 
     return Scaffold(
-        key: scaffoldKey,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          items: items,
+        ),
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: Colors.black),

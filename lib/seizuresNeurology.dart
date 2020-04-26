@@ -1,3 +1,4 @@
+import 'package:app_search_bar/allDrugData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -37,18 +38,21 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
   @override
   Widget build(BuildContext context) {
 
+    final data = MediaQuery.of(context);
+
+
     clearAll() {
-      for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
-        setState(() {
-          items = badger.removeBadge(items, 1);
-          seizuresNeurologyBoolean[i] = false;
-        });
+      for (var i = 0; i < allDrugs.length; i++) {
+        for (var j = 0; j < allDrugs[i].length; j++) {
+          setState(() {
+            items = badger.removeBadge(items, 1);
+            allDrugBooleans[i][j] = false;
+          });
+        }
       }
       boolCount = 0;
     }
 
-
-    final data = MediaQuery.of(context);
     var clearAllIcon = BottomNavigationBarItem(
         icon: IconButton(
             icon: Icon(Icons.cancel),
@@ -72,8 +76,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
     items[2] = confirmIcon;
 
     MyItems(i, IconData icon, String heading, var colour) {
-      return
-        GestureDetector(
+      var seizuresNeurologyBoolean = allDrugBooleans[0];
+      return GestureDetector(
             child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 child:
@@ -138,7 +142,6 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                     });
                   }
                 }
-                print(boolCount);
               }
             }
         );
@@ -156,7 +159,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
             child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
         )
       ]
-      ),];
+      )
+      ];
 
       for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
         sAndNItems.add(MyItems(i, MyFlutterApp.pipette, "${seizuresNeurologyDrugs[i]}", Colors.green));

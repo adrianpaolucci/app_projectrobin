@@ -5,6 +5,8 @@ import 'package:app_search_bar/interventionMainScreen.dart';
 import 'asthmaData.dart';
 import 'seizuresNeurologyData.dart';
 import 'package:flutter/cupertino.dart';
+import 'allDrugData.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FinalDisplay extends StatefulWidget {
   @override
@@ -20,15 +22,19 @@ class FinalDisplayState extends State<FinalDisplay> {
   @override
   Widget build(BuildContext context) {
 
+    final data = MediaQuery.of(context);
     showFinalDropdowns(context);
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          "Selections for $weight kg",
-          style: TextStyle(color: Colors.black),),
+        title: Row(
+          children: [
+            SizedBox(width: data.size.width*0.3),
+            FaIcon(FontAwesomeIcons.bookMedical),
+          ],
+        ),
         backgroundColor: Colors.white
       ),
       body: SingleChildScrollView(child: Center(child:
@@ -53,9 +59,12 @@ void showFinalDropdowns(BuildContext context) {
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(left: 20, top: 20),
       child: Row(children: <Widget>[
-        Icon(CupertinoIcons.bookmark, size: 30),
+        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: 30),
         Text("   $weight kg",
-          textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+              fontSize: 16,
+          fontWeight: FontWeight.bold),
         ),
       ]
       )
@@ -77,6 +86,8 @@ void showFinalDropdowns(BuildContext context) {
 }
 
 intubationFinal(BuildContext context) {
+  var inductionBoolean = allDrugBooleans[3];
+  var paralyticBoolean = allDrugBooleans[4];
   final data = MediaQuery.of(context);
   var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context)];
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
@@ -125,6 +136,7 @@ asthmaFinal(BuildContext context) {
 }
 
 sAndNFinal(BuildContext context) {
+  var seizuresNeurologyBoolean = allDrugBooleans[0];
   final data = MediaQuery.of(context);
   var sAndNWidgets = [sAndNMidazolamIVDisplay(context),sAndNMidazolamIBDisplay(context),sAndNDiazepamDisplay(context),sAndNLorazepamDisplay(context),sAndNFosphenytoinDisplay(context),sAndNPhenytoinDisplay(context),sAndNPhenobarbitoneDisplay(context),sAndNLevetiracemDisplay(context),sAndNValproateDisplay(context),sAndNPyridoxineDisplay(context),sAndNMidazolamInfusionDisplay(context),sAndNHypertonicSalineDisplay(context),sAndNMannitolDisplay(context)];
   List<Widget>sAndNList = [];

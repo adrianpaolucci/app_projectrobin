@@ -24,7 +24,9 @@ class AsthmaState extends State<Asthma> {
 
     final data = MediaQuery.of(context);
 
+    /*
     void buildSnackBar(BuildContext context) {
+
 
       final snackBar = SnackBar(
           backgroundColor: Colors.white,
@@ -75,16 +77,23 @@ class AsthmaState extends State<Asthma> {
       _scaffoldKey.currentState.showSnackBar(snackBar);
     }
 
+       */
+
     var asthmaDrugCells = ListView.builder(
         shrinkWrap: true,
         itemCount: asthmaDrugs.length,
         itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child:Container(width: 9*data.size.width/10,height: 40,
-                  decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
+          return InkWell(
+              child:
+              Container(width: 9*data.size.width/10,height: 40,
+                  margin: EdgeInsets.symmetric(vertical: 2.5),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: getColor(i)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Text(asthmaDrugs[i]),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5),
+                      child: Text(asthmaDrugs[i]),
+                    ),
                     Checkbox(
                         value: asthmaDrugBoolean[i],
                         onChanged: (bool newValue){
@@ -99,7 +108,6 @@ class AsthmaState extends State<Asthma> {
                           else {
                             boolCount -= 1;
                           }
-                          buildSnackBar(context);
                           setState(() {
                             asthmaDrugBoolean[i] = newValue;
                           }
@@ -122,7 +130,6 @@ class AsthmaState extends State<Asthma> {
                   else {
                     boolCount -= 1;
                   }
-                  buildSnackBar(context);
                   setState(() {
                     asthmaDrugBoolean[i] = !asthmaDrugBoolean[i];
                   }
@@ -136,12 +143,14 @@ class AsthmaState extends State<Asthma> {
         shrinkWrap: true,
         itemCount: asthmaCorticos.length,
         itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child:Container(width: 9*data.size.width/10,height: 40,
-                  decoration: BoxDecoration(border: Border.all(),color: getColor(i)),
+          return InkWell(
+              child:
+              Container(width: 9*data.size.width/10,height: 40,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: getColor(i)),
+                  margin: EdgeInsets.symmetric(vertical: 2.5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Text(asthmaCorticos[i]),
+                    Padding(padding: EdgeInsets.only(left: 5),child: Text(asthmaCorticos[i])),
                     Checkbox(
                         value: asthmaCorticoBoolean[i],
                         onChanged: (bool newValue){
@@ -152,7 +161,6 @@ class AsthmaState extends State<Asthma> {
                           else {
                             boolCount -= 1;
                           }
-                          buildSnackBar(context);
                           setState(() {
                             asthmaCorticoBoolean[i] = newValue;
                           }
@@ -169,7 +177,6 @@ class AsthmaState extends State<Asthma> {
                 else {
                   boolCount -= 1;
                 }
-                buildSnackBar(context);
                 setState(() {
                   asthmaCorticoBoolean[i] = !asthmaCorticoBoolean[i];
                 }

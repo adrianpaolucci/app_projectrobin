@@ -3,7 +3,8 @@ import 'homeScreen.dart';
 
 //induction initialisation
 final inductionAgents = ["Ketamine","Propofol","Thiopentone","Fentanyl (Bolus)","Midazolam", "Fentanyl (Infusion)"];
-var inductionBoolean = [false,false,false,false,false,false];
+
+final decoration = BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Color(0xffcccccc));
 
 //dosages and dilution info
 final ketamineData = [[2, 2, 4, 0.2, 0.4], [2.5, 2.5, 5.0, 0.25, 0.5], [3, 3, 6, 0.3, 0.6], [3.5, 3.5, 7.0, 0.35, 0.7], [4, 4, 8, 0.4, 0.8], [4.5, 4.5, 9.0, 0.45, 0.9], [5, 5, 10, 0.5, 1.0], [5.5, 5.5, 11, 0.55, 1.1],[6, 6, 12, 0.6, 1.2], [7, 7, 14, 0.7, 1.4], [8, 8, 16, 0.8, 1.6], [9, 9, 18, 0.9, 1.8], [10, 10, 20, 1.0, 2.0], [11, 11, 22, 1.1, 2.2], [12, 12, 24, 1.2, 2.4], [13, 13, 26, 1.3, 2.6], [14, 14, 28, 1.4, 2.8], [15, 15, 30, 1.5, 3.0], [16, 16, 32, 1.6, 3.2], [17, 17, 34, 1.7, 3.4], [18, 18, 36, 1.8, 3.6], [19, 19, 38, 1.9, 3.8], [20, 20, 40, 2.0, 4.0], [22, 22, 44, 2.2, 4.4], [24, 24, 48, 2.40000, 4.8], [26, 26, 52, 2.6, 5.2], [28, 28, 56, 2.8, 5.6], [30, 30, 60, 3.0, 6.0], [35, 35, 70, 3.5, 7.0], [40, 40, 80, 4.0, 8.0], [45, 45, 90, 4.5, 9.0], [50, 50, 100, 5.0, 10.0], [55, 55, 110, 5.5, 11.0], [60, 60, 120, 6.0, 12.0], [65, 65, 130, 6.5, 13.0], [70, 70, 140, 7.0, 14.0], [75, 75, 150, 7.5, 15.0], [80, 80, 160, 8.0, 16.0]];
@@ -16,7 +17,7 @@ final fentanylInfusionData = [[2, 200, 50, 1, 2, 2, 4], [2.5, 250.0, 50, 1, 2, 2
 //paralytic initialisation
 
 final paralyticAgents = ["Suxamethonium","Rocuronium","Vecuronium","Atracurium"];
-var paralyticBoolean = [false,false,false,false];
+
 
 //dosages and dilution info
 final suxamethoniumData = [[2, 2, 4, 0.4], [2.5, 2, 5.0, 0.5], [3, 2, 6, 0.6], [3.5, 2, 7.0, 0.7], [4, 2, 8, 0.8], [4.5, 2, 9.0, 0.9], [5, 2, 10, 1.0], [5.5, 2, 11.0, 1.1], [6, 2, 12, 1.2], [7, 2, 14, 1.4], [8, 2, 16, 1.6], [9, 2, 18, 1.8], [10, 1.5, 15.0, 1.5], [11, 1.5, 16.5, 1.65], [12, 1.5, 18.0, 1.8], [13, 1.5, 19.5, 1.95], [14, 1.5, 21.0, 2.1], [15, 1.5, 22.5, 2.25], [16, 1.5, 24.0, 2.4], [17, 1.5, 25.5, 2.55], [18, 1.5, 27.0, 2.7], [19, 1.5, 28.5, 2.85], [20, 1.5, 30.0, 3.0], [22, 1.5, 33.0, 3.3], [24, 1.5, 36.0, 3.6], [26, 1.5, 39.0, 3.9], [28, 1.5, 42.0, 4.2], [30, 1.5, 45.0, 4.5], [35, 1.5, 52.5, 5.25], [40, 1.5, 60.0, 6.0], [45, 1.5, 67.5, 6.75], [50, 1.5, 75.0, 7.5], [55, 1.5, 82.5, 8.25], [60, 1.5, 90.0, 9.0], [65, 1.5, 97.5, 9.75], [70, 1.5, 105.0, 10.5], [75, 1.5, 112.5, 11.25], [80, 1.5, 120.0, 12.0]];
@@ -47,7 +48,7 @@ ketamineDisplay(BuildContext context) {
     SizedBox(height: 15),
     Text("Ketamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -77,7 +78,7 @@ propofolDisplay(BuildContext context) {
     Text("Propofol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(children: <Widget>[
@@ -103,7 +104,7 @@ thiopentoneDisplay(BuildContext context) {
     Text("Thiopentone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -134,7 +135,7 @@ fentanylBolusDisplay(BuildContext context) {
     Text("Fentanyl (Bolus)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,7 +168,7 @@ midazolamDisplay(BuildContext context) {
     Text("Midazolam", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -200,7 +201,7 @@ suxamethoniumDisplay(BuildContext context) {
     Text("Suxamethonium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -231,7 +232,7 @@ rocuroniumDisplay(BuildContext context) {
     Text("Rocuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(children: <Widget>[
@@ -256,7 +257,7 @@ vecuroniumDisplay(BuildContext context) {
     Text("Vecuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -284,7 +285,7 @@ atracuriumDisplay(BuildContext context) {
     Text("Atracurium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -320,10 +321,16 @@ intubationEquipmentInfo(BuildContext context) {
   }
 
   etTubeDisplayBox(tubeType,tubeSize) {
-    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(border: Border.all(), color: Color(0xffcccccc)),width: 0.95*data.size.width, height: 25,
+    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color(0xffcccccc)),width: 0.95*data.size.width, height: 25,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-          Text(tubeType, style: TextStyle(fontSize: 15)),
-          Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold))
+          Padding(
+            padding: const EdgeInsets.only(left: 5.0),
+            child: Text(tubeType, style: TextStyle(fontSize: 15)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 5.0),
+            child: Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold)),
+          )
         ]));
     return box;
   }

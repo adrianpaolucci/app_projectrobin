@@ -3,11 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
 import 'package:app_search_bar/homeScreen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'asthma.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'seizuresNeurology.dart';
 import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'finalDisplay.dart';
+import 'allDrugData.dart';
 import 'seizuresNeurologyData.dart';
 import 'intubationData.dart';
 import 'asthmaData.dart';
@@ -29,8 +31,7 @@ var interventions = [
                       "Antidotes", "Electrolye Abnormalities",
                       ];
 
-final allDrugs = [asthmaDrugs,asthmaCorticos,inductionAgents,paralyticAgents,seizuresNeurologyDrugs];
-final allDrugBooleans = [asthmaDrugBoolean,asthmaCorticoBoolean,inductionBoolean,paralyticBoolean,seizuresNeurologyBoolean];
+
 
 var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),SeizuresNeurology(),Asthma(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
 var intColors = [
@@ -71,13 +72,15 @@ class _DosingMainState extends State<InterventionMain> {
   Widget build(BuildContext context) {
 
     clearAll() {
-      for (var i = 0; i < allDrugs.length; i++) {
-        for (var j = 0; j < allDrugs[i].length; j++) {
-          setState(() {
-            items = badger.removeBadge(items, 1);
-            allDrugBooleans[i][j] = false;
-          });
-        }
+        for (var i = 0; i < allDrugs.length; i++) {
+          for (var j = 0; j < allDrugs[i].length; j++) {
+              if (mounted) {
+                setState(() {
+                  items = badger.removeBadge(items, 1);
+                  allDrugBooleans[i][j] = false;
+                });
+              }
+          }
       }
       boolCount = 0;
     }
@@ -123,12 +126,12 @@ class _DosingMainState extends State<InterventionMain> {
         opacity: 0.7,
               child: FabCircularMenu(
               fabColor: Color(0xffcccccc),
-              ringColor: Colors.white,
+              ringColor: Color(0xffe6e6e6),
               fabOpenIcon: Icon(Icons.settings),
               animationDuration: Duration(milliseconds: 500),
               fabOpenColor: Color(0xffccccc),
               children: [
-        IconButton(icon: Icon(Icons.settings),iconSize: 35,),
+        IconButton(icon: Icon(Icons.settings),iconSize: 35),
         IconButton(icon: Icon(Icons.question_answer),iconSize: 35,),
         IconButton(icon: Icon(Icons.book),iconSize: 35)
       ]
@@ -145,10 +148,13 @@ class _DosingMainState extends State<InterventionMain> {
                       width: 50,
                       padding: EdgeInsets.only(left: 20, top: 20),
                       child: Row(children: <Widget>[
-                        Icon(CupertinoIcons.bookmark, size: 30),
-                        Text("   $weight kg",
-                      textDirection: TextDirection.ltr, style: TextStyle(fontSize: 16),
-                      ),
+                        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: 30),
+                        Padding(
+                          padding: EdgeInsets.only(top: 5),
+                        child: Text("   $weight kg",
+                      textDirection: TextDirection.ltr, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      )
+                        )
                       ]
                       )
                   ),

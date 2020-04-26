@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 class Home2 extends StatefulWidget {
@@ -130,9 +131,9 @@ class Home2State extends State<Home2> {
         child: Row(
           children: <Widget>[
           SizedBox(width: data.size.width/5),
-          Icon(Icons.calendar_today, color: Colors.black, size: 35),
+          FaIcon(FontAwesomeIcons.calendarDay, color: Colors.black, size: 30),
           SizedBox(width: data.size.width/2.6),
-          Icon(CupertinoIcons.bookmark, color: Colors.black, size: 35,),
+          FaIcon(FontAwesomeIcons.balanceScale, color: Colors.black, size: 30),
         ],
         )
         ,)
