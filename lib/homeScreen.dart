@@ -167,15 +167,15 @@ class Home2State extends State<Home2> {
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: data.size.width/78.6,
-                    crossAxisSpacing: data.size.width/78.6,
-                    childAspectRatio: 3,
+                  mainAxisSpacing: data.size.width/78.6,
+                  crossAxisSpacing: data.size.width/78.6,
+                  childAspectRatio: 3,
                 )
               )
-        ]
-        )
+            ]
+          )
       )
-          ]
+      ]
       )
     );
   }
@@ -189,11 +189,18 @@ weightBox(BuildContext context) {
   for (var i = 0; i < specificRange.length; i++) {
     chooseWeightPopup.add(
       InkWell(child:
-          Material(elevation: 14, shadowColor: Color(0x802196F3), child:
-      Container(decoration: BoxDecoration(color: Color(0xfff2f2f2),borderRadius: BorderRadius.all(Radius.circular(data.size.width/30))),
-          padding: EdgeInsets.all(data.size.width/20),
-          child:
-          Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))))),
+          Material(
+              elevation: 25, shadowColor: Color(0x802196F3),
+              child:
+              Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)
+                      )
+                  ),
+                  padding: EdgeInsets.all(data.size.width/20),
+                  child:
+                  Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))))),
         onTap: () {
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
@@ -211,8 +218,8 @@ weightBox(BuildContext context) {
 
   var boxHeight = data.size.height*(0.1 +  0.1*specificRange.length);
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-      child: AlertDialog(
-          title: Text("Choose Weight", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/50))),
+    child: AlertDialog(
+        title: Text("Choose Weight", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/50))),
         content: Container(height: boxHeight, child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,children: chooseWeightPopup)),
         /*Container(
                 height: boxHeight,

@@ -27,34 +27,25 @@ class AnaphylaxisState extends State<Anaphylaxis> {
       body: Material(
         child: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(height: 100, width: data.size.width/5, color: Color(0xfff2f2f2),
-                    child: Center(child: Text("$weight kg"))
-                ),
-                Container(height: 100, width: 0.6*data.size.width, color: Color(0xfff2f2f2),
-                    child: Center(child:
-                    Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
-                ),
-                Container(height: 100, width: data.size.width/5, color: Color(0xfff2f2f2),
-                    child: Center(child:
-                    GestureDetector(child: Text("Back to Case Selection",textAlign: TextAlign.center),
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return InterventionMain();
-                      }
-                    )
-                    );
-                      }
-                    )
-                )
-                )
-             ],
+            Row(children: <Widget>[
+              Container(height: 100, width: 0.7*data.size.width, color: Color(0xfff2f2f2),
+                  child: Center(child:
+                  Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
+              ),
+              Column(children: <Widget>[
+              Container(alignment: Alignment.bottomCenter,color: Color(0xfff2f2f2),height: 40, width: data.size.width*0.3,child: Icon(CupertinoIcons.bookmark),),
+              Container(alignment: Alignment.topCenter,height: 60, width: data.size.width*0.3, color: Color(0xfff2f2f2),
+                  child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
+              )
+            ]
+
+              )
+            ]
             ),
             Column(
               children: <Widget>[
                 SizedBox(height:20),
-                adrianDivider(),
+                Divider(thickness: 1.0),
                 ExpansionTile(
                   title: Text("IM Adrenaline"),
                   children: <Widget>[
@@ -68,30 +59,33 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                     ],
                     )
                   ],
-                ),
-                adrianDivider(),
+                )
+                ]
+              ),
+                Divider(thickness: 1.0),
                 PlusMinus(),
-                adrianDivider(),
+                Divider(thickness: 1.0),
                 ExpansionTile(
                     title: Text("IV Fluid Bolus"),
                     children: <Widget>[
                       Column(children: <Widget>[
-                        Container(height: 30,
+                        Container(
+                            color: Color(0xfff2f2f2),
+                            height: 30,
                             child: Center(child:
                             Text("$weight mL",textAlign: TextAlign.center, style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),))),
-                        Container(height: 30,
+                        Container(
+                            color: Color(0xfff2f2f2),
+                            height: 30,
                             child: Center(child:
                             Text("Dilute by 1:10 in Saline",textAlign: TextAlign.center, style: TextStyle()))),
                       ],
                       )
                     ],
-                    backgroundColor: Color(0xfff2f2f2)
                 ),
-                adrianDivider(),
+                Divider(thickness: 1.0),
               ],
             )
-          ],
-      ),
       )
     );
   }
