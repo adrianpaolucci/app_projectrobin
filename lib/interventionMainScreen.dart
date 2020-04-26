@@ -6,10 +6,10 @@ import 'package:app_search_bar/homeScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'asthma.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
-import 'seizuresNeurology.dart';
 import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'finalDisplay.dart';
 import 'allDrugData.dart';
+import 'seizuresNeurology.dart';
 import 'seizuresNeurologyData.dart';
 import 'intubationData.dart';
 import 'asthmaData.dart';
@@ -74,12 +74,10 @@ class _DosingMainState extends State<InterventionMain> {
     clearAll() {
         for (var i = 0; i < allDrugs.length; i++) {
           for (var j = 0; j < allDrugs[i].length; j++) {
-              if (mounted) {
                 setState(() {
                   items = badger.removeBadge(items, 1);
                   allDrugBooleans[i][j] = false;
                 });
-              }
           }
       }
       boolCount = 0;

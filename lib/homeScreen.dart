@@ -87,13 +87,16 @@ class Home2State extends State<Home2> {
       var childBox;
       if (index.isOdd) {
         childBox = Container(
-            decoration: BoxDecoration(border: Border.all(
-                color: Colors.grey), color: Colors.white),
+          margin: EdgeInsets.only(right: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.white),
             alignment: Alignment.center,
             child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-              Container(width: data.size.width / 12,
-                  color: boxColors[index]),
+              Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
+      color: boxColors[index]),width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
                       color: Colors.black, fontSize: pixelsToTextSize(data.size.height/54.5))
@@ -105,13 +108,18 @@ class Home2State extends State<Home2> {
       }
       else {
         childBox = Container(
-            decoration: BoxDecoration(border: Border.all(
-                color: Colors.grey), color: Colors.white),
+          margin: EdgeInsets.only(left: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.white),
             alignment: Alignment.center,
             child:
             Row(children: <Widget>[
-              Container(width: data.size.width / 12,
-                  color: boxColors[index]),
+              Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
+                      color: boxColors[index]),
+                  width: data.size.width / 12,
+              ),
               Container(width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
@@ -148,7 +156,7 @@ class Home2State extends State<Home2> {
       ),*/
       body: Row(children: <Widget>[
       Container(
-          color: Colors.grey,
+          color: Color(0xffcccccc),
           width: data.size.width,
           child: CustomScrollView(
             slivers: <Widget>[
@@ -168,8 +176,8 @@ class Home2State extends State<Home2> {
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                  mainAxisSpacing: data.size.width/78.6,
-                  crossAxisSpacing: data.size.width/78.6,
+                  mainAxisSpacing: data.size.width/60,
+                  crossAxisSpacing: data.size.width/60,
                   childAspectRatio: 3,
                 )
               )
