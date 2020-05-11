@@ -37,9 +37,6 @@ String inductionAmount;
 String paralyticAgentName;
 String paralyticAmount;
 
-final scaffoldKey = GlobalKey<ScaffoldState>();
-
-
 
 class IntubationState extends State<Intubation> {
 

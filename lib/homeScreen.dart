@@ -189,19 +189,23 @@ weightBox(BuildContext context) {
 
   for (var i = 0; i < specificRange.length; i++) {
     chooseWeightPopup.add(
-      InkWell(child:
+
           Material(
               elevation: 25, shadowColor: Colors.black,
+              borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)),
               child:
+              InkWell(child:
               Container(
                   decoration: BoxDecoration(
-                      color: Color(0xfff2f2f2),
+                      //color: Color(0xfff2f2f2),
                       borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)
                       )
                   ),
                   padding: EdgeInsets.all(data.size.width/20),
                   child:
-                  Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))))),
+                  Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))
+                  )
+              ),
         onTap: () {
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
@@ -212,6 +216,7 @@ weightBox(BuildContext context) {
           );
         },
       )
+          )
     );
     chooseWeightPopup.add(SizedBox(height: data.size.width/13));
   }

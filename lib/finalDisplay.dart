@@ -107,6 +107,7 @@ intubationFinal(BuildContext context) {
   }
   for (var i = 0; i < paralyticAgents.length; i++) {
     if (paralyticBoolean[i] == true) {
+      displayBools[4] = true;
       intubationList.add(paralyticWidgets[i]);
       intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -122,15 +123,16 @@ asthmaFinal(BuildContext context) {
   var asthmaDrugWidgets = [inhaledSalbutamolDisplay(context),inhaledIpratropiumDisplay(context),ivMagnesiumDisplay(context),ivAminophyllineDisplay(context),asthmaAdrenalineDisplay(context)];
   var asthmaCortisoWidgets = [methylprednisoloneDisplay(context),dexamethasoneDisplay(context),hydrocortisoneDisplay(context),prednisoloneDisplay(context)];
   List<Widget>asthmaList = [];
-  for (var i = 0; i < asthmaDrugs.length; i++) {
-    if (asthmaDrugBoolean[i]==true) {
+  for (var i = 0; i < allDrugs[1].length; i++) {
+    if (allDrugBooleans[1][i] == true) {
       displayBools[6] = true;
       asthmaList.add(asthmaDrugWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
   }
-  for (var i = 0; i < asthmaCorticos.length; i++) {
-    if (asthmaCorticoBoolean[i] == true){
+  for (var i = 0; i < allDrugs[2].length; i++) {
+    if (allDrugBooleans[2][i] == true){
+      displayBools[6] = true;
       asthmaList.add(asthmaCortisoWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }

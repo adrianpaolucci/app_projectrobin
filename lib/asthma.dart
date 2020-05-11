@@ -7,6 +7,7 @@ import 'intubation.dart';
 import 'intubationData.dart';
 import 'dart:ui';
 import 'all_sizings.dart';
+import 'allDrugData.dart';
 
 class Asthma extends StatefulWidget {
   @override
@@ -25,65 +26,44 @@ class AsthmaState extends State<Asthma> {
 
     final data = MediaQuery.of(context);
 
-    /*
-    void buildSnackBar(BuildContext context) {
-
-
-      final snackBar = SnackBar(
-          backgroundColor: Colors.white,
-          content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-            GestureDetector(child: Container(
-                alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),
-                child: Text("Clear All",
-                    style: TextStyle(color: Colors.black))
-            ),
-                onTap: () {
-                  _scaffoldKey.currentState.hideCurrentSnackBar();
-                  boolCount = 0;
-                  for (var i = 0; i < inductionBoolean.length; i++) {
-                    setState(() {
-                      inductionBoolean[i] = false;
-                    });
-                  }
-                  for (var i = 0; i < paralyticBoolean.length; i++) {
-                    setState(() {
-                      paralyticBoolean[i] = false;
-                    });
-
-                  }
-                  for (var i = 0; i < asthmaDrugBoolean.length; i++) {
-                    setState(() {
-                      asthmaDrugBoolean[i] = false;
-                    });
-
-                  }
-                  for (var i = 0; i < asthmaCorticoBoolean.length; i++) {
-                    setState(() {
-                      asthmaCorticoBoolean[i] = false;
-                    });
-                  }
-                  buildSnackBar(context);
-                }),
-            Text('$boolCount item(s) selected', style: TextStyle(color: Colors.black)),
-            GestureDetector(child: Container(alignment: Alignment.center,height: 30, width: 100, color: Color(0xffa6a6a6),child: Text("Confirm", style: TextStyle(color: Colors.black))),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FinalDisplay();
-                  })
-                  );
-                })
-          ]
-          ),
-          duration: const Duration(minutes: 20));
-      _scaffoldKey.currentState.showSnackBar(snackBar);
+    clearAll() {
+      for (var i = 0; i < allDrugs.length; i++) {
+        for (var j = 0; j < allDrugs[i].length; j++) {
+          setState(() {
+            allDrugBooleans[i][j] = false;
+            items = badger.removeBadge(items, 1);
+          });
+        }
+      }
+      boolCount = 0;
     }
 
-       */
+    var clearAllIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              clearAll();
+            }),
+        title: Text("Clear All"));
+
+    var confirmIcon = BottomNavigationBarItem(
+        icon: IconButton(
+            icon: Icon(Icons.check),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FinalDisplay();
+              })
+              );
+            }),
+        title: Text("Confirm"));
+
+    items[0] = clearAllIcon;
+    items[2] = confirmIcon;
 
     var asthmaDrugCells = ListView.builder(
         shrinkWrap: true,
         primary: false,
-        itemCount: asthmaDrugs.length,
+        itemCount: allDrugs[1].length,
         itemBuilder: (BuildContext context, var i) {
           return InkWell(
               child:
@@ -94,16 +74,15 @@ class AsthmaState extends State<Asthma> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(left: 5),
-                      child: Text(asthmaDrugs[i]),
+                      child: Text(allDrugs[1][i]),
                     ),
                     Checkbox(
-                        value: asthmaDrugBoolean[i],
+                        value: allDrugBooleans[1][i],
                         onChanged: (bool newValue){
                           if (weight < 10.0) {
                             asthmuaDrugErrorAlert(context, i);
                           }
                           else {
-                          _scaffoldKey.currentState.hideCurrentSnackBar();
                           if (newValue == true) {
                             boolCount += 1;
                           }
@@ -111,7 +90,8 @@ class AsthmaState extends State<Asthma> {
                             boolCount -= 1;
                           }
                           setState(() {
-                            asthmaDrugBoolean[i] = newValue;
+                            allDrugBooleans[1][i] = newValue;
+                            items = badger.setBadge(items, "$boolCount", 1);
                           }
                           );
                         }
@@ -125,15 +105,20 @@ class AsthmaState extends State<Asthma> {
                   asthmuaDrugErrorAlert(context, i);
                 }
                 else {
-                  _scaffoldKey.currentState.hideCurrentSnackBar();
-                  if (asthmaDrugBoolean[i] == false) {
+                  if (allDrugBooleans[1][i] == false) {
                     boolCount += 1;
                   }
                   else {
                     boolCount -= 1;
                   }
                   setState(() {
-                    asthmaDrugBoolean[i] = !asthmaDrugBoolean[i];
+                    allDrugBooleans[1][i] = !allDrugBooleans[1][i];
+                    items = badger.setBadge(items, "$boolCount", 1);
+                    if (boolCount == 0) {
+                      for (var i = 0; i < allDrugs[1].length; i++) {
+                        items = badger.removeBadge(items, 1);
+                      }
+                    }
                   }
                   );
                 }
@@ -144,7 +129,7 @@ class AsthmaState extends State<Asthma> {
     var asthmaCorticoCells = ListView.builder(
         shrinkWrap: true,
         primary: false,
-        itemCount: asthmaCorticos.length,
+        itemCount: allDrugs[2].length,
         itemBuilder: (BuildContext context, var i) {
           return InkWell(
               child:
@@ -155,9 +140,8 @@ class AsthmaState extends State<Asthma> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                     Padding(padding: EdgeInsets.only(left: 5),child: Text(asthmaCorticos[i])),
                     Checkbox(
-                        value: asthmaCorticoBoolean[i],
+                        value: allDrugBooleans[2][i],
                         onChanged: (bool newValue){
-                          _scaffoldKey.currentState.hideCurrentSnackBar();
                           if (newValue == true) {
                             boolCount += 1;
                           }
@@ -165,7 +149,7 @@ class AsthmaState extends State<Asthma> {
                             boolCount -= 1;
                           }
                           setState(() {
-                            asthmaCorticoBoolean[i] = newValue;
+                            allDrugBooleans[2][i] = newValue;
                           }
                           );
                         }),
@@ -173,22 +157,30 @@ class AsthmaState extends State<Asthma> {
                   )
               ),
               onTap: () {
-                _scaffoldKey.currentState.hideCurrentSnackBar();
-                if (asthmaCorticoBoolean[i] == false) {
+                if (allDrugBooleans[2][i] == false) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
                 setState(() {
-                  asthmaCorticoBoolean[i] = !asthmaCorticoBoolean[i];
+                  allDrugBooleans[2][i] = !allDrugBooleans[2][i];
+                  items = badger.setBadge(items, "$boolCount", 1);
+                  if (boolCount == 0) {
+                    for (var i = 0; i < allDrugs[2].length; i++) {
+                      items = badger.removeBadge(items, 1);
+                    }
+                  }
                 }
                 );
               });
         });
 
     return Scaffold(
-        key: _scaffoldKey,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          items: items,
+        ),
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: Colors.black),
