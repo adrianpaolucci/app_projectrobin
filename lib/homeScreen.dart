@@ -145,15 +145,7 @@ class Home2State extends State<Home2> {
         ],
         )
         ,)
-    ),/*Text(
-        "         Age                      Approx. Weight   ",
-        style: TextStyle(
-          fontSize: pixelsToTextSize(data.size.height/50),
-          color: Colors.black,
-        ),
-        textAlign: TextAlign.center,
-      ),
-      ),*/
+    ),
       body: Row(children: <Widget>[
       Container(
           color: Color(0xffcccccc),
@@ -199,7 +191,7 @@ weightBox(BuildContext context) {
     chooseWeightPopup.add(
       InkWell(child:
           Material(
-              elevation: 25, shadowColor: Color(0x802196F3),
+              elevation: 25, shadowColor: Colors.black,
               child:
               Container(
                   decoration: BoxDecoration(

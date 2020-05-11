@@ -6,6 +6,7 @@ import 'homeScreen.dart';
 import 'intubation.dart';
 import 'intubationData.dart';
 import 'dart:ui';
+import 'all_sizings.dart';
 
 class Asthma extends StatefulWidget {
   @override
@@ -81,6 +82,7 @@ class AsthmaState extends State<Asthma> {
 
     var asthmaDrugCells = ListView.builder(
         shrinkWrap: true,
+        primary: false,
         itemCount: asthmaDrugs.length,
         itemBuilder: (BuildContext context, var i) {
           return InkWell(
@@ -141,6 +143,7 @@ class AsthmaState extends State<Asthma> {
 
     var asthmaCorticoCells = ListView.builder(
         shrinkWrap: true,
+        primary: false,
         itemCount: asthmaCorticos.length,
         itemBuilder: (BuildContext context, var i) {
           return InkWell(
@@ -197,16 +200,7 @@ class AsthmaState extends State<Asthma> {
         body: SingleChildScrollView(child: Material(
             child: Column(
                 children: <Widget>[
-                  Row(children: <Widget>[
-                    Container(height: 100, width: 0.7*data.size.width, color: Color(0xfff2f2f2),
-                        child: Center(child:
-                        Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
-                    ),
-                    Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-                        child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
-                    )
-                  ]
-                  ),
+                  topInterventionTitle(context, weight, specificColor, int),
                   Column(children: <Widget>[
                     SizedBox(height: 10),
                     Divider(thickness: 1.0),

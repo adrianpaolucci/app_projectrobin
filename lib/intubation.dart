@@ -10,6 +10,7 @@ import 'intubationData.dart';
 import 'allDrugData.dart';
 import 'seizuresNeurology.dart';
 import 'seizuresNeurologyData.dart';
+import 'all_sizings.dart';
 
 
 
@@ -89,6 +90,7 @@ class IntubationState extends State<Intubation> {
 
     var inductionAgentCells = ListView.builder(
         shrinkWrap: true,
+        primary: false,
         itemCount: inductionAgents.length,
         itemBuilder: (BuildContext context, var i) {
           return GestureDetector(
@@ -154,6 +156,7 @@ class IntubationState extends State<Intubation> {
 
     var paralyticAgentCells = ListView.builder(
         shrinkWrap: true,
+        primary: false,
         itemCount: paralyticAgents.length,
         itemBuilder: (BuildContext context, var i) {
           return GestureDetector(
@@ -226,16 +229,7 @@ class IntubationState extends State<Intubation> {
         body: SingleChildScrollView(child: Material(
           child: Column(
               children: <Widget>[
-                Row(children: <Widget>[
-                  Container(height: 100, width: 0.7*data.size.width, color: Color(0xfff2f2f2),
-                      child: Center(child:
-                      Text("$int",style: TextStyle(color: specificColor,fontSize: 24.0),textAlign: TextAlign.center,))
-                  ),
-                  Container(height: 100, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-                      child: Center(child: Text("$weight kg", style: TextStyle(fontSize: 16.0),))
-                  )
-                ]
-                ),
+                topInterventionTitle(context, weight, specificColor, int),
                 Column(children: <Widget>[
                   SizedBox(height: 30),
                   Divider(thickness: 1.0),

@@ -10,6 +10,7 @@ import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'finalDisplay.dart';
 import 'allDrugData.dart';
 import 'seizuresNeurology.dart';
+import 'all_sizings.dart';
 import 'seizuresNeurologyData.dart';
 import 'intubationData.dart';
 import 'asthmaData.dart';
@@ -47,7 +48,7 @@ BottomNavigationBadge badger = BottomNavigationBadge(
     badgeShape: BottomNavigationBadgeShape.circle,
     textColor: Colors.white,
     position: BottomNavigationBadgePosition.topRight,
-    textSize: 12);
+    textSize: 12.0);
 
 List<BottomNavigationBarItem> items = [
   BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.cancel), onPressed: () {},), title: Text("Clear All")),
@@ -72,18 +73,19 @@ class _DosingMainState extends State<InterventionMain> {
   Widget build(BuildContext context) {
 
     clearAll() {
-        for (var i = 0; i < allDrugs.length; i++) {
-          for (var j = 0; j < allDrugs[i].length; j++) {
-                setState(() {
-                  items = badger.removeBadge(items, 1);
-                  allDrugBooleans[i][j] = false;
-                });
-          }
+      for (var i = 0; i < allDrugs.length; i++) {
+        for (var j = 0; j < allDrugs[i].length; j++) {
+          setState(() {
+            items = badger.removeBadge(items, 1);
+            allDrugBooleans[i][j] = false;
+          });
+        }
       }
       boolCount = 0;
     }
 
     final data = MediaQuery.of(context);
+
     var clearAllIcon = BottomNavigationBarItem(
         icon: IconButton(
             icon: Icon(Icons.cancel),
@@ -107,7 +109,6 @@ class _DosingMainState extends State<InterventionMain> {
     items[2] = confirmIcon;
 
     return Scaffold(
-      key: _scaffoldKey,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: 1,
           items: items,
@@ -130,7 +131,7 @@ class _DosingMainState extends State<InterventionMain> {
               fabOpenColor: Color(0xffccccc),
               children: [
         IconButton(icon: Icon(Icons.settings),iconSize: 35),
-        IconButton(icon: Icon(Icons.question_answer),iconSize: 35,),
+        IconButton(icon: Icon(Icons.question_answer),iconSize: 35),
         IconButton(icon: Icon(Icons.book),iconSize: 35)
       ]
       )
@@ -144,11 +145,11 @@ class _DosingMainState extends State<InterventionMain> {
                   Container(
                       alignment: Alignment.centerLeft,
                       width: 50,
-                      padding: EdgeInsets.only(left: 20, top: 20),
+                      padding: EdgeInsets.only(left: data.size.width*0.05, top: paddingVerticalBetweenButtons(context)),
                       child: Row(children: <Widget>[
-                        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: 30),
+                        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: data.size.width/12),
                         Padding(
-                          padding: EdgeInsets.only(top: 5),
+                          padding: EdgeInsets.only(top: data.size.height/100),
                         child: Text("   $weight kg",
                       textDirection: TextDirection.ltr, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       )
@@ -165,7 +166,7 @@ class _DosingMainState extends State<InterventionMain> {
                 ]),
               ),
               SliverPadding(
-                padding: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.only(top: paddingVerticalBetweenButtons(context)),
               sliver:
               SliverGrid(
                 delegate: SliverChildBuilderDelegate(
@@ -180,39 +181,44 @@ class _DosingMainState extends State<InterventionMain> {
                               )
                               );
                             },
-                            child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                child: Material(
-                              color: Colors.white,
-                              elevation: 14.0,
-                              shadowColor: Color(0x802196F3),
-                              borderRadius: BorderRadius.circular(18.0),
-                              child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Center(
-                                              child:  Text(interventions[index], textAlign: TextAlign.center,style: TextStyle(color: intColors[index],fontSize: 16.0))),
-
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                )
-                              )
-                            ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: paddingHorizontalBetweenButtons(context),
+                              vertical: paddingVerticalBetweenButtons(context)),
+                            child: Material(
+                                color: Colors.white,
+                                elevation: buttonShadowElev,
+                                shadowColor: shadowColour,
+                                borderRadius: BorderRadius.circular(lrgBorderRad),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Center(
+                                                child:  Text(interventions[index],
+                                                    textAlign: TextAlign.center,style:
+                                                    TextStyle(
+                                                        color: intColors[index],
+                                                        fontSize: medButtonText(context))
+                                                )
+                                            ),
+                                          ]
+                                        )
+                                      ]
+                                    )
+                              ),
+                          ),
                         );
                         },
                   childCount: interventions.length,
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 20,
+                    mainAxisSpacing: 0,
                   crossAxisSpacing: 0,
-                  childAspectRatio: 2.0,
+                  childAspectRatio: data.devicePixelRatio*0.75,
                 ),
               )
               )
