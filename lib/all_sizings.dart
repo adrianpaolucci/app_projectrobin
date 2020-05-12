@@ -25,7 +25,7 @@ medButtonText(context) {
   return data.size.width / 24.55;
 }
 
-//text size of ~4
+//text size of ~24
 titleText(context) {
   final data = MediaQuery.of(context);
   return data.size.width / 16.4;

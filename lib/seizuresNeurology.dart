@@ -42,6 +42,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
 
     final data = MediaQuery.of(context);
 
+    print(data.size.width);
+    print(data.size.height);
 
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
@@ -107,7 +109,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   child: Material(
                       elevation: 14.0,
                       shadowColor: Color(0x802196F3),
-                    borderRadius: BorderRadius.circular(24.0),
+                    borderRadius: BorderRadius.circular(data.size.height/30.73),
                       child: AnimatedContainer(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(24.0),
@@ -127,7 +129,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(heading,
-                                            style: TextStyle(color: Colors.black, fontSize: 16.0)),
+                                            style: TextStyle(color: Colors.black, fontSize: medButtonText(context))),
                                       )
                                   ),
 
