@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'finalDisplay.dart';
 
 final seizuresNeurologyDrugs = ["Midazolam (IV)","Midazolam (IN/B)","Diazepam (IV)","Lorazepam (IV)","Fosphenytoin","Phenytoin","Phenobarbitone","Levetiracetam","Valproate","Pyridoxine","Midazolam Infusion","Hypertonic Saline","Mannitol"];
 
@@ -26,7 +27,7 @@ sAndNMidazolamIVDisplay(BuildContext context) {
     Text("Midazolam (IV)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +54,7 @@ sAndNMidazolamIBDisplay(BuildContext context) {
     Text("Midazolam (Intranasal/Buccal)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,7 +81,7 @@ sAndNDiazepamDisplay(BuildContext context) {
     Text("Diazepam (IV)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,7 +106,7 @@ sAndNLorazepamDisplay(BuildContext context) {
     Text("Lorazepam (IV)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,7 +131,7 @@ sAndNFosphenytoinDisplay(BuildContext context) {
     Text("Fosphenytoin", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,7 +156,7 @@ sAndNPhenytoinDisplay(BuildContext context) {
     Text("Phenytoin", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,7 +184,7 @@ sAndNPhenobarbitoneDisplay(BuildContext context) {
     Text("Phenobarbitone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -211,7 +212,7 @@ sAndNLevetiracemDisplay(BuildContext context) {
     Text("Levetiracem", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -240,7 +241,7 @@ sAndNValproateDisplay(BuildContext context) {
     Text("Valproate", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -265,7 +266,7 @@ sAndNPyridoxineDisplay(BuildContext context) {
     Text("Pyridoxine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -289,7 +290,7 @@ sAndNMidazolamInfusionDisplay(BuildContext context) {
     Text("Midazolam Infusion", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -316,7 +317,7 @@ sAndNHypertonicSalineDisplay(BuildContext context) {
     Text("Hypertonic Saline", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -341,7 +342,7 @@ sAndNMannitolDisplay(BuildContext context) {
     Text("Mannitol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffd3d3d3),),
+      decoration: decoration,
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,

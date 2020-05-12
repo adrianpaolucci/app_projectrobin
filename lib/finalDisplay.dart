@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
 class FinalDisplay extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +16,10 @@ class FinalDisplay extends StatefulWidget {
   }
 }
 
+final decoration = BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Color(0xffcccccc));
+
 var displayBools = [false,false,false,false,false,false,false,false,false,false];
+
 List<Widget> list = [];
 
 class FinalDisplayState extends State<FinalDisplay> {
@@ -32,14 +36,14 @@ class FinalDisplayState extends State<FinalDisplay> {
         title: Row(
           children: [
             SizedBox(width: data.size.width*0.3),
-            FaIcon(FontAwesomeIcons.bookMedical),
+            FaIcon(FontAwesomeIcons.bookMedical, size: 35,),
           ],
         ),
         backgroundColor: Colors.white
       ),
-      body: SingleChildScrollView(child: Center(child:
-      Column(children: list
-      ),
+      body: SingleChildScrollView(
+          child: Center(child:
+            Column(children: list),
       )
       )
     );
@@ -56,10 +60,9 @@ void showFinalDropdowns(BuildContext context) {
 
   list.add(
     Container(
-      alignment: Alignment.centerLeft,
-      padding: EdgeInsets.only(left: 20, top: 20),
-      child: Row(children: <Widget>[
-        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: 30),
+      padding: EdgeInsets.only(right: 20, top: 20),
+      child: Row(mainAxisAlignment: MainAxisAlignment.end,children: <Widget>[
+        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: 25),
         Text("   $weight kg",
           textDirection: TextDirection.ltr,
           style: TextStyle(
@@ -75,7 +78,10 @@ void showFinalDropdowns(BuildContext context) {
     if (displayBools[i] == true) {
      // list.add(Divider(thickness: 1.0, color: Colors.black));
       list.add(ExpansionTile(
-        title: Text("${interventions[i]}"),
+        title: Text("${interventions[i]}",
+            style: TextStyle(
+                color: intColors[i],
+                fontSize: 18)),
         children: allFinalDisplays[i],
       ));
       //list.add(Divider(thickness: 1.0, color: Colors.black));
@@ -101,6 +107,7 @@ intubationFinal(BuildContext context) {
   }
   for (var i = 0; i < paralyticAgents.length; i++) {
     if (paralyticBoolean[i] == true) {
+      displayBools[4] = true;
       intubationList.add(paralyticWidgets[i]);
       intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -116,15 +123,16 @@ asthmaFinal(BuildContext context) {
   var asthmaDrugWidgets = [inhaledSalbutamolDisplay(context),inhaledIpratropiumDisplay(context),ivMagnesiumDisplay(context),ivAminophyllineDisplay(context),asthmaAdrenalineDisplay(context)];
   var asthmaCortisoWidgets = [methylprednisoloneDisplay(context),dexamethasoneDisplay(context),hydrocortisoneDisplay(context),prednisoloneDisplay(context)];
   List<Widget>asthmaList = [];
-  for (var i = 0; i < asthmaDrugs.length; i++) {
-    if (asthmaDrugBoolean[i]==true) {
+  for (var i = 0; i < allDrugs[1].length; i++) {
+    if (allDrugBooleans[1][i] == true) {
       displayBools[6] = true;
       asthmaList.add(asthmaDrugWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
   }
-  for (var i = 0; i < asthmaCorticos.length; i++) {
-    if (asthmaCorticoBoolean[i] == true){
+  for (var i = 0; i < allDrugs[2].length; i++) {
+    if (allDrugBooleans[2][i] == true){
+      displayBools[6] = true;
       asthmaList.add(asthmaCortisoWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
