@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'allDrugData.dart';
 import 'all_sizings.dart';
 import 'finalDisplay.dart';
+import 'all_sizings.dart';
 
 
 class Anaphylaxis extends StatefulWidget {
@@ -63,7 +64,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
               child: Container(width: 9*data.size.width/10,height: 40,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                       color: getColor(i)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
@@ -120,7 +121,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
               child: Container(width: 9*data.size.width/10,height: 40,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                       color: getColor(i)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[

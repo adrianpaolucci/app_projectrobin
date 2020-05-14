@@ -105,7 +105,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   borderRadius: BorderRadius.circular(data.size.height/30.73),
                   child: AnimatedContainer(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24.0),
+                        borderRadius: BorderRadius.circular(largeButtonRadius(context)),
                         color: allDrugBooleans[0][i] ? Color(0xffc7defa) : Colors.white
                     ),
                     duration: Duration(milliseconds: 500),
@@ -122,17 +122,17 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                                     child: Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Text(heading,
-                                          style: TextStyle(color: Colors.black, fontSize: medButtonText(context))),
+                                          style: TextStyle(color: Colors.black, fontSize: size16Text(context))),
                                     )
                                 ),
 
                                 //icon
                                 Material(
                                   color: colour,
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                                   child: Padding(
                                       padding: EdgeInsets.all(4.0),
-                                      child: i % 2 == 0 ? Icon(MyFlutterApp.syringe, size: 30, color: Colors.white) : Icon(MyFlutterApp.pipette, size: 25, color: Colors.white)
+                                      child: i % 2 == 0 ? Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white) : Icon(MyFlutterApp.pipette, size: genericIconSize(context), color: Colors.white)
                                   ),
                                 ),
                               ],
@@ -213,19 +213,19 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   mainAxisSpacing: 12.0,
                   children: addSeizuresNeurologyIcons(context),
                   staggeredTiles: [
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(2, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(2, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(2, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(2, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(2, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(2, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
+                    StaggeredTile.extent(1, largeButtonHeight(context)),
                   ],
                 ),
               )
@@ -243,7 +243,7 @@ void pyridoxineErrorAlert(BuildContext context) {
         title: Text("Alert"),
         content:
         Text("Cannot use Pyridoxine when weight is 10 kg or more",
-            style: TextStyle(fontSize: 16)),
+            style: TextStyle(fontSize: size16Text(context))),
         actions: <Widget>[
           FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
               onPressed: () {

@@ -67,7 +67,7 @@ class AsthmaState extends State<Asthma> {
               child:
               Container(width: 9*data.size.width/10,height: 40,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: getColor(i)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: getColor(i)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                     Padding(
@@ -132,7 +132,7 @@ class AsthmaState extends State<Asthma> {
           return InkWell(
               child:
               Container(width: 9*data.size.width/10,height: 40,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: getColor(i)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: getColor(i)),
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[

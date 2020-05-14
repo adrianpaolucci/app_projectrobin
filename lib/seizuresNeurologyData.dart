@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'finalDisplay.dart';
+import 'all_sizings.dart';
 
 final seizuresNeurologyDrugs = ["Midazolam (IV)","Midazolam (IN/B)","Diazepam (IV)","Lorazepam (IV)","Fosphenytoin","Phenytoin","Phenobarbitone","Levetiracetam","Valproate","Pyridoxine","Midazolam Infusion","Hypertonic Saline","Mannitol"];
 
@@ -24,10 +25,10 @@ sAndNMidazolamIVDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Midazolam (IV)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Midazolam (IV)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,9 +36,9 @@ sAndNMidazolamIVDisplay(BuildContext context) {
           children: <Widget>[
             Text("5 mg / 5 mL -- Large Ampoule"),
             Text("0.15 mL/kg  =>  ${currentData[1]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("or ${currentData[2]} mL", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold))
+                fontSize: size16Text(context), fontWeight: FontWeight.bold))
           ]
       ),
     ),
@@ -51,10 +52,10 @@ sAndNMidazolamIBDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Midazolam (Intranasal/Buccal)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Midazolam (Intranasal/Buccal)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,9 +63,9 @@ sAndNMidazolamIBDisplay(BuildContext context) {
           children: <Widget>[
             Text("5 mg / 1 mL -- Small Ampoule"),
             Text("0.3 mL/kg  =>  ${currentData[1]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("or ${currentData[2]} mL Buccal/IN", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold))
+                fontSize: size16Text(context), fontWeight: FontWeight.bold))
           ]
       ),
     ),
@@ -78,10 +79,10 @@ sAndNDiazepamDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Diazepam (IV)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Diazepam (IV)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,7 +90,7 @@ sAndNDiazepamDisplay(BuildContext context) {
           children: <Widget>[
             Text("0.2 mg/kg"),
             Text("${currentData[1]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),
@@ -103,10 +104,10 @@ sAndNLorazepamDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Lorazepam (IV)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Lorazepam (IV)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,7 +115,7 @@ sAndNLorazepamDisplay(BuildContext context) {
           children: <Widget>[
             Text("0.1 mg/kg"),
             Text("${currentData[1]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),
@@ -128,10 +129,10 @@ sAndNFosphenytoinDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Fosphenytoin", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Fosphenytoin", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -139,7 +140,7 @@ sAndNFosphenytoinDisplay(BuildContext context) {
           children: <Widget>[
             Text("20 PE/kg"),
             Text("${currentData[1]} PE", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),
@@ -153,10 +154,10 @@ sAndNPhenytoinDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Phenytoin", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Phenytoin", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -164,9 +165,9 @@ sAndNPhenytoinDisplay(BuildContext context) {
           children: <Widget>[
             Text("20 mg/kg"),
             Text("${currentData[1]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Undiluted (preferred). May Dilute\n up to ${currentData[2]} mL", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Give over 20 minutes"),
           ]
       ),
@@ -181,10 +182,10 @@ sAndNPhenobarbitoneDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Phenobarbitone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Phenobarbitone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -192,9 +193,9 @@ sAndNPhenobarbitoneDisplay(BuildContext context) {
           children: <Widget>[
             Text("20 mg/kg"),
             Text("${currentData[1]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Dilute to at least 1:10", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Give over 20 minutes"),
           ]
       ),
@@ -209,10 +210,10 @@ sAndNLevetiracemDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Levetiracem", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Levetiracem", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -220,11 +221,11 @@ sAndNLevetiracemDisplay(BuildContext context) {
           children: <Widget>[
             Text("40 - 60 mg/kg"),
             Text("${currentData[1]} mg - ${currentData[2]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
             Text("Dilute 500 mg vial to 10 mL"),
             Text("Give ${currentData[3]} mL - ${currentData[4]} mL over 20 minutes", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),
@@ -238,10 +239,10 @@ sAndNValproateDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Valproate", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Valproate", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -249,7 +250,7 @@ sAndNValproateDisplay(BuildContext context) {
           children: <Widget>[
             Text("20 - 40 mg/kg"),
             Text("${currentData[1]} mg - ${currentData[2]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),
@@ -263,17 +264,17 @@ sAndNPyridoxineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Pyridoxine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Pyridoxine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("${currentData[1]} mg - ${currentData[2]} mg", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),
@@ -287,17 +288,17 @@ sAndNMidazolamInfusionDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Midazolam Infusion", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Midazolam Infusion", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Add ${currentData[1]} mg to 50 mL", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Start at ${currentData[2]} mL/h. Increase by 1 mL/h\n"
                 "every 15 min until seizures\n"
                 "are controlled", textAlign: TextAlign.center,)
@@ -314,17 +315,17 @@ sAndNHypertonicSalineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Hypertonic Saline", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Hypertonic Saline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("${currentData[1]} mL - ${currentData[2]} mL", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Over 20 - 30 minutes for raised ICP")
           ]
       ),
@@ -339,17 +340,17 @@ sAndNMannitolDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Mannitol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Mannitol", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("${currentData[1]} mL - ${currentData[2]} mL", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("Over 20 - 30 minutes for raised ICP")
           ]
       ),

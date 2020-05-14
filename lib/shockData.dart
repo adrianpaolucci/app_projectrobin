@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'finalDisplay.dart';
+import 'all_sizings.dart';
 
 
 final shockFluid = [[2, 10, 20], [2.5, 12.5, 25.0], [3, 15, 30], [3.5, 17.5, 35.0], [4, 20, 40], [4.5, 22.5, 45.0], [5, 25, 50], [5.5, 27.5, 55.0], [6, 30, 60], [7, 35, 70], [8, 40, 80], [9, 45, 90], [10, 50, 100], [11, 55, 110], [12, 60, 120], [13, 65, 130], [14, 70, 140], [15, 75, 150], [16, 80, 160], [17, 85, 170], [18, 90, 180], [19, 95, 190], [20, 100, 200], [22, 110, 220], [24, 120, 240], [26, 130, 260], [28, 140, 280], [30, 150, 300], [35, 175, 350], [40, 200, 400], [45, 225, 450], [50, 250, 500], [55, 275, 550], [60, 300, 600], [65, 325, 650], [70, 350, 700], [75, 375, 750], [80, 400, 800]];
@@ -16,9 +17,9 @@ shockFluidDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Fluid Bolus", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Fluid Bolus", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -28,7 +29,7 @@ shockFluidDisplay(BuildContext context) {
             Text("${currentData[1]} - ${currentData[2]}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
+                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("of sodium chloride 0.9%"),
           ]
       ),
@@ -43,9 +44,9 @@ shockAdrenalineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Adrenaline", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -80,9 +81,9 @@ shockNoradrenalineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Noradrenaline", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Noradrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -117,9 +118,9 @@ shockDobutamineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Dobutamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Dobutamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -155,9 +156,9 @@ shockDopamineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Dopamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Dopamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -193,9 +194,9 @@ shockStressDoseDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Stress-Dose (Hydrocortisone)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Stress-Dose (Hydrocortisone)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -205,7 +206,7 @@ shockStressDoseDisplay(BuildContext context) {
             Text("2 mg/kg"),
             Text("${currentData[1]} mg",
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
+                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
     ),

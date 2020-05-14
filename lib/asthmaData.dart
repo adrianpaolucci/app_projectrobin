@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'all_sizings.dart';
+
 
 final asthmaDrugs = ["Inhaled Salbutamol","Inhaled Ipratropium","IV Magnesium","IV Aminophyline","Adrenaline"];
 final asthmaCorticos = ["Methylprednisolone","Dexamethasone","Hydrocortisone","Prednisolone"];
@@ -24,7 +26,7 @@ inhaledSalbutamolDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Inhaled Salbutamol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Inhaled Salbutamol", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -36,14 +38,14 @@ inhaledSalbutamolDisplay(BuildContext context) {
             Text("${currentData[1]} puffs of MDI with spacer repeated every 20 - 30 min",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("OR"),
             SizedBox(height: 5),
             Text("${currentData[2]} mg nebulised Salbutamol",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold))
+                fontSize: size16Text(context), fontWeight: FontWeight.bold))
           ]
       ),
     ),
@@ -57,7 +59,7 @@ inhaledIpratropiumDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Inhaled Ipratropium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Inhaled Ipratropium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -69,14 +71,14 @@ inhaledIpratropiumDisplay(BuildContext context) {
             Text("${currentData[1]} puffs of MDI with spacer\n3 times in the first hour,\nthen 4-6 puffs hourly",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("OR"),
             SizedBox(height: 5),
             Text("${currentData[2]} μg nebulised Ipratropium",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold))
+                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
           ]
       ),
     ),
@@ -90,7 +92,7 @@ ivMagnesiumDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("IV Magnesium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("IV Magnesium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -102,7 +104,7 @@ ivMagnesiumDisplay(BuildContext context) {
             Text("50 mg/kg (0.1 mL/kg of 50% MgSO4)"),
             SizedBox(height: 5),
             Text("${currentData[1]} mg (or ${currentData[2]} mL)",style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("of 50% MgSO4 diluted to at least ${currentData[3]} mL"),
             Text("given over 20 minutes")
@@ -119,7 +121,7 @@ ivAminophyllineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("IV Aminophylline", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("IV Aminophylline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -131,7 +133,7 @@ ivAminophyllineDisplay(BuildContext context) {
             Text("5 mg/kg"),
             SizedBox(height: 5),
             Text("${currentData[1]} mg",style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("diluted to at least 60 mL"),
             Text("given over 1 hour")
@@ -148,7 +150,7 @@ asthmaAdrenalineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("IV Aminophylline", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("IV Aminophylline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -158,7 +160,7 @@ asthmaAdrenalineDisplay(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("${currentData[1]} mL of 1:1000 IM or subcutaneously",style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("repeat every 20 minutes"),
             Text("maximum 3 doses")
@@ -175,7 +177,7 @@ methylprednisoloneDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Methylprednisolone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Methylprednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -186,7 +188,7 @@ methylprednisoloneDisplay(BuildContext context) {
           children: <Widget>[
             Text("${currentData[1]} mg IV",
                 style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("then ${currentData[2]} mg 6 - hourly"),
           ]
@@ -202,7 +204,7 @@ dexamethasoneDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Dexamethasone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Dexamethasone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -213,7 +215,7 @@ dexamethasoneDisplay(BuildContext context) {
           children: <Widget>[
             Text("${currentData[1]} mg - ${currentData[2]} mg",
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
+                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("Oral / IV / IM"),
           ]
@@ -229,7 +231,7 @@ hydrocortisoneDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Hydrocortisone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Hydrocortisone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -240,7 +242,7 @@ hydrocortisoneDisplay(BuildContext context) {
           children: <Widget>[
             Text("${currentData[1]} mg IV",
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
+                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("then ${currentData[2]} mg 6 - hourly"),
           ]
@@ -256,7 +258,7 @@ prednisoloneDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Prednisolone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Prednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
@@ -267,7 +269,7 @@ prednisoloneDisplay(BuildContext context) {
           children: <Widget>[
             Text("${currentData[1]} mg orally",
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
+                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("then ${currentData[2]} mg daily"),
           ]

@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'anaphylaxisData.dart';
+import 'all_sizings.dart';
 
 
 class FinalDisplay extends StatefulWidget {
@@ -18,7 +19,6 @@ class FinalDisplay extends StatefulWidget {
   }
 }
 
-final decoration = BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Color(0xffcccccc));
 
 var displayBools = [false,false,false,false,false,false,false,false,false,false,false];
 
@@ -38,7 +38,7 @@ class FinalDisplayState extends State<FinalDisplay> {
         title: Row(
           children: [
             SizedBox(width: data.size.width*0.3),
-            FaIcon(FontAwesomeIcons.bookMedical, size: 35,),
+            FaIcon(FontAwesomeIcons.bookMedical, size: genericIconSize(context),),
           ],
         ),
         backgroundColor: Colors.white
@@ -71,7 +71,7 @@ void showFinalDropdowns(BuildContext context) {
         Text("   $weight kg",
           textDirection: TextDirection.ltr,
           style: TextStyle(
-              fontSize: 16,
+              fontSize: size16Text(context),
           fontWeight: FontWeight.bold),
         ),
       ]

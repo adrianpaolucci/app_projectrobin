@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'finalDisplay.dart';
+import 'all_sizings.dart';
 
 //induction initialisation
 final inductionAgents = ["Ketamine","Propofol","Thiopentone","Fentanyl (Bolus)","Midazolam", "Fentanyl (Infusion)"];
@@ -47,9 +48,9 @@ ketamineDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Ketamine", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Ketamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       margin: EdgeInsets.all(5),
       width: 0.8 * data.size.width,
       child:
@@ -57,7 +58,7 @@ ketamineDisplay(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Dilute", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[1]} mg in ${currentData[3]} mL"),
             Text("OR"),
             Text("${currentData[2]} mg in ${currentData[4]} mL"),
@@ -76,16 +77,16 @@ propofolDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Propofol", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Propofol", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(children: <Widget>[
         Text("${currentData[1]} mg in ${currentData[2]} mL"),
         Text("Undiluted", style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold)),
+            fontSize: size16Text(context), fontWeight: FontWeight.bold)),
         SizedBox(height: 5),
         Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Text("Risk CVS"),Text("\u2193", style: TextStyle(fontSize: 22))])
       ]),
@@ -102,17 +103,17 @@ thiopentoneDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Thiopentone", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Thiopentone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Reconstitute", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[1]} mg in ${currentData[3]} mL"),
             Text("OR"),
             Text("${currentData[2]} mg in ${currentData[4]} mL"),
@@ -133,17 +134,17 @@ fentanylBolusDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Fentanyl (Bolus)", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Fentanyl (Bolus)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Dilute", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[1]} \u03bcg in ${currentData[3]} mL"),
             Text("OR"),
             Text("${currentData[2]} \u03bcg in ${currentData[4]} mL"),
@@ -166,17 +167,17 @@ midazolamDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Midazolam", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Midazolam", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("${currentData[3]}", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[1]} mg in ${currentData[4]} mL"),
             Text("OR"),
             Text("${currentData[2]} mg in ${currentData[5]} mL"),
@@ -199,17 +200,17 @@ suxamethoniumDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Suxamethonium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Suxamethonium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Dilute", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[2]} mg in ${currentData[3]} mL")
           ]
       ),
@@ -230,16 +231,16 @@ rocuroniumDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Rocuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Rocuronium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(children: <Widget>[
         Text("${currentData[1]} mg in ${currentData[2]} mL"),
         Text("Undiluted", style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold)),
+            fontSize: size16Text(context), fontWeight: FontWeight.bold)),
         SizedBox(height: 10),
         Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
             style: TextStyle(decoration: TextDecoration.underline)),
@@ -255,17 +256,17 @@ vecuroniumDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Vecuronium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Vecuronium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Reconstitute", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[1]} mg in ${currentData[2]} mL"),
             SizedBox(height: 5)
           ]
@@ -283,17 +284,17 @@ atracuriumDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Atracurium", style: TextStyle(fontSize: 18.0, color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Text("Atracurium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: decoration,
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("${currentData[2]}", style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold)),
+                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
             Text("${currentData[1]} mg in ${currentData[3]} mL")
           ]
       ),
@@ -313,8 +314,8 @@ intubationEquipmentInfo(BuildContext context) {
         TextSpan(
             text: "",
             children: <TextSpan>[
-              TextSpan(text: firstString,style: TextStyle(fontSize: 16, decoration: TextDecoration.underline)),
-              TextSpan(text: secondString, style: TextStyle(fontSize: 16))
+              TextSpan(text: firstString,style: TextStyle(fontSize: size16Text(context), decoration: TextDecoration.underline)),
+              TextSpan(text: secondString, style: TextStyle(fontSize: size16Text(context)))
             ]
         )
     );
@@ -322,7 +323,7 @@ intubationEquipmentInfo(BuildContext context) {
   }
 
   etTubeDisplayBox(tubeType,tubeSize) {
-    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color(0xffcccccc)),width: 0.95*data.size.width, height: 25,
+    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)), color: Color(0xffcccccc)),width: 0.95*data.size.width, height: 25,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
           Padding(
             padding: const EdgeInsets.only(left: 5.0),

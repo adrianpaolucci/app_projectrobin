@@ -21,7 +21,7 @@ adrianDivider() {
 }
 
 var interventions = [
-  "Anaphylaxis and\nAntiarrhymics", "Shock",
+  "Anaphylaxis and Antiarrhymics", "Shock",
   "Bleeding","Intubation",
   "Seizures/Neurology", "Asthma",
   "Infection", "Croup",
@@ -56,9 +56,20 @@ BottomNavigationBadge badger = BottomNavigationBadge(
     textSize: 12.0);
 
 List<BottomNavigationBarItem> items = [
-  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.cancel), onPressed: () {},), title: Text("Clear All")),
-  BottomNavigationBarItem(icon: Icon(Icons.format_list_numbered), title: Text("Drugs")),
-  BottomNavigationBarItem(icon: IconButton(icon: Icon(Icons.check), onPressed: () {},), title: Text("Confirm"))
+  BottomNavigationBarItem(icon: IconButton(
+    icon: Icon(
+      Icons.cancel,
+    ),
+    onPressed: () {}),
+      title: Text("Clear All")
+  ),
+  BottomNavigationBarItem(icon: Icon(Icons.format_list_numbered),
+      title: Text("Drugs")
+  ),
+  BottomNavigationBarItem(icon: IconButton(
+    icon: Icon(Icons.check), onPressed: () {}),
+      title: Text("Confirm")
+  )
 ];
 
 var int = "";
@@ -124,7 +135,9 @@ class _DosingMainState extends State<InterventionMain> {
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
           "PediDosED",
-          style: TextStyle(color: Colors.black),),
+          style: TextStyle(
+              color: Colors.black)
+        ),
         backgroundColor: Colors.white,
       ),
       floatingActionButton: Opacity(
@@ -136,9 +149,9 @@ class _DosingMainState extends State<InterventionMain> {
               animationDuration: Duration(milliseconds: 500),
               fabOpenColor: Color(0xffccccc),
               children: [
-        IconButton(icon: Icon(Icons.settings),iconSize: 35),
-        IconButton(icon: Icon(Icons.question_answer),iconSize: 35),
-        IconButton(icon: Icon(Icons.book),iconSize: 35)
+        IconButton(icon: Icon(Icons.settings),iconSize: genericIconSize(context)),
+        IconButton(icon: Icon(Icons.question_answer),iconSize: genericIconSize(context)),
+        IconButton(icon: Icon(Icons.book),iconSize: genericIconSize(context))
       ]
       )
       ),
@@ -150,14 +163,24 @@ class _DosingMainState extends State<InterventionMain> {
                 delegate: SliverChildListDelegate([
                   Container(
                       alignment: Alignment.centerLeft,
-                      width: 50,
-                      padding: EdgeInsets.only(left: data.size.width*0.05, top: paddingVerticalBetweenButtons(context)),
+                      padding: EdgeInsets.only(
+                          left: data.size.width*0.05,
+                          top: paddingVerticalBetweenButtons(context)
+                      ),
                       child: Row(children: <Widget>[
-                        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: data.size.width/12),
+                        FaIcon(
+                            FontAwesomeIcons.balanceScaleLeft,
+                            size: data.size.width/12),
                         Padding(
-                          padding: EdgeInsets.only(top: data.size.height/100),
-                        child: Text("   $weight kg",
-                      textDirection: TextDirection.ltr, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          padding: EdgeInsets.only(
+                              left: data.size.width/25),
+                        child: Text(
+                          "$weight kg",
+                           textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: size20Text(context)
+                          ),
                       )
                         )
                       ]
@@ -167,7 +190,13 @@ class _DosingMainState extends State<InterventionMain> {
                     alignment: Alignment.bottomCenter,
                     child: Text("Select an Intervention Below",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontStyle: FontStyle.italic, color: Colors.blue, fontWeight: FontWeight.bold))
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: size14Text(context)
+                    )
+                    )
                   )
                 ]),
               ),
@@ -196,9 +225,7 @@ class _DosingMainState extends State<InterventionMain> {
                                 elevation: buttonShadowElev,
                                 shadowColor: shadowColour,
                                 borderRadius: BorderRadius.circular(lrgBorderRad),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
+                                    child:
                                         Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
@@ -207,13 +234,11 @@ class _DosingMainState extends State<InterventionMain> {
                                                     textAlign: TextAlign.center,style:
                                                     TextStyle(
                                                         color: intColors[index],
-                                                        fontSize: medButtonText(context))
+                                                        fontSize: size16Text(context))
                                                 )
                                             ),
                                           ]
                                         )
-                                      ]
-                                    )
                               ),
                           ),
                         );
@@ -235,15 +260,3 @@ class _DosingMainState extends State<InterventionMain> {
 }
 
 
-class PlusMinus extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('images/plusminus.png');
-    Image image = Image(image: assetImage);
-    return Container(alignment: Alignment.center,
-        width: 500,
-        height: 60,
-        color: Colors.white,
-        child: image);
-  }
-}

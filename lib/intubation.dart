@@ -86,7 +86,7 @@ class IntubationState extends State<Intubation> {
               child: Container(width: 9*data.size.width/10,height: 40,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                       color: getColor(i)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
@@ -153,7 +153,7 @@ class IntubationState extends State<Intubation> {
               margin: EdgeInsets.symmetric(vertical: 2.5),
               decoration: BoxDecoration(
                   color: getColor(i),
-                  borderRadius: BorderRadius.circular(10.0)),
+                  borderRadius: BorderRadius.circular(mediumButtonRadius(context))),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                 Padding(
@@ -269,7 +269,7 @@ void propofolErrorAlert(BuildContext context) {
         title: Text("Alert"),
         content:
         Text("Cannot use Propofol when weight is less than 10 kg",
-            style: TextStyle(fontSize: 16)),
+            style: TextStyle(fontSize: size16Text(context))),
         actions: <Widget>[
           FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
               onPressed: () {

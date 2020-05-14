@@ -1,3 +1,4 @@
+import 'package:app_search_bar/all_sizings.dart';
 import 'package:app_search_bar/main.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
@@ -89,7 +90,7 @@ class Home2State extends State<Home2> {
         childBox = Container(
           margin: EdgeInsets.only(right: 5),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                 color: Colors.white),
             alignment: Alignment.center,
             child:
@@ -99,7 +100,7 @@ class Home2State extends State<Home2> {
       color: boxColors[index]),width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
-                      color: Colors.black, fontSize: pixelsToTextSize(data.size.height/54.5))
+                      color: Colors.black, fontSize: size16Text(context))
               ),
               Icon(Icons.arrow_forward_ios)
             ]
@@ -110,7 +111,7 @@ class Home2State extends State<Home2> {
         childBox = Container(
           margin: EdgeInsets.only(left: 5),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                 color: Colors.white),
             alignment: Alignment.center,
             child:
@@ -123,7 +124,7 @@ class Home2State extends State<Home2> {
               Container(width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
-                      color: Colors.black, fontSize: pixelsToTextSize(data.size.height/54.5)))
+                      color: Colors.black, fontSize: size16Text(context)))
             ]
             )
         );
@@ -139,9 +140,9 @@ class Home2State extends State<Home2> {
         child: Row(
           children: <Widget>[
           SizedBox(width: data.size.width/5),
-          FaIcon(FontAwesomeIcons.calendarDay, color: Colors.black, size: 30),
+          FaIcon(FontAwesomeIcons.calendarDay, color: Colors.black, size: genericIconSize(context)),
           SizedBox(width: data.size.width/2.6),
-          FaIcon(FontAwesomeIcons.balanceScale, color: Colors.black, size: 30),
+          FaIcon(FontAwesomeIcons.balanceScale, color: Colors.black, size: genericIconSize(context)),
         ],
         )
         ,)
@@ -203,10 +204,11 @@ weightBox(BuildContext context) {
                   ),
                   padding: EdgeInsets.all(data.size.width/20),
                   child:
-                  Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))
+                  Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: size16Text(context))
                   )
               ),
         onTap: () {
+                print(data);
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
           Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -225,20 +227,16 @@ weightBox(BuildContext context) {
   var boxHeight = data.size.height*(0.1 +  0.1*specificRange.length);
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
     child: AlertDialog(
-        title: Text("Choose Weight", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/50))),
-        content: Container(height: boxHeight, child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,children: chooseWeightPopup)),
-        /*Container(
-                height: boxHeight,
-                alignment: Alignment.center,
-                margin: EdgeInsets.all(5),
-                width: 0.7 * data.size.width,
-                child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: chooseWeightPopup
-                ),
-              ),*/
+        title: Text("Choose Weight", style: TextStyle(
+            fontSize: size18Text(context))),
+        content: Container(height: boxHeight,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: chooseWeightPopup)
+        ),
         actions: <Widget>[
-          FlatButton(child: Text("Back", style: TextStyle(fontSize: pixelsToTextSize(data.size.height/54.5))), onPressed: () {
+          FlatButton(child: Text("Back",style: TextStyle(fontSize: size16Text(context))), onPressed: () {
             Navigator.pop(context);
           }
           )
