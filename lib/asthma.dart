@@ -16,8 +16,6 @@ class Asthma extends StatefulWidget {
   }
 }
 
-final _scaffoldKey = GlobalKey<ScaffoldState>();
-
 
 class AsthmaState extends State<Asthma> {
   @override
