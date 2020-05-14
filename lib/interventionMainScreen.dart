@@ -141,121 +141,123 @@ class _DosingMainState extends State<InterventionMain> {
         backgroundColor: Colors.white,
       ),
       floatingActionButton: Opacity(
-        opacity: 0.7,
-              child: FabCircularMenu(
-              fabColor: Color(0xffcccccc),
-              ringColor: Color(0xffe6e6e6),
-              fabOpenIcon: Icon(Icons.settings),
-              animationDuration: Duration(milliseconds: 500),
-              fabOpenColor: Color(0xffccccc),
-              children: [
-        IconButton(icon: Icon(Icons.settings),iconSize: genericIconSize(context)),
-        IconButton(icon: Icon(Icons.question_answer),iconSize: genericIconSize(context)),
-        IconButton(icon: Icon(Icons.book),iconSize: genericIconSize(context))
-      ]
-      )
+          opacity: 0.7,
+              child:
+                 FabCircularMenu(
+                  ringDiameter: 400,
+                  fabColor: Color(0xffcccccc),
+                  ringColor: Color(0xffe6e6e6),
+                  fabOpenIcon: Icon(Icons.settings,color: Colors.black),
+                  animationDuration: Duration(milliseconds: 500),
+                  fabOpenColor: Color(0xffccccc),
+                  children: [
+                    IconButton(icon: Icon(Icons.settings, color: Colors.black87),iconSize: 1.2*genericIconSize(context)),
+                    IconButton(icon: Icon(Icons.question_answer, color: Colors.black87),iconSize: 1.2*genericIconSize(context)),
+                    IconButton(icon: Icon(Icons.book, color: Colors.black87),iconSize: 1.2*genericIconSize(context))
+                  ]
+              )
       ),
-      body:
-          CustomScrollView(
-            slivers: <Widget>[
-              SliverFixedExtentList(
-                itemExtent: 50,
-                delegate: SliverChildListDelegate([
-                  Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(
-                          left: data.size.width*0.05,
-                          top: paddingVerticalBetweenButtons(context)
-                      ),
-                      child: Row(children: <Widget>[
-                        FaIcon(
-                            FontAwesomeIcons.balanceScaleLeft,
-                            size: data.size.width/12),
-                        Padding(
+        body:
+        CustomScrollView(
+          slivers: <Widget>[
+            SliverFixedExtentList(
+              itemExtent: 50,
+              delegate: SliverChildListDelegate([
+                Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.only(
+                        left: data.size.width*0.05,
+                        top: paddingVerticalBetweenButtons(context)
+                    ),
+                    child: Row(children: <Widget>[
+                      FaIcon(
+                          FontAwesomeIcons.balanceScaleLeft,
+                          size: data.size.width/12),
+                      Padding(
                           padding: EdgeInsets.only(
                               left: data.size.width/25),
-                        child: Text(
-                          "$weight kg",
-                           textDirection: TextDirection.ltr,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: size20Text(context)
-                          ),
+                          child: Text(
+                            "$weight kg",
+                            textDirection: TextDirection.ltr,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: size20Text(context)
+                            ),
+                          )
                       )
-                        )
-                      ]
-                      )
-                  ),
-                  Container(
+                    ]
+                    )
+                ),
+                Container(
                     alignment: Alignment.bottomCenter,
                     child: Text("Select an Intervention Below",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: size14Text(context)
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: size14Text(context)
+                        )
                     )
-                    )
-                  )
-                ]),
-              ),
-              SliverPadding(
+                )
+              ]),
+            ),
+            SliverPadding(
                 padding: EdgeInsets.only(top: paddingVerticalBetweenButtons(context)),
-              sliver:
-              SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        return InkWell(
-                            onTap: () {
-                              int = interventions[index];
-                              specificColor = intColors[index];
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return pages[index];
-                              }
-                              )
-                              );
-                            },
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: paddingHorizontalBetweenButtons(context),
-                              vertical: paddingVerticalBetweenButtons(context)),
-                            child: Material(
-                                color: Colors.white,
-                                elevation: buttonShadowElev,
-                                shadowColor: shadowColour,
-                                borderRadius: BorderRadius.circular(lrgBorderRad),
-                                    child:
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Center(
-                                                child:  Text(interventions[index],
-                                                    textAlign: TextAlign.center,style:
-                                                    TextStyle(
-                                                        color: intColors[index],
-                                                        fontSize: size16Text(context))
-                                                )
-                                            ),
-                                          ]
+                sliver:
+                SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: paddingHorizontalBetweenButtons(context),
+                                  vertical: paddingVerticalBetweenButtons(context)),
+                              child: Material(
+                                  color: Colors.white,
+                                  elevation: buttonShadowElev,
+                                  shadowColor: shadowColour,
+                                  borderRadius: BorderRadius.circular(lrgBorderRad),
+                                  child:
+                                  InkWell(
+                                      onTap: () {
+                                        int = interventions[index];
+                                        specificColor = intColors[index];
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                          return pages[index];
+                                        }
                                         )
+                                        );
+                                      },
+                                  child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Center(
+                                            child:  Text(interventions[index],
+                                                textAlign: TextAlign.center,style:
+                                                TextStyle(
+                                                    color: intColors[index],
+                                                    fontSize: size16Text(context))
+                                            )
+                                        ),
+                                      ]
+                                  )
                               ),
-                          ),
-                        );
+                            ),
+                          );
                         },
-                  childCount: interventions.length,
-                ),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childCount: interventions.length,
+                  ),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 0,
-                  crossAxisSpacing: 0,
-                  childAspectRatio: data.devicePixelRatio*0.75,
-                ),
-              )
-              )
-            ],
-          )
-          );
+                    crossAxisSpacing: 0,
+                    childAspectRatio: data.devicePixelRatio*0.75,
+                  ),
+                )
+            )
+          ],
+        )
+    );
   }
 }
 

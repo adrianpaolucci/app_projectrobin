@@ -188,23 +188,36 @@ class AnaphylaxisState extends State<Anaphylaxis> {
               Column(children: <Widget>[
                 SizedBox(height: 10),
                 Divider(thickness: 1.0),
-                ExpansionTile(
-                  title: Text("Anaphylaxis"),
-                  children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                      style: TextStyle(color: Colors.indigoAccent))),
-                    SizedBox(width: 9*data.size.width/10, child: anaphylaxisCells)
-                  ],
+                Theme(
+                  data: ThemeData(accentColor: specificColor),
+                  child: ExpansionTile(
+                    title: Text("Anaphylaxis"),
+                    children: <Widget>[GestureDetector(child: Text("Select Drug from below",
+                        style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic))),
+                      SizedBox(width: 9*data.size.width/10, child: anaphylaxisCells)
+                    ],
+                  ),
                 ),
                 Divider(thickness: 1.0),
                 PlusMinus(),
                 Divider(thickness: 1.0),
-                ExpansionTile(
-                    title: Text("Resuscitation"),
-                    children: <Widget> [
-                      GestureDetector(child: Text("Select Drug from below",
-                          style: TextStyle(color: Colors.indigoAccent))),
-                      SizedBox(width: 9*data.size.width/10, child: resuscCells)
-                    ]
+                Theme(
+                  data: ThemeData(accentColor: specificColor),
+                  child: ExpansionTile(
+                      title: Text("Resuscitation"),
+                      children: <Widget> [
+                        GestureDetector(child: Text("Select Drug from below",
+                            style: TextStyle(
+                                color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic),
+                        )
+                        ),
+                        SizedBox(width: 9*data.size.width/10, child: resuscCells)
+                      ]
+                  ),
                 ),
                 Divider(thickness: 1.0),
                 SizedBox(height: data.size.height/3)

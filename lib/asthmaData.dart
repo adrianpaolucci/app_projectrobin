@@ -29,7 +29,7 @@ inhaledSalbutamolDisplay(BuildContext context) {
     Text("Inhaled Salbutamol", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +62,7 @@ inhaledIpratropiumDisplay(BuildContext context) {
     Text("Inhaled Ipratropium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +95,7 @@ ivMagnesiumDisplay(BuildContext context) {
     Text("IV Magnesium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,7 +124,7 @@ ivAminophyllineDisplay(BuildContext context) {
     Text("IV Aminophylline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,7 +153,7 @@ asthmaAdrenalineDisplay(BuildContext context) {
     Text("IV Aminophylline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,7 +180,7 @@ methylprednisoloneDisplay(BuildContext context) {
     Text("Methylprednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -207,7 +207,7 @@ dexamethasoneDisplay(BuildContext context) {
     Text("Dexamethasone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -234,7 +234,7 @@ hydrocortisoneDisplay(BuildContext context) {
     Text("Hydrocortisone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -261,7 +261,7 @@ prednisoloneDisplay(BuildContext context) {
     Text("Prednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(border: Border.all(),color: Color(0xffa6a6a6),),
+      decoration: lightBoxDec(context),
       width: 0.8 * data.size.width,
       child:
       Column(crossAxisAlignment: CrossAxisAlignment.center,

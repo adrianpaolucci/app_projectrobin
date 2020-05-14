@@ -96,13 +96,16 @@ class Home2State extends State<Home2> {
             child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
               Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(mediumButtonRadius(context)),bottomLeft: Radius.circular(mediumButtonRadius(context))),
       color: boxColors[index]),width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
-                      color: Colors.black, fontSize: size16Text(context))
+                      color: Colors.black, fontSize: size18Text(context))
               ),
-              Icon(Icons.arrow_forward_ios)
+              Padding(
+                padding: EdgeInsets.only(right: data.size.width/40),
+                child: Icon(Icons.arrow_forward_ios),
+              )
             ]
             )
         );
@@ -117,14 +120,14 @@ class Home2State extends State<Home2> {
             child:
             Row(children: <Widget>[
               Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(mediumButtonRadius(context)),bottomLeft: Radius.circular(mediumButtonRadius(context))),
                       color: boxColors[index]),
                   width: data.size.width / 12,
               ),
               Container(width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
-                      color: Colors.black, fontSize: size16Text(context)))
+                      color: Colors.black, fontSize: size18Text(context)))
             ]
             )
         );
@@ -208,7 +211,6 @@ weightBox(BuildContext context) {
                   )
               ),
         onTap: () {
-                print(data);
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
           Navigator.push(context, MaterialPageRoute(builder: (context) {

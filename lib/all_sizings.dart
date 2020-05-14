@@ -68,17 +68,34 @@ appBarHeight(context) {
 topInterventionTitle(context, weight, specificColor, int) {
   final data = MediaQuery.of(context);
   return Row(children: <Widget>[
-    Container(height: appBarHeight(context), width: 0.7*data.size.width, color: Color(0xfff2f2f2),
+    Container(height: appBarHeight(context), width: 0.6*data.size.width, color: Color(0xfff2f2f2),
         child: Center(child:
         Text("$int",style: TextStyle(color: specificColor,fontSize: titleText(context)),textAlign: TextAlign.center,))
     ),
-    Column(children: <Widget>[
-      Container(alignment: Alignment.bottomCenter,color: Color(0xfff2f2f2), width: data.size.width*0.3,child: Icon(CupertinoIcons.bookmark, size: genericIconSize(context),)),
-      Container(alignment: Alignment.topCenter, width: data.size.width*0.3, color: Color(0xfff2f2f2),
-          child: Center(child: Text("$weight kg", style: TextStyle(fontSize: size14Text(context))))
+
+      Container(
+        width: data.size.width*0.15,
+        height: appBarHeight(context),
+        alignment: Alignment.centerRight,
+        color: Color(0xfff2f2f2),
+        child: FaIcon(
+            FontAwesomeIcons.balanceScaleLeft,
+            size: data.size.width/12),
+      ),
+      Container(
+        width: data.size.width*0.25,
+        alignment: Alignment.center,
+        height: appBarHeight(context),
+  color: Color(0xfff2f2f2),
+        child: Text(
+              "$weight kg",
+              textDirection: TextDirection.ltr,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size20Text(context)
+              ),
+            ),
       )
-    ]
-    )
   ]
   );
 }
