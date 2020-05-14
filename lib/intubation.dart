@@ -14,14 +14,6 @@ import 'all_sizings.dart';
 
 
 
-Color getColor(i) {
-  if (i % 2 == 0) {
-    return Color(0xffcccccc);
-  } else {
-    return Color(0xffe6e6e6);
-  }
-}
-
 
 class Intubation extends StatefulWidget {
   @override

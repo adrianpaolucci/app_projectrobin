@@ -8,6 +8,14 @@ paddingVerticalBetweenButtons(context) {
   return padding;
 }
 
+Color getColor(i) {
+  if (i % 2 == 0) {
+    return Color(0xffcccccc);
+  } else {
+    return Color(0xffe6e6e6);
+  }
+}
+
 paddingHorizontalBetweenButtons(context) {
   final data = MediaQuery.of(context);
   var padding = data.size.width/39.27;

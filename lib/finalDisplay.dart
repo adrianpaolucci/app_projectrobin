@@ -1,3 +1,4 @@
+import 'package:app_search_bar/shockData.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'package:app_search_bar/intubationData.dart';
@@ -7,6 +8,7 @@ import 'seizuresNeurologyData.dart';
 import 'package:flutter/cupertino.dart';
 import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'anaphylaxisData.dart';
 
 
 class FinalDisplay extends StatefulWidget {
@@ -18,7 +20,7 @@ class FinalDisplay extends StatefulWidget {
 
 final decoration = BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Color(0xffcccccc));
 
-var displayBools = [false,false,false,false,false,false,false,false,false,false];
+var displayBools = [false,false,false,false,false,false,false,false,false,false,false];
 
 List<Widget> list = [];
 
@@ -52,11 +54,14 @@ class FinalDisplayState extends State<FinalDisplay> {
 
 void showFinalDropdowns(BuildContext context) {
   list = [];
-  var allFinalDisplays = [intubationFinal(context),intubationFinal(context),
+  var allFinalDisplays = [
+    anaphylaxisFinal(context),shockFinal(context),
     intubationFinal(context),intubationFinal(context),
-    intubationFinal(context),sAndNFinal(context),
-    asthmaFinal(context),intubationFinal(context),
-    intubationFinal(context),intubationFinal(context)];
+    sAndNFinal(context), asthmaFinal(context),
+    intubationFinal(context),intubationFinal(context),
+    intubationFinal(context),intubationFinal(context),
+    intubationFinal(context)
+  ];
 
   list.add(
     Container(
@@ -91,6 +96,52 @@ void showFinalDropdowns(BuildContext context) {
   list.toList();
 }
 
+anaphylaxisFinal(BuildContext context) {
+  var anaphylaxisBoolean = allDrugBooleans[6];
+  var resuscBoolean = allDrugBooleans[7];
+  final data = MediaQuery.of(context);
+  var anaphylaxisWidgets = [anaphylaxisAdrenalineIMDisplay(context),anaphylaxisFluidDisplay(context),anaphylaxisInitialAdrenalineDisplay(context)];
+  var resuscWidgets = [resuscAdrenalineIVDisplay(context),resuscDCshockDisplay(context),resuscAtropineDisplay(context),resuscAmlodaroneDisplay(context),resuscLignocaineDisplay(context),resuscAdenosineDisplay(context)];
+  List<Widget>anaphylaxisList = [];
+  for (var i = 0; i < anaphylaxisBoolean.length; i++) {
+    if (anaphylaxisBoolean[i] == true) {
+      displayBools[0] = true;
+      anaphylaxisList.add(anaphylaxisWidgets[i]);
+      anaphylaxisList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  for (var i = 0; i < resuscBoolean.length; i++) {
+    if (resuscBoolean[i] == true) {
+      displayBools[0] = true;
+      anaphylaxisList.add(resuscWidgets[i]);
+      anaphylaxisList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (anaphylaxisList.isNotEmpty) {
+    anaphylaxisList.removeLast();
+  }
+  return anaphylaxisList;
+}
+
+shockFinal(BuildContext context) {
+  var shockBoolean = allDrugBooleans[8];
+  final data = MediaQuery.of(context);
+  var shockWidgets = [shockFluidDisplay(context),shockAdrenalineDisplay(context),shockNoradrenalineDisplay(context),shockDobutamineDisplay(context),shockDopamineDisplay(context),shockStressDoseDisplay(context)];
+
+  List<Widget>shockList = [];
+  for (var i = 0; i < shockBoolean.length; i++) {
+      if (shockBoolean[i] == true) {
+        displayBools[1] = true;
+        shockList.add(shockWidgets[i]);
+        shockList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+      }
+  }
+  if (shockList.isNotEmpty) {
+    shockList.removeLast();
+  }
+  return shockList;
+}
+
 intubationFinal(BuildContext context) {
   var inductionBoolean = allDrugBooleans[3];
   var paralyticBoolean = allDrugBooleans[4];
@@ -100,14 +151,14 @@ intubationFinal(BuildContext context) {
   List<Widget>intubationList = intubationEquipmentInfo(context);
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
-      displayBools[4] = true;
+      displayBools[3] = true;
       intubationList.add(inductionWidgets[i]);
       intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
   }
   for (var i = 0; i < paralyticAgents.length; i++) {
     if (paralyticBoolean[i] == true) {
-      displayBools[4] = true;
+      displayBools[3] = true;
       intubationList.add(paralyticWidgets[i]);
       intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -125,14 +176,14 @@ asthmaFinal(BuildContext context) {
   List<Widget>asthmaList = [];
   for (var i = 0; i < allDrugs[1].length; i++) {
     if (allDrugBooleans[1][i] == true) {
-      displayBools[6] = true;
+      displayBools[5] = true;
       asthmaList.add(asthmaDrugWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
   }
   for (var i = 0; i < allDrugs[2].length; i++) {
     if (allDrugBooleans[2][i] == true){
-      displayBools[6] = true;
+      displayBools[5] = true;
       asthmaList.add(asthmaCortisoWidgets[i]);
       asthmaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }
@@ -150,7 +201,7 @@ sAndNFinal(BuildContext context) {
   List<Widget>sAndNList = [];
   for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
     if (seizuresNeurologyBoolean[i] == true) {
-      displayBools[5] = true;
+      displayBools[4] = true;
       sAndNList.add(sAndNWidgets[i]);
       sAndNList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }

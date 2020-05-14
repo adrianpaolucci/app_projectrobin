@@ -14,10 +14,10 @@ import 'dart:ui';
 import 'all_sizings.dart';
 import 'package:badges/badges.dart';
 
-class SeizuresNeurology extends StatefulWidget {
+class Shock extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return SeizuresNeurologyState();
+    return ShockState();
   }
 }
 
@@ -31,13 +31,13 @@ final seizureNeurologyIcons = [
   Icon(MyFlutterApp.pipette)];
 
 
-class SeizuresNeurologyState extends State<SeizuresNeurology> {
+class ShockState extends State<Shock> {
 
   @override
   Widget build(BuildContext context) {
 
     final data = MediaQuery.of(context);
-    
+
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
         for (var j = 0; j < allDrugs[i].length; j++) {
@@ -79,10 +79,10 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
             badgeContent: InkWell(
                 child: Icon(CupertinoIcons.clear_thick, color: Colors.white),
                 onTap: () {
-                  if (allDrugBooleans[0][i] == true) {
+                  if (allDrugBooleans[8][i] == true) {
                     boolCount -= 1;
                     setState(() {
-                      allDrugBooleans[0][i] = !allDrugBooleans[0][i];
+                      allDrugBooleans[8][i] = !allDrugBooleans[8][i];
                       items = badger.setBadge(items, "$boolCount", 1);
                       if (boolCount == 0) {
                         for (var i = 0; i <
@@ -94,7 +94,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   }
                 }),
             elevation: 14.0,
-            showBadge: allDrugBooleans[0][i],
+            showBadge: allDrugBooleans[8][i],
             padding: EdgeInsets.all(2),
             position: BadgePosition.topRight(top: 0, right: 0),
             child: Padding(
@@ -106,7 +106,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                   child: AnimatedContainer(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(24.0),
-                        color: allDrugBooleans[0][i] ? Color(0xffc7defa) : Colors.white
+                        color: allDrugBooleans[8][i] ? Color(0xffc7defa) : Colors.white
                     ),
                     duration: Duration(milliseconds: 500),
                     child: Center(
@@ -146,28 +146,23 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
             ),
           ),
           onTap: () {
-            if (seizuresNeurologyDrugs[i] == "Pyridoxine" && weight >= 10) {
-              pyridoxineErrorAlert(context);
-            }
-            else {
-              if (allDrugBooleans[0][i] == false) {
+              if (allDrugBooleans[8][i] == false) {
                 boolCount += 1;
               }
               else {
                 boolCount -= 1;
               }
               setState(() {
-                allDrugBooleans[0][i] = !allDrugBooleans[0][i];
+                allDrugBooleans[8][i] = !allDrugBooleans[8][i];
                 items = badger.setBadge(items, "$boolCount", 1);
               });
               if (boolCount == 0) {
-                for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
+                for (var i = 0; i < allDrugBooleans[8].length; i++) {
                   setState(() {
                     items = badger.removeBadge(items,1);
                   });
                 }
               }
-            }
           }
       );
     }
@@ -177,8 +172,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
       List<Widget> sAndNItems = [
       ];
 
-      for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
-        sAndNItems.add(myItems(i, MyFlutterApp.pipette, "${seizuresNeurologyDrugs[i]}", Colors.green));
+      for (var i = 0; i < allDrugs[8].length; i++) {
+        sAndNItems.add(myItems(i, MyFlutterApp.pipette, "${allDrugs[8][i]}", specificColor));
       }
 
       return sAndNItems;
@@ -218,14 +213,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                     StaggeredTile.extent(2, 120.00),
                     StaggeredTile.extent(1, 120.00),
                     StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
                     StaggeredTile.extent(2, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(2, 120.00),
-                    StaggeredTile.extent(1, 120.00),
-                    StaggeredTile.extent(1, 120.00),
                   ],
                 ),
               )
@@ -233,28 +221,6 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
         )
     );
   }
-}
-
-void pyridoxineErrorAlert(BuildContext context) {
-
-  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-      child:
-      AlertDialog(
-        title: Text("Alert"),
-        content:
-        Text("Cannot use Pyridoxine when weight is 10 kg or more",
-            style: TextStyle(fontSize: 16)),
-        actions: <Widget>[
-          FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
-              onPressed: () {
-                Navigator.pop(context);
-              }
-          )
-        ],
-      )
-  );
-
-  showDialog(context: context, builder: (BuildContext context) => popup);
 }
 
 

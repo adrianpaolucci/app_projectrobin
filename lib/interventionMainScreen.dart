@@ -11,9 +11,7 @@ import 'finalDisplay.dart';
 import 'allDrugData.dart';
 import 'seizuresNeurology.dart';
 import 'all_sizings.dart';
-import 'seizuresNeurologyData.dart';
-import 'intubationData.dart';
-import 'asthmaData.dart';
+import 'shock.dart';
 
 var boolCount = 0;
 
@@ -22,26 +20,33 @@ adrianDivider() {
   return divider;
 }
 
-final _scaffoldKey = GlobalKey<ScaffoldState>();
-
 var interventions = [
-                      "Anaphylaxis", "Resuscitation",
-                      "Management of Shock","Bleeding",
-                      "Intubation","Seizures/Neurology",
-                      "Asthma","Infection",
-                      "Antidotes", "Electrolye Abnormalities",
-                      ];
+  "Anaphylaxis and\nAntiarrhymics", "Shock",
+  "Bleeding","Intubation",
+  "Seizures/Neurology", "Asthma",
+  "Infection", "Croup",
+  "Analgesia", "Electrolye Abnormalities",
+  "Antidotes"
+];
+
+var pages = [
+  Anaphylaxis(),Shock(),
+  Anaphylaxis(),Intubation(),
+  SeizuresNeurology(),Asthma(),
+  Anaphylaxis(),Anaphylaxis(),
+  Anaphylaxis(),Anaphylaxis(),
+  Anaphylaxis(),
+];
 
 
-
-var pages = [Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis(),Intubation(),SeizuresNeurology(),Asthma(),Anaphylaxis(),Anaphylaxis(),Anaphylaxis()];
 var intColors = [
-                 Colors.red,Colors.red,
-                 Colors.red,Colors.red,
-                 Colors.indigo,Colors.green,
-                 Colors.indigoAccent,Colors.orangeAccent,
-                 Colors.orange,Colors.purple
-                ];
+  Colors.red,Colors.red,
+  Colors.red, Colors.indigo,
+  Colors.green, Colors.indigo,
+  Colors.orange, Colors.orange,
+  Colors.indigo, Colors.purple,
+  Colors.orange
+];
 
 BottomNavigationBadge badger = BottomNavigationBadge(
     backgroundColor: Colors.red,
@@ -71,6 +76,7 @@ class _DosingMainState extends State<InterventionMain> {
 
   @override
   Widget build(BuildContext context) {
+
 
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
