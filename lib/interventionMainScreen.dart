@@ -130,15 +130,20 @@ class _DosingMainState extends State<InterventionMain> {
           currentIndex: 1,
           items: items,
         ),
-      appBar: AppBar(
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          "PediDosED",
-          style: TextStyle(
-              color: Colors.black)
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(data.size.height/20),
+        child: AppBar(
+          centerTitle: true,
+          iconTheme: IconThemeData(
+            color: Colors.black
+          ),
+          title: Text(
+            "PediDosED",
+            style: TextStyle(
+                color: Colors.black)
+          ),
+          backgroundColor: Colors.white,
         ),
-        backgroundColor: Colors.white,
       ),
       floatingActionButton: Opacity(
           opacity: 0.7,
@@ -148,7 +153,7 @@ class _DosingMainState extends State<InterventionMain> {
                   fabColor: Color(0xffcccccc),
                   ringColor: Color(0xffe6e6e6),
                   fabOpenIcon: Icon(Icons.settings,color: Colors.black),
-                  animationDuration: Duration(milliseconds: 500),
+                  animationDuration: Duration(milliseconds: 250),
                   fabOpenColor: Color(0xffccccc),
                   children: [
                     IconButton(icon: Icon(Icons.settings, color: Colors.black87),iconSize: 1.2*genericIconSize(context)),

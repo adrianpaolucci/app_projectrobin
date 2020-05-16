@@ -152,5 +152,11 @@ class PlusMinus extends StatelessWidget {
 //equivalent padding of ~15 pixels on standard phone
 popupPadding(context) {
   final data = MediaQuery.of(context);
-  return data.size.height/15;
+  return data.size.width/15;
+}
+
+//equivalent padding of ~20 pixels on standard phone
+appBarPadding(context) {
+  final data = MediaQuery.of(context);
+  return data.size.width/20;
 }

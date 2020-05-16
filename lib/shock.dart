@@ -21,6 +21,8 @@ class Shock extends StatefulWidget {
   }
 }
 
+
+
 final seizureNeurologyIcons = [
   Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.syringe),
   Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette),
@@ -52,11 +54,19 @@ class ShockState extends State<Shock> {
 
     var clearAllIcon = BottomNavigationBarItem(
         icon: IconButton(
-            icon: Icon(Icons.cancel),
+            icon: Icon(
+                Icons.cancel,
+                size: genericIconSize(context)),
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        title: Text("Clear All",
+        style: TextStyle(
+          fontSize: size14Text(context)
+        )
+        )
+    );
+    
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -67,7 +77,11 @@ class ShockState extends State<Shock> {
               })
               );
             }),
-        title: Text("Confirm"));
+        title: Text("Confirm",
+            style: TextStyle(
+                fontSize: size14Text(context))
+    )
+    );
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
@@ -75,7 +89,7 @@ class ShockState extends State<Shock> {
     myItems(i, IconData icon, String heading, var colour) {
       return GestureDetector(
           child: Badge(
-            animationDuration: Duration(milliseconds: 500),
+            animationDuration: Duration(milliseconds: 250),
             badgeContent: InkWell(
                 child: Icon(CupertinoIcons.clear_thick, color: Colors.white),
                 onTap: () {
@@ -95,23 +109,21 @@ class ShockState extends State<Shock> {
                 }),
             elevation: 14.0,
             showBadge: allDrugBooleans[8][i],
-            padding: EdgeInsets.all(2),
             position: BadgePosition.topRight(top: 0, right: 0),
             child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                padding: EdgeInsets.all(6),
                 child: Material(
                   elevation: 14.0,
                   shadowColor: Color(0x802196F3),
-                  borderRadius: BorderRadius.circular(data.size.height/30.73),
+                  borderRadius: BorderRadius.circular(largeButtonRadius(context)),
                   child: AnimatedContainer(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(largeButtonRadius(context)),
                         color: allDrugBooleans[8][i] ? Color(0xffc7defa) : Colors.white
                     ),
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 250),
                     child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(2),
+
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -142,7 +154,6 @@ class ShockState extends State<Shock> {
                       ),
                     ),
                   ),
-                )
             ),
           ),
           onTap: () {

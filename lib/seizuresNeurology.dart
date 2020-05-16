@@ -75,7 +75,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
     myItems(i, IconData icon, String heading, var colour) {
       return GestureDetector(
           child: Badge(
-            animationDuration: Duration(milliseconds: 500),
+            animationDuration: Duration(milliseconds: 250),
             badgeContent: InkWell(
                 child: Icon(CupertinoIcons.clear_thick, color: Colors.white),
                 onTap: () {
@@ -108,7 +108,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                         borderRadius: BorderRadius.circular(largeButtonRadius(context)),
                         color: allDrugBooleans[0][i] ? Color(0xffc7defa) : Colors.white
                     ),
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 250),
                     child: Center(
                       child: Padding(
                         padding: EdgeInsets.all(2),

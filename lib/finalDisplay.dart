@@ -36,9 +36,12 @@ class FinalDisplayState extends State<FinalDisplay> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: data.size.width*0.3),
-            FaIcon(FontAwesomeIcons.bookMedical, size: genericIconSize(context),),
+            Padding(
+              padding: EdgeInsets.only(right: 50),
+              child: FaIcon(FontAwesomeIcons.bookMedical, size: genericIconSize(context)),
+            ),
           ],
         ),
         backgroundColor: Colors.white
@@ -54,6 +57,7 @@ class FinalDisplayState extends State<FinalDisplay> {
 
 void showFinalDropdowns(BuildContext context) {
   list = [];
+  displayBools = [false,false,false,false,false,false,false,false,false,false,false];
   var allFinalDisplays = [
     anaphylaxisFinal(context),shockFinal(context),
     intubationFinal(context),intubationFinal(context),
@@ -65,13 +69,16 @@ void showFinalDropdowns(BuildContext context) {
 
   list.add(
     Container(
-      padding: EdgeInsets.only(right: 20, top: 20),
+      padding: EdgeInsets.only(right: appBarPadding(context), top: appBarPadding(context)),
       child: Row(mainAxisAlignment: MainAxisAlignment.end,children: <Widget>[
-        FaIcon(FontAwesomeIcons.balanceScaleLeft, size: 25),
-        Text("   $weight kg",
+        Padding(
+          padding: EdgeInsets.only(right: smallButtonPadding(context)),
+          child: FaIcon(FontAwesomeIcons.balanceScaleLeft, size: genericIconSize(context)),
+        ),
+        Text("$weight kg",
           textDirection: TextDirection.ltr,
           style: TextStyle(
-              fontSize: size16Text(context),
+              fontSize: size20Text(context),
           fontWeight: FontWeight.bold),
         ),
       ]
@@ -83,10 +90,11 @@ void showFinalDropdowns(BuildContext context) {
     if (displayBools[i] == true) {
      // list.add(Divider(thickness: 1.0, color: Colors.black));
       list.add(ExpansionTile(
+        initiallyExpanded: true,
         title: Text("${interventions[i]}",
             style: TextStyle(
                 color: intColors[i],
-                fontSize: 18)),
+                fontSize: size18Text(context))),
         children: allFinalDisplays[i],
       ));
       //list.add(Divider(thickness: 1.0, color: Colors.black));
