@@ -16,10 +16,12 @@ Color getColor(i) {
   }
 }
 
+
 genericIconSize(context) {
   final data = MediaQuery.of(context);
   return data.size.width/15;
 }
+
 
 paddingHorizontalBetweenButtons(context) {
   final data = MediaQuery.of(context);
@@ -109,15 +111,26 @@ mediumButtonRadius(context) {
   return data.size.width/35;
 }
 
+
+//equivalent padding of ~5 pixels on standard phone
+smallButtonPadding(context) {
+  final data = MediaQuery.of(context);
+  return data.size.width/74;
+}
+
+//standard box decoration for final drug display
 lightBoxDec(context) {
   return BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: Color(0xffcccccc));
 }
 
+//equivalent radius of ~25 pixels on standard phone
 largeButtonRadius(context) {
   final data = MediaQuery.of(context);
   return data.size.width/15.5;
 }
 
+//relative size for click buttons to select drug
+//(the ones on the seizures and neurology screen)
 largeButtonHeight(context) {
   final data = MediaQuery.of(context);
   return data.size.height/6.2;
@@ -134,4 +147,10 @@ class PlusMinus extends StatelessWidget {
         color: Colors.white,
         child: image);
   }
+}
+
+//equivalent padding of ~15 pixels on standard phone
+popupPadding(context) {
+  final data = MediaQuery.of(context);
+  return data.size.height/15;
 }

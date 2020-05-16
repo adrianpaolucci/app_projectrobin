@@ -23,7 +23,8 @@ anaphylaxisAdrenalineIMDisplay(BuildContext context) {
   var currentData = anaphylaxisIMAdrenaline[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),child:
+      Column(children: <Widget>[
     Text("IM Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -39,7 +40,12 @@ anaphylaxisAdrenalineIMDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)
+      ]
+      )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -48,7 +54,10 @@ anaphylaxisFluidDisplay(BuildContext context) {
   var currentData = anaphylaxisIVFluidBolus[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding:
+  EdgeInsets.only(top: popupPadding(context)),
+    child: Column(
+    children: <Widget>[
     Text("IV Fluid Bolus", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -64,7 +73,7 @@ anaphylaxisFluidDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)]))]);
   return popup;
 }
 
@@ -73,7 +82,8 @@ anaphylaxisInitialAdrenalineDisplay(BuildContext context) {
   var currentData = anaphylaxisAdrenalineInfusion[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.only(top: popupPadding(context)),child: Column(
+  children: <Widget>[
     Text("Initial (ward) Adrenaline infusion", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -89,7 +99,7 @@ anaphylaxisInitialAdrenalineDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)]))]);
   return popup;
 }
 
@@ -98,7 +108,9 @@ resuscAdrenalineIVDisplay(BuildContext context) {
   var currentData = resuscAdrenalineIVcardiac[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Adrenaline IV (cardiac arrest)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -114,7 +126,7 @@ resuscAdrenalineIVDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)]))]);
   return popup;
 }
 
@@ -123,7 +135,9 @@ resuscDCshockDisplay(BuildContext context) {
   var currentData = resuscDC[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("DC Shock", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -140,7 +154,7 @@ resuscDCshockDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)]))]);
   return popup;
 }
 
@@ -149,7 +163,9 @@ resuscAtropineDisplay(BuildContext context) {
   var currentData = resuscAtropine[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Atropine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -169,7 +185,7 @@ resuscAtropineDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)]))]);
   return popup;
 }
 
@@ -178,7 +194,9 @@ resuscAmlodaroneDisplay(BuildContext context) {
   var currentData = resuscAmlodarone[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Amlodarone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -201,7 +219,7 @@ resuscAmlodaroneDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    SizedBox(height: 15)]))]);
   return popup;
 }
 
@@ -210,7 +228,9 @@ resuscLignocaineDisplay(BuildContext context) {
   var currentData = resuscLignocaine[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Lignocaine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -225,8 +245,12 @@ resuscLignocaineDisplay(BuildContext context) {
                 fontSize: size16Text(context), fontWeight: FontWeight.bold)),
           ]
       ),
-    ),
-    SizedBox(height: 15)]);
+    )
+  ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -237,7 +261,9 @@ resuscAdenosineDisplay(BuildContext context) {
   var currentData3 = resuscAdenosine3[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Adenosine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -294,6 +320,6 @@ resuscAdenosineDisplay(BuildContext context) {
     ),
     SizedBox(height: 15),
   ]
-  );
+  ))]);
   return popup;
 }

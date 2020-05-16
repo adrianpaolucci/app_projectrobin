@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'all_sizings.dart';
 
+//me
+//coding, app design
+
+//guy 1 - helpful
+//got all the data, calcuations
+
+//guy 2 - useless
+//does design, but is never implemented cos its shit
+
+
 
 final asthmaDrugs = ["Inhaled Salbutamol","Inhaled Ipratropium","IV Magnesium","IV Aminophyline","Adrenaline"];
 final asthmaCorticos = ["Methylprednisolone","Dexamethasone","Hydrocortisone","Prednisolone"];

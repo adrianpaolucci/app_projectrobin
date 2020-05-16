@@ -16,7 +16,9 @@ shockFluidDisplay(BuildContext context) {
   var currentData = shockFluid[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Fluid Bolus", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -34,7 +36,12 @@ shockFluidDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+
+  ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -43,7 +50,9 @@ shockAdrenalineDisplay(BuildContext context) {
   var currentData = shockAdrenaline[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -71,7 +80,12 @@ shockAdrenalineDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+
+  ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -80,7 +94,9 @@ shockNoradrenalineDisplay(BuildContext context) {
   var currentData = shockNoradrenaline[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Noradrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -108,7 +124,12 @@ shockNoradrenalineDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+
+  ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -117,7 +138,9 @@ shockDobutamineDisplay(BuildContext context) {
   var currentData = shockDobutamine[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Dobutamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -146,7 +169,12 @@ shockDobutamineDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+
+  ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -155,7 +183,9 @@ shockDopamineDisplay(BuildContext context) {
   var currentData = shockDopamine[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Dopamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -184,7 +214,12 @@ shockDopamineDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+
+  ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 
@@ -193,7 +228,9 @@ shockStressDoseDisplay(BuildContext context) {
   var currentData = shockFluid[weightIndex];
 
   var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
+    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
+  child: Column(
+  children: <Widget>[
     Text("Stress-Dose (Hydrocortisone)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
     Container(padding: EdgeInsets.all(10.0),
       decoration: lightBoxDec(context),
@@ -210,7 +247,11 @@ shockStressDoseDisplay(BuildContext context) {
           ]
       ),
     ),
-    SizedBox(height: 15)]);
+    ]
+  )
+    )
+  ]
+  );
   return popup;
 }
 

@@ -88,7 +88,7 @@ class Home2State extends State<Home2> {
       var childBox;
       if (index.isOdd) {
         childBox = Container(
-          margin: EdgeInsets.only(right: 5),
+          margin: EdgeInsets.only(right: smallButtonPadding(context)),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                 color: Colors.white),
@@ -112,7 +112,7 @@ class Home2State extends State<Home2> {
       }
       else {
         childBox = Container(
-          margin: EdgeInsets.only(left: 5),
+          margin: EdgeInsets.only(left: smallButtonPadding(context)),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                 color: Colors.white),
@@ -141,11 +141,16 @@ class Home2State extends State<Home2> {
       backgroundColor: Colors.white,
       title: Container(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-          SizedBox(width: data.size.width/5),
-          FaIcon(FontAwesomeIcons.calendarDay, color: Colors.black, size: genericIconSize(context)),
-          SizedBox(width: data.size.width/2.6),
-          FaIcon(FontAwesomeIcons.balanceScale, color: Colors.black, size: genericIconSize(context)),
+          Padding(
+            padding: EdgeInsets.only(left: data.size.width/5),
+            child: FaIcon(FontAwesomeIcons.calendarDay, color: Colors.black, size: genericIconSize(context)),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: data.size.width/5),
+            child: FaIcon(FontAwesomeIcons.balanceScale, color: Colors.black, size: genericIconSize(context)),
+          ),
         ],
         )
         ,)
