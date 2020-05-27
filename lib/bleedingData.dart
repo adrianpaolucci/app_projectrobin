@@ -70,30 +70,30 @@ redCellsDisplay(BuildContext context) {
 
 frozenPlasmaDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
-  var currentData = frozenPlasmaData[weightIndex];
+var currentData = frozenPlasmaData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Fresh Frozen Plasma", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("If PT/APTT > 1.5x normal"),
-            SizedBox(height: 5),
-            Text("${currentData[1]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
+var popup = Column(children: <Widget>[
+  SizedBox(height: 15),
+  Text("Fresh Frozen Plasma", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
+  Container(padding: EdgeInsets.all(10.0),
+    margin: EdgeInsets.all(5),
+    decoration: lightBoxDec(context),
+    width: 0.8 * data.size.width,
+    child:
+    Column(crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("If PT/APTT > 1.5x normal"),
+          SizedBox(height: 5),
+          Text("${currentData[1]} mL",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: size16Text(context), fontWeight: FontWeight.bold))
+        ]
     ),
-    SizedBox(height: 15)]);
-  return popup;
+  ),
+  SizedBox(height: 15)]);
+return popup;
 }
 
 cryoprecipitateDisplay(BuildContext context) {

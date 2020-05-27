@@ -35,6 +35,9 @@ final allDrugs = [
 
   //10 infection
   ["Aciclovir","Artesunate","Oseltamivir","Cefotaxime","Ceftriaxone","Azithromycin","Piperacillin/Tazobactum"],
+
+  //11 croup
+  ["Nebulised Adrenaline","Dexamethasone","Prednisolone"],
 ];
 
 final allDrugBooleans = [
@@ -49,4 +52,5 @@ final allDrugBooleans = [
   [false,false,false,false,false,false],
   [false,false,false,false,false],
   [false,false,false,false,false,false,false],
+  [false,false,false],
 ];

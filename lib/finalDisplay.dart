@@ -1,3 +1,4 @@
+import 'package:app_search_bar/croupData.dart';
 import 'package:app_search_bar/infectionData.dart';
 import 'package:app_search_bar/shockData.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ void showFinalDropdowns(BuildContext context) {
     anaphylaxisFinal(context),shockFinal(context),
     bleedingFinal(context),intubationFinal(context),
     sAndNFinal(context), asthmaFinal(context),
-    infectionFinal(context),intubationFinal(context),
+    infectionFinal(context),croupFinal(context),
     intubationFinal(context),intubationFinal(context),
     intubationFinal(context)
   ];
@@ -258,6 +259,25 @@ infectionFinal(BuildContext context) {
   }
   return infectionList;
 }
+
+croupFinal(BuildContext context) {
+  var bools = allDrugBooleans[11];
+  final data = MediaQuery.of(context);
+  var widgets = [croupNebAdrenalineDisplay(context),croupDexamethDisplay(context),croupPrednisoloneDisplay(context)];
+  List<Widget> croupList = [];
+  for (var i = 0; i < bools.length; i++) {
+    if (bools[i] == true) {
+      displayBools[7] = true;
+      croupList.add(widgets[i]);
+      croupList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (croupList.isNotEmpty) {
+    croupList.removeLast();
+  }
+  return croupList;
+}
+
 
 
 
