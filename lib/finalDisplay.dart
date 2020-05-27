@@ -10,6 +10,7 @@ import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'anaphylaxisData.dart';
 import 'all_sizings.dart';
+import 'bleedingData.dart';
 
 
 class FinalDisplay extends StatefulWidget {
@@ -60,7 +61,7 @@ void showFinalDropdowns(BuildContext context) {
   displayBools = [false,false,false,false,false,false,false,false,false,false,false];
   var allFinalDisplays = [
     anaphylaxisFinal(context),shockFinal(context),
-    intubationFinal(context),intubationFinal(context),
+    bleedingFinal(context),intubationFinal(context),
     sAndNFinal(context), asthmaFinal(context),
     intubationFinal(context),intubationFinal(context),
     intubationFinal(context),intubationFinal(context),
@@ -148,6 +149,25 @@ shockFinal(BuildContext context) {
     shockList.removeLast();
   }
   return shockList;
+}
+
+bleedingFinal(BuildContext context) {
+  var bools = allDrugBooleans[9];
+  final data = MediaQuery.of(context);
+  var widgets = [tranexamicDisplay(context),redCellsDisplay(context),frozenPlasmaDisplay(context),cryoprecipitateDisplay(context),plateletsDisplay(context)];
+  List<Widget> bleedingList = [];
+
+  for (var i = 0; i < bools.length; i++) {
+    if (bools[i] == true) {
+      displayBools[2] = true;
+      bleedingList.add(widgets[i]);
+      bleedingList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (bleedingList.isNotEmpty) {
+    bleedingList.removeLast();
+  }
+  return bleedingList;
 }
 
 intubationFinal(BuildContext context) {

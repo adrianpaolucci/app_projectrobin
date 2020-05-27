@@ -12,6 +12,7 @@ import 'allDrugData.dart';
 import 'seizuresNeurology.dart';
 import 'all_sizings.dart';
 import 'shock.dart';
+import 'bleeding.dart';
 
 var boolCount = 0;
 
@@ -31,7 +32,7 @@ var interventions = [
 
 var pages = [
   Anaphylaxis(),Shock(),
-  Anaphylaxis(),Intubation(),
+  Bleeding(),Intubation(),
   SeizuresNeurology(),Asthma(),
   Anaphylaxis(),Anaphylaxis(),
   Anaphylaxis(),Anaphylaxis(),

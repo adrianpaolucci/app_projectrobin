@@ -29,6 +29,9 @@ final allDrugs = [
 
   //8 shock
   ["Fluid Bolus","Adrenaline","Noradrenaline","Dobutamine","Dopamine","Stress-Dose (Hydrocortisone)"],
+
+  //9 bleeding
+  ["Tranexamic Acid","Packed Red Blood Cells","Fresh Frozen Plasma","Cryoprecipitate","Platelets"],
 ];
 
 final allDrugBooleans = [
@@ -41,4 +44,5 @@ final allDrugBooleans = [
   [false,false,false],
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
+  [false,false,false,false,false],
 ];

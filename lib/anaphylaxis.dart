@@ -89,7 +89,6 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                             if (boolCount == 0) {
                               clearAll();
                             }
-                            print(allDrugBooleans[6][i]);
                         }),
                   ],
                   )
