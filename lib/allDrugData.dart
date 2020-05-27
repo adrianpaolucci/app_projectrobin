@@ -32,6 +32,9 @@ final allDrugs = [
 
   //9 bleeding
   ["Tranexamic Acid","Packed Red Blood Cells","Fresh Frozen Plasma","Cryoprecipitate","Platelets"],
+
+  //10 infection
+  ["Aciclovir","Artesunate","Oseltamivir","Cefotaxime","Ceftriaxone","Azithromycin","Piperacillin/Tazobactum"],
 ];
 
 final allDrugBooleans = [
@@ -45,4 +48,5 @@ final allDrugBooleans = [
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
   [false,false,false,false,false],
+  [false,false,false,false,false,false,false],
 ];

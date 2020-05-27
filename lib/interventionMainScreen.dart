@@ -13,6 +13,7 @@ import 'seizuresNeurology.dart';
 import 'all_sizings.dart';
 import 'shock.dart';
 import 'bleeding.dart';
+import 'infection.dart';
 
 var boolCount = 0;
 
@@ -34,7 +35,7 @@ var pages = [
   Anaphylaxis(),Shock(),
   Bleeding(),Intubation(),
   SeizuresNeurology(),Asthma(),
-  Anaphylaxis(),Anaphylaxis(),
+  Infection(),Anaphylaxis(),
   Anaphylaxis(),Anaphylaxis(),
   Anaphylaxis(),
 ];

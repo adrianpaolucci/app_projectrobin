@@ -1,3 +1,4 @@
+import 'package:app_search_bar/infectionData.dart';
 import 'package:app_search_bar/shockData.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/homeScreen.dart';
@@ -63,7 +64,7 @@ void showFinalDropdowns(BuildContext context) {
     anaphylaxisFinal(context),shockFinal(context),
     bleedingFinal(context),intubationFinal(context),
     sAndNFinal(context), asthmaFinal(context),
-    intubationFinal(context),intubationFinal(context),
+    infectionFinal(context),intubationFinal(context),
     intubationFinal(context),intubationFinal(context),
     intubationFinal(context)
   ];
@@ -240,8 +241,23 @@ sAndNFinal(BuildContext context) {
   return sAndNList;
 }
 
-finalSelectionDisplay() {
-
+infectionFinal(BuildContext context) {
+  var bools = allDrugBooleans[10];
+  final data = MediaQuery.of(context);
+  var widgets = [aciclovirDisplay(context),artesunateDisplay(context),oseltamivirDisplay(context),cefotaximeDisplay(context),ceftriaxoneDisplay(context),azithromycinDisplay(context),pipAndTazobDisplay(context)];
+  List<Widget> infectionList = [];
+  for (var i = 0; i < bools.length; i++) {
+    if (bools[i] == true) {
+      displayBools[6] = true;
+      infectionList.add(widgets[i]);
+      infectionList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (infectionList.isNotEmpty) {
+    infectionList.removeLast();
+  }
+  return infectionList;
 }
+
 
 
