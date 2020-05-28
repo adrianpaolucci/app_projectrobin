@@ -1,4 +1,5 @@
 import 'package:app_search_bar/anaphylaxis.dart';
+import 'package:app_search_bar/electrolyteAbnormalities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/intubation.dart';
@@ -15,6 +16,7 @@ import 'shock.dart';
 import 'bleeding.dart';
 import 'infection.dart';
 import 'croup.dart';
+import 'analgesia.dart';
 
 var boolCount = 0;
 
@@ -37,7 +39,7 @@ var pages = [
   Bleeding(),Intubation(),
   SeizuresNeurology(),Asthma(),
   Infection(),Croup(),
-  Anaphylaxis(),Anaphylaxis(),
+  Analgesia(),ElectrolyteAbnormalities(),
   Anaphylaxis(),
 ];
 

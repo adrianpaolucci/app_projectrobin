@@ -38,6 +38,12 @@ final allDrugs = [
 
   //11 croup
   ["Nebulised Adrenaline","Dexamethasone","Prednisolone"],
+
+  //12 analgesia
+  ["Paracetamol Acetaminophen","Morphine"],
+
+  //13 electrolyte abnormalities
+  ["Calcium chloride","Calcium gluconate","Salbutamol","Insulin and glucose","Sodium bicarbonate","Hyponatraemia with seizures","Sympometic Hypocalcaemia","Hypomagnasaemia","Glucose","Glucagon","Hypokalaemia with arrhythmia"],
 ];
 
 final allDrugBooleans = [
@@ -53,4 +59,6 @@ final allDrugBooleans = [
   [false,false,false,false,false],
   [false,false,false,false,false,false,false],
   [false,false,false],
+  [false,false],
+  [false,false,false,false,false,false,false,false,false,false,false],
 ];

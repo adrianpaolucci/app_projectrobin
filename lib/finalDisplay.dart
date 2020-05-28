@@ -1,4 +1,6 @@
+import 'package:app_search_bar/analgesiaData.dart';
 import 'package:app_search_bar/croupData.dart';
+import 'package:app_search_bar/electrolyteAbnormalitiesData.dart';
 import 'package:app_search_bar/infectionData.dart';
 import 'package:app_search_bar/shockData.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +68,7 @@ void showFinalDropdowns(BuildContext context) {
     bleedingFinal(context),intubationFinal(context),
     sAndNFinal(context), asthmaFinal(context),
     infectionFinal(context),croupFinal(context),
-    intubationFinal(context),intubationFinal(context),
+    analgesiaFinal(context),electrolyteAbnormalitiesFinal(context),
     intubationFinal(context)
   ];
 
@@ -276,6 +278,50 @@ croupFinal(BuildContext context) {
     croupList.removeLast();
   }
   return croupList;
+}
+
+analgesiaFinal(BuildContext context) {
+  var bools = allDrugBooleans[12];
+  final data = MediaQuery.of(context);
+  var widgets = [analgesiaParacetDisplay(context),analgesiaMorphineDisplay(context)];
+  List<Widget> analgesiaList = [];
+  for (var i = 0; i < bools.length; i++) {
+    if (bools[i] == true) {
+      displayBools[8] = true;
+      analgesiaList.add(widgets[i]);
+      analgesiaList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (analgesiaList.isNotEmpty) {
+    analgesiaList.removeLast();
+  }
+  return analgesiaList;
+}
+
+electrolyteAbnormalitiesFinal(BuildContext context) {
+  var bools = allDrugBooleans[13];
+  final data = MediaQuery.of(context);
+  var widgets =
+  [
+    hyperkalCalcChlorideDisplay(context),hyperkalCalcGluDisplay(context),
+    hyperkalSalbutDisplay(context),hyperkalInsGluDisplay(context),
+    hyperkalSodiumBicarbDisplay(context),hyponatraemiaDisplay(context),
+    hypocalcDisplay(context),hypomagDisplay(context),
+    hypomglyGlucoseDisplay(context),hypomglyGlucagonDisplay(context),
+    hypokalArrDisplay(context)
+  ];
+  List<Widget> electrolyteList = [];
+  for (var i = 0; i < bools.length; i++) {
+    if (bools[i] == true) {
+      displayBools[9] = true;
+      electrolyteList.add(widgets[i]);
+      electrolyteList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (electrolyteList.isNotEmpty) {
+    electrolyteList.removeLast();
+  }
+  return electrolyteList;
 }
 
 
