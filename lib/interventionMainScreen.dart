@@ -1,4 +1,5 @@
 import 'package:app_search_bar/anaphylaxis.dart';
+import 'package:app_search_bar/drugSearch.dart';
 import 'package:app_search_bar/electrolyteAbnormalities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ import 'bleeding.dart';
 import 'infection.dart';
 import 'croup.dart';
 import 'analgesia.dart';
+import 'drugSearch.dart';
 
 var boolCount = 0;
 
@@ -209,6 +211,37 @@ class _DosingMainState extends State<InterventionMain> {
                             fontSize: size14Text(context)
                         )
                     )
+                )
+              ]),
+            ),
+            SliverFixedExtentList(
+              itemExtent: 50,
+              delegate: SliverChildListDelegate([
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          showSearch(
+                            context: context,
+                            delegate: DrugSearch()
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 20,
+                              width: data.size.width*0.7,
+                              decoration: BoxDecoration(
+                                color: Color(0xffa6a6a6),
+                                borderRadius: BorderRadius.circular(4)
+                              ),
+                            ),
+                            Icon(Icons.search)
+                          ],
+                        ),
+                      )
+                ]
                 )
               ]),
             ),

@@ -7,7 +7,7 @@ import 'all_sizings.dart';
 import 'finalDisplay.dart';
 
 class Bleeding extends StatefulWidget {
-
+//this code just creates a stateful widget (a page which isn't static)
   @override
   BleedingState createState() => BleedingState();
 }
@@ -15,7 +15,12 @@ class Bleeding extends StatefulWidget {
 class BleedingState extends State<Bleeding> {
   @override
   Widget build(BuildContext context) {
+
+
     final data = MediaQuery.of(context);
+
+    //function that changes all drugs' booleans to 'false' and
+    //removes the badge on the navigation bar
 
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
@@ -29,6 +34,8 @@ class BleedingState extends State<Bleeding> {
       boolCount = 0;
     }
 
+    //this defines the clear icon that's located on the navigation bar with functionality
+
     var clearAllIcon = BottomNavigationBarItem(
         icon: IconButton(
             icon: Icon(Icons.cancel),
@@ -36,6 +43,8 @@ class BleedingState extends State<Bleeding> {
               clearAll();
             }),
         title: Text("Clear All"));
+
+    //this defines the confirm button on the nav bar with functionality
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -47,6 +56,9 @@ class BleedingState extends State<Bleeding> {
               );
             }),
         title: Text("Confirm"));
+
+    //items is how the nav bar icons are defined
+    //im just assigning the values in the variable to the nav bar icons I've defined above
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
