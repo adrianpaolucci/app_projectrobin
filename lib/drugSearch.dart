@@ -45,7 +45,7 @@ class DrugSearch extends SearchDelegate<String> {
 
     final suggestionList = query.isEmpty
         ? ["Ketamine", "Propofol"]
-        : allDrugSearch.where((p) => p.startsWith(query)).toList();
+        : allDrugSearch.where((p) => p.toLowerCase().startsWith(query.toLowerCase())).toList();
 
     return ListView.builder(
       itemBuilder: (context,index)
