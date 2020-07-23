@@ -200,8 +200,38 @@ class _DosingMainState extends State<InterventionMain> {
                     ]
                     )
                 ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          showSearch(
+                              context: context,
+                              delegate: DrugSearch()
+                          );
+                        },
+                        child:
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xffd9d9d9),
+                            borderRadius: BorderRadius.circular(mediumButtonRadius(context))),
+                          child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                              child: Icon(Icons.search)),
+                            Container(
+                              height: 4*data.size.height/70,
+                              width: data.size.width*0.7,
+                            )
+                          ],
+                        ),
+                      )
+                      )
+                    ]
+                ),
                 Container(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.center,
                     child: Text("Select an Intervention Below",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -214,39 +244,8 @@ class _DosingMainState extends State<InterventionMain> {
                 )
               ]),
             ),
-            SliverFixedExtentList(
-              itemExtent: 50,
-              delegate: SliverChildListDelegate([
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          showSearch(
-                            context: context,
-                            delegate: DrugSearch()
-                          );
-                        },
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 20,
-                              width: data.size.width*0.7,
-                              decoration: BoxDecoration(
-                                color: Color(0xffa6a6a6),
-                                borderRadius: BorderRadius.circular(4)
-                              ),
-                            ),
-                            Icon(Icons.search)
-                          ],
-                        ),
-                      )
-                ]
-                )
-              ]),
-            ),
             SliverPadding(
-                padding: EdgeInsets.only(top: paddingVerticalBetweenButtons(context)),
+                padding: EdgeInsets.only(bottom: paddingVerticalBetweenButtons(context)),
                 sliver:
                 SliverGrid(
                   delegate: SliverChildBuilderDelegate(
