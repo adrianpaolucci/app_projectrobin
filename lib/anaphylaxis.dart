@@ -189,7 +189,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                 Divider(thickness: 1.0),
                 Theme(
                   data: ThemeData(accentColor: specificColor),
-                  child: ExpansionTile(
+                  child: ExpansionTile(initiallyExpanded: true,
                     title: Text("Anaphylaxis"),
                     children: <Widget>[GestureDetector(child: Text("Select Drug from below",
                         style: TextStyle(
@@ -205,6 +205,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                 Theme(
                   data: ThemeData(accentColor: specificColor),
                   child: ExpansionTile(
+                      initiallyExpanded: true,
                       title: Text("Resuscitation"),
                       children: <Widget> [
                         GestureDetector(child: Text("Select Drug from below",

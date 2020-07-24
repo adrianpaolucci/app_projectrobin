@@ -200,7 +200,7 @@ class _DosingMainState extends State<InterventionMain> {
                     ]
                     )
                 ),
-                Row(
+                /*Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
@@ -229,7 +229,7 @@ class _DosingMainState extends State<InterventionMain> {
                       )
                       )
                     ]
-                ),
+                ),*/
                 Container(
                     alignment: Alignment.center,
                     child: Text("Select an Intervention Below",

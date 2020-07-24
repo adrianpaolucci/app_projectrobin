@@ -194,7 +194,7 @@ class AsthmaState extends State<Asthma> {
                   Column(children: <Widget>[
                     SizedBox(height: 10),
                     Divider(thickness: 1.0),
-                    ExpansionTile(
+                    ExpansionTile(initiallyExpanded: true,
                       title: Text("General Drugs"),
                       children: <Widget>[GestureDetector(child: Text("Select Drug from below",
                           style: TextStyle(color: Colors.indigoAccent))),
@@ -204,7 +204,7 @@ class AsthmaState extends State<Asthma> {
                     Divider(thickness: 1.0),
                     PlusMinus(),
                     Divider(thickness: 1.0),
-                    ExpansionTile(
+                    ExpansionTile(initiallyExpanded: true,
                         title: Text("Corticosteroids"),
                         children: <Widget> [
                           GestureDetector(child: Text("Select Drug from below",

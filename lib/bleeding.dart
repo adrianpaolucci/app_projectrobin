@@ -143,7 +143,7 @@ class BleedingState extends State<Bleeding> {
                   Divider(thickness: 1.0),
                   Theme(
                     data: ThemeData(accentColor: specificColor),
-                    child: ExpansionTile(
+                    child: ExpansionTile(initiallyExpanded: true,
                       title: Text("General Drugs"),
                       children: <Widget>[GestureDetector(child: Text("Select Drug from below",
                           style: TextStyle(
