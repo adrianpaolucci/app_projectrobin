@@ -139,6 +139,7 @@ class Home2State extends State<Home2> {
     return Scaffold(
     appBar: AppBar(centerTitle: true,
       backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,
       title: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -137,21 +137,36 @@ class _DosingMainState extends State<InterventionMain> {
           currentIndex: 1,
           items: items,
         ),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(data.size.height/20),
-        child: AppBar(
+        appBar: AppBar(
           centerTitle: true,
-          iconTheme: IconThemeData(
-            color: Colors.black
-          ),
-          title: Text(
-            "PediDosED",
-            style: TextStyle(
-                color: Colors.black)
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Padding(
+            padding: EdgeInsets.only(left: 70),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+              Text(
+               "PediDosED",
+               style: TextStyle(color: Colors.black),
+              ),
+              IconButton(
+                icon: FaIcon(
+                FontAwesomeIcons.home
+              ),
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Home2();
+                  }
+                  )
+                  );
+                },
+              )
+            ]
+            ),
           ),
           backgroundColor: Colors.white,
         ),
-      ),
       floatingActionButton: Opacity(
           opacity: 0.7,
               child:
@@ -200,7 +215,7 @@ class _DosingMainState extends State<InterventionMain> {
                     ]
                     )
                 ),
-                /*Row(
+                Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
@@ -229,7 +244,7 @@ class _DosingMainState extends State<InterventionMain> {
                       )
                       )
                     ]
-                ),*/
+                ),
                 Container(
                     alignment: Alignment.center,
                     child: Text("Select an Intervention Below",
