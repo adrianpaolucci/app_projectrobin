@@ -219,29 +219,42 @@ class _DosingMainState extends State<InterventionMain> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () {
-                          showSearch(
-                              context: context,
-                              delegate: DrugSearch()
-                          );
-                        },
-                        child:
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xffd9d9d9),
-                            borderRadius: BorderRadius.circular(mediumButtonRadius(context))),
-                          child: Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                              child: Icon(Icons.search)),
-                            Container(
-                              height: 4*data.size.height/70,
-                              width: data.size.width*0.7,
-                            )
-                          ],
-                        ),
-                      )
+                          onTap: () {
+                            showSearch(
+                                context: context,
+                                delegate: DrugSearch()
+                            );
+                          },
+                          child:
+                          Material(
+                              elevation: buttonShadowElev,
+                              shadowColor: shadowColour,
+                              borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+                              color: Colors.white,
+                              child:
+                              Row(
+                                  children: [
+                                    Material(
+                                        color: Colors.white,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                                          child: Icon(Icons.search),
+                                        )),
+                                    Material(
+                                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+                                      child: Container(
+                                        alignment: Alignment.centerLeft,
+                                        height: 4*data.size.height/70,
+                                        width: data.size.width*0.6,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                                          child: Text("Search Drugs..."),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                          )
                       )
                     ]
                 ),
@@ -266,25 +279,25 @@ class _DosingMainState extends State<InterventionMain> {
                   delegate: SliverChildBuilderDelegate(
                         (context, index) {
                           return Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: paddingHorizontalBetweenButtons(context),
-                                  vertical: paddingVerticalBetweenButtons(context)),
-                              child: Material(
-                                  color: Colors.white,
-                                  elevation: buttonShadowElev,
-                                  shadowColor: shadowColour,
-                                  borderRadius: BorderRadius.circular(lrgBorderRad),
-                                  child:
-                                  InkWell(
-                                      onTap: () {
-                                        int = interventions[index];
-                                        specificColor = intColors[index];
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                          return pages[index];
-                                        }
-                                        )
-                                        );
-                                      },
+                            padding: EdgeInsets.symmetric(
+                                horizontal: paddingHorizontalBetweenButtons(context),
+                                vertical: paddingVerticalBetweenButtons(context)),
+                            child: Material(
+                              color: Colors.white,
+                              elevation: buttonShadowElev,
+                              shadowColor: shadowColour,
+                              borderRadius: BorderRadius.circular(lrgBorderRad),
+                              child:
+                              InkWell(
+                                  onTap: () {
+                                    int = interventions[index];
+                                    specificColor = intColors[index];
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return pages[index];
+                                    }
+                                    )
+                                    );
+                                  },
                                   child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
