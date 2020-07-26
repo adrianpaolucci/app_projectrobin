@@ -60,12 +60,19 @@ class DrugSearch extends SearchDelegate<String> {
             leading: Icon(MyFlutterApp.syringe),
             title: RichText(
               text: TextSpan(
-                text: suggestionList[index].substring(0,query.length),
+                text: suggestionList[index].substring(0,suggestionList[index].toLowerCase().indexOf("${query.toLowerCase()}")),
                 style: TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
+                  color: Colors.grey),
                 children: [
                   TextSpan(
-                    text: suggestionList[index].substring(query.length),
+                      text: suggestionList[index].substring(suggestionList[index].toLowerCase().indexOf("${query.toLowerCase()}"),suggestionList[index].toLowerCase().indexOf("${query.toLowerCase()}")+ query.length),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                      )
+                  ),
+                  TextSpan(
+                    text: suggestionList[index].substring(suggestionList[index].toLowerCase().indexOf("${query.toLowerCase()}") + query.length),
                     style: TextStyle(color: Colors.grey))
               ]
               )
