@@ -36,16 +36,20 @@ class DrugSearch extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
 
+    List searchInterventions = ["Seizures and Neurology","Asthma","Asthma","Intubation","Intubation","Electrolyte Abnormalities","Anaphylaxis and Arrithmyia","Resuscitation","Shock","Bleeding","Infection","Croup","Analgesia","Electrolyte Abnormalities"];
+
     List allDrugSearch = [];
     for (var i = 0; i < allDrugs.length; i++) {
       for (var j = 0; j < allDrugs[i].length; j++) {
-        allDrugSearch.add(allDrugs[i][j]);
+        allDrugSearch.add("${allDrugs[i][j]} - ${searchInterventions[i]}");
       }
     }
 
+    allDrugSearch.removeAt(5);
+
     final suggestionList = query.isEmpty
         ? ["Ketamine", "Propofol"]
-        : allDrugSearch.where((p) => p.toLowerCase().startsWith(query.toLowerCase())).toList();
+        : allDrugSearch.where((p) => p.toLowerCase().contains(query.toLowerCase())).toList();
 
     return ListView.builder(
       itemBuilder: (context,index)

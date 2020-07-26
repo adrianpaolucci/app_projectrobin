@@ -7,7 +7,7 @@ final allDrugs = [
   ["Midazolam (IV)","Midazolam (IN/B)","Diazepam (IV)","Lorazepam (IV)","Fosphenytoin","Phenytoin","Phenobarbitone","Levetiracetam","Valproate","Pyridoxine","Midazolam Infusion","Hypertonic Saline","Mannitol"],
 
   //1 asthma general drugs
-  ["Inhaled Salbutamol","Inhaled Ipratropium","IV Magnesium","IV Aminophyline","Adrenaline - Asthma"],
+  ["Inhaled Salbutamol","Inhaled Ipratropium","IV Magnesium","IV Aminophyline","Adrenaline"],
 
   //2 asthma corticos
   ["Methylprednisolone","Dexamethasone","Hydrocortisone","Prednisolone"],
@@ -25,10 +25,10 @@ final allDrugs = [
   ["IM Adrenaline","IV Fluid Bolus","Initial (ward) Adrenaline Infusion"],
 
   //7 resuscitation -- on anaphylaxis page
-  ["Adrenaline IV - Resuscitation (cardiac arrest)","DC Shock","Atropine","Amlodarone","Lignocaine","Adenosine (3 stages)"],
+  ["Adrenaline IV (cardiac arrest)","DC Shock","Atropine","Amlodarone","Lignocaine","Adenosine (3 stages)"],
 
   //8 shock
-  ["Fluid Bolus","Adrenaline - Shock","Noradrenaline","Dobutamine","Dopamine","Stress-Dose (Hydrocortisone)"],
+  ["Fluid Bolus","Adrenaline","Noradrenaline","Dobutamine","Dopamine","Stress-Dose (Hydrocortisone)"],
 
   //9 bleeding
   ["Tranexamic Acid","Packed Red Blood Cells","Fresh Frozen Plasma","Cryoprecipitate","Platelets"],
