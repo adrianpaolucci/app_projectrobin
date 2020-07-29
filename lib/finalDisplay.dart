@@ -15,6 +15,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'anaphylaxisData.dart';
 import 'all_sizings.dart';
 import 'bleedingData.dart';
+import 'drugSearch.dart';
 
 
 class FinalDisplay extends StatefulWidget {
@@ -61,6 +62,8 @@ class FinalDisplayState extends State<FinalDisplay> {
 }
 
 void showFinalDropdowns(BuildContext context) {
+  final data = MediaQuery.of(context);
+
   list = [];
   displayBools = [false,false,false,false,false,false,false,false,false,false,false];
   var allFinalDisplays = [
@@ -89,7 +92,51 @@ void showFinalDropdowns(BuildContext context) {
       ]
       )
   ));
-  list.add(SizedBox(height:10));
+  list.add(Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: 0.1*data.size.width,
+      vertical: 0.02* data.size.height
+    ),
+    child: InkWell(
+        onTap: () {
+          showSearch(
+              context: context,
+              delegate: DrugSearch()
+          );
+        },
+        child:
+        Material(
+          elevation: buttonShadowElev,
+          shadowColor: shadowColour,
+          borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+          color: Colors.white,
+          child:
+          Row(
+            children: [
+              Material(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                    child: Icon(Icons.search),
+                  )
+              ),
+              Material(
+                borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  height: 4*data.size.height/70,
+                  width: data.size.width*0.6,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                    child: Text("Search Drugs..."),
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
+    ),
+  ));
 
   for (var i = 0; i < interventions.length; i++) {
     if (displayBools[i] == true) {

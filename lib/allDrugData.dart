@@ -19,7 +19,7 @@ final allDrugs = [
   ["Suxamethonium","Rocuronium","Vecuronium","Atracurium"],
 
   //5 Electrolyte Abnormalities
-  ["Hyperkalaemia - Calcium Chloride","Hyperkalaemia - calcium gluconate","Hyperkalaemia - salbutamol","Hyperkalaemia - insulin & glucose","Hyperkalaemia - sodium bicarbonate","Hyponatraemia with seizures","Symptomatic hypocalcaemia","Hypomagnasaemia","Hypoglycaemia - glucose","Hypoglycaemia - glucagon","Hypokalaemia with arrhythmias"],
+  [],
 
   //6 Anaphylaxis and Arrithmyia
   ["IM Adrenaline","IV Fluid Bolus","Initial (ward) Adrenaline Infusion"],
@@ -52,7 +52,7 @@ final allDrugBooleans = [
   [false,false,false,false],
   [false,false,false,false,false,false],
   [false,false,false,false],
-  [false,false,false,false,false,false,false,false,false,false,false,false,false],
+  [],
   [false,false,false],
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],

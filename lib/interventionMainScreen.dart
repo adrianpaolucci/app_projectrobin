@@ -139,7 +139,16 @@ class _DosingMainState extends State<InterventionMain> {
         ),
         appBar: AppBar(
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.black),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Home2();
+              }
+              )
+              );
+            },
+          ),
           title: Padding(
             padding: EdgeInsets.only(left: 70),
             child: Row(
@@ -227,33 +236,34 @@ class _DosingMainState extends State<InterventionMain> {
                           },
                           child:
                           Material(
-                              elevation: buttonShadowElev,
-                              shadowColor: shadowColour,
-                              borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
-                              color: Colors.white,
-                              child:
-                              Row(
-                                  children: [
-                                    Material(
-                                        color: Colors.white,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                                          child: Icon(Icons.search),
-                                        )),
-                                    Material(
-                                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        height: 4*data.size.height/70,
-                                        width: data.size.width*0.6,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                                          child: Text("Search Drugs..."),
-                                        ),
-                                      ),
+                            elevation: buttonShadowElev,
+                            shadowColor: shadowColour,
+                            borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+                            color: Colors.white,
+                            child:
+                            Row(
+                              children: [
+                                Material(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                                      child: Icon(Icons.search),
                                     )
-                                  ],
                                 ),
+                                Material(
+                                  borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 4*data.size.height/70,
+                                    width: data.size.width*0.6,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                                      child: Text("Search Drugs..."),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           )
                       )
                     ]

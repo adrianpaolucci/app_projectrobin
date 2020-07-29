@@ -197,7 +197,16 @@ class ShockState extends State<Shock> {
         ),
         appBar: AppBar(
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.black),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return InterventionMain();
+              }
+              )
+              );
+            },
+          ),
           title: Text(
             "PediDosED",
             style: TextStyle(color: Colors.black),),
