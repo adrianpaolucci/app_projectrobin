@@ -79,7 +79,20 @@ sAndNDiazepamDisplay(BuildContext context) {
 
   var popup = Column(children: <Widget>[
     SizedBox(height: 15),
-    Text("Diazepam (IV)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Diazepam (IV)",
+            style: TextStyle(fontSize: size18Text(context),
+                color: Color(0xff000000),
+                fontWeight: FontWeight.bold)
+        ),
+        IconButton(
+          icon: Icon(Icons.cancel),
+          onPressed: () {},
+        )
+      ],
+    ),
     Container(padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(5),
       decoration: lightBoxDec(context),

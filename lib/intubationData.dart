@@ -306,6 +306,38 @@ atracuriumDisplay(BuildContext context) {
   return popup;
 }
 
+fentanylInfusionDisplay(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var currentData = fentanylInfusionData[weightIndex];
+
+  var popup = Column(children: <Widget>[
+    SizedBox(height: 15),
+    Text("Fentanyl (Infusion)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(5),
+      decoration: lightBoxDec(context),
+      width: 0.8 * data.size.width,
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("${currentData[1]} mg in ${currentData[2]} mL"),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
+              child: Text("Start at ${currentData[3]} - ${currentData[4]} mg/hr",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size16Text(context))
+              ),
+            ),
+            Text("${currentData[5]} (lower) µg/kg/hr - ${currentData[6]} (upper) µg/kg/hr")
+          ]
+      ),
+    ),
+    SizedBox(height: 15)]);
+  return popup;
+}
+
 intubationEquipmentInfo(BuildContext context) {
   final data = MediaQuery.of(context);
 

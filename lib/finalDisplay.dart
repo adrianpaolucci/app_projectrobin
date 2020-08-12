@@ -225,7 +225,7 @@ intubationFinal(BuildContext context) {
   var inductionBoolean = allDrugBooleans[3];
   var paralyticBoolean = allDrugBooleans[4];
   final data = MediaQuery.of(context);
-  var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context)];
+  var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context),fentanylInfusionDisplay(context)];
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
   List<Widget>intubationList = intubationEquipmentInfo(context);
   for (var i=0; i < inductionAgents.length; i++) {
