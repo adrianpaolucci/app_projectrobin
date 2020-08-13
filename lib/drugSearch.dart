@@ -1,8 +1,10 @@
 import 'package:app_search_bar/finalDisplay.dart';
 import 'package:app_search_bar/icons/my_flutter_app_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'allDrugData.dart';
 import 'interventionMainScreen.dart';
+import 'all_sizings.dart';
 
 
 class DrugSearch extends SearchDelegate<String> {
@@ -27,10 +29,7 @@ class DrugSearch extends SearchDelegate<String> {
             progress: transitionAnimation),
       onPressed: () {
             close(context, null);
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return InterventionMain();
-            }
-            )
+            Navigator.push(context, SlideRightRoute(page: InterventionMain())
             );
       },
     );
@@ -76,7 +75,7 @@ class DrugSearch extends SearchDelegate<String> {
                   items = badger.setBadge(items, "$boolCount", 1);
                 });
 
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) {
                   return FinalDisplay();
                 }
                 )
@@ -150,7 +149,7 @@ class DrugSearch extends SearchDelegate<String> {
                   items = badger.setBadge(items, "$boolCount", 1);
                 });
 
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) {
                   return FinalDisplay();
                 }
                 )

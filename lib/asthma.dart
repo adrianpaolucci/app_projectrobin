@@ -1,5 +1,6 @@
 import 'package:app_search_bar/asthmaData.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'finalDisplay.dart';
 import 'homeScreen.dart';
@@ -48,7 +49,7 @@ class AsthmaState extends State<Asthma> {
         icon: IconButton(
             icon: Icon(Icons.check),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, CupertinoPageRoute(builder: (context) {
                 return FinalDisplay();
               })
               );
@@ -184,7 +185,7 @@ class AsthmaState extends State<Asthma> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.pop(context, CupertinoPageRoute(builder: (context) {
                 return InterventionMain();
               }
               )

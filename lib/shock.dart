@@ -72,7 +72,7 @@ class ShockState extends State<Shock> {
         icon: IconButton(
             icon: Icon(Icons.check),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, CupertinoPageRoute(builder: (context) {
                 return FinalDisplay();
               })
               );
@@ -200,7 +200,7 @@ class ShockState extends State<Shock> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.pop(context, CupertinoPageRoute(builder: (context) {
                 return InterventionMain();
               }
               )

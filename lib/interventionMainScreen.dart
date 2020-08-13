@@ -122,9 +122,7 @@ class _DosingMainState extends State<InterventionMain> {
         icon: IconButton(
             icon: Icon(Icons.check),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return FinalDisplay();
-              })
+              Navigator.push(context, SlideLeftRoute(page: FinalDisplay())
               );
             }),
         title: Text("Confirm"));
@@ -142,11 +140,7 @@ class _DosingMainState extends State<InterventionMain> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Home2();
-              }
-              )
-              );
+              Navigator.push(context, SlideRightRoute(page: Home2()));
             },
           ),
           title: Padding(
@@ -164,14 +158,10 @@ class _DosingMainState extends State<InterventionMain> {
               ),
                 color: Colors.black,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Home2();
+                  Navigator.push(context, SlideRightRoute(page: Home2()));
                   }
                   )
-                  );
-                },
-              )
-            ]
+              ]
             ),
           ),
           backgroundColor: Colors.white,
@@ -302,10 +292,7 @@ class _DosingMainState extends State<InterventionMain> {
                                   onTap: () {
                                     int = interventions[index];
                                     specificColor = intColors[index];
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                      return pages[index];
-                                    }
-                                    )
+                                    Navigator.push(context, SlideLeftRoute(page: pages[index])
                                     );
                                   },
                                   child: Column(

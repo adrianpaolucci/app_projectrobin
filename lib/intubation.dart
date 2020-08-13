@@ -65,7 +65,7 @@ class IntubationState extends State<Intubation> {
         icon: IconButton(
             icon: Icon(Icons.check),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, CupertinoPageRoute(builder: (context) {
                 return FinalDisplay();
               })
               );
@@ -212,9 +212,8 @@ class IntubationState extends State<Intubation> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return InterventionMain();
-              }
+              Navigator.push(context, SlideRightRoute(
+                page: InterventionMain()
               )
               );
             },

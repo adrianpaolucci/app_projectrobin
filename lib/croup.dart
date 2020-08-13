@@ -57,7 +57,7 @@ class CroupState extends State<Croup> {
         icon: IconButton(
             icon: Icon(Icons.check),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, CupertinoPageRoute(builder: (context) {
                 return FinalDisplay();
               })
               );
@@ -185,7 +185,7 @@ class CroupState extends State<Croup> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.pop(context, CupertinoPageRoute(builder: (context) {
                 return InterventionMain();
               }
               )

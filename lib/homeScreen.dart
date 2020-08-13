@@ -219,10 +219,7 @@ weightBox(BuildContext context) {
         onTap: () {
           weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return InterventionMain();
-          }
-          )
+          Navigator.push(context, SlideLeftRoute(page: InterventionMain())
           );
         },
       )
