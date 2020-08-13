@@ -173,7 +173,7 @@ class IntubationState extends State<Intubation> {
                       }
                       setState(() {
                         items = badger.setBadge(items, "$boolCount", 1);
-                        allDrugBooleans[3][i] = newValue;
+                        allDrugBooleans[4][i] = newValue;
                       }
                       );
                       if (boolCount == 0) {
