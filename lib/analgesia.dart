@@ -75,7 +75,7 @@ class AnalgesiaState extends State<Analgesia> {
                       padding: EdgeInsets.only(left: 5),
                       child: Text(allDrugs[12][i]),
                     ),
-                    Checkbox(
+                    Switch(
                         value: allDrugBooleans[12][i],
                         onChanged: (bool newValue){
 
@@ -88,6 +88,11 @@ class AnalgesiaState extends State<Analgesia> {
                             setState(() {
                               allDrugBooleans[12][i] = newValue;
                               items = badger.setBadge(items, "$boolCount", 1);
+                              if (boolCount == 0) {
+                                for (var i = 0; i < allDrugs[12].length; i++) {
+                                  items = badger.removeBadge(items, 1);
+                                }
+                              }
                             }
                             );
                           }
@@ -107,7 +112,7 @@ class AnalgesiaState extends State<Analgesia> {
                     allDrugBooleans[12][i] = !allDrugBooleans[12][i];
                     items = badger.setBadge(items, "$boolCount", 1);
                     if (boolCount == 0) {
-                      for (var i = 0; i < allDrugs[1].length; i++) {
+                      for (var i = 0; i < allDrugs[12].length; i++) {
                         items = badger.removeBadge(items, 1);
                       }
                     }

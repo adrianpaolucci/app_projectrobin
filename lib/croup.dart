@@ -142,21 +142,26 @@ class CroupState extends State<Croup> {
           ),
           onTap: () {
 
-              if (allDrugBooleans[11][i] == false) {
-                boolCount += 1;
+              if (weight < 6) {
+                CroupErrorAlert(context,i);
               }
               else {
-                boolCount -= 1;
-              }
-              setState(() {
-                allDrugBooleans[11][i] = !allDrugBooleans[11][i];
-                items = badger.setBadge(items, "$boolCount", 1);
-              });
-              if (boolCount == 0) {
-                for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
-                  setState(() {
-                    items = badger.removeBadge(items,1);
-                  });
+                if (allDrugBooleans[11][i] == false) {
+                  boolCount += 1;
+                }
+                else {
+                  boolCount -= 1;
+                }
+                setState(() {
+                  allDrugBooleans[11][i] = !allDrugBooleans[11][i];
+                  items = badger.setBadge(items, "$boolCount", 1);
+                });
+                if (boolCount == 0) {
+                  for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
+                    setState(() {
+                      items = badger.removeBadge(items, 1);
+                    });
+                  }
                 }
               }
           }
@@ -224,5 +229,6 @@ class CroupState extends State<Croup> {
     );
   }
 }
+
 
 

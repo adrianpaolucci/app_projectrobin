@@ -5,9 +5,14 @@ import 'package:flutter/material.dart';
 import 'allDrugData.dart';
 import 'interventionMainScreen.dart';
 import 'all_sizings.dart';
+import 'homeScreen.dart';
+
+
 
 
 class DrugSearch extends SearchDelegate<String> {
+
+  var suggestionArray = [];
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -55,8 +60,9 @@ class DrugSearch extends SearchDelegate<String> {
       }
     }
 
+
     final suggestionList = query.isEmpty
-        ? ["Ketamine", "Propofol"]
+        ? suggestionArray
         : allDrugSearch.where((p) => p.toLowerCase().contains(query.toLowerCase())).toList();
 
     return StatefulBuilder(
@@ -69,17 +75,28 @@ class DrugSearch extends SearchDelegate<String> {
                 var i = searchBools[index][0];
                 var j = searchBools[index][1];
 
-                setState(() {
-                  boolCount += 1;
-                  allDrugBooleans[i][j] = true;
-                  items = badger.setBadge(items, "$boolCount", 1);
-                });
-
-                Navigator.push(context, CupertinoPageRoute(builder: (context) {
-                  return FinalDisplay();
+                if ((weight < 6) && (i == 11)) {
+                  CroupErrorAlert(context, j);
                 }
-                )
-                );
+                else if ((weight < 10) && (i == 3) && (j == 1)) {
+                  propofolErrorAlert(context);
+                }
+                else {
+                  suggestionArray.add(suggestionList[index]);
+
+                  setState(() {
+                    boolCount += 1;
+                    allDrugBooleans[i][j] = true;
+                    items = badger.setBadge(items, "$boolCount", 1);
+                  });
+
+                  Navigator.push(
+                      context, CupertinoPageRoute(builder: (context) {
+                    return FinalDisplay();
+                  }
+                  )
+                  );
+                }
 
               },
               leading: Icon(MyFlutterApp.syringe),
@@ -129,8 +146,9 @@ class DrugSearch extends SearchDelegate<String> {
       }
     }
 
+
     final suggestionList = query.isEmpty
-        ? ["Ketamine", "Propofol"]
+        ? suggestionArray
         : allDrugSearch.where((p) => p.toLowerCase().contains(query.toLowerCase())).toList();
 
     return StatefulBuilder(
@@ -143,18 +161,28 @@ class DrugSearch extends SearchDelegate<String> {
                 var i = searchBools[index][0];
                 var j = searchBools[index][1];
 
-                setState(() {
-                  boolCount += 1;
-                  allDrugBooleans[i][j] = true;
-                  items = badger.setBadge(items, "$boolCount", 1);
-                });
-
-                Navigator.push(context, CupertinoPageRoute(builder: (context) {
-                  return FinalDisplay();
+                if ((weight < 6) && (i == 11)) {
+                  CroupErrorAlert(context, j);
                 }
-                )
-                );
+                else if ((weight < 10) && (i == 3) && (j == 1)) {
+                  propofolErrorAlert(context);
+                }
+                else {
+                  suggestionArray.add(suggestionList[index]);
 
+                  setState(() {
+                    boolCount += 1;
+                    allDrugBooleans[i][j] = true;
+                    items = badger.setBadge(items, "$boolCount", 1);
+                  });
+
+                  Navigator.push(
+                      context, CupertinoPageRoute(builder: (context) {
+                    return FinalDisplay();
+                  }
+                  )
+                  );
+                }
               },
               leading: Icon(MyFlutterApp.syringe),
               title: RichText(

@@ -75,7 +75,7 @@ class AsthmaState extends State<Asthma> {
                       padding: EdgeInsets.only(left: 5),
                       child: Text(allDrugs[1][i]),
                     ),
-                    Checkbox(
+                    Switch(
                         value: allDrugBooleans[1][i],
                         onChanged: (bool newValue){
                           if (weight < 10.0) {
@@ -138,7 +138,7 @@ class AsthmaState extends State<Asthma> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                     Padding(padding: EdgeInsets.only(left: 5),child: Text(asthmaCorticos[i])),
-                    Checkbox(
+                    Switch(
                         value: allDrugBooleans[2][i],
                         onChanged: (bool newValue){
                           if (newValue == true) {

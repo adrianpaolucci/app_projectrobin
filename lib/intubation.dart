@@ -268,25 +268,3 @@ class IntubationState extends State<Intubation> {
 }
 
 
-
-void propofolErrorAlert(BuildContext context) {
-  final data = MediaQuery.of(context);
-  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-      child:
-      AlertDialog(
-        title: Text("Alert"),
-        content:
-        Text("Cannot use Propofol when weight is less than 10 kg",
-            style: TextStyle(fontSize: size16Text(context))),
-        actions: <Widget>[
-          FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
-              onPressed: () {
-                Navigator.pop(context);
-              }
-          )
-        ],
-      )
-  );
-
-  showDialog(context: context, builder: (BuildContext context) => popup);
-}

@@ -1,6 +1,9 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'allDrugData.dart';
+
 
 paddingVerticalBetweenButtons(context) {
   final data = MediaQuery.of(context);
@@ -213,4 +216,50 @@ class SlideLeftRoute extends PageRouteBuilder {
           child: child,
         ),
   );
+}
+
+
+void CroupErrorAlert(BuildContext context, var i) {
+  final data = MediaQuery.of(context);
+  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+      child:
+      AlertDialog(
+        title: Text("Alert"),
+        content:
+        Text("Cannot use ${allDrugs[11][i]} when weight is less than 6 kg",
+            style: TextStyle(fontSize: size16Text(context))),
+        actions: <Widget>[
+          FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.pop(context);
+              }
+          )
+        ],
+      )
+  );
+
+  showDialog(context: context, builder: (BuildContext context) => popup);
+}
+
+
+void propofolErrorAlert(BuildContext context) {
+  final data = MediaQuery.of(context);
+  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+      child:
+      AlertDialog(
+        title: Text("Alert"),
+        content:
+        Text("Cannot use Propofol when weight is less than 10 kg",
+            style: TextStyle(fontSize: size16Text(context))),
+        actions: <Widget>[
+          FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.pop(context);
+              }
+          )
+        ],
+      )
+  );
+
+  showDialog(context: context, builder: (BuildContext context) => popup);
 }
