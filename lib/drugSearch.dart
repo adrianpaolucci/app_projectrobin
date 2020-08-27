@@ -9,7 +9,6 @@ import 'homeScreen.dart';
 
 
 
-
 class DrugSearch extends SearchDelegate<String> {
 
   var suggestionArray = [];
@@ -97,7 +96,6 @@ class DrugSearch extends SearchDelegate<String> {
                   )
                   );
                 }
-
               },
               leading: Icon(MyFlutterApp.syringe),
               title: RichText(

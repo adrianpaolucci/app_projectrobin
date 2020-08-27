@@ -46,27 +46,138 @@ ketamineDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = ketamineData[weightIndex];
 
-  var popup = Column(children: <Widget>[
+  var popup = Column(
+      children: <Widget>[
     SizedBox(height: 15),
-    Text("Ketamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
+    Container(
+        width: 0.8*data.size.width,
+        decoration: lightBoxDec(context),
+        child: Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
+              child: Text(
+                  "Ketamine",
+                  style: TextStyle(
+                      fontSize: size18Text(context),
+                      color: Color(0xff6666ff),
+                      fontWeight: FontWeight.bold)
+              ),
+            )
+        )
+    ),
     Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
+      decoration: whiteBoxDec(context),
       width: 0.8 * data.size.width,
       child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Dilute", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[1]} mg in ${currentData[3]} mL"),
-            Text("OR"),
-            Text("${currentData[2]} mg in ${currentData[4]} mL"),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: smallButtonPadding(context),
+                  right: smallButtonPadding(context),
+                  top: smallButtonPadding(context)
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Dilute: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: size16Text(context)
+                  )
+                  ),
+                  Text("200 mg in 20 mL",
+                      style: TextStyle(
+                          fontSize: size16Text(context)
+                      ))
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                right: smallButtonPadding(context)
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("(OR 100 mg in 10 mL)",
+                  style: TextStyle(
+                    fontSize: size16Text(context)
+                  ))
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: smallButtonPadding(context),
+                  right: smallButtonPadding(context),
+                  top: 5*smallButtonPadding(context)
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Give: ",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: size16Text(context)
+                      )
+                  ),
+                  Text("${currentData[1]} - ${currentData[2]} mg",
+                      style: TextStyle(
+                          fontSize: size16Text(context),
+                          fontWeight: FontWeight.bold
+                      ))
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: smallButtonPadding(context),
+                  right: smallButtonPadding(context),
+                  top: smallButtonPadding(context)
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("("),
+                  Text("${currentData[3]} - ${currentData[4]} ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold
+                        )
+                  ),
+                  Text("mL of diluted solution)")
+                ],
+              ),
+            ),
           ]
       ),
     ),
-    Text("Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
-        style: TextStyle(decoration: TextDecoration.underline)),
+       SizedBox(height: 15),
+       Container(
+         padding: EdgeInsets.symmetric(
+             horizontal: 3*smallButtonPadding(context),
+             vertical: smallButtonPadding(context)),
+         width: 0.8*data.size.width,
+         decoration: lightBoxDec(context),
+          child: Row(
+         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+         children: [
+           Text("Formula: ",
+           style: TextStyle(
+             fontSize: size16Text(context)
+           )
+           ),
+           Text("1 - 2 mg/kg",
+              style: TextStyle(
+                fontSize: size16Text(context),
+                decoration: TextDecoration.underline
+              )
+           )
+         ],
+       ),
+     ),
     SizedBox(height: 15)]);
   return popup;
 }

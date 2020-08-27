@@ -123,7 +123,17 @@ smallButtonPadding(context) {
 
 //standard box decoration for final drug display
 lightBoxDec(context) {
-  return BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: Color(0xffcccccc));
+  return BoxDecoration(
+      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+      color: Color(0xffe6e6e6)
+  );
+}
+
+whiteBoxDec(context) {
+  return BoxDecoration(
+      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+      color: Colors.white
+  );
 }
 
 //equivalent radius of ~25 pixels on standard phone
