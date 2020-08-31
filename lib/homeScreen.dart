@@ -252,3 +252,24 @@ weightBox(BuildContext context) {
   }
   );
 }
+
+weightColours()
+{
+  if(weight >= 2 && weight <= 9)
+    return Color(0xfff04747);
+  if(weight >= 10 && weight <= 11)
+    return Color(0xff903990);
+  if(weight >= 12 && weight <= 14)
+    return Color(0xfff0ff00);
+  if(weight >= 15 && weight <= 18)
+    return Color(0xffffffff);
+  if(weight >= 19 && weight <= 22)
+    return Color(0xff1d9dc3);
+  if(weight >= 24 && weight <= 28)
+    return Color(0xffffa500);
+  if(weight >= 30 && weight <= 35)
+    return Color(0xff08b408);
+  else if(weight >= 40 && weight <= 80)
+    return Color(0xff000000);
+
+}
