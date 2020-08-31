@@ -43,22 +43,21 @@ class Home2State extends State<Home2> {
   ];
 
   final boxColors = [
-    Colors.redAccent,Colors.white,
-    Colors.redAccent, Colors.white,
-    Colors.redAccent,Colors.white,
-    Colors.redAccent, Colors.white,
-    Colors.redAccent,Colors.white,
-    Colors.purpleAccent, Colors.white,
-    Colors.lightGreenAccent,Colors.white,
-    Colors.lightGreenAccent, Colors.white,
-    Colors.greenAccent,Colors.white,
-    Colors.deepPurple, Colors.white,
-    Colors.orange,Colors.white,
-    Colors.lightGreenAccent,Colors.white,
-    Colors.lightGreenAccent, Colors.white,
-    Colors.greenAccent,Colors.white,
-    Colors.deepPurple, Colors.white,
-    Colors.orange,Colors.white
+    Color(0xfff04747),Colors.white,
+    Color(0xfff04747), Colors.white,
+    Color(0xfff04747),Colors.white,
+    Color(0xfff04747), Colors.white,
+    Color(0xfff04747),Colors.white,
+    Color(0xff903990), Colors.white,
+    Color(0xfff0ff00),Colors.white,
+    Color(0xfff0ff00), Colors.white,
+    Color(0xfff0ff00),Colors.white,
+    Color(0xff1d9dc3), Colors.white,
+    Color(0xffffa500),Colors.white,
+    Color(0xff08b408),Colors.white,
+    Color(0xff08b408), Colors.white,
+    Color(0xff000000), Colors.white,
+    Color(0xff000000),Colors.white
   ];
 
   final ranges = [

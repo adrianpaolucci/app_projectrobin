@@ -78,29 +78,29 @@ topInterventionTitle(context, weight, specificColor, int) {
         Text("$int",style: TextStyle(color: specificColor,fontSize: titleText(context)),textAlign: TextAlign.center,))
     ),
 
-      Container(
-        width: data.size.width*0.15,
-        height: appBarHeight(context),
-        alignment: Alignment.centerRight,
-        color: Color(0xfff2f2f2),
-        child: FaIcon(
-            FontAwesomeIcons.balanceScaleLeft,
-            size: data.size.width/12),
+    Container(
+      width: data.size.width*0.15,
+      height: appBarHeight(context),
+      alignment: Alignment.centerRight,
+      color: Color(0xfff2f2f2),
+      child: FaIcon(
+          FontAwesomeIcons.balanceScaleLeft,
+          size: data.size.width/12),
+    ),
+    Container(
+      width: data.size.width*0.25,
+      alignment: Alignment.center,
+      height: appBarHeight(context),
+      color: Color(0xfff2f2f2),
+      child: Text(
+        "$weight kg",
+        textDirection: TextDirection.ltr,
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: size20Text(context)
+        ),
       ),
-      Container(
-        width: data.size.width*0.25,
-        alignment: Alignment.center,
-        height: appBarHeight(context),
-  color: Color(0xfff2f2f2),
-        child: Text(
-              "$weight kg",
-              textDirection: TextDirection.ltr,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size20Text(context)
-              ),
-            ),
-      )
+    )
   ]
   );
 }
