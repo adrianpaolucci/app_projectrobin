@@ -252,14 +252,14 @@ void CroupErrorAlert(BuildContext context, var i) {
 }
 
 
-void propofolErrorAlert(BuildContext context) {
+void errorAlert(BuildContext context, i, j, k ) {
   final data = MediaQuery.of(context);
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
       child:
       AlertDialog(
         title: Text("Alert"),
         content:
-        Text("Cannot use Propofol when weight is less than 10 kg",
+        Text("Cannot use $i when weight is $j than $k kg",
             style: TextStyle(fontSize: size16Text(context))),
         actions: <Widget>[
           FlatButton(child: Text("Okay", style: TextStyle(fontSize: 18)),

@@ -78,7 +78,10 @@ class DrugSearch extends SearchDelegate<String> {
                   CroupErrorAlert(context, j);
                 }
                 else if ((weight < 10) && (i == 3) && (j == 1)) {
-                  propofolErrorAlert(context);
+                  errorAlert(context, "Porpofol","less",10);
+                }
+                else if ((weight > 10) && (i == 0) && (j == 9)) {
+                  errorAlert(context, "Pyridoxine","more",10);
                 }
                 else {
                   suggestionArray.add(suggestionList[index]);
@@ -163,7 +166,10 @@ class DrugSearch extends SearchDelegate<String> {
                   CroupErrorAlert(context, j);
                 }
                 else if ((weight < 10) && (i == 3) && (j == 1)) {
-                  propofolErrorAlert(context);
+                  errorAlert(context,"Propofol","less",10);
+                }
+                else if ((weight > 10) && (i == 0) && (j == 9)) {
+                  errorAlert(context,"Pyridoxine","more",10);
                 }
                 else {
                   suggestionArray.add(suggestionList[index]);

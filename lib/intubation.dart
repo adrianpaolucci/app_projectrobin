@@ -99,7 +99,7 @@ class IntubationState extends State<Intubation> {
                         value: allDrugBooleans[3][i],
                         onChanged: (bool newValue){
                           if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                            propofolErrorAlert(context);
+                            errorAlert(context, "Porpofol","less",10);
                           }
                           else {
                             if (newValue == true) {
@@ -122,7 +122,7 @@ class IntubationState extends State<Intubation> {
               ),
               onTap: () {
                 if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                  propofolErrorAlert(context);
+                  errorAlert(context, "Porpofol","less",10);
                 }
                 else {
                   if (allDrugBooleans[3][i] == false) {
