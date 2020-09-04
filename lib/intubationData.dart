@@ -69,38 +69,20 @@ propofolDisplay(BuildContext context) {
       finalDisplaySecondary(context, "(", "${currentData[2]}", "mL of undiluted solution)"),
       finalDisplayFormula(context, "2 mg/kg"));
 
-
   return popup;
 }
 
 thiopentoneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = thiopentoneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Thiopentone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Reconstitute", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[1]} mg in ${currentData[3]} mL"),
-            Text("OR"),
-            Text("${currentData[2]} mg in ${currentData[4]} mL"),
-            SizedBox(height: 5),
-            Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[Text("Risk CVS"),Text("\u2193", style: TextStyle(fontSize: 22))])
-          ]
-      ),
-    ),
-    Text( "Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
-        style: TextStyle(decoration: TextDecoration.underline)),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Thiopentone",
+      finalDisplayDilute(context, "Reconstitute: ", "500 mg in 20 mL water", "for injection"),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplayFormula(context, "2 - 4 mg/kg"));
+
   return popup;
 }
 
