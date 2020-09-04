@@ -90,32 +90,14 @@ fentanylBolusDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = fentanylBolusData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Fentanyl (Bolus)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Dilute", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[1]} \u03bcg in ${currentData[3]} mL"),
-            Text("OR"),
-            Text("${currentData[2]} \u03bcg in ${currentData[4]} mL"),
-          ]
-      ),
-    ),
-    Text.rich(TextSpan(text: "", children:
-    <TextSpan>[
-      TextSpan(text: "Administer ${currentData[3]} - ${currentData[4]} mL of diluted solution",
-          style: TextStyle(decoration: TextDecoration.underline)),
-      TextSpan(text: "")
-    ])),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Fentanyl (Bolus)",
+      finalDisplayDilute(context, "Dilute: ", "100 \u03bcg in 10 mL", " "),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} \u03bcg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of diluted solution)"),
+      finalDisplayFormula(context, "2 - 4 \u03bcg/kg IV"));
+
   return popup;
 }
 
@@ -123,32 +105,15 @@ midazolamDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = midazolamData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Midazolam", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[3]}", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[1]} mg in ${currentData[4]} mL"),
-            Text("OR"),
-            Text("${currentData[2]} mg in ${currentData[5]} mL"),
-          ]
-      ),
-    ),
-    Text.rich(TextSpan(text: "", children:
-    <TextSpan>[
-      TextSpan(text: "Administer ${currentData[4]} - ${currentData[5]} mL of diluted solution",
-          style: TextStyle(decoration: TextDecoration.underline)),
-      TextSpan(text: "")
-    ])),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Midazolam",
+      finalDisplayDilute(context, "Dilute: ", "500 mg in 20 mL water", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplayFormula(context, "0.1 - 0.2 mg/kg"));
+
+
   return popup;
 }
 
@@ -156,30 +121,15 @@ suxamethoniumDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = suxamethoniumData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Suxamethonium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Dilute", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[2]} mg in ${currentData[3]} mL")
-          ]
-      ),
-    ),
-    Text.rich(TextSpan(text: "", children:
-    <TextSpan>[
-      TextSpan(text: "Administer ${currentData[3]} mL of diluted solution",
-          style: TextStyle(decoration: TextDecoration.underline)),
-      TextSpan(text: "")
-    ])),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Saxumethonium",
+      finalDisplayDilute(context, "Dilute: ", "100mg to 10ml", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplayFormula(context, "2 mg/kg up to 9kg \n 10kg or more: 1.5 mg/kg"));
+
+
   return popup;
 }
 
@@ -187,24 +137,16 @@ rocuroniumDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = rocuroniumData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Rocuronium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(children: <Widget>[
-        Text("${currentData[1]} mg in ${currentData[2]} mL"),
-        Text("Undiluted", style: TextStyle(
-            fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-        SizedBox(height: 10),
-        Text("Administer ${currentData[2]} mL of undiluted solution",textAlign: TextAlign.center,
-            style: TextStyle(decoration: TextDecoration.underline)),
-      ]),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Rocuronium",
+      finalDisplayDilute(context, "Undiluted: ", "", " "),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplayFormula(context, "1mg/kg"));
+
+
+
   return popup;
 }
 
@@ -212,27 +154,15 @@ vecuroniumDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = vecuroniumData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Vecuronium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Reconstitute", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[1]} mg in ${currentData[2]} mL"),
-            SizedBox(height: 5)
-          ]
-      ),
-    ),
-    Text( "Administer ${currentData[2]} mL of diluted solution",
-        style: TextStyle(decoration: TextDecoration.underline)),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Vecuronium",
+      finalDisplayDilute(context, "Reconstitute ", "10mg in 10mL water", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of solution)"),
+      finalDisplayFormula(context, "0.1 mg/kg"));
+
+
   return popup;
 }
 
@@ -240,27 +170,15 @@ atracuriumDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = atracuriumData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Atracurium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[2]}", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[1]} mg in ${currentData[3]} mL")
-          ]
-      ),
-    ),
+  var popup = finalDisplayFull(
+      context,
+      "Atracurium",
+      finalDisplayDilute(context, "Dilute: ", "", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of solution)"),
+      finalDisplayFormula(context, "0.5 mg/kg"));
 
-    Text("Administer ${currentData[3]} mL of diluted solution",
-        style: TextStyle(decoration: TextDecoration.underline)),
-    SizedBox(height: 15)]);
+
   return popup;
 }
 
