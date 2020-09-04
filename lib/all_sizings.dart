@@ -273,3 +273,181 @@ void errorAlert(BuildContext context, i, j, k ) {
 
   showDialog(context: context, builder: (BuildContext context) => popup);
 }
+
+finalDisplayFull(
+    BuildContext context,
+    var drugName,
+    Widget function1,
+    Widget function2,
+    Widget function3,
+    Widget function4
+    ) {
+
+  final data = MediaQuery.of(context);
+
+  return Column(
+      children: <Widget>[
+        SizedBox(height: 15),
+        Container(
+            width: 0.8*data.size.width,
+            decoration: lightBoxDec(context),
+            child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
+                  child: Text(
+                      "$drugName",
+                      style: TextStyle(
+                          fontSize: size18Text(context),
+                          color: Color(0xff6666ff),
+                          fontWeight: FontWeight.bold)
+                  ),
+                )
+            )
+        ),
+        Container(padding: EdgeInsets.all(10.0),
+          decoration: whiteBoxDec(context),
+          width: 0.8 * data.size.width,
+          child:
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                function1,
+                function2,
+                function3
+              ]
+          ),
+        ),
+        SizedBox(height: 15),
+        Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: 3*smallButtonPadding(context),
+                vertical: smallButtonPadding(context)),
+            width: 0.8*data.size.width,
+            decoration: lightBoxDec(context),
+            child: function4
+        ),
+        SizedBox(height: 15)]
+  );
+}
+
+Widget finalDisplayDilute(BuildContext context, var instruction, var value1, var value2) {
+
+  return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+              left: smallButtonPadding(context),
+              right: smallButtonPadding(context),
+              top: smallButtonPadding(context)
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("$instruction",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: size16Text(context)
+                  )
+              ),
+              Text("$value1",
+                  style: TextStyle(
+                      fontSize: size16Text(context)
+                  ))
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+              right: smallButtonPadding(context)
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text("$value2",
+                  style: TextStyle(
+                      fontSize: size16Text(context)
+                  ))
+            ],
+          ),
+        )
+      ]
+  );
+}
+
+Widget finalDisplayGive(BuildContext context, var instruction, var value) {
+
+  return Column(
+    children: [Padding(
+      padding: EdgeInsets.only(
+          left: smallButtonPadding(context),
+          right: smallButtonPadding(context),
+          top: 5*smallButtonPadding(context)
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("$instruction",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size16Text(context)
+              )
+          ),
+          Text("$value",
+              style: TextStyle(
+                  fontSize: size16Text(context),
+                  fontWeight: FontWeight.bold
+              ))
+        ],
+      ),
+    )
+    ]
+  );
+}
+
+Widget finalDisplaySecondary(BuildContext context, var text1, var text2, var text3) {
+
+  return Padding(
+    padding: EdgeInsets.only(
+        left: smallButtonPadding(context),
+        right: smallButtonPadding(context),
+        top: smallButtonPadding(context)
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text("$text1"),
+        Text("$text2",
+            style: TextStyle(
+                fontWeight: FontWeight.bold
+            )
+        ),
+        Text("$text3")
+      ],
+    ),
+  );
+
+}
+
+Widget finalDisplayFormula(BuildContext context, var formula) {
+
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text("Formula: ",
+          style: TextStyle(
+              fontSize: size16Text(context)
+          )
+      ),
+      Text("$formula",
+          style: TextStyle(
+              fontSize: size16Text(context),
+              decoration: TextDecoration.underline
+          )
+      )
+    ],
+  );
+
+}

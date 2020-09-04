@@ -230,9 +230,15 @@ intubationFinal(BuildContext context) {
   List<Widget>intubationList = intubationEquipmentInfo(context);
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
+      //intubation boolean is true, therefore it is shown on the final screen
       displayBools[3] = true;
+      //add final display for specific drug selected
       intubationList.add(inductionWidgets[i]);
-      intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+      intubationList.add(
+          SizedBox(width: data.size.width*0.9,
+              child: adrianDivider()
+          )
+      );
     }
   }
   for (var i = 0; i < paralyticAgents.length; i++) {

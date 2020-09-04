@@ -95,7 +95,11 @@ class Home2State extends State<Home2> {
             child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
               Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(mediumButtonRadius(context)),bottomLeft: Radius.circular(mediumButtonRadius(context))),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(mediumButtonRadius(context)),
+                    bottomLeft: Radius.circular(mediumButtonRadius(context))
+                ),
       color: boxColors[index]),width: data.size.width / 12),
               Text(textBox,
                   style: TextStyle(
@@ -197,32 +201,47 @@ weightBox(BuildContext context) {
   List<Widget> chooseWeightPopup = [];
 
   for (var i = 0; i < specificRange.length; i++) {
-    chooseWeightPopup.add(
 
-          Material(
-              elevation: 25, shadowColor: Colors.black,
-              borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)),
-              child:
-              InkWell(child:
-              Container(
-                  decoration: BoxDecoration(
-                      //color: Color(0xfff2f2f2),
-                      borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)
+    chooseWeightPopup.add(
+        InkWell(
+          child: Material(
+            elevation: 25, shadowColor: Colors.black,
+            borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)),
+            color: Colors.blue,
+            child:
+            Padding(
+              padding: EdgeInsets.all(data.size.width/20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(data.size.width/30),
+                              bottomLeft: Radius.circular(data.size.width/30)
+                          )
                       )
                   ),
-                  padding: EdgeInsets.all(data.size.width/20),
-                  child:
-                  Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: size16Text(context))
-                  )
+                  Text(specificRange[i].toString() + " kg",
+                      style: TextStyle(
+                          fontSize: size16Text(context),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                      )
+                  ),
+                ],
               ),
-        onTap: () {
-          weight = specificRange[i];
+            ),
+          ),
+                  onTap: () {
+                    weight = specificRange[i];
           weightIndex = allWeights.indexOf(weight);
           Navigator.push(context, SlideLeftRoute(page: InterventionMain())
           );
         },
-      )
-          )
+      ),
     );
     chooseWeightPopup.add(SizedBox(height: data.size.width/13));
   }
@@ -255,21 +274,30 @@ weightBox(BuildContext context) {
 
 weightColours()
 {
-  if(weight >= 2 && weight <= 9)
+  if (weight >= 2 && weight <= 9) {
     return Color(0xfff04747);
-  if(weight >= 10 && weight <= 11)
+  }
+  else if (weight >= 10 && weight <= 11) {
     return Color(0xff903990);
-  if(weight >= 12 && weight <= 14)
+  }
+  else if (weight >= 12 && weight <= 14) {
     return Color(0xfff0ff00);
-  if(weight >= 15 && weight <= 18)
+  }
+  else if (weight >= 15 && weight <= 18) {
     return Color(0xffffffff);
-  if(weight >= 19 && weight <= 22)
+  }
+  else if (weight >= 19 && weight <= 22) {
     return Color(0xff1d9dc3);
-  if(weight >= 24 && weight <= 28)
+  }
+  else if (weight >= 24 && weight <= 28) {
     return Color(0xffffa500);
-  if(weight >= 30 && weight <= 35)
+  }
+  else if (weight >= 30 && weight <= 35) {
     return Color(0xff08b408);
+  }
   else if(weight >= 40 && weight <= 80)
     return Color(0xff000000);
-
 }
+
+
+
