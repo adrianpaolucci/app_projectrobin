@@ -12,32 +12,15 @@ tranexamicDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = tranexamicAcidData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Tranexamic Acid", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Loading dose: ${currentData[1]} mg over 10 minutes",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Infusion: ${currentData[2]} mg/hr until bleeding ceases"),
-            SizedBox(height: 5),
-            Text("Dilute to 10 mg/mL, give at ${currentData[3]} mL/hr",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Tranexamic acid ",
+      finalDisplayBold(context, "Loading dose: ", "", "${currentData[1]}  ", "mg\n\nover 10 minutes"),
+      finalDisplayDilute(context, "Dilute: ", "10 mg/mL", ""),
+      finalDisplayBold(context, "Give: ", "", "${currentData[3]} ","mL/hr until bleeding ceases" ),
+      finalDisplayFormula(context, "15 mg/kg loading dose\n2 mg/kg/hr"));
+
+
   return popup;
 }
 
@@ -45,26 +28,14 @@ redCellsDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = packedRedCellsData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Packed Red Blood Cells", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: size16Text(context)
-            ))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Packed Red Blood Cells",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "10 ml/kg"));
+
   return popup;
 }
 
@@ -72,27 +43,14 @@ frozenPlasmaDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
 var currentData = frozenPlasmaData[weightIndex];
 
-var popup = Column(children: <Widget>[
-  SizedBox(height: 15),
-  Text("Fresh Frozen Plasma", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-  Container(padding: EdgeInsets.all(10.0),
-    margin: EdgeInsets.all(5),
-    decoration: lightBoxDec(context),
-    width: 0.8 * data.size.width,
-    child:
-    Column(crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text("If PT/APTT > 1.5x normal"),
-          SizedBox(height: 5),
-          Text("${currentData[1]} mL",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: size16Text(context), fontWeight: FontWeight.bold))
-        ]
-    ),
-  ),
-  SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Fresh Frozen Plasma",
+      finalDisplayCentre(context, "If PT/APTT > 1.5x normal", "", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "15 mL/kg"));
+
 return popup;
 }
 
@@ -100,27 +58,14 @@ cryoprecipitateDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = cryoprecipitateData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Cryoprecipitate", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("If fibrinogen <2 g/L"),
-            SizedBox(height: 5),
-            Text("${currentData[1]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Cryoprecipitate",
+      finalDisplayCentre(context, "If fibrinogen < 2 g/L", "", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "5 mL/kg"));
+
   return popup;
 }
 
@@ -128,26 +73,13 @@ plateletsDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = plateletsData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Platelets", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("If platelets < 50 x 10\u2079"),
-            SizedBox(height: 5),
-            Text("${currentData[1]} mL - ${currentData[2]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Platelets",
+      finalDisplayCentre(context, "If platelets < 50 x 10\u2079/L", "", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mL"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "10 - 15 mL/kg"));
+
   return popup;
 }

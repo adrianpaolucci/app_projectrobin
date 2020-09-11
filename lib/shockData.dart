@@ -12,246 +12,79 @@ final shockDopamine = [[2, 6, 12], [2.5, 7.5, 15.0], [3, 9, 18], [3.5, 10.5, 21.
 final shockStressDose = [[2, 4], [2.5, 5.0], [3, 6], [3.5, 7.0], [4, 8], [4.5, 9.0], [5, 10], [5.5, 11.0], [6, 12], [7, 14], [8, 16], [9, 18], [10, 20], [11, 22], [12, 24], [13, 26], [14, 28], [15, 30], [16, 32], [17, 34], [18, 36], [19, 38], [20, 40], [22, 44], [24, 48], [26, 52], [28, 56], [30, 60], [35, 70], [40, 80], [45, 90], [50, 100], [55, 110], [60, 120], [65, 130], [70, 140], [75, 150], [80, 160]];
 
 shockFluidDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = shockFluid[weightIndex];
-
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Fluid Bolus", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} - ${currentData[2]}",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("of sodium chloride 0.9%"),
-          ]
-      ),
-    ),
-
-  ]
-  )
-    )
-  ]
-  );
+  var popup = finalDisplayFull(
+      context,
+      "Fluid Bolus",
+      finalDisplayDilute(context, "Drug:", "sodium chloride 0.9%", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mL"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "5 - 10 mL/kg"));
   return popup;
 }
 
 shockAdrenalineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = shockAdrenaline[weightIndex];
-
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg made up to 50 mL", style: TextStyle(
-              fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5),
-              child: Text("OR")),
-            Text("${currentData[2]} mg in 100 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("in Glucose 5%"),
-            ),
-            Text("0.05 μg/kg/min starting at 1-10 mL/h")
-          ]
-      ),
-    ),
-
-  ]
-  )
-    )
-  ]
-  );
+  var popup = finalDisplayFull(
+      context,
+      "Adrenaline",
+      finalDisplayDilute(context, "Dilute:", " ${currentData[1]} mg made up to 50 mL", "(or ${currentData[2]} mg made up to 100 mL)\nglucose 5%"),
+      finalDisplayGive(context, "Give:", "1-10 mL/hr initially"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "0.05 \u03bcg/kg/min"));
   return popup;
 }
 
 shockNoradrenalineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = shockNoradrenaline[weightIndex];
+  var popup = finalDisplayFull(
+      context,
+      "Noradrenaline",
+      finalDisplayDilute(context, "Dilute:", " ${currentData[1]} mg made up to 50 mL", "(or ${currentData[2]} mg made up to 100 mL)\nglucose 5%"),
+      finalDisplayGive(context, "Give:", "1-10 mL/hr initially"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "0.05 \u03bcg/kg/min"));
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Noradrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg made up to 50 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5),
-                child: Text("OR")),
-            Text("${currentData[2]} mg in 100 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("in Glucose 5%"),
-            ),
-            Text("0.05 μg/kg/min starting at 1-10 mL/h")
-          ]
-      ),
-    ),
-
-  ]
-  )
-    )
-  ]
-  );
   return popup;
 }
 
 shockDobutamineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = shockDobutamine[weightIndex];
-
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Dobutamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg made up to 50 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5),
-                child: Text("OR")),
-            Text("${currentData[2]} mg in 100 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("in Glucose 5%"),
-            ),
-            Text("5 μg/kg/min starting at 10 mL/h then titrate down according to response",
-            textAlign: TextAlign.center,)
-          ]
-      ),
-    ),
-
-  ]
-  )
-    )
-  ]
-  );
+  var popup = finalDisplayFull(
+      context,
+      "Dobutamine",
+      finalDisplayDilute(context, "Dilute:", " ${currentData[1]} mg made up to 50 mL", "(or ${currentData[2]} mg made up to 100 mL)\nglucose 5%"),
+      finalDisplayGive(context, "Give:", "10 mL/hr initially"),
+      finalDisplaySecondary(context, "Titrate down according to response", "", ""),
+      finalDisplayFormula(context, "5 \u03bcg/kg/min"));
   return popup;
 }
 
 shockDopamineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = shockDopamine[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Dopamine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg made up to 50 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5),
-                child: Text("OR")),
-            Text("${currentData[2]} mg in 100 mL", style: TextStyle(
-                fontWeight: FontWeight.bold
-            )
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("in Glucose 5%"),
-            ),
-            Text("5 μg/kg/min starting at 10 mL/h then titrate down according to response",
-              textAlign: TextAlign.center,)
-          ]
-      ),
-    ),
+  var popup = finalDisplayFull(
+      context,
+      "Dopamine",
+      finalDisplayDilute(context, "Dilute:", " ${currentData[1]} mg made up to 50 mL", "(or ${currentData[2]} mg made up to 100 mL)\nglucose 5%"),
+      finalDisplayGive(context, "Give:", "10 mL/hr initially"),
+      finalDisplaySecondary(context, "Titrate down according to response", "", ""),
+      finalDisplayFormula(context, "5 \u03bcg/kg/min"));
 
-  ]
-  )
-    )
-  ]
-  );
   return popup;
 }
 
 shockStressDoseDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
-  var currentData = shockFluid[weightIndex];
+  var currentData = shockStressDose[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Stress-Dose (Hydrocortisone)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("2 mg/kg"),
-            Text("${currentData[1]} mg",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    ]
-  )
-    )
-  ]
-  );
+  var popup = finalDisplayFull(
+      context,
+      "Stress-dose (Hydrocortisone)",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "2 mg/kg"));
+
   return popup;
 }
 

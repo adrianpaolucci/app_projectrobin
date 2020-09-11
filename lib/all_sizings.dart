@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'allDrugData.dart';
 
@@ -367,9 +368,7 @@ Widget finalDisplayDilute(BuildContext context, var instruction, var value1, var
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text("$value2",
-                  style: TextStyle(
-                      fontSize: size16Text(context)
-                  ))
+              textAlign: TextAlign.right)
             ],
           ),
         )
@@ -454,4 +453,79 @@ Widget finalDisplayFormula(BuildContext context, var formula) {
     ],
   );
 
+}
+Widget finalDisplayEmpty(){
+  return SizedBox(height:5);
+
+}
+
+Widget finalDisplayBold(BuildContext context,var instruction, var text1, var text2, var text3) {
+
+  return Padding(
+    padding: EdgeInsets.only(
+        left: smallButtonPadding(context),
+        right: smallButtonPadding(context),
+        top: smallButtonPadding(context)
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text("$instruction",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: size16Text(context)
+          )
+      ),
+        Row(
+          children: <Widget>[
+            Text("$text1",
+                style: TextStyle(
+                fontSize: size16Text(context)
+            )),
+            Text("$text2",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: size16Text(context)
+                )
+            ),
+            Text("$text3",
+                style: TextStyle(
+                fontSize: size16Text(context)
+            )),
+          ],
+        )
+
+      ],
+    ),
+  );
+
+}
+Widget finalDisplayCentre(BuildContext context, var text1, var text2, var text3 ){
+  return Padding(
+    padding: EdgeInsets.only(
+        left: smallButtonPadding(context),
+        right: smallButtonPadding(context),
+        top: smallButtonPadding(context)),
+    child: Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("$text1",
+              style: TextStyle(
+                  fontSize: size16Text(context)
+              )),
+          Text("$text2",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size16Text(context)
+              )
+          ),
+          Text("$text3",
+              style: TextStyle(
+                  fontSize: size16Text(context)
+              )),
+        ],
+      ),
+    ),
+  );
 }

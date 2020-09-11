@@ -121,33 +121,14 @@ resuscLignocaineDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = resuscLignocaine[weightIndex];
 
+  var popup = finalDisplayFull(
+      context,
+      "Atropine",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "", "", "undiluted"),
+      finalDisplayFormula(context, "1 mg/kg"));
 
-
-
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Lignocaine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("1 mg/kg"),
-            Text("${currentData[1]} mg", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    )
-  ]
-  )
-    )
-  ]
-  );
   return popup;
 }
 
