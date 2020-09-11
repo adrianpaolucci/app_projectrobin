@@ -25,7 +25,7 @@ final paralyticAgents = ["Suxamethonium","Rocuronium","Vecuronium","Atracurium"]
 final suxamethoniumData = [[2, 2, 4, 0.4], [2.5, 2, 5.0, 0.5], [3, 2, 6, 0.6], [3.5, 2, 7.0, 0.7], [4, 2, 8, 0.8], [4.5, 2, 9.0, 0.9], [5, 2, 10, 1.0], [5.5, 2, 11.0, 1.1], [6, 2, 12, 1.2], [7, 2, 14, 1.4], [8, 2, 16, 1.6], [9, 2, 18, 1.8], [10, 1.5, 15.0, 1.5], [11, 1.5, 16.5, 1.65], [12, 1.5, 18.0, 1.8], [13, 1.5, 19.5, 1.95], [14, 1.5, 21.0, 2.1], [15, 1.5, 22.5, 2.25], [16, 1.5, 24.0, 2.4], [17, 1.5, 25.5, 2.55], [18, 1.5, 27.0, 2.7], [19, 1.5, 28.5, 2.85], [20, 1.5, 30.0, 3.0], [22, 1.5, 33.0, 3.3], [24, 1.5, 36.0, 3.6], [26, 1.5, 39.0, 3.9], [28, 1.5, 42.0, 4.2], [30, 1.5, 45.0, 4.5], [35, 1.5, 52.5, 5.25], [40, 1.5, 60.0, 6.0], [45, 1.5, 67.5, 6.75], [50, 1.5, 75.0, 7.5], [55, 1.5, 82.5, 8.25], [60, 1.5, 90.0, 9.0], [65, 1.5, 97.5, 9.75], [70, 1.5, 105.0, 10.5], [75, 1.5, 112.5, 11.25], [80, 1.5, 120.0, 12.0]];
 final rocuroniumData = [[2, 2, 0.2], [2.5, 2.5, 0.25], [3, 3, 0.3], [3.5, 3.5, 0.35], [4, 4, 0.4], [4.5, 4.5, 0.45], [5, 5, 0.5], [5.5, 5.5, 0.55], [6, 6, 0.6], [7, 7, 0.7], [8, 8, 0.8], [9, 9, 0.9], [10, 10, 1.0], [11, 11, 1.1], [12, 12, 1.2], [13, 13, 1.3], [14, 14, 1.4], [15, 15, 1.5], [16, 16, 1.6], [17, 17, 1.7], [18, 18, 1.8], [19, 19, 1.9], [20, 20, 2.0], [22, 22, 2.2], [24, 24, 2.4], [26, 26, 2.6], [28, 28, 2.8], [30, 30, 3.0], [35, 35, 3.5], [40, 40, 4.0], [45, 45, 4.5], [50, 50, 5.0], [55, 55, 5.5], [60, 60, 6.0], [65, 65, 6.5], [70, 70, 7.0], [75, 75, 7.5], [80, 80, 8.0]];
 final vecuroniumData = [[2, 0.2, 0.2], [2.5, 0.25, 0.25], [3, 0.3, 0.3], [3.5, 0.35, 0.35], [4, 0.4, 0.4], [4.5, 0.45, 0.45], [5, 0.5, 0.5], [5.5, 0.55, 0.55], [6, 0.6, 0.6], [7, 0.7, 0.7], [8, 0.8, 0.8], [9, 0.9, 0.9], [10, 1.0, 1.0], [11, 1.1, 1.1], [12, 1.2, 1.2], [13, 1.3, 1.3], [14, 1.4, 1.4], [15, 1.5, 1.5], [16, 1.6, 1.6], [17, 1.7, 1.7], [18, 1.8, 1.8], [19, 1.9, 1.9], [20, 2.0, 2.0], [22, 2.2, 2.2], [24, 2.4, 2.4], [26, 2.6, 2.6], [28, 2.8, 2.8], [30, 3.0, 3.0], [35, 3.5, 3.5], [40, 4.0, 4.0], [45, 4.5, 4.5], [50, 5.0, 5.0], [55, 5.5, 5.5], [60, 6.0, 6.0], [65, 6.5, 6.5], [70, 7.0, 7.0], [75, 7.5, 7.5], [80, 8.0, 8.0]];
-final atracuriumData = [[2, 1.0, 'Dilute 25 mg to 10 mL', 0.4], [2.5, 1.25, 'Dilute 25 mg to 10 mL', 0.5], [3, 1.5, 'Dilute 25 mg to 10 mL', 0.6], [3.5, 1.75, 'Dilute 25 mg to 10 mL', 0.7], [4, 2.0, 'Dilute 25 mg to 10 mL', 0.8], [4.5, 2.25, 'Dilute 25 mg to 10 mL', 0.9], [5, 2.5, 'Dilute 25 mg to 10 mL', 1.0], [5.5, 2.75, 'Dilute 25 mg to 10 mL', 1.1], [6, 3.0, 'Dilute 25mg to 10mL', 1.2], [7, 3.5, 'Dilute 25mg to 10mL', 1.4], [8, 4.0, 'Dilute 25mg to 10mL', 1.6], [9, 4.5, 'Dilute 25mg to 10mL', 1.8], [10, 5.0, 'Dilute 25mg to 10mL', 2.0], [11, 5.5, 'Dilute 25mg to 10mL', 2.2], [12, 6.0, 'Dilute 25mg to 10mL', 2.4], [13, 6.5, 'Dilute 25mg to 10mL', 2.6], [14, 7.0, 'Dilute 25mg to 10mL', 2.8], [15, 7.5, 'Dilute 25mg to 10mL', 3.0], [16, 8.0, 'Dilute 25mg to 10mL', 3.2], [17, 8.5, 'Dilute 25mg to 10mL', 3.4], [18, 9.0, 'Dilute 25mg to 10mL', 3.6], [19, 9.5, 'Dilute 25mg to 10mL', 3.8], [20, 10.0, 'Dilute 25mg to 10mL', 4.0], [22, 11.0, 'Dilute 25mg to 10mL', 4.4], [24, 12.0, 'Undiluted', 1.2], [26, 13.0, 'Undiluted', 1.3], [28, 14.0, 'Undiluted', 1.4], [30, 15.0, 'Undiluted', 1.5], [35, 17.5, 'Undiluted', 1.75], [40, 20.0, 'Undiluted', 2.0], [45, 22.5, 'Undiluted', 2.25], [50, 25.0, 'Undiluted', 2.5], [55, 27.5, 'Undiluted', 2.75], [60, 30.0, 'Undiluted', 3.0], [65, 32.5, 'Undiluted', 3.25], [70, 35.0, 'Undiluted', 3.5], [75, 37.5, 'Undiluted', 3.75], [80, 40.0, 'Undiluted', 4.0]];
+final atracuriumData = [[2, 1.0, '25 mg to 10 mL', 0.4], [2.5, 1.25, '25 mg to 10 mL', 0.5], [3, 1.5, '25 mg to 10 mL', 0.6], [3.5, 1.75, '25 mg to 10 mL', 0.7], [4, 2.0, '25 mg to 10 mL', 0.8], [4.5, 2.25, '25 mg to 10 mL', 0.9], [5, 2.5, '25 mg to 10 mL', 1.0], [5.5, 2.75, '25 mg to 10 mL', 1.1], [6, 3.0, '25mg to 10mL', 1.2], [7, 3.5, '25mg to 10mL', 1.4], [8, 4.0, '25mg to 10mL', 1.6], [9, 4.5, '25mg to 10mL', 1.8], [10, 5.0, '25mg to 10mL', 2.0], [11, 5.5, '25mg to 10mL', 2.2], [12, 6.0, 'Dilute 25mg to 10mL', 2.4], [13, 6.5, 'Dilute 25mg to 10mL', 2.6], [14, 7.0, '25mg to 10mL', 2.8], [15, 7.5, '25mg to 10mL', 3.0], [16, 8.0, '25mg to 10mL', 3.2], [17, 8.5, 'Dilute 25mg to 10mL', 3.4], [18, 9.0, 'Dilute 25mg to 10mL', 3.6], [19, 9.5, '25mg to 10mL', 3.8], [20, 10.0, '25mg to 10mL', 4.0], [22, 11.0, '25mg to 10mL', 4.4], [24, 12.0, 'Undiluted', 1.2], [26, 13.0, 'Undiluted', 1.3], [28, 14.0, 'Undiluted', 1.4], [30, 15.0, 'Undiluted', 1.5], [35, 17.5, 'Undiluted', 1.75], [40, 20.0, 'Undiluted', 2.0], [45, 22.5, 'Undiluted', 2.25], [50, 25.0, 'Undiluted', 2.5], [55, 27.5, 'Undiluted', 2.75], [60, 30.0, 'Undiluted', 3.0], [65, 32.5, 'Undiluted', 3.25], [70, 35.0, 'Undiluted', 3.5], [75, 37.5, 'Undiluted', 3.75], [80, 40.0, 'Undiluted', 4.0]];
 
 final ettUncuffedSize = [[2, 3], [2.5, 3], [3, 3.5], [3.5, 3.5], [4, 3.5], [4.5, 3.5], [5, 3.5], [5.5, 3.5], [6, 3.5], [7, 3.5], [8, 3.5], [9, 3.5], [10, 4], [11, 4], [12, 4.5], [13, 4.5], [14, 4.5], [15, 5], [16, 5], [17, 5], [18, 5], [19, 5.5], [20, 5.5], [22, 5.5], [24, 6], [26, 6], [28, 6], [30, 6.5], [35, 6.5], [40, 6.5], [45, 6.5], [50, 6.5], [55, 7], [60, 7], [65, 7.5], [70, 8], [75, 8.5], [80, 8.5]];
 final ettMicroCuffSize = [[2, 3], [2.5, 3], [3, 3], [3.5, 3], [4, 3], [4.5, 3], [5, 3], [5.5, 3], [6, 3], [7, 3], [8, 3.5], [9, 3.5], [10, 3.5], [11, 3.5], [12, 3.5], [13, 4], [14, 4], [15, 4], [16, 4.5], [17, 4.5], [18, 4.5], [19, 4.5], [20, 4.5], [22, 5], [24, 5], [26, 5.5], [28, 5.5], [30, 5.5], [35, 6], [40, 6], [45, 6.5], [50, 7], [55, 7], [60, 7], [65, 7], [70, 7], [75, 7], [80, 7]];
@@ -124,9 +124,9 @@ suxamethoniumDisplay(BuildContext context) {
   var popup = finalDisplayFull(
       context,
       "Saxumethonium",
-      finalDisplayDilute(context, "Dilute: ", "100mg to 10ml", ""),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplayDilute(context, "Dilute: ", "100 mg to 10mL", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[2]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]}", "mL of diluted solution)"),
       finalDisplayFormula(context, "2 mg/kg up to 9kg \n 10kg or more: 1.5 mg/kg"));
 
 
@@ -140,10 +140,10 @@ rocuroniumDisplay(BuildContext context) {
   var popup = finalDisplayFull(
       context,
       "Rocuronium",
-      finalDisplayDilute(context, "Undiluted: ", "", " "),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
-      finalDisplayFormula(context, "1mg/kg"));
+      finalDisplayDilute(context, "Undiluted", "", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[2]}", "mL of undiluted solution)"),
+      finalDisplayFormula(context, "1 mg/kg"));
 
 
 
@@ -157,9 +157,9 @@ vecuroniumDisplay(BuildContext context) {
   var popup = finalDisplayFull(
       context,
       "Vecuronium",
-      finalDisplayDilute(context, "Reconstitute ", "10mg in 10mL water", ""),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of solution)"),
+      finalDisplayDilute(context, "Reconstitute ", "10mg in 10mL water", "for injection"),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[2]}", "mL of diluted solution)"),
       finalDisplayFormula(context, "0.1 mg/kg"));
 
 
@@ -173,9 +173,9 @@ atracuriumDisplay(BuildContext context) {
   var popup = finalDisplayFull(
       context,
       "Atracurium",
-      finalDisplayDilute(context, "Dilute: ", "", ""),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of solution)"),
+      finalDisplayDilute(context, "Dilute: ", "${currentData[2]}", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]}", "mL of solution)"),
       finalDisplayFormula(context, "0.5 mg/kg"));
 
 

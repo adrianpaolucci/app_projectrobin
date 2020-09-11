@@ -441,11 +441,15 @@ Widget finalDisplayFormula(BuildContext context, var formula) {
               fontSize: size16Text(context)
           )
       ),
-      Text("$formula",
-          style: TextStyle(
-              fontSize: size16Text(context),
-              decoration: TextDecoration.underline
-          )
+      Container(
+        child:
+          Text("$formula",
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                  fontSize: size16Text(context),
+                  decoration: TextDecoration.underline
+              )
+          ),
       )
     ],
   );

@@ -10,7 +10,7 @@ final anaphylaxisIVFluidBolus = [[2, 40], [2.5, 50.0], [3, 60], [3.5, 70.0], [4,
 final anaphylaxisAdrenalineInfusion = [[2, 12], [2.5, 15.0], [3, 18], [3.5, 21.0], [4, 24], [4.5, 27.0], [5, 30], [5.5, 33.0], [6, 36], [7, 42], [8, 48], [9, 54], [10, 60], [11, 66], [12, 72], [13, 78], [14, 84], [15, 90], [16, 96], [17, 102], [18, 108], [19, 114], [20, 120], [22, 132], [24, 144], [26, 156], [28, 168], [30, 180], [35, 210], [40, 240], [45, 270], [50, 300], [55, 330], [60, 360], [65, 390], [70, 420], [75, 450], [80, 480]];
 final resuscAdrenalineIVcardiac = [[2, 20, 2.0, 'Large', 'Not Available', 0.2], [2.5, 25.0, 2.5, 'Large', 'Not Available', 0.25], [3, 30, 3.0, 'Large', 'Not Available', 0.3], [3.5, 35.0, 0.35, 'Small', 'Not Available', 0.35], [4, 40, 0.4, 'Small', 'Not Available', 0.4], [4.5, 45.0, 0.45, 'Small', 'Not Available', 0.45], [5, 50, 0.5, 'Small', 'Not Available', 0.5], [5.5, 55.0, 0.55, 'Small', 'Not Available', 0.55], [6, 60, 0.6, 'Small', 'Not Available', 0.6], [7, 70, 0.7, 'Small', 'Not Available', 0.7], [8, 80, 0.8, 'Small', 'Not Available', 0.8], [9, 90, 0.9, 'Small', 'Not Available', 0.9], [10, 100, 1.0, 'Small', 'Not Available', 1.0], [11, 110, 1.1, 'Small', 'Not Available', 1.1], [12, 120, 1.2, 'Small', 'Not Available', 1.2], [13, 130, 1.3, 'Small', 'Not Available', 1.3], [14, 140, 1.4, 'Small', 'Not Available', 1.4], [15, 150, 1.5, 'Small', 'Not Available', 1.5], [16, 160, 1.6, 'Small', 'Not Available', 1.6], [17, 170, 1.7, 'Small', 'Not Available', 1.7], [18, 180, 1.8, 'Small', 'Not Available', 1.8], [19, 190, 1.9, 'Small', 'Not Available', 1.9], [20, 200, 2.0, 'Small', 'Not Available', 2.0], [22, 220, 2.2, 'Small', 'Not Available', 2.2], [24, 240, 2.4, 'Small', 'Not Available', 2.4], [26, 260, 2.5, 'Small', 'Diluted to 10 mL', 2.6], [28, 280, 2.5, 'Small', 'Diluted to 10 mL', 2.8], [30, 300, 2.5, 'Small', 'Diluted to 10 mL', 3.0], [35, 350, 2.5, 'Small', 'Diluted to 10 mL', 3.5], [40, 400, 2.5, 'Small', 'Diluted to 10 mL', 4.0], [45, 450, 2.5, 'Small', 'Diluted to 10 mL', 4.5], [50, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0], [55, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0], [60, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0], [65, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0], [70, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0], [75, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0], [80, 1000, 2.5, 'Small', 'Diluted to 10 mL', 10.0]];
 final resuscDC = [[2, 10, 'Paediatric'], [2.5, 10, 'Paediatric'], [3, 10, 'Paediatric'], [3.5, 10, 'Paediatric'], [4, 20, 'Paediatric'], [4.5, 20, 'Paediatric'], [5, 20, 'Paediatric'], [5.5, 20, 'Paediatric'], [6, 20, 'Paediatric'], [7, 30, 'Paediatric'], [8, 30, 'Paediatric'], [9, 30, 'Paediatric'], [10, 50, 'Paediatric'], [11, 50, 'Adult/Child'], [12, 50, 'Adult/Child'], [13, 50, 'Adult/Child'], [14, 50, 'Adult/Child'], [15, 70, 'Adult/Child'], [16, 70, 'Adult/Child'], [17, 70, 'Adult/Child'], [18, 70, 'Adult/Child'], [19, 70, 'Adult/Child'], [20, 100, 'Adult/Child'], [22, 100, 'Adult/Child'], [24, 100, 'Adult/Child'], [26, 100, 'Adult/Child'], [28, 100, 'Adult/Child'], [30, 150, 'Adult/Child'], [35, 150, 'Adult/Child'], [40, 150, 'Adult/Child'], [45, 150, 'Adult/Child'], [50, 150, 'Adult/Child'], [55, 150, 'Adult/Child'], [60, 150, 'Adult/Child'], [65, 150, 'Adult/Child'], [70, 150, 'Adult/Child'], [75, 150, 'Adult/Child'], [80, 150, 'Adult/Child']];
-final resuscAtropine = [[2, 40, 'Dilute 600 micrograms to 6 mL', 0.067], [2.5, 50.0, 'Dilute 600 micrograms to 6 mL', 0.083], [3, 60, 'Dilute 600 micrograms to 6 mL', 0.1], [3.5, 70.0, 'Dilute 600 micrograms to 6 mL', 0.1167], [4, 80, 'Dilute 600 micrograms to 6 mL', 0.133], [4.5, 90.0, 'Dilute 600 micrograms to 6 mL', 0.15], [5, 100, 'Dilute 600 micrograms to 6 mL', 0.167], [5.5, 110.0, 'Dilute 600 micrograms to 6 mL', 0.1833], [6, 120, 'Dilute 600 micrograms to 6 mL', 0.2], [7, 140, 'Dilute 600 micrograms to 6 mL', 0.233], [8, 160, 'Dilute 600 micrograms to 6 mL', 0.267], [9, 180, 'Dilute 600 micrograms to 6 mL', 0.3], [10, 200, 'Dilute 600 micrograms to 6 mL', 0.33], [11, 220, 'Dilute 600 micrograms to 6 mL', 0.367], [12, 240, 'Dilute 600 micrograms to 6 mL', 0.4], [13, 260, 'Dilute 600 micrograms to 6 mL', 0.433], [14, 280, 'Dilute 600 micrograms to 6 mL', 0.467], [15, 300, 'Dilute 600 micrograms to 6 mL', 0.5], [16, 320, 'Dilute 600 micrograms to 6 mL', 0.533], [17, 340, 'Dilute 600 micrograms to 6 mL', 0.567], [18, 360, 'Dilute 600 micrograms to 6 mL', 0.6], [19, 380, 'Dilute 600 micrograms to 6 mL', 0.633], [20, 400, 'Dilute 600 micrograms to 6 mL', 0.67], [22, 440, 'Dilute 600 micrograms to 6 mL', 0.733], [24, 480, 'Dilute 600 micrograms to 6 mL', 0.8], [26, 520, 'Dilute 600 micrograms to 6 mL', 0.867], [28, 560, 'Dilute 600 micrograms to 6 mL', 0.933], [30, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [35, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [40, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [45, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [50, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [55, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [60, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [65, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [70, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [75, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1], [80, 600, 'Undiluted (600 micrograms in 1 mL) - ADULT dose', 1]];
+final resuscAtropine = [[2, 40, '600 \u03bcg to 6 mL', 0.067], [2.5, 50.0, '600 \u03bcg to 6 mL', 0.083], [3, 60, '600 \u03bcg to 6 mL', 0.1], [3.5, 70.0, '600 \u03bcg to 6 mL', 0.1167], [4, 80, '600 \u03bcg to 6 mL', 0.133], [4.5, 90.0, '600 \u03bcg to 6 mL', 0.15], [5, 100, '600 \u03bcg to 6 mL', 0.167], [5.5, 110.0, '600 \u03bcg to 6 mL', 0.1833], [6, 120, '600 \u03bcg to 6 mL', 0.2], [7, 140, '600 \u03bcg to 6 mL', 0.233], [8, 160, '600 \u03bcg to 6 mL', 0.267], [9, 180, '600 \u03bcg to 6 mL', 0.3], [10, 200, '600 \u03bcg to 6 mL', 0.33], [11, 220, '600 \u03bcg to 6 mL', 0.367], [12, 240, '600 \u03bcg to 6 mL', 0.4], [13, 260, '600 \u03bcg to 6 mL', 0.433], [14, 280, '600 \u03bcg to 6 mL', 0.467], [15, 300, '600 \u03bcg to 6 mL', 0.5], [16, 320, '600 \u03bcg to 6 mL', 0.533], [17, 340, '600 \u03bcg to 6 mL', 0.567], [18, 360, '600 \u03bcg to 6 mL', 0.6], [19, 380, '600 \u03bcg to 6 mL', 0.633], [20, 400, '600 \u03bcg to 6 mL', 0.67], [22, 440, '600 \u03bcg to 6 mL', 0.733], [24, 480, '600 \u03bcg to 6 mL', 0.8], [26, 520, '600 \u03bcg to 6 mL', 0.867], [28, 560, '600 \u03bcg to 6 mL', 0.933], [30, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [35, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [40, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [45, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [50, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [55, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [60, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [65, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [70, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [75, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1], [80, 600, 'Undiluted (600 \u03bcg in 1 mL) - ADULT dose', 1]];
 final resuscAmlodarone = [[2, 10, 1, 1.67], [2.5, 12.5, 1, 2.083], [3, 15, 1, 2.5], [3.5, 17.5, 1, 2.9167], [4, 20, 1, 3.33], [4.5, 22.5, 1, 3.75], [5, 25, 1, 4.167], [5.5, 27.5, 1, 4.583], [6, 30, 1, 5.0], [7, 35, 1, 5.833], [8, 40, 1, 6.67], [9, 45, 1, 7.5], [10, 50, 1, 8.33], [11, 55, 1, 9.167], [12, 60, 1, 10.0], [13, 65, 1, 10.833], [14, 70, 1, 11.67], [15, 75, 1, 12.5], [16, 80, 1, 13.33], [17, 85, 1, 14.167], [18, 90, 1, 15.0], [19, 95, 1, 15.833], [20, 100, 1, 16.67], [22, 110, 1, 18.33], [24, 120, 1, 20.0], [26, 130, 1, 21.67], [28, 140, 1, 23.33], [30, 150, 1, 25.0], [35, 175, 2, 29.167], [40, 200, 2, 33.33], [45, 225, 2, 37.5], [50, 250, 2, 41.67], [55, 275, 2, 45.833], [60, 300, 2, 50.0], [65, 300, 2, 50.0], [70, 300, 2, 50.0], [75, 300, 2, 50.0], [80, 300, 2, 50.0]];
 final resuscLignocaine = [[2, 2], [2.5, 2.5], [3, 3], [3.5, 3.5], [4, 4], [4.5, 4.5], [5, 5], [5.5, 5.5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12], [13, 13], [14, 14], [15, 15], [16, 16], [17, 17], [18, 18], [19, 19], [20, 20], [22, 22], [24, 24], [26, 26], [28, 28], [30, 30], [35, 35], [40, 40], [45, 45], [50, 50], [55, 55], [60, 60], [65, 65], [70, 70], [75, 75], [80, 80]];
 final resuscAdenosine1 = [[2, 0.2, 'Diluted 6mg ampoule to 6mL', 0.2], [2.5, 0.25, 'Diluted 6mg ampoule to 6mL', 0.25], [3, 0.3, 'Diluted 6mg ampoule to 6mL', 0.3], [3.5, 0.35, 'Diluted 6mg ampoule to 6mL', 0.35], [4, 0.4, 'Diluted 6mg ampoule to 6mL', 0.4], [4.5, 0.45, 'Undiluted (6mg in 2 mL), use 1 mL syringe', 0.15], [5, 0.5, 'Undiluted (6mg in 2 mL), use 1 mL syringe', 0.167], [5.5, 0.55, 'Undiluted (6mg in 2 mL), use 1 mL syringe', 0.1833], [6, 0.6, 'Undiluted (6mg in 2 mL), use 1 mL syringe', 0.2], [7, 0.7, 'Undiluted (6mg in 2 mL), use 1 mL syringe', 0.233], [8, 0.8, 'Undiluted (6mg in 2 mL), use 1 mL syringe', 0.267], [9, 0.9, 'Undiluted (6mg in 2 mL); use 1 or 2 mL syringe', 0.3], [10, 1.0, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.33], [11, 1.1, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.367], [12, 1.2, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.4], [13, 1.3, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.433], [14, 1.4, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.467], [15, 1.5, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.5], [16, 1.6, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.533], [17, 1.7, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.5667], [18, 1.8, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.6], [19, 1.9, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.633], [20, 2.0, 'Undiluted (6mg in 2 mL); use 1 or 3 mL syringe', 0.67], [22, 2.2, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 0.73], [24, 2.4, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 0.8], [26, 2.6, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 0.867], [28, 2.8, 'Undiluted (6mg in 2 mL); use 3 mL syringe', 0.933], [30, 3.0, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.0], [35, 3.5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.167], [40, 4.0, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.33], [45, 4.5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.5], [50, 5.0, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67], [55, 5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67], [60, 5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67], [65, 5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67], [70, 5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67], [75, 5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67], [80, 5, 'Undiluted (6mg in 2 mL); use 3 mL or 5 mL syringe', 1.67]];
@@ -19,179 +19,100 @@ final resuscAdenosine3 = [[2, 0.6, 'Diluted 6mg ampoule to 6mL', 0.6], [2.5, 0.7
 
 
 anaphylaxisAdrenalineIMDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = anaphylaxisIMAdrenaline[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),child:
-      Column(children: <Widget>[
-    Text("IM Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("of 1:1000 (small ampoule)"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)
-      ]
-      )
-    )
-  ]
-  );
+  var popup = finalDisplayFull(
+      context,
+      "IM Adrenaline",
+      finalDisplayDilute(context, "Dilute:", "1:1000", "(small ampoule)"),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplaySecondary(context, "repeat every ", "5", " minutes as required"),
+      finalDisplayFormula(context, "10 \u03bcg/kg IM\n(0.01 mL/kg of 1:1000)"));
+
   return popup;
 }
 
 anaphylaxisFluidDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = anaphylaxisIVFluidBolus[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding:
-  EdgeInsets.only(top: popupPadding(context)),
-    child: Column(
-    children: <Widget>[
-    Text("IV Fluid Bolus", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("sodium chloride 0.9%"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]))]);
+
+  var popup = finalDisplayFull(
+      context,
+      "IV Fluid Bolus",
+      finalDisplayDilute(context, "Use:", "sodium chloride 0.9%", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplaySecondary(context, "", "", ""),
+      finalDisplayFormula(context, "20 mL/kg"));
   return popup;
 }
 
 anaphylaxisInitialAdrenalineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = anaphylaxisAdrenalineInfusion[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.only(top: popupPadding(context)),child: Column(
-  children: <Widget>[
-    Text("Initial (ward) Adrenaline infusion", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("1 mg Adrenaline in 1 L of\nsodium chloride 0.9%"),
-            Text("Commence at ${currentData[1]} mL/hour", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]))]);
+  var popup = finalDisplayFull(
+      context,
+      "Initial (ward) Adrenaline infusion",
+      finalDisplayDilute(context, "Reconstitute: ", "1 mg adrenaline in", "1 L sodium chloride 0.9%"),
+      finalDisplayGive(context, "Commence at: ", "${currentData[1]} mL/hr"),
+      finalDisplaySecondary(context, "", "", ""),
+      finalDisplayFormula(context, "Run at 6 mL/kg/hr"));
+
   return popup;
 }
 
 resuscAdrenalineIVDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = resuscAdrenalineIVcardiac[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Adrenaline IV (cardiac arrest)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("not finished yet", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("of 1:1000 (small ampoule)"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]))]);
+  var popup = finalDisplayFull(
+      context,
+      "Adrenaline IV (cardiac arrest)",
+      finalDisplayDilute(context, "Dilute: ", "1:10000", "(large ampoule)"),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} \u03bcg"),
+      finalDisplaySecondary(context, "", "", ""),
+      finalDisplayFormula(context, "10 \u03bcg/kg IV\n(0.1 mL/kg of 1:10000)"));
+
   return popup;
 }
 
 resuscDCshockDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = resuscDC[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("DC Shock", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("4 J/kg"),
-            Text("${currentData[1]} J", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-           Text("Use ${currentData[2]} pads"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]))]);
+  var popup = finalDisplayFull(
+      context,
+      "DC Shock",
+      finalDisplayGive(context, "Use:", "${currentData[2]} pads"),
+      finalDisplayGive(context, "Energy: ", "${currentData[1]} J"),
+      finalDisplaySecondary(context, "", "", ""),
+      finalDisplayFormula(context, "4 J/kg"));
+
   return popup;
 }
 
 resuscAtropineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = resuscAtropine[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.only(top: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Atropine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("20 μg/kg"),
-            Text("${currentData[1]} μg", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[2]}", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("${currentData[3]} mL", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]))]);
+  var popup = finalDisplayFull(
+      context,
+      "Atropine",
+      finalDisplayDilute(context, "Dilute:", "${currentData[2]}", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} ", "mL of diluted solution)"),
+      finalDisplayFormula(context, "20 \u03bcg/kg"));
+
   return popup;
 }
 
 resuscAmlodaroneDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = resuscAmlodarone[weightIndex];
+
+  var popup = finalDisplayFull(
+      context,
+      "Amlodarone",
+      finalDisplayDilute(context, "Dilute:", "${currentData[2]}", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} ", "mL of diluted solution)"),
+      finalDisplayFormula(context, "20 \u03bcg/kg"));
 
   var popup = Column(children: <Widget>[
     Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),

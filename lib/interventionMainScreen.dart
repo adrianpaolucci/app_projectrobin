@@ -23,7 +23,7 @@ import 'drugSearch.dart';
 var boolCount = 0;
 
 adrianDivider() {
-  var divider = Divider(thickness: 1.0, color: Colors.black);
+  var divider = Divider(thickness: 1.0, color: Color(0xffa6a6a6));
   return divider;
 }
 
