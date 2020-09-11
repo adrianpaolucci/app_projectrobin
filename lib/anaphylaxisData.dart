@@ -109,44 +109,20 @@ resuscAmlodaroneDisplay(BuildContext context) {
   var popup = finalDisplayFull(
       context,
       "Amlodarone",
-      finalDisplayDilute(context, "Dilute:", "${currentData[2]}", ""),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} ", "mL of diluted solution)"),
-      finalDisplayFormula(context, "20 \u03bcg/kg"));
+      finalDisplayDilute(context, "Dilute:", "${currentData[2]} ampoule(s) (150 mg in 3 mL)", "to 25 mL in glucose 5%"),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg (${currentData[3]} ml of diluted sol)"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} ", " \nOver 3 minutes in emergency, \notherwise over 20-120 minutes"),
+      finalDisplayFormula(context, "5 mg/kg"));
 
-  var popup = Column(children: <Widget>[
-    Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
-  child: Column(
-  children: <Widget>[
-    Text("Amlodarone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      decoration: lightBoxDec(context),
-      margin: EdgeInsets.all(5),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("5 mg/kg"),
-            Text("${currentData[1]} mg", style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Dilute ${currentData[2]} ampoule(s) (150 mg in 3 mL)\nto 25 mL in Glucose 5%",
-            textAlign: TextAlign.center),
-            SizedBox(height: 5),
-            Text("Over 3 min in emergency, otherwise over\n20-120 minutes", textAlign: TextAlign.center,),
-            Text("${currentData[3]} mL",style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]))]);
   return popup;
 }
 
 resuscLignocaineDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = resuscLignocaine[weightIndex];
+
+
+
 
   var popup = Column(children: <Widget>[
     Padding(padding: EdgeInsets.symmetric(vertical: popupPadding(context)),
