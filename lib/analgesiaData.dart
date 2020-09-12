@@ -7,56 +7,30 @@ final analgesiaMorphineData = [[2, 0.1], [2.5, 0.125], [3, 0.15], [3.5, 0.175], 
 
 analgesiaParacetDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
-  var currentData = analgesiaParacetData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Paracetamol Acetaminophen", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Every 6 hours"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var currentData = analgesiaParacetData[weightIndex];
+  var popup = finalDisplayFull(
+      context,
+      "Paracetamol",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "every 6 hours", "", ""),
+      finalDisplayFormula(context, "15 mg/kg \nMax 60 mg/kg/day "));
+
   return popup;
 }
 
 analgesiaMorphineDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = analgesiaMorphineData[weightIndex];
+  var popup = finalDisplayFull(
+      context,
+      "Morphine",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "repeat in 5 minutes", "", ""),
+      finalDisplayFormula(context, "12 months: 0.05 mg/kg\n1-18 years:0.1 mg/kg"));
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Morphine", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Repeat in 5 mins"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+
   return popup;
 }

@@ -14,26 +14,15 @@ aciclovirDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = aciclovirData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Aciclovir", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("8-hourly")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+
+  var popup = finalDisplayFull(
+      context,
+      "Aciclovir ",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "8 - hourly", "", ""),
+      finalDisplayFormula(context, "<5 years: 20 mg/kg\n5 - 12 years: 15 mg/kg\n>12 years: 10 mg/kg"));
+
   return popup;
 }
 
@@ -41,26 +30,14 @@ artesunateDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = artesunateData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Artesunate", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("Stat, 12, 24, then daily")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Artesunate ",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "Start, 12, 24, then daily", "", ""),
+      finalDisplayFormula(context, "2.4 mg/kg"));
+
   return popup;
 }
 
@@ -68,26 +45,16 @@ oseltamivirDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = oseltamivirData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Oselamivir", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("12-hourly")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Oseltamivir ",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "12 - hourly", "", ""),
+      finalDisplayEmpty());
+      //finalDisplayFormula(context, "Neonate - 11 months: 3 mg/kg\n1 - 12 years(10 - 15 kg): 30 mg/kg\n1 - 12 years(15 - 23 kg): 45 mg/kg\n 1 - 12 years(23 - 40 kg): 60 mg/kg\n1 - 12 years(40+ kg): 75 mg/kg\n13 - 17 years: 75 mg"));
+
+
   return popup;
 }
 
@@ -95,26 +62,14 @@ cefotaximeDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = cefotaximeData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Cefotaxime", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("Every 6-8 hours")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Cefotaxime ",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "Every 6 - 8 hours", "", ""),
+      finalDisplayFormula(context, "50 mg/kg (max 2g)"));
+
   return popup;
 }
 
@@ -122,26 +77,14 @@ ceftriaxoneDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = ceftriaxoneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Ceftraixone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("12-hourly or daily")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Ceftriaxone ",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "12 - hourly or daily", "", ""),
+      finalDisplayFormula(context, "50 mg/kg "));
+
   return popup;
 }
 
@@ -149,26 +92,15 @@ azithromycinDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = azithromycinData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Azithromyscin", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("Daily (oral or IV)")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Azithromycin",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "Daily (oral or IV)", "", ""),
+      finalDisplayFormula(context, "10 mg/kg "));
+
+
   return popup;
 }
 
@@ -176,29 +108,13 @@ pipAndTazobDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = pipAndTazobData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Piperacillin/Tazobactam", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("plus ${currentData[2]} mg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Text("6-hourly")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Piperacillin/Tazobactam",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "plus ", " ${currentData[2]}  mg", " 6 - hourly"),
+      finalDisplayFormula(context, "100 + 12.5 mg/kg\nup to 4 + 0.5 g"));
+
   return popup;
 }

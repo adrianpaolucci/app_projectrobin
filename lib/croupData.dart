@@ -10,26 +10,14 @@ croupNebAdrenalineDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = croupNebAdrenalineData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Nebulised Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("${currentData[2]} mg of 1:1000")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Nebulised Adrenaline",
+      finalDisplayDilute(context, "Dilute: ", "1:1000", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplaySecondary(context, "(", "${currentData[2]} ", " mg of 1:1000)"),
+      finalDisplayFormula(context, "0.5 mg/kg"));
+
   return popup;
 }
 
@@ -37,24 +25,14 @@ croupDexamethDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = croupDexamethData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Dexamethasone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg - ${currentData[2]} mg",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Dexamethasone ",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "0.15 - 0.6 mg/kg"));
+
   return popup;
 }
 
@@ -62,24 +40,15 @@ croupPrednisoloneDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = croupPrednisoloneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Prednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Prednisolone",
+      finalDisplayEmpty(),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "1 mg/kg (repeat in 24 hrs)"));
+
+
   return popup;
 }
 
