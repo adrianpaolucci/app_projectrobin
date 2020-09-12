@@ -417,13 +417,16 @@ Widget finalDisplaySecondary(BuildContext context, var text1, var text2, var tex
     child: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text("$text1"),
+        Text("$text1",
+        textAlign: TextAlign.end),
         Text("$text2",
             style: TextStyle(
                 fontWeight: FontWeight.bold
-            )
+            ),
+            textAlign: TextAlign.end
         ),
-        Text("$text3")
+        Text("$text3",
+            textAlign: TextAlign.end)
       ],
     ),
   );
