@@ -146,6 +146,7 @@ void showFinalDropdowns(BuildContext context) {
         title: Text("${interventions[i]}",
             style: TextStyle(
                 color: intColors[i],
+                fontWeight: FontWeight.bold,
                 fontSize: size18Text(context))),
         children: allFinalDisplays[i],
       ));
@@ -375,6 +376,25 @@ electrolyteAbnormalitiesFinal(BuildContext context) {
     electrolyteList.removeLast();
   }
   return electrolyteList;
+}
+
+antidotesFinal(BuildContext context) {
+  var shockBoolean = allDrugBooleans[14];
+  final data = MediaQuery.of(context);
+  var antidotesWidgets = [shockFluidDisplay(context),shockAdrenalineDisplay(context),shockNoradrenalineDisplay(context),shockDobutamineDisplay(context),shockDopamineDisplay(context),shockStressDoseDisplay(context)];
+
+  List<Widget>antidoteList = [];
+  for (var i = 0; i < shockBoolean.length; i++) {
+    if (shockBoolean[i] == true) {
+      displayBools[1] = true;
+      antidoteList.add(antidotesWidgets[i]);
+      antidoteList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+    }
+  }
+  if (antidoteList.isNotEmpty) {
+    antidoteList.removeLast();
+  }
+  return antidoteList;
 }
 
 

@@ -188,7 +188,6 @@ sAndNHypertonicSalineDisplay(BuildContext context) {
 }
 
 sAndNMannitolDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = sAndNMannitolData[weightIndex];
 
   var popup = finalDisplayFull(

@@ -42,7 +42,6 @@ artesunateDisplay(BuildContext context) {
 }
 
 oseltamivirDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = oseltamivirData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -89,7 +88,6 @@ ceftriaxoneDisplay(BuildContext context) {
 }
 
 azithromycinDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = azithromycinData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -100,12 +98,10 @@ azithromycinDisplay(BuildContext context) {
       finalDisplaySecondary(context, "Daily (oral or IV)", "", ""),
       finalDisplayFormula(context, "10 mg/kg "));
 
-
   return popup;
 }
 
 pipAndTazobDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = pipAndTazobData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -113,7 +109,7 @@ pipAndTazobDisplay(BuildContext context) {
       "Piperacillin/Tazobactam",
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "plus ", " ${currentData[2]}  mg", " 6 - hourly"),
+      finalDisplaySecondary(context, "plus ", "${currentData[2]}  mg", " 6 - hourly"),
       finalDisplayFormula(context, "100 + 12.5 mg/kg\nup to 4 + 0.5 g"));
 
   return popup;

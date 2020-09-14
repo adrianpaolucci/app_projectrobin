@@ -15,7 +15,7 @@ final allDrugs = [
   //3 intubation -- induction agents
   ["Ketamine","Propofol","Thiopentone","Fentanyl (Bolus)","Midazolam", "Fentanyl (Infusion)"],
 
-  //4 induction -- paralytic agents
+  //4 intubation -- paralytic agents
   ["Suxamethonium","Rocuronium","Vecuronium","Atracurium"],
 
   //5 Electrolyte Abnormalities
@@ -44,6 +44,9 @@ final allDrugs = [
 
   //13 electrolyte abnormalities
   ["Calcium chloride","Calcium gluconate","Salbutamol","Insulin and glucose","Sodium bicarbonate","Hyponatraemia with seizures","Sympometic Hypocalcaemia","Hypomagnasaemia","Glucose","Glucagon","Hypokalaemia with arrhythmia"],
+
+  //14 -- antidotes
+  ["Atropine","Pralidoxime","Prazosin","N-Acetylcysteine"]
 ];
 
 final allDrugBooleans = [
@@ -61,5 +64,6 @@ final allDrugBooleans = [
   [false,false,false],
   [false,false],
   [false,false,false,false,false,false,false,false,false,false,false],
+  [false,false,false,false]
 ];
 

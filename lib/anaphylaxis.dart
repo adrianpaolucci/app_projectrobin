@@ -61,21 +61,24 @@ class AnaphylaxisState extends State<Anaphylaxis> {
         itemCount: allDrugs[6].length,
         itemBuilder: (BuildContext context, var i) {
           return GestureDetector(
-              child: Container(width: 9*data.size.width/10,height: 40,
+              child: Container(
+                  width: 0.9*data.size.width,
+                  height: 40,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                       color: getColor(i)),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(allDrugs[6][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[6][i],
-                        onChanged: (bool newValue){
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 5.0),
+                        child: Text(allDrugs[6][i]),
+                      ),
+                      Switch(
+                          activeColor: Color(0xff39e600),
+                          value: allDrugBooleans[6][i],
+                          onChanged: (bool newValue){
                             if (newValue == true) {
                               boolCount += 1;
                             }
@@ -89,8 +92,8 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                             if (boolCount == 0) {
                               clearAll();
                             }
-                        }),
-                  ],
+                          }),
+                    ],
                   )
               ),
               onTap: () {

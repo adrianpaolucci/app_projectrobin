@@ -153,6 +153,7 @@ class AnalgesiaState extends State<Analgesia> {
                     SizedBox(height: 10),
                     Divider(thickness: 1.0),
                     ExpansionTile(
+                      initiallyExpanded: true,
                       title: Text("General Drugs"),
                       children: <Widget>[GestureDetector(child: Text("Select Drug from below",
                           style: TextStyle(color: Colors.indigoAccent))),

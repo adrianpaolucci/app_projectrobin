@@ -19,6 +19,7 @@ import 'infection.dart';
 import 'croup.dart';
 import 'analgesia.dart';
 import 'drugSearch.dart';
+import 'antidotes.dart';
 
 var boolCount = 0;
 
@@ -42,7 +43,7 @@ var pages = [
   SeizuresNeurology(),Asthma(),
   Infection(),Croup(),
   Analgesia(),ElectrolyteAbnormalities(),
-  Anaphylaxis(),
+  Antidotes(),
 ];
 
 

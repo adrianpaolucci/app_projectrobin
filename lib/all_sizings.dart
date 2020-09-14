@@ -281,7 +281,7 @@ finalDisplayFull(
     Widget function1,
     Widget function2,
     Widget function3,
-    Widget function4
+    Widget function4,
     ) {
 
   final data = MediaQuery.of(context);
@@ -299,7 +299,7 @@ finalDisplayFull(
                       "$drugName",
                       style: TextStyle(
                           fontSize: size18Text(context),
-                          color: Color(0xff6666ff),
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold)
                   ),
                 )
