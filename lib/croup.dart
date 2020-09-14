@@ -80,10 +80,7 @@ class CroupState extends State<Croup> {
                       allDrugBooleans[11][i] = !allDrugBooleans[11][i];
                       items = badger.setBadge(items, "$boolCount", 1);
                       if (boolCount == 0) {
-                        for (var i = 0; i <
-                            seizuresNeurologyDrugs.length; i++) {
-                          items = badger.removeBadge(items, 1);
-                        }
+                          clearAll();
                       }
                     });
                   }
@@ -120,8 +117,6 @@ class CroupState extends State<Croup> {
                                           style: TextStyle(color: Colors.black, fontSize: size16Text(context))),
                                     )
                                 ),
-
-                                //icon
                                 Material(
                                   color: colour,
                                   borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
@@ -155,14 +150,10 @@ class CroupState extends State<Croup> {
                 setState(() {
                   allDrugBooleans[11][i] = !allDrugBooleans[11][i];
                   items = badger.setBadge(items, "$boolCount", 1);
-                });
-                if (boolCount == 0) {
-                  for (var i = 0; i < seizuresNeurologyDrugs.length; i++) {
-                    setState(() {
-                      items = badger.removeBadge(items, 1);
-                    });
+                  if (boolCount == 0) {
+                    clearAll();
                   }
-                }
+                });
               }
           }
       );

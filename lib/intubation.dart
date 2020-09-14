@@ -122,7 +122,7 @@ class IntubationState extends State<Intubation> {
               ),
               onTap: () {
                 if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                  errorAlert(context, "Porpofol","less",10);
+                  errorAlert(context, "Propofol","less",10);
                 }
                 else {
                   if (allDrugBooleans[3][i] == false) {
@@ -230,30 +230,60 @@ class IntubationState extends State<Intubation> {
                 Column(children: <Widget>[
                   SizedBox(height: 30),
                   Divider(thickness: 1.0),
-                  ExpansionTile(initiallyExpanded: true,
-                    title: Text("Intubation Equipment Info"),
-                    children: intubationEquipmentInfo(context),
+                  Theme(
+                    data: ThemeData(
+                      accentColor: specificColor
+                    ),
+                    child: ExpansionTile(
+                      initiallyExpanded: true,
+                      title: Text(
+                          "Intubation Equipment Info"),
+                      children: intubationEquipmentInfo(context),
+                    ),
                   ),
                   Divider(thickness: 1.0),
                   SizedBox(height: 10),
                   Divider(thickness: 1.0),
-                  ExpansionTile(initiallyExpanded: true,
-                    title: Text("Induction Agents"),
-                    children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                        style: TextStyle(color: Colors.indigoAccent))),
-                      SizedBox(width: 9*data.size.width/10, child: inductionAgentCells)
-                    ],
+                  Theme(
+                    data: ThemeData(
+                      accentColor: specificColor
+                    ),
+                    child: ExpansionTile(initiallyExpanded: true,
+                      title: Text("Induction Agents"),
+                      children: <Widget>[
+                        GestureDetector(
+                            child: Text("Select Drug from below",
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold
+                          ))
+                        ),
+                        SizedBox(
+                            width: 9*data.size.width/10,
+                            child: inductionAgentCells)
+                      ],
+                    ),
                   ),
                   Divider(thickness: 1.0),
                   PlusMinus(),
                   Divider(thickness: 1.0),
-                  ExpansionTile(initiallyExpanded: true,
-                      title: Text("Paralytic Agents"),
-                      children: <Widget> [
-                        GestureDetector(child: Text("Select Drug from below",
-                            style: TextStyle(color: Colors.indigoAccent))),
-                        SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
-                      ]
+                  Theme(
+                    data: ThemeData(
+                      accentColor: specificColor
+                    ),
+                    child: ExpansionTile(
+                        initiallyExpanded: true,
+                        title: Text("Paralytic Agents"),
+                        children: <Widget> [
+                          GestureDetector(
+                              child: Text("Select Drug from below",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic))
+                          ),
+                          SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
+                        ]
+                    ),
                   ),
                   Divider(thickness: 1.0),
                   SizedBox(height: data.size.height/3)

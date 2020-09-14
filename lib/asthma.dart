@@ -76,6 +76,7 @@ class AsthmaState extends State<Asthma> {
                       child: Text(allDrugs[1][i]),
                     ),
                     Switch(
+                        activeColor: Color(0xff39e600),
                         value: allDrugBooleans[1][i],
                         onChanged: (bool newValue){
                           if (weight < 10.0) {
@@ -91,8 +92,10 @@ class AsthmaState extends State<Asthma> {
                           setState(() {
                             allDrugBooleans[1][i] = newValue;
                             items = badger.setBadge(items, "$boolCount", 1);
+                          });
+                          if (boolCount == 0) {
+                            clearAll();
                           }
-                          );
                         }
                         }
                         ),
@@ -114,9 +117,7 @@ class AsthmaState extends State<Asthma> {
                     allDrugBooleans[1][i] = !allDrugBooleans[1][i];
                     items = badger.setBadge(items, "$boolCount", 1);
                     if (boolCount == 0) {
-                      for (var i = 0; i < allDrugs[1].length; i++) {
-                        items = badger.removeBadge(items, 1);
-                      }
+                      clearAll();
                     }
                   }
                   );
@@ -139,6 +140,7 @@ class AsthmaState extends State<Asthma> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
                     Padding(padding: EdgeInsets.only(left: 5),child: Text(asthmaCorticos[i])),
                     Switch(
+                        activeColor: Color(0xff39e600),
                         value: allDrugBooleans[2][i],
                         onChanged: (bool newValue){
                           if (newValue == true) {
@@ -148,7 +150,11 @@ class AsthmaState extends State<Asthma> {
                             boolCount -= 1;
                           }
                           setState(() {
+                            items = badger.setBadge(items, "$boolCount", 1);
                             allDrugBooleans[2][i] = newValue;
+                            if (boolCount == 0) {
+                              clearAll();
+                            }
                           }
                           );
                         }),
@@ -166,9 +172,7 @@ class AsthmaState extends State<Asthma> {
                   allDrugBooleans[2][i] = !allDrugBooleans[2][i];
                   items = badger.setBadge(items, "$boolCount", 1);
                   if (boolCount == 0) {
-                    for (var i = 0; i < allDrugs[2].length; i++) {
-                      items = badger.removeBadge(items, 1);
-                    }
+                    clearAll();
                   }
                 }
                 );
@@ -204,23 +208,42 @@ class AsthmaState extends State<Asthma> {
                   Column(children: <Widget>[
                     SizedBox(height: 10),
                     Divider(thickness: 1.0),
-                    ExpansionTile(initiallyExpanded: true,
-                      title: Text("General Drugs"),
-                      children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                          style: TextStyle(color: Colors.indigoAccent))),
-                        SizedBox(width: 9*data.size.width/10, child: asthmaDrugCells)
-                      ],
+                    Theme(
+                      data: ThemeData(
+                        accentColor: specificColor
+                      ),
+                      child: ExpansionTile(initiallyExpanded: true,
+                        title: Text("General Drugs"),
+                        children: <Widget>[GestureDetector(
+                            child: Text("Select Drug from below",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold))
+                        ),
+                          SizedBox(width: 9*data.size.width/10, child: asthmaDrugCells)
+                        ],
+                      ),
                     ),
                     Divider(thickness: 1.0),
                     PlusMinus(),
                     Divider(thickness: 1.0),
-                    ExpansionTile(initiallyExpanded: true,
-                        title: Text("Corticosteroids"),
-                        children: <Widget> [
-                          GestureDetector(child: Text("Select Drug from below",
-                              style: TextStyle(color: Colors.indigoAccent))),
-                          SizedBox(width: 9*data.size.width/10, child: asthmaCorticoCells)
-                        ]
+                    Theme(
+                      data: ThemeData(
+                          accentColor: specificColor
+                      ),
+                      child: ExpansionTile(initiallyExpanded: true,
+                          title: Text("Corticosteroids"),
+                          children: <Widget> [
+                            GestureDetector(child: Text(
+                                "Select Drug from below",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold)
+                            )
+                            ),
+                            SizedBox(width: 9*data.size.width/10, child: asthmaCorticoCells)
+                          ]
+                      ),
                     ),
                     Divider(thickness: 1.0),
                     SizedBox(height: data.size.height/3)

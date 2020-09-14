@@ -46,7 +46,7 @@ var currentData = frozenPlasmaData[weightIndex];
   var popup = finalDisplayFull(
       context,
       "Fresh Frozen Plasma",
-      finalDisplayCentre(context, "If PT/APTT > 1.5x normal", "", ""),
+      finalDisplayGive(context, "If PT/APTT > 1.5x normal,", ""),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
       finalDisplayEmpty(),
       finalDisplayFormula(context, "15 mL/kg"));

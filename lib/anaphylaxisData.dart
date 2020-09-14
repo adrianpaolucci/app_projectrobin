@@ -110,8 +110,8 @@ resuscAmlodaroneDisplay(BuildContext context) {
       context,
       "Amlodarone",
       finalDisplayDilute(context, "Dilute:", "${currentData[2]} ampoule(s) (150 mg in 3 mL)", "to 25 mL in glucose 5%"),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} mg (${currentData[3]} ml of diluted sol)"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} ", " \nOver 3 minutes in emergency, \notherwise over 20-120 minutes"),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg\n(${currentData[3]} mL of diluted solution)"),
+      finalDisplaySecondary(context, "", "", "Over 3 minutes in emergency, \notherwise over 20-120 minutes"),
       finalDisplayFormula(context, "5 mg/kg"));
 
   return popup;

@@ -73,12 +73,13 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
     ElectrolyteAbnormalitiesItems(i, IconData icon, String heading, var colour) {
       return GestureDetector(
           child: Badge(
+            badgeColor: Color(0xff666666),
             animationDuration: Duration(milliseconds: 250),
             badgeContent: InkWell(
                 child: Icon(CupertinoIcons.clear_thick, color: Colors.white),
                 onTap: () {
                   if (allDrugBooleans[13][i] == true) {
-                    boolCount -= 1;
+                      boolCount -= 1;
                     setState(() {
                       allDrugBooleans[13][i] = !allDrugBooleans[13][i];
                       items = badger.setBadge(items, "$boolCount", 1);
@@ -145,10 +146,10 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
           ),
           onTap: () {
               if (allDrugBooleans[13][i] == false) {
-                boolCount += 1;
+                  boolCount += 1;
               }
               else {
-                boolCount -= 1;
+                  boolCount -= 1;
               }
               setState(() {
                 allDrugBooleans[13][i] = !allDrugBooleans[13][i];

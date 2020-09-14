@@ -76,9 +76,9 @@ class AnalgesiaState extends State<Analgesia> {
                       child: Text(allDrugs[12][i]),
                     ),
                     Switch(
+                        activeColor: Color(0xff39e600),
                         value: allDrugBooleans[12][i],
                         onChanged: (bool newValue){
-
                             if (newValue == true) {
                               boolCount += 1;
                             }
@@ -89,9 +89,7 @@ class AnalgesiaState extends State<Analgesia> {
                               allDrugBooleans[12][i] = newValue;
                               items = badger.setBadge(items, "$boolCount", 1);
                               if (boolCount == 0) {
-                                for (var i = 0; i < allDrugs[12].length; i++) {
-                                  items = badger.removeBadge(items, 1);
-                                }
+                                clearAll();
                               }
                             }
                             );
@@ -101,7 +99,6 @@ class AnalgesiaState extends State<Analgesia> {
                   )
               ),
               onTap: () {
-
                   if (allDrugBooleans[12][i] == false) {
                     boolCount += 1;
                   }
@@ -112,9 +109,7 @@ class AnalgesiaState extends State<Analgesia> {
                     allDrugBooleans[12][i] = !allDrugBooleans[12][i];
                     items = badger.setBadge(items, "$boolCount", 1);
                     if (boolCount == 0) {
-                      for (var i = 0; i < allDrugs[12].length; i++) {
-                        items = badger.removeBadge(items, 1);
-                      }
+                      clearAll();
                     }
                   }
                   );
@@ -152,13 +147,24 @@ class AnalgesiaState extends State<Analgesia> {
                   Column(children: <Widget>[
                     SizedBox(height: 10),
                     Divider(thickness: 1.0),
-                    ExpansionTile(
-                      initiallyExpanded: true,
-                      title: Text("General Drugs"),
-                      children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                          style: TextStyle(color: Colors.indigoAccent))),
-                        SizedBox(width: 9*data.size.width/10, child: analgesiaCells)
-                      ],
+                    Theme(
+                      data: ThemeData(
+                        accentColor: specificColor
+                      ),
+                      child: ExpansionTile(
+                        initiallyExpanded: true,
+                        title: Text("General Drugs"),
+                        children: <Widget>[
+                          GestureDetector(
+                              child: Text("Select Drug from below",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic)
+                              )
+                          ),
+                          SizedBox(width: 9*data.size.width/10, child: analgesiaCells)
+                        ],
+                      ),
                     ),
                     Divider(thickness: 1.0),
                     SizedBox(height: data.size.height/3)

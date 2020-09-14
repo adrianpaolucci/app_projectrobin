@@ -146,7 +146,6 @@ void showFinalDropdowns(BuildContext context) {
         title: Text("${interventions[i]}",
             style: TextStyle(
                 color: intColors[i],
-                fontWeight: FontWeight.bold,
                 fontSize: size18Text(context))),
         children: allFinalDisplays[i],
       ));

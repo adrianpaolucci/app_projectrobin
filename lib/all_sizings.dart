@@ -379,7 +379,8 @@ Widget finalDisplayDilute(BuildContext context, var instruction, var value1, var
 Widget finalDisplayGive(BuildContext context, var instruction, var value) {
 
   return Column(
-    children: [Padding(
+    children: [
+      Padding(
       padding: EdgeInsets.only(
           left: smallButtonPadding(context),
           right: smallButtonPadding(context),
@@ -387,6 +388,7 @@ Widget finalDisplayGive(BuildContext context, var instruction, var value) {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("$instruction",
               style: TextStyle(
@@ -395,6 +397,7 @@ Widget finalDisplayGive(BuildContext context, var instruction, var value) {
               )
           ),
           Text("$value",
+              textAlign: TextAlign.end,
               style: TextStyle(
                   fontSize: size16Text(context),
                   fontWeight: FontWeight.bold
