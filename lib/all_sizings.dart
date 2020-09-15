@@ -582,7 +582,7 @@ finalDisplayIndividual(
 }
 
 
-Widget finalDisplaySteps(BuildContext context, var drugName, var counter, var individuals) {
+Widget finalDisplaySteps(BuildContext context,var color,var drugName, var counter, var individuals) {
 
   final data = MediaQuery.of(context);
   var downArrow = Padding(
@@ -605,7 +605,7 @@ Widget finalDisplaySteps(BuildContext context, var drugName, var counter, var in
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: size18Text(context),
-                      color: Colors.blue,
+                      color: color,
                       fontWeight: FontWeight.bold)
               ),
             )

@@ -161,6 +161,7 @@ resuscAdenosineDisplay(BuildContext context) {
 
   var popup = finalDisplaySteps(
     context,
+      interventionColour,
     "Adenosine - 3 stages",
     3,
     adenosineIndividuals

@@ -91,6 +91,7 @@ antidoteNAcetylDisplay(BuildContext context) {
 
   var popup = finalDisplaySteps(
       context,
+      interventionColour,
       "N-Acetylcysteine - 4 stages",
       4,
       nAcetylIndividuals
