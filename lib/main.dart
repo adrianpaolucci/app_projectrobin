@@ -3,7 +3,6 @@ import 'package:app_search_bar/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
-import 'package:app_search_bar/blocs/theme.dart';
 
 pixelsToTextSize(pixel) {
     var textSize = 4*pixel/3;

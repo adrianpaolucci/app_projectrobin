@@ -10,126 +10,58 @@ final hypoglyData = [[2, 10, 4, 0.5, 0.5], [2.5, 12.5, 5.0, 0.5, 0.5], [3, 15, 6
 final hypokalArrithData = [[2, 8], [2.5, 10.0], [3, 12], [3.5, 14.0], [4, 16], [4.5, 18.0], [5, 20], [5.5, 22.0], [6, 24], [7, 28], [8, 32], [9, 36], [10, 40], [11, 42], [12, 44], [13, 46], [14, 48], [15, 50], [16, 52], [17, 54], [18, 56], [19, 58], [20, 60], [22, 62], [24, 64], [26, 66], [28, 68], [30, 70], [35, 75], [40, 80], [45, 85], [50, 90], [55, 95], [60, 100], [65, 105], [70, 110], [75, 115], [80, 120]];
 
 hyperkalCalcChlorideDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hyperkalData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hyperkalaemia - Calcium Chloride", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL - ${currentData[2]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Calcium Chloride 10%"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hyperkalaemia - Calcium Chloride",
+      finalDisplayEmpty(),
+      finalDisplayDilute(context, "Use:", "calcium chloride 10%", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mL"),
+      finalDisplayFormula(context, "0.1 - 0.2 mL/kg"));
+
   return popup;
 }
 
 hyperkalCalcGluDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hyperkalData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hyperkalaemia - Calcium Gluconate", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[3]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Calcium Gluconate 10%"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hyperkalaemia - Calcium Gluconate",
+      finalDisplayEmpty(),
+      finalDisplayDilute(context, "Use:", "calcium gluconate 10%", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[3]} mL"),
+      finalDisplayFormula(context, "0.5 mL/kg"));
+
   return popup;
 }
 
 hyperkalSalbutDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hyperkalData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hyperkalaemia - Salbutamol", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[4]} mL nebulised",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 2.5),
-              child: Text("or"),
-            ),
-            Text("${currentData[5]} mg IV",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hyperkalaemia - Salbutamol",
+      finalDisplayGive(context, "Give:", "${currentData[4]} mL nebulised"),
+      finalDisplayCentre(context, "", "", "or"),
+      finalDisplayGive(context, "Give: ", "${currentData[5]} mL IV"),
+      finalDisplayFormula(context, "4 \u03bcg/kg IV"));
+
   return popup;
 }
 
 hyperkalInsGluDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hyperkalData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hyperkalaemia - Insulin and Glucose", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Glucose 10% ${currentData[6]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("(or Glucose 25% ${currentData[7]} mL)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            ),
-            Text("plus short acting Insulin ${currentData[8]} units IV"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hyperkalaemia - Insulin and Glucose",
+      finalDisplayDilute(context, "Give:", "${currentData[6]} mL", "of glucose 10%"),
+      finalDisplayDilute(context, "or", "${currentData[7]} mL", "of glucose 25%"),
+      finalDisplayCentre(context, "plus short acting Insulin, ","${currentData[8]}", " units IV"),
+      finalDisplayFormula(context, "5 mL/kg of glucose 10%\n2 mL/kg of glucose 25%\n0.1 /kg of insulin IV"));
+
   return popup;
 }
 

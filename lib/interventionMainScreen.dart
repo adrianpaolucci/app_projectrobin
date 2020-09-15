@@ -178,9 +178,27 @@ class _DosingMainState extends State<InterventionMain> {
                   animationDuration: Duration(milliseconds: 250),
                   fabOpenColor: Color(0xffccccc),
                   children: [
-                    IconButton(icon: Icon(Icons.settings, color: Colors.black87),iconSize: 1.2*genericIconSize(context)),
-                    IconButton(icon: Icon(Icons.question_answer, color: Colors.black87),iconSize: 1.2*genericIconSize(context)),
-                    IconButton(icon: Icon(Icons.book, color: Colors.black87),iconSize: 1.2*genericIconSize(context))
+                    IconButton(
+                        icon: Icon(
+                            Icons.settings,
+                            color: Colors.black87),
+                        iconSize: 1.2*genericIconSize(context),
+                        onPressed: () {}
+                    ),
+                    IconButton(
+                        icon: Icon(
+                            Icons.question_answer,
+                            color: Colors.black87),
+                        iconSize: 1.2*genericIconSize(context),
+                        onPressed: () {}
+                        ),
+                    IconButton(
+                        icon: Icon(
+                            Icons.book,
+                            color: Colors.black87),
+                        iconSize: 1.2*genericIconSize(context),
+                        onPressed: () {}
+                        )
                   ]
               )
       ),

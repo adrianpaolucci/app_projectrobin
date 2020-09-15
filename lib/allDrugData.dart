@@ -1,6 +1,4 @@
-import 'package:app_search_bar/asthmaData.dart';
-import 'package:app_search_bar/intubationData.dart';
-import 'package:app_search_bar/seizuresNeurologyData.dart';
+
 
 final allDrugs = [
   //0 seizures and neurology

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'finalDisplay.dart';
 import 'all_sizings.dart';
 
 //induction initialisation
@@ -87,7 +86,6 @@ thiopentoneDisplay(BuildContext context) {
 }
 
 fentanylBolusDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = fentanylBolusData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -102,7 +100,6 @@ fentanylBolusDisplay(BuildContext context) {
 }
 
 midazolamDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = midazolamData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -110,7 +107,7 @@ midazolamDisplay(BuildContext context) {
       "Midazolam",
       finalDisplayDilute(context, "Dilute: ", "500 mg in 20 mL water", ""),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplaySecondary(context, "", "", "${currentData[3]}\n${currentData[4]} - ${currentData[5]} mL of undiluted solution"),
       finalDisplayFormula(context, "0.1 - 0.2 mg/kg"));
 
 
@@ -118,7 +115,6 @@ midazolamDisplay(BuildContext context) {
 }
 
 suxamethoniumDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = suxamethoniumData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -134,7 +130,6 @@ suxamethoniumDisplay(BuildContext context) {
 }
 
 rocuroniumDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = rocuroniumData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -151,7 +146,6 @@ rocuroniumDisplay(BuildContext context) {
 }
 
 vecuroniumDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = vecuroniumData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -167,7 +161,6 @@ vecuroniumDisplay(BuildContext context) {
 }
 
 atracuriumDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = atracuriumData[weightIndex];
 
   var popup = finalDisplayFull(

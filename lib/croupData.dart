@@ -7,7 +7,6 @@ final croupDexamethData = [[2, 'Not Available', 'Not Available'], [2.5, 'Not Ava
 final croupPrednisoloneData = [[2, 'Not Available'], [2.5, 'Not Available'], [3, 'Not Available'], [3.5, 'Not Available'], [4, 'Not Available'], [4.5, 'Not Available'], [5, 'Not Available'], [5.5, 'Not Available'], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12], [13, 13], [14, 14], [15, 15], [16, 16], [17, 17], [18, 18], [19, 19], [20, 20], [22, 22], [24, 24], [26, 26], [28, 28], [30, 30], [35, 35], [40, 40], [45, 45], [50, 50], [55, 55], [60, 60], [65, 65], [70, 70], [75, 75], [80, 80]];
 
 croupNebAdrenalineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = croupNebAdrenalineData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -22,7 +21,6 @@ croupNebAdrenalineDisplay(BuildContext context) {
 }
 
 croupDexamethDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = croupDexamethData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -37,7 +35,6 @@ croupDexamethDisplay(BuildContext context) {
 }
 
 croupPrednisoloneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = croupPrednisoloneData[weightIndex];
 
   var popup = finalDisplayFull(

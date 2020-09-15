@@ -34,7 +34,6 @@ class FinalDisplayState extends State<FinalDisplay> {
   @override
   Widget build(BuildContext context) {
 
-    final data = MediaQuery.of(context);
     showFinalDropdowns(context);
 
     return Scaffold(

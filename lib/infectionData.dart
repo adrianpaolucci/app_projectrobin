@@ -11,7 +11,6 @@ final azithromycinData = [[2, 20], [2.5, 25.0], [3, 30], [3.5, 35.0], [4, 40], [
 final pipAndTazobData = [[2, 200, 25.0], [2.5, 250.0, 31.25], [3, 300, 37.5], [3.5, 350.0, 43.75], [4, 400, 50.0], [4.5, 450.0, 56.25], [5, 500, 62.5], [5.5, 550.0, 68.75], [6, 600, 75.0], [7, 700, 87.5], [8, 800, 100.0], [9, 900, 112.5], [10, 1000, 125.0], [11, 1100, 137.5], [12, 1200, 150.0], [13, 1300, 162.5], [14, 1400, 175.0], [15, 1500, 187.5], [16, 1600, 200.0], [17, 1700, 212.5], [18, 1800, 225.0], [19, 1900, 237.5], [20, 2000, 250.0], [22, 2200, 275.0], [24, 2400, 300.0], [26, 2600, 325.0], [28, 2800, 350.0], [30, 3000, 375.0], [35, 3500, 437.5], [40, 4000, 500.0], [45, 4000, 500], [50, 4000, 500], [55, 4000, 500], [60, 4000, 500], [65, 4000, 500], [70, 4000, 500], [75, 4000, 500], [80, 4000, 500]];
 
 aciclovirDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = aciclovirData[weightIndex];
 
 
@@ -27,7 +26,6 @@ aciclovirDisplay(BuildContext context) {
 }
 
 artesunateDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = artesunateData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -58,7 +56,6 @@ oseltamivirDisplay(BuildContext context) {
 }
 
 cefotaximeDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = cefotaximeData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -73,7 +70,6 @@ cefotaximeDisplay(BuildContext context) {
 }
 
 ceftriaxoneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = ceftriaxoneData[weightIndex];
 
   var popup = finalDisplayFull(

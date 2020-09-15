@@ -4,12 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'homeScreen.dart';
 import 'icons/my_flutter_app_icons.dart';
-import 'seizuresNeurologyData.dart';
 import 'interventionMainScreen.dart';
-import 'intubationData.dart';
-import 'asthmaData.dart';
 import 'finalDisplay.dart';
-import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'dart:ui';
 import 'all_sizings.dart';
 import 'package:badges/badges.dart';
@@ -138,7 +134,7 @@ class CroupState extends State<Croup> {
           onTap: () {
 
               if (weight < 6) {
-                CroupErrorAlert(context,i);
+                croupErrorAlert(context,i);
               }
               else {
                 if (allDrugBooleans[11][i] == false) {

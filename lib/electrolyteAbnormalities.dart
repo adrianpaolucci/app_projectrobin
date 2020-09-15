@@ -5,10 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'homeScreen.dart';
 import 'icons/my_flutter_app_icons.dart';
 import 'interventionMainScreen.dart';
-import 'intubationData.dart';
-import 'asthmaData.dart';
 import 'finalDisplay.dart';
-import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'dart:ui';
 import 'all_sizings.dart';
 import 'package:badges/badges.dart';
@@ -20,7 +17,7 @@ class ElectrolyteAbnormalities extends StatefulWidget {
   }
 }
 
-final ElectrolyteAbnormalitiesIcons = [
+final electrolyteAbnormalitiesIcons = [
   Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.syringe),
   Icon(MyFlutterApp.pipette), Icon(MyFlutterApp.pipette),
   Icon(MyFlutterApp.syringe), Icon(MyFlutterApp.pipette),
@@ -70,7 +67,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    ElectrolyteAbnormalitiesItems(i, IconData icon, String heading, var colour) {
+    electrolyteAbnormalitiesItems(i, IconData icon, String heading, var colour) {
       return GestureDetector(
           child: Badge(
             badgeColor: Color(0xff666666),
@@ -168,56 +165,56 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
 
     addEAIconsFirst(BuildContext context) {
 
-      List<Widget> EAItems = [];
+      List<Widget> eAItems = [];
       for (var i = 0; i < 5; i++) {
-        EAItems.add(ElectrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xfff7caac)));
+        eAItems.add(electrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xfff7caac)));
       }
-      return EAItems;
+      return eAItems;
     }
 
     addEAIconsSecond(BuildContext context) {
 
-      List<Widget> EAItems = [];
+      List<Widget> eAItems = [];
       for (var i = 5; i < 6; i++) {
-        EAItems.add(ElectrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xffffe598)));
+        eAItems.add(electrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xffffe598)));
       }
-      return EAItems;
+      return eAItems;
     }
 
     addEAIconsThird(BuildContext context) {
 
-      List<Widget> EAItems = [];
+      List<Widget> eAItems = [];
       for (var i = 6; i < 7; i++) {
-        EAItems.add(ElectrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xff9cc2e5)));
+        eAItems.add(electrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xff9cc2e5)));
       }
-      return EAItems;
+      return eAItems;
     }
 
     addEAIconsFourth(BuildContext context) {
 
-      List<Widget> EAItems = [];
+      List<Widget> eAItems = [];
       for (var i = 7; i < 8; i++) {
-        EAItems.add(ElectrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xffa8d08d)));
+        eAItems.add(electrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xffa8d08d)));
       }
-      return EAItems;
+      return eAItems;
     }
 
     addEAIconsFifth(BuildContext context) {
 
-      List<Widget> EAItems = [];
+      List<Widget> eAItems = [];
       for (var i = 8; i < 10; i++) {
-        EAItems.add(ElectrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xff9cc2e5)));
+        eAItems.add(electrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xff9cc2e5)));
       }
-      return EAItems;
+      return eAItems;
     }
 
     addEAIconsSixth(BuildContext context) {
 
-      List<Widget> EAItems = [];
+      List<Widget> eAItems = [];
       for (var i = 10; i < 11; i++) {
-        EAItems.add(ElectrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xffd0cece)));
+        eAItems.add(electrolyteAbnormalitiesItems(i, MyFlutterApp.pipette, "${allDrugs[13][i]}", Color(0xffd0cece)));
       }
-      return EAItems;
+      return eAItems;
     }
 
 

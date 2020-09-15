@@ -6,10 +6,7 @@ import 'homeScreen.dart';
 import 'icons/my_flutter_app_icons.dart';
 import 'seizuresNeurologyData.dart';
 import 'interventionMainScreen.dart';
-import 'intubationData.dart';
-import 'asthmaData.dart';
 import 'finalDisplay.dart';
-import 'package:bottom_navigation_badge/bottom_navigation_badge.dart';
 import 'dart:ui';
 import 'all_sizings.dart';
 import 'package:badges/badges.dart';
@@ -38,7 +35,6 @@ class ShockState extends State<Shock> {
   @override
   Widget build(BuildContext context) {
 
-    final data = MediaQuery.of(context);
 
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {

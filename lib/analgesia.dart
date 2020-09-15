@@ -1,11 +1,9 @@
-import 'package:app_search_bar/asthmaData.dart';
+
 import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'finalDisplay.dart';
 import 'homeScreen.dart';
-import 'intubation.dart';
-import 'intubationData.dart';
 import 'dart:ui';
 import 'all_sizings.dart';
 import 'allDrugData.dart';

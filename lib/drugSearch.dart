@@ -75,7 +75,7 @@ class DrugSearch extends SearchDelegate<String> {
                 var j = searchBools[index][1];
 
                 if ((weight < 6) && (i == 11)) {
-                  CroupErrorAlert(context, j);
+                  croupErrorAlert(context, j);
                 }
                 else if ((weight < 10) && (i == 3) && (j == 1)) {
                   errorAlert(context, "Porpofol","less",10);
@@ -163,7 +163,7 @@ class DrugSearch extends SearchDelegate<String> {
                 var j = searchBools[index][1];
 
                 if ((weight < 6) && (i == 11)) {
-                  CroupErrorAlert(context, j);
+                  croupErrorAlert(context, j);
                 }
                 else if ((weight < 10) && (i == 3) && (j == 1)) {
                   errorAlert(context,"Propofol","less",10);

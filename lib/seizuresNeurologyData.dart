@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'finalDisplay.dart';
 import 'all_sizings.dart';
 
 final seizuresNeurologyDrugs = ["Midazolam (IV)","Midazolam (IN/B)","Diazepam (IV)","Lorazepam (IV)","Fosphenytoin","Phenytoin","Phenobarbitone","Levetiracetam","Valproate","Pyridoxine","Midazolam Infusion","Hypertonic Saline","Mannitol"];
@@ -131,7 +130,6 @@ sAndNLevetiracemDisplay(BuildContext context) {
 }
 
 sAndNValproateDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = sAndNValproateData[weightIndex];
 
   var popup = finalDisplayFull(

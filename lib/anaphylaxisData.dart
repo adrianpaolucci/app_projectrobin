@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'finalDisplay.dart';
 import 'all_sizings.dart';
 
 final anaphylaxisIMAdrenaline = [[2, 20], [2.5, 25.0], [3, 30], [3.5, 35.0], [4, 40], [4.5, 45.0], [5, 50], [5.5, 55.0], [6, 60], [7, 70], [8, 80], [9, 90], [10, 100], [11, 110], [12, 120], [13, 130], [14, 140], [15, 150], [16, 160], [17, 170], [18, 180], [19, 190], [20, 200], [22, 220], [24, 240], [26, 260], [28, 280], [30, 300], [35, 350], [40, 400], [45, 450], [50, 500], [55, 550], [60, 600], [65, 650], [70, 700], [75, 750], [80, 800]];
@@ -33,9 +32,8 @@ anaphylaxisAdrenalineIMDisplay(BuildContext context) {
 }
 
 anaphylaxisFluidDisplay(BuildContext context) {
+
   var currentData = anaphylaxisIVFluidBolus[weightIndex];
-
-
   var popup = finalDisplayFull(
       context,
       "IV Fluid Bolus",
@@ -103,7 +101,6 @@ resuscAtropineDisplay(BuildContext context) {
 }
 
 resuscAmlodaroneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = resuscAmlodarone[weightIndex];
 
   var popup = finalDisplayFull(
@@ -118,7 +115,6 @@ resuscAmlodaroneDisplay(BuildContext context) {
 }
 
 resuscLignocaineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = resuscLignocaine[weightIndex];
 
   var popup = finalDisplayFull(

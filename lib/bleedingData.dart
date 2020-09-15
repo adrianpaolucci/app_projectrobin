@@ -9,7 +9,6 @@ final cryoprecipitateData = [[2, 10], [2.5, 12.5], [3, 15], [3.5, 17.5], [4, 20]
 final plateletsData = [[2, 20, 30], [2.5, 25.0, 37.5], [3, 30, 45], [3.5, 35.0, 52.5], [4, 40, 60], [4.5, 45.0, 67.5], [5, 50, 75], [5.5, 55.0, 82.5], [6, 60, 90], [7, 70, 105], [8, 80, 120], [9, 90, 135], [10, 100, 150], [11, 110, 165], [12, 120, 180], [13, 130, 195], [14, 140, 210], [15, 150, 225], [16, 160, 240], [17, 170, 255], [18, 180, 270], [19, 190, 285], [20, 200, 300], [22, 220, 330], [24, 240, 360], [26, 260, 390], [28, 280, 420], [30, 300, 450], [35, 350, 525], [40, 400, 600], [45, 450, 675], [50, 500, 750], [55, 550, 825], [60, 600, 900], [65, 650, 975], [70, 700, 1050], [75, 750, 1125], [80, 800, 1200]];
 
 tranexamicDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = tranexamicAcidData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -25,7 +24,6 @@ tranexamicDisplay(BuildContext context) {
 }
 
 redCellsDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = packedRedCellsData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -40,7 +38,6 @@ redCellsDisplay(BuildContext context) {
 }
 
 frozenPlasmaDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
 var currentData = frozenPlasmaData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -55,7 +52,6 @@ return popup;
 }
 
 cryoprecipitateDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = cryoprecipitateData[weightIndex];
 
   var popup = finalDisplayFull(
@@ -70,7 +66,6 @@ cryoprecipitateDisplay(BuildContext context) {
 }
 
 plateletsDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = plateletsData[weightIndex];
 
   var popup = finalDisplayFull(

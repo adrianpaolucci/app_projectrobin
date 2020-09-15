@@ -6,7 +6,6 @@ import 'package:flutter/widgets.dart';
 import 'allDrugData.dart';
 import 'all_sizings.dart';
 import 'finalDisplay.dart';
-import 'all_sizings.dart';
 
 //stateless means it doesn't change AT ALL
 //stateful means something changes i.e. weight

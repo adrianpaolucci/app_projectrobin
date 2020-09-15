@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:app_search_bar/asthmaData.dart';
 import 'package:app_search_bar/finalDisplay.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +7,6 @@ import 'package:flutter/widgets.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'intubationData.dart';
 import 'allDrugData.dart';
-import 'seizuresNeurology.dart';
-import 'seizuresNeurologyData.dart';
 import 'all_sizings.dart';
 
 

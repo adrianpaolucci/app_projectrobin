@@ -230,8 +230,7 @@ class SlideLeftRoute extends PageRouteBuilder {
 }
 
 
-void CroupErrorAlert(BuildContext context, var i) {
-  final data = MediaQuery.of(context);
+void croupErrorAlert(BuildContext context, var i) {
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
       child:
       AlertDialog(
@@ -254,7 +253,6 @@ void CroupErrorAlert(BuildContext context, var i) {
 
 
 void errorAlert(BuildContext context, i, j, k ) {
-  final data = MediaQuery.of(context);
   var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
       child:
       AlertDialog(
@@ -384,7 +382,7 @@ Widget finalDisplayGive(BuildContext context, var instruction, var value) {
       padding: EdgeInsets.only(
           left: smallButtonPadding(context),
           right: smallButtonPadding(context),
-          top: 5*smallButtonPadding(context)
+          top: 2*smallButtonPadding(context)
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,4 @@
 import 'package:app_search_bar/all_sizings.dart';
-import 'package:app_search_bar/main.dart';
 import 'package:flutter/material.dart';
 import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/widgets.dart';
