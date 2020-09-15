@@ -70,31 +70,15 @@ hyperkalSodiumBicarbDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = hyperkalData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hyperkalaemia - Sodium Bicarbonate", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Sodium Bicarbonate 8.4% ${currentData[9]} mL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("(if acidosis)"),
-            ),
-            Text("Calcium and bicarbonate should be given using different lines",
-            textAlign: TextAlign.center),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hyperkalaemia - Sodium Bicarbonate",
+      finalDisplayDilute(context, "Use:", "sodium bicarbonate 8.4% ", "(if acidosis)"),
+      finalDisplayGive(context, "Give: ", "${currentData[9]} mL"),
+      finalDisplaySecondary(context, "Calcium and bicarbonate\nshould be given using different lines", "", ""),
+      finalDisplayFormula(context, "1 mL/kg "));
+
+
   return popup;
 }
 
@@ -102,29 +86,13 @@ hyponatraemiaDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = hyponatraemiaData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hyponatraemia with seizures", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL of Sodium Chloride 3% ",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.only(top: 5.0),
-              child: Text("over 15 - 30 minutes"),
-            ),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hyponatraemia with seizures",
+      finalDisplayDilute(context, "Use:", "sodium chloride 3%", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplaySecondary(context, "over 15 - 30 minutes", "", ""),
+      finalDisplayFormula(context, "4 mL/kg"));
   return popup;
 }
 
@@ -132,29 +100,14 @@ hypocalcDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = symptomHypocalData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Symptomatic Hypocalcaemia", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL of Calcium Gluconate 10%",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.only(top: 5.0),
-              child: Text("over 10 minutes"),
-            ),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Symptomatic Hypocalcaemia",
+      finalDisplayDilute(context, "Use:", "Calcium gluconate 10%", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
+      finalDisplaySecondary(context, "over 10 minutes", "", ""),
+      finalDisplayFormula(context, "0.5 mL/kg"));
+
   return popup;
 }
 
@@ -162,32 +115,14 @@ hypomagDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = hypomagData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hypomagnasaemia", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg (${currentData[2]} mL of 50% Magnesium Sulfate)",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("Dilute to at least ${currentData[3]} mL"),
-            ),
-            Text(
-              "Infuse over 15 - 30 minutes. May repeat in 12 hours",
-            textAlign: TextAlign.center,)
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Symptomatic Hypocalcaemia",
+      finalDisplayDilute(context, "Dilute:", "to at least ${currentData[3]} mL", ""),
+      finalDisplayGive(context, "Give:", "${currentData[1]} mg"),
+      finalDisplaySecondary(context, "", "", "${currentData[2]} mL of 50% MgS04\nover 15 - 30 minutes"),
+      finalDisplayFormula(context, "50 mg/kg"));
+
   return popup;
 }
 
@@ -195,34 +130,13 @@ hypomglyGlucoseDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = hypoglyData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hypoglycaemia - Glucose", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL of Glucose 10%)",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-              child: Text("Or"),
-            ),
-            Text(
-              "${currentData[2]} mL of Glucose 25%",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hypoglycaemia - glucose",
+      finalDisplayBold(context, "Give:", "","${currentData[1]} mL ", "of glucose 10%"),
+      finalDisplayEmpty(),
+      finalDisplayBold(context, "or","", "${currentData[2]} mL ", "of glucose 25%"),
+      finalDisplayFormula(context, "5 mL/kg of glucose 10%\n2 mL/kg of glucose 25%"));
   return popup;
 }
 
@@ -230,33 +144,13 @@ hypomglyGlucagonDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = hypoglyData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hypoglycaemia - Glucagon", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Glucagon ${currentData[3]} unit(s)",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            Padding(
-              padding: EdgeInsets.only(top: 5.0),
-              child: Text(
-                  "(${currentData[4]} mg)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            )
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hypoglycaemia - glucagon",
+      finalDisplayBold(context, "Give:", "","${currentData[3]} mL", ""),
+      finalDisplaySecondary(context, "or ", " ${currentData[4]} mg", ""),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "0.5 mg when weight < 25 kg\notherwise use 1 mg"));
   return popup;
 }
 
@@ -264,30 +158,13 @@ hypokalArrDisplay(BuildContext context) {
   final data = MediaQuery.of(context);
   var currentData = hypokalArrithData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hypokalaemia with arrhythmias", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Make up solution of 40 mmol/L KCl",
-              textAlign: TextAlign.center),
-            Padding(
-              padding: EdgeInsets.only(top: 5.0),
-              child: Text(
-                  "Infuse at maintenence rates (${currentData[1]} mL/hr)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            )
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(
+      context,
+      "Hypokalaemia with Arryhythmias",
+      finalDisplayDilute(context, "Reconstitute:"," up to 40 mmol KCl/L", ""),
+      finalDisplayGive(context, "Give:", "${currentData[1]} mL/hr"),
+      finalDisplaySecondary(context, "Infuse at maintenance rates\ngive through a peripheral line", "", ""),
+      finalDisplayFormula(context, "solution up to\n40 mmol KCl/L"));
+
   return popup;
 }

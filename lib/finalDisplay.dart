@@ -16,6 +16,8 @@ import 'anaphylaxisData.dart';
 import 'all_sizings.dart';
 import 'bleedingData.dart';
 import 'drugSearch.dart';
+import 'antidotesData.dart';
+
 
 
 class FinalDisplay extends StatefulWidget {
@@ -71,7 +73,7 @@ void showFinalDropdowns(BuildContext context) {
     sAndNFinal(context), asthmaFinal(context),
     infectionFinal(context),croupFinal(context),
     analgesiaFinal(context),electrolyteAbnormalitiesFinal(context),
-    intubationFinal(context)
+    antidotesFinal(context)
   ];
 
   list.add(
@@ -379,12 +381,12 @@ electrolyteAbnormalitiesFinal(BuildContext context) {
 antidotesFinal(BuildContext context) {
   var shockBoolean = allDrugBooleans[14];
   final data = MediaQuery.of(context);
-  var antidotesWidgets = [shockFluidDisplay(context),shockAdrenalineDisplay(context),shockNoradrenalineDisplay(context),shockDobutamineDisplay(context),shockDopamineDisplay(context),shockStressDoseDisplay(context)];
+  var antidotesWidgets = [antidoteAtropineDisplay(context),antidotePralixodimeDisplay(context),antidotePrazosineDisplay(context),shockDobutamineDisplay(context),shockDopamineDisplay(context),shockStressDoseDisplay(context)];
 
   List<Widget>antidoteList = [];
   for (var i = 0; i < shockBoolean.length; i++) {
     if (shockBoolean[i] == true) {
-      displayBools[1] = true;
+      displayBools[10] = true;
       antidoteList.add(antidotesWidgets[i]);
       antidoteList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
     }

@@ -295,6 +295,7 @@ finalDisplayFull(
                   padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
                   child: Text(
                       "$drugName",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: size18Text(context),
                           color: Colors.blue,
@@ -509,22 +510,25 @@ Widget finalDisplayCentre(BuildContext context, var text1, var text2, var text3 
     padding: EdgeInsets.only(
         left: smallButtonPadding(context),
         right: smallButtonPadding(context),
-        top: smallButtonPadding(context)),
+        top: 2*smallButtonPadding(context)),
     child: Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text("$text1",
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: size16Text(context)
               )),
           Text("$text2",
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: size16Text(context)
               )
           ),
           Text("$text3",
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: size16Text(context)
               )),
