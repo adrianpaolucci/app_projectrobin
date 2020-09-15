@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'all_sizings.dart';
+import 'interventionMainScreen.dart';
 
-//me
-//coding, app design
-
-//guy 1 - helpful
-//got all the data, calcuations
-
-//guy 2 - useless
-//does design, but is never implemented cos its shit
-
-
+var interventionColour = intColors[5];
 
 final asthmaDrugs = ["Inhaled Salbutamol","Inhaled Ipratropium","IV Magnesium","IV Aminophyline","Adrenaline"];
 final asthmaCorticos = ["Methylprednisolone","Dexamethasone","Hydrocortisone","Prednisolone"];
@@ -31,260 +23,127 @@ final hydrocortisoneData = [[2, 16, 8], [2.5, 20.0, 10.0], [3, 24, 12], [3.5, 28
 final prednisoloneData = [[2, 4, 2], [2.5, 5.0, 2.5], [3, 6, 3], [3.5, 7.0, 3.5], [4, 8, 4], [4.5, 9.0, 4.5], [5, 10, 5], [5.5, 11.0, 5.5], [6, 12, 6], [7, 14, 7], [8, 16, 8], [9, 18, 9], [10, 20, 10], [11, 22, 11], [12, 24, 12], [13, 26, 13], [14, 28, 14], [15, 30, 15], [16, 32, 16], [17, 34, 17], [18, 36, 18], [19, 38, 19], [20, 40, 20], [22, 44, 22], [24, 48, 24], [26, 50, 26], [28, 50, 28], [30, 50, 30], [35, 50, 35], [40, 50, 40], [45, 50, 45], [50, 50, 50], [55, 50, 50], [60, 50, 50], [65, 50, 50], [70, 50, 50], [75, 50, 50], [80, 50, 50]];
 
 inhaledSalbutamolDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = inhaledSalbutamolData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Inhaled Salbutamol", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} puffs of MDI with spacer repeated every 20 - 30 min",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("OR"),
-            SizedBox(height: 5),
-            Text("${currentData[2]} mg nebulised Salbutamol",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Inhaled Salbutamol",
+      finalDisplayDilute(context, "Give", "${currentData[1]} puffs of MDI with spacer", "repeated every 20 - 30 minutes"),
+      finalDisplayGive(context, "or", "${currentData[2]} mg"),
+      finalDisplaySecondary(context, "", "", "nebulised Salbutamol"),
+      finalDisplayFormula(context, "Puffs varying with weight"));
+
   return popup;
 }
 
 inhaledIpratropiumDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = inhaledIpratropiumData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Inhaled Ipratropium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} puffs of MDI with spacer\n3 times in the first hour,\nthen 4-6 puffs hourly",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("OR"),
-            SizedBox(height: 5),
-            Text("${currentData[2]} μg nebulised Ipratropium",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold))
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Inhaled Ipratropium",
+      finalDisplayDilute(context, "Give", "${currentData[1]} puffs of MDI with spacer", "x 3 in first hour, then 4 - 6 hourly"),
+      finalDisplayGive(context, "or", "${currentData[2]} \u03bcg"),
+      finalDisplaySecondary(context, "", "", "nebulised Salbutamol"),
+      finalDisplayFormula(context, "Puffs varying with weight"));
+
   return popup;
 }
 
 ivMagnesiumDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = ivMagnesiumData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("IV Magnesium", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("50 mg/kg (0.1 mL/kg of 50% MgSO4)"),
-            SizedBox(height: 5),
-            Text("${currentData[1]} mg (or ${currentData[2]} mL)",style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("of 50% MgSO4 diluted to at least ${currentData[3]} mL"),
-            Text("given over 20 minutes")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "IV Magnesium",
+      finalDisplayDilute(context, "Give:", "${currentData[1]} mg (or ${currentData[2]} mL)", ""),
+      finalDisplayEmpty(),
+      finalDisplayDilute(context, "Dilute:","to at least ${currentData[3]} mL", ""),
+      finalDisplayFormula(context, "50 mg/kg"));
+
   return popup;
 }
 
 ivAminophyllineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = ivAminophylineData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("IV Aminophylline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("5 mg/kg"),
-            SizedBox(height: 5),
-            Text("${currentData[1]} mg",style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("diluted to at least 60 mL"),
-            Text("given over 1 hour")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "IV Aminophylline",
+      finalDisplayEmpty(),
+      finalDisplayDilute(context, "Give:", "${currentData[1]} mg", "or ${currentData[2]} mL"),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "5 mg/kg"));
+
   return popup;
 }
 
 asthmaAdrenalineDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = asthmaAdrenalineData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Adrenaline", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mL of 1:1000 IM or subcutaneously",style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("repeat every 20 minutes"),
-            Text("maximum 3 doses")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Adrenaline",
+      finalDisplayGive(context, "Give:", "${currentData[1]} mL of 1:1000 IM"),
+      finalDisplaySecondary(context, "or subcutaneously\nrepeat every 20 minutes, max 3 x", "", ""),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "10 \u03bcg/kg\n0.01 mL/kg"));
+
   return popup;
 }
 
 methylprednisoloneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = methylprednisoloneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Methylprednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg IV",
-                style: TextStyle(
-                fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("then ${currentData[2]} mg 6 - hourly"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Methylprednisolone",
+      finalDisplayDilute(context, "Give:", "${currentData[1]} mg IV", "then ${currentData[2]} mg 6 hourly"),
+      finalDisplayEmpty(),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "2 mg/kg IV\nthen 1 mg/kg IV"));
+
   return popup;
 }
 
 dexamethasoneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = dexamethasoneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Dexamethasone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg - ${currentData[2]} mg",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("Oral / IV / IM"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Dexamethasone",
+      finalDisplayDilute(context, "Give:", "${currentData[1]} - ${currentData[2]} mg", "oral/IV/IM"),
+      finalDisplayEmpty(),
+      finalDisplaySecondary(context,"daily for 1 - 5  days", "",""),
+      finalDisplayFormula(context, "0.3 - 0.6 mg/kg IV\nthen 1 mg/kg IV"));
+
   return popup;
 }
 
 hydrocortisoneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hydrocortisoneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Hydrocortisone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg IV",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("then ${currentData[2]} mg 6 - hourly"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Hydrocortisone",
+      finalDisplayDilute(context, "Give:", "${currentData[1]} mg IV", "then ${currentData[2]} mg 6 hourly"),
+      finalDisplayEmpty(),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "8 mg/kg IV\nthen 4 mg/kg IV"));
+
   return popup;
 }
 
 prednisoloneDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = prednisoloneData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Prednisolone", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg orally",
-                style: TextStyle(
-                    fontSize: size16Text(context), fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text("then ${currentData[2]} mg daily"),
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Prednisolone",
+      finalDisplayDilute(context, "Give:", "${currentData[1]} mg orally", "then ${currentData[2]} mg 6 daily"),
+      finalDisplayEmpty(),
+      finalDisplayEmpty(),
+      finalDisplayFormula(context, "2 mg/kg IV\nthen 1 mg/kg IV"));
+
   return popup;
 }

@@ -274,6 +274,7 @@ void errorAlert(BuildContext context, i, j, k ) {
 }
 
 finalDisplayFull(
+    var interventionColour,
     BuildContext context,
     var drugName,
     Widget function1,
@@ -298,7 +299,7 @@ finalDisplayFull(
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: size18Text(context),
-                          color: Colors.blue,
+                          color: interventionColour,
                           fontWeight: FontWeight.bold)
                   ),
                 )
@@ -536,4 +537,91 @@ Widget finalDisplayCentre(BuildContext context, var text1, var text2, var text3 
       ),
     ),
   );
+}
+
+finalDisplayIndividual(
+    BuildContext context,
+    Widget function1,
+    Widget function2,
+    Widget function3,
+    Widget function4,
+    ) {
+
+  final data = MediaQuery.of(context);
+
+  return Column(
+      children: <Widget>[
+        Container(padding: EdgeInsets.all(10.0),
+          decoration: whiteBoxDec(context),
+          width: 0.8 * data.size.width,
+          child:
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                function1,
+                function2,
+                function3
+              ]
+          ),
+        ),
+        SizedBox(height: 15),
+        Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: 3*smallButtonPadding(context),
+                vertical: smallButtonPadding(context)),
+            width: 0.8*data.size.width,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                color: Color(0xfff2f2f2)
+            ),
+            child: function4
+        ),
+        SizedBox(height: 15)]
+  );
+}
+
+
+Widget finalDisplaySteps(BuildContext context, var drugName, var counter, var individuals) {
+
+  final data = MediaQuery.of(context);
+  var downArrow = Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: FaIcon(FontAwesomeIcons.arrowDown),
+  );
+
+  List<Widget> columnChildren = [];
+
+  columnChildren.add(SizedBox(height: 15));
+  columnChildren.add(
+    Container(
+        width: 0.8*data.size.width,
+        decoration: lightBoxDec(context),
+        child: Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
+              child: Text(
+                  "$drugName",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: size18Text(context),
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold)
+              ),
+            )
+        )
+    )
+  );
+
+  for (var i = 0; i < counter; i++) {
+    columnChildren.add(individuals[i]);
+    columnChildren.add(downArrow);
+  }
+
+  columnChildren.removeLast();
+
+  return Column(
+    children: columnChildren
+  );
+
 }

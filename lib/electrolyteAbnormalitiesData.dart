@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'all_sizings.dart';
+import 'interventionMainScreen.dart';
+
+var interventionColour = intColors[9];
 
 final hyperkalData = [[2, 0.2, 0.4, 1.0, 2.5, 8, 10, 4, 0.2, 2], [2.5, 0.25, 0.5, 1.25, 2.5, 10.0, 12.5, 5.0, 0.25, 2.5], [3, 0.3, 0.6, 1.5, 2.5, 12, 15, 6, 0.3, 3], [3.5, 0.35, 0.7, 1.75, 2.5, 14.0, 17.5, 7.0, 0.35, 3.5], [4, 0.4, 0.8, 2.0, 2.5, 16, 20, 8, 0.4, 4], [4.5, 0.45, 0.9, 2.25, 2.5, 18.0, 22.5, 9.0, 0.45, 4.5], [5, 0.5, 1.0, 2.5, 2.5, 20, 25, 10, 0.5, 5], [5.5, 0.55, 1.1, 2.75, 2.5, 22.0, 27.5, 11.0, 0.55, 5.5], [6, 0.6, 1.2, 3.0, 2.5, 24, 30, 12, 0.6, 6], [7, 0.7, 1.4, 3.5, 2.5, 28, 35, 14, 0.7, 7], [8, 0.8, 1.6, 4.0, 2.5, 32, 40, 16, 0.8, 8], [9, 0.9, 1.8, 4.5, 2.5, 36, 45, 18, 0.9, 9], [10, 1.0, 2.0, 5.0, 2.5, 40, 50, 20, 1.0, 10], [11, 1.1, 2.2, 5.5, 2.5, 44, 55, 22, 1.1, 11], [12, 1.2, 2.4, 6.0, 2.5, 48, 60, 24, 1.2, 12], [13, 1.3, 2.6, 6.5, 2.5, 52, 65, 26, 1.3, 13], [14, 1.4, 2.8, 7.0, 2.5, 56, 70, 28, 1.4, 14], [15, 1.5, 3.0, 7.5, 2.5, 60, 75, 30, 1.5, 15], [16, 1.6, 3.2, 8.0, 2.5, 64, 80, 32, 1.6, 16], [17, 1.7, 3.4, 8.5, 2.5, 68, 85, 34, 1.7, 17], [18, 1.8, 3.6, 9.0, 2.5, 72, 90, 36, 1.8, 18], [19, 1.9, 3.8, 9.5, 2.5, 76, 95, 38, 1.9, 19], [20, 2.0, 4.0, 10.0, 2.5, 80, 100, 40, 2.0, 20], [22, 2.2, 4.4, 11.0, 2.5, 88, 110, 44, 2.2, 22], [24, 2.4, 4.8, 12.0, 2.5, 96, 120, 48, 2.4, 24], [26, 2.6, 5.2, 13.0, 5, 104, 130, 52, 2.6, 26], [28, 2.8, 5.6, 14.0, 5, 112, 140, 56, 2.8, 28], [30, 3.0, 6.0, 15.0, 5, 120, 150, 60, 3.0, 30], [35, 3.5, 7.0, 17.5, 5, 140, 175, 70, 3.5, 35], [40, 4.0, 8.0, 20.0, 5, 160, 200, 80, 4.0, 40], [45, 4.5, 9.0, 22.5, 5, 180, 225, 90, 4.5, 45], [50, 5.0, 10.0, 25.0, 5, 200, 250, 100, 5.0, 50], [55, 5.5, 11.0, 27.5, 5, 220, 275, 110, 5.5, 55], [60, 6.0, 12.0, 30.0, 5, 240, 300, 120, 6.0, 60], [65, 6.5, 13.0, 30, 5, 250, 325, 130, 6.5, 65], [70, 7.0, 14.0, 30, 5, 250, 350, 140, 7.0, 70], [75, 7.5, 15.0, 30, 5, 250, 375, 150, 7.5, 75], [80, 8.0, 16.0, 30, 5, 250, 400, 160, 8.0, 80]];
 final hyponatraemiaData = [[2, 8], [2.5, 10.0], [3, 12], [3.5, 14.0], [4, 16], [4.5, 18.0], [5, 20], [5.5, 22.0], [6, 24], [7, 28], [8, 32], [9, 36], [10, 40], [11, 44], [12, 48], [13, 52], [14, 56], [15, 60], [16, 64], [17, 68], [18, 72], [19, 76], [20, 80], [22, 88], [24, 96], [26, 104], [28, 112], [30, 120], [35, 140], [40, 160], [45, 180], [50, 200], [55, 220], [60, 240], [65, 260], [70, 280], [75, 300], [80, 320]];
@@ -12,7 +15,7 @@ final hypokalArrithData = [[2, 8], [2.5, 10.0], [3, 12], [3.5, 14.0], [4, 16], [
 hyperkalCalcChlorideDisplay(BuildContext context) {
   var currentData = hyperkalData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hyperkalaemia - Calcium Chloride",
       finalDisplayEmpty(),
@@ -26,7 +29,7 @@ hyperkalCalcChlorideDisplay(BuildContext context) {
 hyperkalCalcGluDisplay(BuildContext context) {
   var currentData = hyperkalData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hyperkalaemia - Calcium Gluconate",
       finalDisplayEmpty(),
@@ -40,7 +43,7 @@ hyperkalCalcGluDisplay(BuildContext context) {
 hyperkalSalbutDisplay(BuildContext context) {
   var currentData = hyperkalData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hyperkalaemia - Salbutamol",
       finalDisplayGive(context, "Give:", "${currentData[4]} mL nebulised"),
@@ -54,7 +57,7 @@ hyperkalSalbutDisplay(BuildContext context) {
 hyperkalInsGluDisplay(BuildContext context) {
   var currentData = hyperkalData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hyperkalaemia - Insulin and Glucose",
       finalDisplayDilute(context, "Give:", "${currentData[6]} mL", "of glucose 10%"),
@@ -67,10 +70,9 @@ hyperkalInsGluDisplay(BuildContext context) {
 
 
 hyperkalSodiumBicarbDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hyperkalData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hyperkalaemia - Sodium Bicarbonate",
       finalDisplayDilute(context, "Use:", "sodium bicarbonate 8.4% ", "(if acidosis)"),
@@ -83,10 +85,9 @@ hyperkalSodiumBicarbDisplay(BuildContext context) {
 }
 
 hyponatraemiaDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hyponatraemiaData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hyponatraemia with seizures",
       finalDisplayDilute(context, "Use:", "sodium chloride 3%", ""),
@@ -97,10 +98,9 @@ hyponatraemiaDisplay(BuildContext context) {
 }
 
 hypocalcDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = symptomHypocalData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Symptomatic Hypocalcaemia",
       finalDisplayDilute(context, "Use:", "Calcium gluconate 10%", ""),
@@ -112,10 +112,9 @@ hypocalcDisplay(BuildContext context) {
 }
 
 hypomagDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hypomagData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Symptomatic Hypocalcaemia",
       finalDisplayDilute(context, "Dilute:", "to at least ${currentData[3]} mL", ""),
@@ -127,10 +126,9 @@ hypomagDisplay(BuildContext context) {
 }
 
 hypomglyGlucoseDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hypoglyData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hypoglycaemia - glucose",
       finalDisplayBold(context, "Give:", "","${currentData[1]} mL ", "of glucose 10%"),
@@ -141,10 +139,9 @@ hypomglyGlucoseDisplay(BuildContext context) {
 }
 
 hypomglyGlucagonDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hypoglyData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hypoglycaemia - glucagon",
       finalDisplayBold(context, "Give:", "","${currentData[3]} mL", ""),
@@ -155,10 +152,9 @@ hypomglyGlucagonDisplay(BuildContext context) {
 }
 
 hypokalArrDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = hypokalArrithData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hypokalaemia with Arryhythmias",
       finalDisplayDilute(context, "Reconstitute:"," up to 40 mmol KCl/L", ""),

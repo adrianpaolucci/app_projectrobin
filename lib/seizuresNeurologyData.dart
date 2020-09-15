@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'all_sizings.dart';
+import 'interventionMainScreen.dart';
+
+var interventionColour = intColors[4];
 
 final seizuresNeurologyDrugs = ["Midazolam (IV)","Midazolam (IN/B)","Diazepam (IV)","Lorazepam (IV)","Fosphenytoin","Phenytoin","Phenobarbitone","Levetiracetam","Valproate","Pyridoxine","Midazolam Infusion","Hypertonic Saline","Mannitol"];
 
@@ -21,12 +24,12 @@ final sAndNMannitolData = [[2, 5.0, 10], [2.5, 6.25, 12.5], [3, 7.5, 15], [3.5, 
 sAndNMidazolamIVDisplay(BuildContext context) {
   var currentData = sAndNMidazolamIVData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Midazolam (IV)",
-      finalDisplayDilute(context, "Reconstitute:", "5 mg per 5 mL", "large ampoule"),
+      finalDisplayDilute(context, "Reconstitute:", "5 mg per 5 mL", "(large ampoule)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(or ", "${currentData[2]} ", "mL)"),
+      finalDisplaySecondary(context, "(or ", "${currentData[2]} ", " mL)"),
       finalDisplayFormula(context, "0.15 mL/kg"));
 
   return popup;
@@ -35,12 +38,12 @@ sAndNMidazolamIVDisplay(BuildContext context) {
 sAndNMidazolamIBDisplay(BuildContext context) {
   var currentData = sAndNMidazolamIntraData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Midazolam (IN/B)",
-      finalDisplayDilute(context, "Reconstitute:", "5 mg per 1 mL", "small ampoule"),
+      finalDisplayDilute(context, "Reconstitute:", "5 mg per 1 mL", "(small ampoule)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(or ", "${currentData[2]} ", "mL)"),
+      finalDisplaySecondary(context, "(or ", "${currentData[2]} ", " mL)"),
       finalDisplayFormula(context, "0.3 mL/kg"));
 
   return popup;
@@ -49,12 +52,12 @@ sAndNMidazolamIBDisplay(BuildContext context) {
 sAndNDiazepamDisplay(BuildContext context) {
   var currentData = sAndNDiazepamData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Diazepam (IV)",
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplayEmpty(),
+      finalDisplaySecondary(context, "(max 10 mg)","",""),
       finalDisplayFormula(context, "0.2 mg/kg"));
 
   return popup;
@@ -63,12 +66,12 @@ sAndNDiazepamDisplay(BuildContext context) {
 sAndNLorazepamDisplay(BuildContext context) {
   var currentData = sAndNLorazepamData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Lorazepam (IV)",
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplayEmpty(),
+      finalDisplaySecondary(context, "(max 4 mg)","",""),
       finalDisplayFormula(context, "0.1 mg/kg"));
 
   return popup;
@@ -77,7 +80,7 @@ sAndNLorazepamDisplay(BuildContext context) {
 sAndNFosphenytoinDisplay(BuildContext context) {
   var currentData = sAndNFosphenytoinData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Fosphenytoin",
       finalDisplayEmpty(),
@@ -90,12 +93,12 @@ sAndNFosphenytoinDisplay(BuildContext context) {
 sAndNPhenytoinDisplay(BuildContext context) {
   var currentData = sAndNPhenytoinData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Phenytoin",
-      finalDisplayDilute(context, "Dilute:", "Undiluted preferred", "may dilute up to ${currentData[2]} mL"),
+      finalDisplayDilute(context, "Dilute:", "Undiluted preferred", "(may dilute up to ${currentData[2]} mL)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "give over 20 minutes", "", ""),
+      finalDisplaySecondary(context, "over 20 minutes", "", ""),
       finalDisplayFormula(context, "20 mg/kg"));
 
   return popup;
@@ -104,7 +107,7 @@ sAndNPhenytoinDisplay(BuildContext context) {
 sAndNPhenobarbitoneDisplay(BuildContext context) {
   var currentData = sAndNPhenobarbitoneData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Phenobarbitone",
       finalDisplayDilute(context, "Dilute:", "dilute to at least 1:10", ""),
@@ -118,12 +121,12 @@ sAndNPhenobarbitoneDisplay(BuildContext context) {
 sAndNLevetiracemDisplay(BuildContext context) {
   var currentData = sAndNLevetiracetamData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Levetiracem",
       finalDisplayDilute(context, "Dilute:", "500 mg vial to 10 mL", ""),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "or ", "${currentData[3]} - ${currentData[4]} mL", " over 5 minutes"),
+      finalDisplaySecondary(context, "", "${currentData[3]} - ${currentData[4]} mL", " over 5 minutes"),
       finalDisplayFormula(context, "40 - 60 mg/kg"));
 
   return popup;
@@ -132,7 +135,7 @@ sAndNLevetiracemDisplay(BuildContext context) {
 sAndNValproateDisplay(BuildContext context) {
   var currentData = sAndNValproateData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Valproate",
       finalDisplayEmpty(),
@@ -146,7 +149,7 @@ sAndNValproateDisplay(BuildContext context) {
 sAndNPyridoxineDisplay(BuildContext context) {
   var currentData = sAndNPyridoxineData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Pyridoxine",
       finalDisplayEmpty(),
@@ -160,10 +163,10 @@ sAndNPyridoxineDisplay(BuildContext context) {
 sAndNMidazolamInfusionDisplay(BuildContext context) {
   var currentData = sAndNMidazolamInfusionData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Midazolam Infusion",
-      finalDisplayBold(context,"Dilute: ", "","${currentData[1]} mg"," to 50 mL"),
+      finalDisplayDilute(context,"Dilute: ","${currentData[1]} mg to 50 mL",""),
       finalDisplayBold(context, "Give: ","Start at","${currentData[2]} mL/hr",""),
       finalDisplaySecondary(context, "increase by 1 mL/hr every 15 minutes\nuntil seizures are controlled", "", ""),
       finalDisplayFormula(context, "3 mg/kg"));
@@ -174,12 +177,12 @@ sAndNMidazolamInfusionDisplay(BuildContext context) {
 sAndNHypertonicSalineDisplay(BuildContext context) {
   var currentData = sAndNHypertonicSalineData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hypertonic Saline",
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mL"),
-      finalDisplaySecondary(context, "of 3% hypertonic saline over 10 minutes", "", ""),
+      finalDisplaySecondary(context, "of 3% hypertonic saline\nover 10 minutes", "", ""),
       finalDisplayFormula(context, "3 - 5 mL/kg"));
 
   return popup;
@@ -188,12 +191,12 @@ sAndNHypertonicSalineDisplay(BuildContext context) {
 sAndNMannitolDisplay(BuildContext context) {
   var currentData = sAndNMannitolData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Hypertonic Saline",
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mL"),
-      finalDisplaySecondary(context, "of 20% mannitol over 10 - 20 minutes", "", ""),
+      finalDisplaySecondary(context, "of 20% mannitol\nover 10 - 20 minutes", "", ""),
       finalDisplayFormula(context, "2.5 - 5 mL/kg"));
 
   return popup;

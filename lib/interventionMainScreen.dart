@@ -167,7 +167,7 @@ class _DosingMainState extends State<InterventionMain> {
           ),
           backgroundColor: Colors.white,
         ),
-      floatingActionButton: Opacity(
+      /*floatingActionButton: Opacity(
           opacity: 0.7,
               child:
                  FabCircularMenu(
@@ -201,7 +201,7 @@ class _DosingMainState extends State<InterventionMain> {
                         )
                   ]
               )
-      ),
+      ),*/
         body:
         CustomScrollView(
           slivers: <Widget>[

@@ -381,7 +381,7 @@ electrolyteAbnormalitiesFinal(BuildContext context) {
 antidotesFinal(BuildContext context) {
   var shockBoolean = allDrugBooleans[14];
   final data = MediaQuery.of(context);
-  var antidotesWidgets = [antidoteAtropineDisplay(context),antidotePralixodimeDisplay(context),antidotePrazosineDisplay(context),shockDobutamineDisplay(context),shockDopamineDisplay(context),shockStressDoseDisplay(context)];
+  var antidotesWidgets = [antidoteAtropineDisplay(context),antidotePralixodimeDisplay(context),antidotePrazosineDisplay(context),antidoteNAcetylDisplay(context)];
 
   List<Widget>antidoteList = [];
   for (var i = 0; i < shockBoolean.length; i++) {

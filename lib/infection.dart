@@ -5,6 +5,7 @@ import 'interventionMainScreen.dart';
 import 'allDrugData.dart';
 import 'all_sizings.dart';
 import 'finalDisplay.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Infection extends StatefulWidget {
 
@@ -128,9 +129,27 @@ class InfectionState extends State<Infection> {
               );
             },
           ),
-          title: Text(
-            "PediDosED",
-            style: TextStyle(color: Colors.black),),
+          title: Padding(
+            padding: EdgeInsets.only(left: 70),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "PediDosED",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  IconButton(
+                      icon: FaIcon(
+                          FontAwesomeIcons.home
+                      ),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.push(context, SlideRightRoute(page: Home2()));
+                      }
+                  )
+                ]
+            ),
+          ),
           backgroundColor: Colors.white,
         ),
         body: SingleChildScrollView(child: Material(

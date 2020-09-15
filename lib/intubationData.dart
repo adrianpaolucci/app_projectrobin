@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'all_sizings.dart';
+import 'interventionMainScreen.dart';
+
+var interventionColour = intColors[3];
+
 
 //induction initialisation
 final inductionAgents = ["Ketamine","Propofol","Thiopentone","Fentanyl (Bolus)","Midazolam", "Fentanyl (Infusion)"];
@@ -45,12 +49,12 @@ ketamineDisplay(BuildContext context) {
   var currentData = ketamineData[weightIndex];
 
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
     context,
     "Ketamine",
     finalDisplayDilute(context, "Dilute:", "200 mg in 20 mL", "(OR 100 mg in 10 mL)"),
     finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of diluted solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", " mL of diluted solution)"),
       finalDisplayFormula(context, "1 - 2 mg/kg"));
 
   return popup;
@@ -60,12 +64,12 @@ propofolDisplay(BuildContext context) {
 
   var currentData = propofolData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Propofol",
       finalDisplayDilute(context, "Dilute:", "Undiluted", "(200 mg in 20 mL)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[2]}", "mL of undiluted solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[2]}", " mL of undiluted solution)"),
       finalDisplayFormula(context, "2 mg/kg"));
 
   return popup;
@@ -74,12 +78,12 @@ propofolDisplay(BuildContext context) {
 thiopentoneDisplay(BuildContext context) {
   var currentData = thiopentoneData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Thiopentone",
-      finalDisplayDilute(context, "Reconstitute: ", "500 mg in 20 mL water", "for injection"),
+      finalDisplayDilute(context, "Reconstitute: ", "500 mg in 20 mL water", "(for injection)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of undiluted solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", " mL of undiluted solution)"),
       finalDisplayFormula(context, "2 - 4 mg/kg"));
 
   return popup;
@@ -88,12 +92,12 @@ thiopentoneDisplay(BuildContext context) {
 fentanylBolusDisplay(BuildContext context) {
   var currentData = fentanylBolusData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Fentanyl (Bolus)",
       finalDisplayDilute(context, "Dilute: ", "100 \u03bcg in 10 mL", " "),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} \u03bcg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", "mL of diluted solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", " mL of diluted solution)"),
       finalDisplayFormula(context, "2 - 4 \u03bcg/kg IV"));
 
   return popup;
@@ -102,7 +106,7 @@ fentanylBolusDisplay(BuildContext context) {
 midazolamDisplay(BuildContext context) {
   var currentData = midazolamData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Midazolam",
       finalDisplayDilute(context, "Dilute: ", "500 mg in 20 mL water", ""),
@@ -117,13 +121,13 @@ midazolamDisplay(BuildContext context) {
 suxamethoniumDisplay(BuildContext context) {
   var currentData = suxamethoniumData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
-      "Saxumethonium",
+      "Suxamethonium",
       finalDisplayDilute(context, "Dilute: ", "100 mg to 10mL", ""),
       finalDisplayGive(context, "Give: ", "${currentData[2]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]}", "mL of diluted solution)"),
-      finalDisplayFormula(context, "2 mg/kg up to 9kg \n 10kg or more: 1.5 mg/kg"));
+      finalDisplaySecondary(context, "(", "${currentData[3]}", " mL of diluted solution)"),
+      finalDisplayFormula(context, "2 mg/kg up to 9kg \n10kg or more: 1.5 mg/kg"));
 
 
   return popup;
@@ -132,15 +136,13 @@ suxamethoniumDisplay(BuildContext context) {
 rocuroniumDisplay(BuildContext context) {
   var currentData = rocuroniumData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Rocuronium",
-      finalDisplayDilute(context, "Undiluted", "", ""),
+      finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[2]}", "mL of undiluted solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[2]}", " mL of undiluted solution)"),
       finalDisplayFormula(context, "1 mg/kg"));
-
-
 
   return popup;
 }
@@ -148,12 +150,12 @@ rocuroniumDisplay(BuildContext context) {
 vecuroniumDisplay(BuildContext context) {
   var currentData = vecuroniumData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Vecuronium",
-      finalDisplayDilute(context, "Reconstitute ", "10mg in 10mL water", "for injection"),
+      finalDisplayDilute(context, "Reconstitute:", "10 mg in 10 mL water", "(for injection)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[2]}", "mL of diluted solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[2]}", " mL of diluted solution)"),
       finalDisplayFormula(context, "0.1 mg/kg"));
 
 
@@ -163,12 +165,12 @@ vecuroniumDisplay(BuildContext context) {
 atracuriumDisplay(BuildContext context) {
   var currentData = atracuriumData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Atracurium",
-      finalDisplayDilute(context, "Dilute: ", "${currentData[2]}", ""),
+      finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "(", "${currentData[3]}", "mL of solution)"),
+      finalDisplaySecondary(context, "(", "${currentData[3]}", " mL of undiluted solution)"),
       finalDisplayFormula(context, "0.5 mg/kg"));
 
 
@@ -176,34 +178,16 @@ atracuriumDisplay(BuildContext context) {
 }
 
 fentanylInfusionDisplay(BuildContext context) {
-  final data = MediaQuery.of(context);
   var currentData = fentanylInfusionData[weightIndex];
 
-  var popup = Column(children: <Widget>[
-    SizedBox(height: 15),
-    Text("Fentanyl (Infusion)", style: TextStyle(fontSize: size18Text(context), color: Color(0xff000000), fontWeight: FontWeight.bold)),
-    Container(padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(5),
-      decoration: lightBoxDec(context),
-      width: 0.8 * data.size.width,
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentData[1]} mg in ${currentData[2]} mL"),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
-              child: Text("Start at ${currentData[3]} - ${currentData[4]} mg/hr",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size16Text(context))
-              ),
-            ),
-            Text("${currentData[5]} (lower) µg/kg/hr - ${currentData[6]} (upper) µg/kg/hr")
-          ]
-      ),
-    ),
-    SizedBox(height: 15)]);
+  var popup = finalDisplayFull(interventionColour,
+      context,
+      "Fentanyl Infusion",
+      finalDisplayDilute(context, "Dilute: ", "${currentData[1]} mg in ${currentData[2]} mL", "(of 0.9% saline)"),
+      finalDisplayGive(context, "Start:", "${currentData[3]} - ${currentData[2]} mg/hr"),
+      finalDisplaySecondary(context, "", "", "${currentData[5]} - ${currentData[6]} \u03bcg/kg/hr"),
+      finalDisplayFormula(context, "100 or 500 \u03bcg/kg"));
+
   return popup;
 }
 

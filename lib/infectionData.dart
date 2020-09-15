@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'all_sizings.dart';
 import 'homeScreen.dart';
+import 'interventionMainScreen.dart';
+
+var interventionColour = intColors[6];
 
 final aciclovirData = [[2, 40], [2.5, 50.0], [3, 60], [3.5, 70.0], [4, 80], [4.5, 90.0], [5, 100], [5.5, 110.0], [6, 120], [7, 140], [8, 160], [9, 180], [10, 200], [11, 220], [12, 240], [13, 260], [14, 280], [15, 300], [16, 320], [17, 340], [18, 360], [19, 380], [20, 300], [22, 330], [24, 360], [26, 390], [28, 420], [30, 450], [35, 525], [40, 400], [45, 450], [50, 500], [55, 550], [60, 600], [65, 650], [70, 700], [75, 750], [80, 800]];
 final artesunateData = [[2, 4.8], [2.5, 6.0], [3, 7.2], [3.5, 8.4], [4, 9.6], [4.5, 10.8], [5, 12.0], [5.5, 13.2], [6, 14.4], [7, 16.8], [8, 19.2], [9, 21.6], [10, 24.0], [11, 26.4], [12, 28.8], [13, 31.2], [14, 33.6], [15, 36.0], [16, 38.4], [17, 40.8], [18, 43.2], [19, 45.6], [20, 48.0], [22, 52.8], [24, 57.6], [26, 62.4], [28, 67.2], [30, 72.0], [35, 84.0], [40, 96.0], [45, 108.0], [50, 120.0], [55, 132.0], [60, 144.0], [65, 156.0], [70, 168.0], [75, 180.0], [80, 192.0]];
@@ -14,7 +17,7 @@ aciclovirDisplay(BuildContext context) {
   var currentData = aciclovirData[weightIndex];
 
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Aciclovir ",
       finalDisplayEmpty(),
@@ -28,12 +31,12 @@ aciclovirDisplay(BuildContext context) {
 artesunateDisplay(BuildContext context) {
   var currentData = artesunateData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Artesunate ",
       finalDisplayEmpty(),
-      finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "Start, 12, 24, then daily", "", ""),
+      finalDisplayGive(context, "Give: ", "${currentData[1]} mg initally"),
+      finalDisplaySecondary(context, "after 12 hours, 24 hours\nthen daily", "", ""),
       finalDisplayFormula(context, "2.4 mg/kg"));
 
   return popup;
@@ -42,15 +45,13 @@ artesunateDisplay(BuildContext context) {
 oseltamivirDisplay(BuildContext context) {
   var currentData = oseltamivirData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Oseltamivir ",
-      finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
       finalDisplaySecondary(context, "12 - hourly", "", ""),
-      finalDisplayEmpty());
-      //finalDisplayFormula(context, "Neonate - 11 months: 3 mg/kg\n1 - 12 years(10 - 15 kg): 30 mg/kg\n1 - 12 years(15 - 23 kg): 45 mg/kg\n 1 - 12 years(23 - 40 kg): 60 mg/kg\n1 - 12 years(40+ kg): 75 mg/kg\n13 - 17 years: 75 mg"));
-
+      finalDisplayEmpty(),
+      finalDisplayFormula(context,"Refer to book for details"));
 
   return popup;
 }
@@ -58,7 +59,7 @@ oseltamivirDisplay(BuildContext context) {
 cefotaximeDisplay(BuildContext context) {
   var currentData = cefotaximeData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Cefotaxime ",
       finalDisplayEmpty(),
@@ -72,7 +73,7 @@ cefotaximeDisplay(BuildContext context) {
 ceftriaxoneDisplay(BuildContext context) {
   var currentData = ceftriaxoneData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Ceftriaxone ",
       finalDisplayEmpty(),
@@ -86,7 +87,7 @@ ceftriaxoneDisplay(BuildContext context) {
 azithromycinDisplay(BuildContext context) {
   var currentData = azithromycinData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Azithromycin",
       finalDisplayEmpty(),
@@ -100,12 +101,12 @@ azithromycinDisplay(BuildContext context) {
 pipAndTazobDisplay(BuildContext context) {
   var currentData = pipAndTazobData[weightIndex];
 
-  var popup = finalDisplayFull(
+  var popup = finalDisplayFull(interventionColour,
       context,
       "Piperacillin/Tazobactam",
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
-      finalDisplaySecondary(context, "plus ", "${currentData[2]}  mg", " 6 - hourly"),
+      finalDisplaySecondary(context, "plus ", " ${currentData[2]} mg", " 6 - hourly"),
       finalDisplayFormula(context, "100 + 12.5 mg/kg\nup to 4 + 0.5 g"));
 
   return popup;

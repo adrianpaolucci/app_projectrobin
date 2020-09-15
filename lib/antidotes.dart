@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'allDrugData.dart';
 import 'all_sizings.dart';
 import 'finalDisplay.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //stateless means it doesn't change AT ALL
 //stateful means something changes i.e. weight
@@ -134,9 +135,27 @@ class AntidotesState extends State<Antidotes> {
               );
             },
           ),
-          title: Text(
-            "PediDosED",
-            style: TextStyle(color: Colors.black),),
+          title: Padding(
+            padding: EdgeInsets.only(left: 70),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "PediDosED",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  IconButton(
+                      icon: FaIcon(
+                          FontAwesomeIcons.home
+                      ),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.push(context, SlideRightRoute(page: Home2()));
+                      }
+                  )
+                ]
+            ),
+          ),
           backgroundColor: Colors.white,
         ),
         body: SingleChildScrollView(

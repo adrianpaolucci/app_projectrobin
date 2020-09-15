@@ -202,45 +202,30 @@ weightBox(BuildContext context) {
   for (var i = 0; i < specificRange.length; i++) {
 
     chooseWeightPopup.add(
-        InkWell(
-          child: Material(
+        Material(
             elevation: 25, shadowColor: Colors.black,
             borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)),
-            color: Colors.blue,
             child:
-            Padding(
-              padding: EdgeInsets.all(data.size.width/20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(data.size.width/30),
-                              bottomLeft: Radius.circular(data.size.width/30)
-                          )
-                      )
-                  ),
-                  Text(specificRange[i].toString() + " kg",
-                      style: TextStyle(
-                          fontSize: size16Text(context),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white
-                      )
-                  ),
-                ],
-              ),
+            InkWell(child:
+            Container(
+                decoration: BoxDecoration(
+                  //color: Color(0xfff2f2f2),
+                    borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)
+                    )
+                ),
+                padding: EdgeInsets.all(data.size.width/20),
+                child:
+                Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: size16Text(context))
+                )
             ),
-          ),
-                  onTap: () {
-                    weight = specificRange[i];
-          weightIndex = allWeights.indexOf(weight);
-          Navigator.push(context, SlideLeftRoute(page: InterventionMain())
-          );
-        },
-      ),
+              onTap: () {
+                weight = specificRange[i];
+                weightIndex = allWeights.indexOf(weight);
+                Navigator.push(context, SlideLeftRoute(page: InterventionMain())
+                );
+              },
+            )
+        )
     );
     chooseWeightPopup.add(SizedBox(height: data.size.width/13));
   }
