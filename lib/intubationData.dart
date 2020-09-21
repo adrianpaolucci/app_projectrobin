@@ -194,7 +194,7 @@ fentanylInfusionDisplay(BuildContext context) {
 intubationEquipmentInfo(BuildContext context) {
   final data = MediaQuery.of(context);
 
-  firstTextSpan(firstString, secondString) {
+  /*firstTextSpan(firstString, secondString) {
     var textBox = Text.rich(
         TextSpan(
             text: "",
@@ -246,4 +246,25 @@ intubationEquipmentInfo(BuildContext context) {
   box.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
 
   return box;
+
+   */
+
+  List<Widget> popup = [
+    finalDisplayIntubationEquip(
+        interventionColour,
+        context,
+        "Intubation Equipment",
+        finalDisplayGive(context, "Depth:", ettDepthOral[weightIndex][1].toString() + " cm to lip, " + ettDepthNasal[weightIndex][1].toString() + " cm to nose"),
+        finalDisplayGive(context, "LMA Size:", lmaSize[weightIndex][1].toString()),
+        finalDisplayGive(context, "Laryngoscope:", layngoscope[weightIndex][1].toString()),
+        finalDisplayGive(context, "Suction:", suction[weightIndex][1].toString() + " Fr"),
+        finalDisplayTubeSize(context, "Uncuffed:", ettUncuffedSize[weightIndex][1].toString()),
+        finalDisplayTubeSize(context, "Microcuff:", ettMicroCuffSize[weightIndex][1].toString()),
+        finalDisplayTubeSize(context, "Cuffed:", ettCuffedSize[weightIndex][1].toString()),
+    )
+  ];
+
+  return popup;
+
+
 }

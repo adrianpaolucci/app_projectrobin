@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:app_search_bar/interventionMainScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
@@ -624,4 +625,112 @@ Widget finalDisplaySteps(BuildContext context,var color,var drugName, var counte
     children: columnChildren
   );
 
+}
+
+finalDisplayIntubationEquip(
+    var interventionColour,
+    BuildContext context,
+    var drugName,
+    Widget function1,
+    Widget function2,
+    Widget function3,
+    Widget function4,
+    Widget function5,
+    Widget function6,
+    Widget function7
+    ) {
+
+  final data = MediaQuery.of(context);
+
+  return Column(
+      children: <Widget>[
+        SizedBox(height: 15),
+        Container(
+            width: 0.8*data.size.width,
+            decoration: lightBoxDec(context),
+            child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
+                  child: Text(
+                      "$drugName",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: size18Text(context),
+                          color: interventionColour,
+                          fontWeight: FontWeight.bold)
+                  ),
+                )
+            )
+        ),
+        Container(padding: EdgeInsets.all(10.0),
+          decoration: whiteBoxDec(context),
+          width: 0.8 * data.size.width,
+          child:
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                function1,
+                function2,
+                function3,
+                function4
+              ]
+          ),
+        ),
+        SizedBox(height: 15),
+        Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: 3*smallButtonPadding(context),
+                vertical: smallButtonPadding(context)),
+            width: 0.8*data.size.width,
+            decoration: lightBoxDec(context),
+            child: function5
+        ),
+        SizedBox(height: 15),
+        Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: 3*smallButtonPadding(context),
+                vertical: smallButtonPadding(context)),
+            width: 0.8*data.size.width,
+            decoration: lightBoxDec(context),
+            child: function6
+        ),
+        SizedBox(height: 15),
+        Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: 3*smallButtonPadding(context),
+                vertical: smallButtonPadding(context)),
+            width: 0.8*data.size.width,
+            decoration: lightBoxDec(context),
+            child: function6
+        ),
+      SizedBox(height: 15),
+      SizedBox(width: data.size.width*0.9, child: adrianDivider())]
+  );
+}
+
+Widget finalDisplayTubeSize(BuildContext context, var instruction, var value) {
+
+  return Column(
+      children: [
+        Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("$instruction",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: size16Text(context)
+                  )
+              ),
+              Text("$value",
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                      fontSize: size16Text(context),
+                      fontWeight: FontWeight.bold
+                  ))
+            ],
+          ),
+      ]
+  );
 }
