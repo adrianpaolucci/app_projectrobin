@@ -75,7 +75,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                         padding: EdgeInsets.only(left: 5.0),
                         child: Text(allDrugs[6][i]),
                       ),
-                      Switch(
+                      CupertinoSwitch(
                           activeColor: Color(0xff39e600),
                           value: allDrugBooleans[6][i],
                           onChanged: (bool newValue){
@@ -131,7 +131,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                       padding: EdgeInsets.only(left: 5.0),
                       child: Text(allDrugs[7][i]),
                     ),
-                    Switch(
+                    CupertinoSwitch(
                         activeColor: Color(0xff39e600),
                         value: allDrugBooleans[7][i],
                         onChanged: (bool newValue){
