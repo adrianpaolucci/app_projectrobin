@@ -24,7 +24,7 @@ Color getColor(i) {
 
 genericIconSize(context) {
   final data = MediaQuery.of(context);
-  return data.size.width/15;
+  return data.size.width/18;
 }
 
 
@@ -733,4 +733,9 @@ Widget finalDisplayTubeSize(BuildContext context, var instruction, var value) {
           ),
       ]
   );
+}
+
+iconRadius(context){
+  final data = MediaQuery.of(context);
+  return data.size.width/45;
 }

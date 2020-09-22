@@ -7,6 +7,7 @@ import 'allDrugData.dart';
 import 'all_sizings.dart';
 import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icons/my_flutter_app_icons.dart';
 
 
 class Anaphylaxis extends StatefulWidget {
@@ -62,37 +63,51 @@ class AnaphylaxisState extends State<Anaphylaxis> {
         itemBuilder: (BuildContext context, var i) {
           return GestureDetector(
               child: Container(
-                  width: 0.9*data.size.width,
                   height: 40,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
+                      color: Color(0xffffffff)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 5.0),
-                        child: Text(allDrugs[6][i]),
+                  Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
+                      child: Material(
+                      color: specificColor,
+                      borderRadius: BorderRadius.circular(iconRadius(context)),
+                      child: Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white)
                       ),
-                      CupertinoSwitch(
-                          activeColor: Color(0xff39e600),
-                          value: allDrugBooleans[6][i],
-                          onChanged: (bool newValue){
-                            if (newValue == true) {
-                              boolCount += 1;
-                            }
-                            else {
-                              boolCount -= 1;
-                            }
-                            setState(() {
-                              items = badger.setBadge(items, "$boolCount", 1);
-                              allDrugBooleans[6][i] = newValue;
-                            });
-                            if (boolCount == 0) {
-                              clearAll();
-                            }
-                          }),
+                  ),
+                    ),
+                  Text(allDrugs[6][i],style: TextStyle(fontSize: size16Text(context)))
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: data.size.width*0.03),
+                  child: CupertinoSwitch(
+                      activeColor: Color(0xff39e600),
+                      value: allDrugBooleans[6][i],
+                            onChanged: (bool newValue){
+                              if (newValue == true) {
+                                boolCount += 1;
+                              }
+                              else {
+                                boolCount -= 1;
+                              }
+                              setState(() {
+                                items = badger.setBadge(items, "$boolCount", 1);
+                                allDrugBooleans[6][i] = newValue;
+                              });
+                              if (boolCount == 0) {
+                                clearAll();
+                              }
+                            }),
+                ),
                     ],
                   )
               ),
@@ -124,31 +139,47 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
+                      color: Color(0xffffffff)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(allDrugs[7][i]),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
+                          child: Material(
+                            color: specificColor,
+                            borderRadius: BorderRadius.circular(iconRadius(context)),
+                            child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white)
+                            ),
+                          ),
+                        ),
+                        Text(allDrugs[7][i],style: TextStyle(fontSize: size16Text(context))),
+                      ],
                     ),
-                    CupertinoSwitch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[7][i],
-                        onChanged: (bool newValue){
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            items = badger.setBadge(items, "$boolCount", 1);
-                            allDrugBooleans[7][i] = newValue;
-                          });
-                          if (boolCount == 0) {
-                            clearAll();
-                          }
-                        }),
+
+                    Padding(
+                      padding: EdgeInsets.only(right: data.size.width*0.03),
+                      child: CupertinoSwitch(
+                          activeColor: Color(0xff39e600),
+                          value: allDrugBooleans[7][i],
+                          onChanged: (bool newValue){
+                            if (newValue == true) {
+                              boolCount += 1;
+                            }
+                            else {
+                              boolCount -= 1;
+                            }
+                            setState(() {
+                              items = badger.setBadge(items, "$boolCount", 1);
+                              allDrugBooleans[7][i] = newValue;
+                            });
+                            if (boolCount == 0) {
+                              clearAll();
+                            }
+                          }),
+                    ),
                   ],
                   )
               ),
@@ -211,49 +242,49 @@ class AnaphylaxisState extends State<Anaphylaxis> {
         backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(child: Material(
-        child: Column(
-            children: <Widget>[
-              topInterventionTitle(context, weight, specificColor, int),
-              Column(children: <Widget>[
-                SizedBox(height: 10),
-                Divider(thickness: 1.0),
-                Theme(
-                  data: ThemeData(accentColor: specificColor),
-                  child: ExpansionTile(initiallyExpanded: true,
-                    title: Text("Anaphylaxis"),
-                    children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                        style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic))),
-                      SizedBox(width: 9*data.size.width/10, child: anaphylaxisCells)
-                    ],
+        child: Theme(
+          data: ThemeData(
+              backgroundColor: Color(0xfff2f2f2)),
+          child: Column(
+              children: <Widget>[
+                topInterventionTitle(context, weight, specificColor, int),
+                Material(
+                  color: Color(0xfff2f2f2),
+                  child: Column(children: <Widget>[
+
+                    Theme(
+                      data: ThemeData(accentColor: specificColor),
+                      child: ExpansionTile(
+                        backgroundColor: Color(0xffffffff),
+                        initiallyExpanded: true,
+                        title: Text("Anaphylaxis",textAlign: TextAlign.center),
+                        children: <Widget>[
+                         anaphylaxisCells
+                        ],
+                      ),
+                    ),
+
+                    Container(
+                        height: data.size.height*0.05,
+                        color: Color(0xfff2f2f2),
+                    ),
+
+                    Theme(
+                      data: ThemeData(accentColor: specificColor),
+                      child: ExpansionTile(backgroundColor: Color(0xffffffff),
+                          initiallyExpanded: true,
+                          title: Text("Resuscitation",textAlign: TextAlign.center),
+                          children: <Widget> [
+                            resuscCells
+                          ]
+                      ),
+                    ),
+                    SizedBox(height: data.size.height/3)
+                  ],
                   ),
                 ),
-                Divider(thickness: 1.0),
-                PlusMinus(),
-                Divider(thickness: 1.0),
-                Theme(
-                  data: ThemeData(accentColor: specificColor),
-                  child: ExpansionTile(
-                      initiallyExpanded: true,
-                      title: Text("Resuscitation"),
-                      children: <Widget> [
-                        GestureDetector(child: Text("Select Drug from below",
-                            style: TextStyle(
-                                color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic),
-                        )
-                        ),
-                        SizedBox(width: 9*data.size.width/10, child: resuscCells)
-                      ]
-                  ),
-                ),
-                Divider(thickness: 1.0),
-                SizedBox(height: data.size.height/3)
-              ],
-              ),
-            ]
+              ]
+          ),
         ),
       ),
       )
