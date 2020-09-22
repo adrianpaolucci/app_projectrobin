@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.10
+version: 1.1.1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -50,6 +50,14 @@ flutter:
    - family:  MyFlutterApp
      fonts:
       - asset: fonts/MyFlutterApp.ttf
+   - family:  SF-UI
+     fonts:
+      - asset: fonts/SFUIText-Regular.ttf
+      - asset: fonts/SFUIText-Bold.ttf
+        weight: 700
+      - asset: fonts/SFUIText-RegularItalic.ttf
+        style: italic
+
 
   # To add assets to your application, add an assets section, like this:
   assets:

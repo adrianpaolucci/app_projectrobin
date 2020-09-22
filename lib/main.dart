@@ -19,19 +19,17 @@ class MyApp extends StatelessWidget {
 
     Wakelock.enable();
 
-    return ChangeNotifierProvider<ThemeChanger>(
-      create: (_) => ThemeChanger(ThemeData.light()),
-      child: MaterialAppWithTheme()
-    );
+    return MaterialAppWithTheme();
   }
 }
 
 class MaterialAppWithTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
-      theme: theme.getTheme(),
+      theme: ThemeData(
+        fontFamily: 'SF-UI'
+      ),
     debugShowCheckedModeBanner: false,
     title: "Pediatric Dosing",
     home: Home2(),
