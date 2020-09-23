@@ -245,29 +245,35 @@ class _DosingMainState extends State<InterventionMain> {
                           },
                           child:
                           Material(
-                            elevation: buttonShadowElev,
-                            shadowColor: shadowColour,
-                            borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
-                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                            color: Color(0xffe6e6e6),
                             child:
                             Row(
                               children: [
                                 Material(
-                                    color: Colors.white,
+                                    color: Color(0xffe6e6e6),
                                     child: Padding(
                                       padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                                      child: Icon(Icons.search),
+                                      child: Icon(
+                                          Icons.search,
+                                          color: Color(0xff808080)),
                                     )
                                 ),
                                 Material(
-                                  borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
+                                  borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                                  color: Color(0xffe6e6e6),
                                   child: Container(
                                     alignment: Alignment.centerLeft,
                                     height: 4*data.size.height/70,
-                                    width: data.size.width*0.6,
+                                    width: data.size.width*0.8,
                                     child: Padding(
                                       padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                                      child: Text("Search Drugs..."),
+                                      child: Text("Search",
+                                        style: TextStyle(
+                                          fontSize: size16Text(context),
+                                          color: Color(0xff808080)
+                                        )
+                                      ),
                                     ),
                                   ),
                                 )

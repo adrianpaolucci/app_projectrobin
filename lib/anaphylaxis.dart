@@ -61,72 +61,83 @@ class AnaphylaxisState extends State<Anaphylaxis> {
         primary: false,
         itemCount: allDrugs[6].length,
         itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(
-                  height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: Color(0xffffffff)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                  Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
-                      child: Material(
-                      color: specificColor,
-                      borderRadius: BorderRadius.circular(iconRadius(context)),
-                      child: Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white)
-                      ),
+          var column = Column(
+            children: [
+              GestureDetector(
+                  child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                          color: Color(0xffffffff)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:data.size.width*0.03),
+                                child: Material(
+                                  color: specificColor,
+                                  borderRadius: BorderRadius.circular(iconRadius(context)),
+                                  child: Padding(
+                                      padding: EdgeInsets.all(4.0),
+                                      child: Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white)
+                                  ),
+                                ),
+                              ),
+                              Text(allDrugs[6][i],style: TextStyle(fontSize: size16Text(context)))
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: data.size.width*0.03),
+                            child: CupertinoSwitch(
+                                activeColor: Color(0xff39e600),
+                                value: allDrugBooleans[6][i],
+                                onChanged: (bool newValue){
+                                  if (newValue == true) {
+                                    boolCount += 1;
+                                  }
+                                  else {
+                                    boolCount -= 1;
+                                  }
+                                  setState(() {
+                                    items = badger.setBadge(items, "$boolCount", 1);
+                                    allDrugBooleans[6][i] = newValue;
+                                  });
+                                  if (boolCount == 0) {
+                                    clearAll();
+                                  }
+                                }),
+                          ),
+                        ],
+                      )
                   ),
-                    ),
-                  Text(allDrugs[6][i],style: TextStyle(fontSize: size16Text(context)))
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: data.size.width*0.03),
-                  child: CupertinoSwitch(
-                      activeColor: Color(0xff39e600),
-                      value: allDrugBooleans[6][i],
-                            onChanged: (bool newValue){
-                              if (newValue == true) {
-                                boolCount += 1;
-                              }
-                              else {
-                                boolCount -= 1;
-                              }
-                              setState(() {
-                                items = badger.setBadge(items, "$boolCount", 1);
-                                allDrugBooleans[6][i] = newValue;
-                              });
-                              if (boolCount == 0) {
-                                clearAll();
-                              }
-                            }),
-                ),
-                    ],
-                  )
-              ),
-              onTap: () {
-                  if (allDrugBooleans[6][i] == false) {
-                    boolCount += 1;
-                  }
-                  else {
-                    boolCount -= 1;
-                  }
-                  setState(() {
-                    allDrugBooleans[6][i] = !allDrugBooleans[6][i];
-                    items = badger.setBadge(items, "$boolCount", 1);
-                  }
-                  );
-                  if (boolCount == 0) {
-                    clearAll();
-                  }
-              });
+                  onTap: () {
+                    if (allDrugBooleans[6][i] == false) {
+                      boolCount += 1;
+                    }
+                    else {
+                      boolCount -= 1;
+                    }
+                    setState(() {
+                      allDrugBooleans[6][i] = !allDrugBooleans[6][i];
+                      items = badger.setBadge(items, "$boolCount", 1);
+                    }
+                    );
+                    if (boolCount == 0) {
+                      clearAll();
+                    }
+                  }),
+              i != allDrugs[6].length - 1 ? Padding(
+                  padding: EdgeInsets.only(left: data.size.width*0.12),
+                  child: Divider(
+                      thickness: 1.0)
+              ) : SizedBox(
+                  height: smallButtonPadding(context)),
+            ],
+          );
+          return column;
         });
 
     var resuscCells = ListView.builder(
@@ -134,71 +145,83 @@ class AnaphylaxisState extends State<Anaphylaxis> {
         primary: false,
         itemCount: allDrugs[7].length,
         itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(width: 9*data.size.width/10,height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: Color(0xffffffff)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
-                          child: Material(
-                            color: specificColor,
-                            borderRadius: BorderRadius.circular(iconRadius(context)),
-                            child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white)
-                            ),
+          var column = Column(
+              children: <Widget>[
+                GestureDetector(
+                    child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 2.5),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                            color: Color(0xffffffff)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
+                                child: Material(
+                                  color: specificColor,
+                                  borderRadius: BorderRadius.circular(iconRadius(context)),
+                                  child: Padding(
+                                      padding: EdgeInsets.all(4.0),
+                                      child: Icon(
+                                          MyFlutterApp.syringe,
+                                          size: genericIconSize(context),
+                                          color: Colors.white)
+                                  ),
+                                ),
+                              ),
+                              Text(allDrugs[7][i],style: TextStyle(fontSize: size16Text(context))),
+                            ],
                           ),
-                        ),
-                        Text(allDrugs[7][i],style: TextStyle(fontSize: size16Text(context))),
-                      ],
-                    ),
 
-                    Padding(
-                      padding: EdgeInsets.only(right: data.size.width*0.03),
-                      child: CupertinoSwitch(
-                          activeColor: Color(0xff39e600),
-                          value: allDrugBooleans[7][i],
-                          onChanged: (bool newValue){
-                            if (newValue == true) {
-                              boolCount += 1;
-                            }
-                            else {
-                              boolCount -= 1;
-                            }
-                            setState(() {
-                              items = badger.setBadge(items, "$boolCount", 1);
-                              allDrugBooleans[7][i] = newValue;
-                            });
-                            if (boolCount == 0) {
-                              clearAll();
-                            }
-                          }),
+                          Padding(
+                            padding: EdgeInsets.only(right: data.size.width*0.03),
+                            child: CupertinoSwitch(
+                                activeColor: Color(0xff39e600),
+                                value: allDrugBooleans[7][i],
+                                onChanged: (bool newValue){
+                                  if (newValue == true) {
+                                    boolCount += 1;
+                                  }
+                                  else {
+                                    boolCount -= 1;
+                                  }
+                                  setState(() {
+                                    items = badger.setBadge(items, "$boolCount", 1);
+                                    allDrugBooleans[7][i] = newValue;
+                                  });
+                                  if (boolCount == 0) {
+                                    clearAll();
+                                  }
+                                }),
+                          ),
+                        ],
+                        )
                     ),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (allDrugBooleans[7][i] == false) {
-                  boolCount += 1;
-                }
-                else {
-                  boolCount -= 1;
-                }
-                setState(() {
-                  allDrugBooleans[7][i] = !allDrugBooleans[7][i];
-                  items = badger.setBadge(items, "$boolCount", 1);
-                }
-                );
-                if (boolCount == 0) {
-                  clearAll();
-                }
-              });
+                    onTap: () {
+                      if (allDrugBooleans[7][i] == false) {
+                        boolCount += 1;
+                      }
+                      else {
+                        boolCount -= 1;
+                      }
+                      setState(() {
+                        allDrugBooleans[7][i] = !allDrugBooleans[7][i];
+                        items = badger.setBadge(items, "$boolCount", 1);
+                      }
+                      );
+                      if (boolCount == 0) {
+                        clearAll();
+                      }
+                    }),
+                i != allDrugs[7].length - 1 ? Padding(
+                    padding: EdgeInsets.only(left: data.size.width*0.12),
+                    child: Divider(thickness: 1.0)
+                ) : SizedBox(height: smallButtonPadding(context)),
+              ]
+          );
+          return column;
         });
 
     return Scaffold(
@@ -206,9 +229,9 @@ class AnaphylaxisState extends State<Anaphylaxis> {
           currentIndex: 1,
           items: items,
         ),
-      appBar: AppBar(
-        centerTitle: true,
-        leading: IconButton(
+        appBar: AppBar(
+          centerTitle: true,
+          leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
               Navigator.pop(context, CupertinoPageRoute(builder: (context) {
@@ -218,76 +241,76 @@ class AnaphylaxisState extends State<Anaphylaxis> {
               );
             },
           ),
-        title: Padding(
-      padding: EdgeInsets.only(left: 70),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "PediDosED",
-              style: TextStyle(color: Colors.black),
-            ),
-            IconButton(
-                icon: FaIcon(
-                    FontAwesomeIcons.home
-                ),
-                color: Colors.black,
-                onPressed: () {
-                  Navigator.push(context, SlideRightRoute(page: Home2()));
-                }
-            )
-          ]
-      ),
-    ),
-        backgroundColor: Colors.white,
-      ),
-      body: SingleChildScrollView(child: Material(
-        child: Theme(
-          data: ThemeData(
-              backgroundColor: Color(0xfff2f2f2)),
-          child: Column(
-              children: <Widget>[
-                topInterventionTitle(context, weight, specificColor, int),
-                Material(
-                  color: Color(0xfff2f2f2),
-                  child: Column(children: <Widget>[
-
-                    Theme(
-                      data: ThemeData(accentColor: specificColor),
-                      child: ExpansionTile(
-                        backgroundColor: Color(0xffffffff),
-                        initiallyExpanded: true,
-                        title: Text("Anaphylaxis",textAlign: TextAlign.center),
-                        children: <Widget>[
-                         anaphylaxisCells
-                        ],
+          title: Padding(
+            padding: EdgeInsets.only(left: 70),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "PediDosED",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  IconButton(
+                      icon: FaIcon(
+                          FontAwesomeIcons.home
                       ),
-                    ),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.push(context, SlideRightRoute(page: Home2()));
+                      }
+                  )
+                ]
+            ),
+          ),
+          backgroundColor: Colors.white,
+        ),
+        body: SingleChildScrollView(child: Material(
+          child: Theme(
+            data: ThemeData(
+                backgroundColor: Color(0xfff2f2f2)),
+            child: Column(
+                children: <Widget>[
+                  topInterventionTitle(context, weight, specificColor, int),
+                  Material(
+                    color: Color(0xfff2f2f2),
+                    child: Column(children: <Widget>[
 
-                    Container(
+                      Theme(
+                        data: ThemeData(accentColor: specificColor),
+                        child: ExpansionTile(
+                          backgroundColor: Color(0xffffffff),
+                          initiallyExpanded: true,
+                          title: Text("Anaphylaxis",textAlign: TextAlign.center),
+                          children: <Widget>[
+                            anaphylaxisCells
+                          ],
+                        ),
+                      ),
+
+                      Container(
                         height: data.size.height*0.05,
                         color: Color(0xfff2f2f2),
-                    ),
-
-                    Theme(
-                      data: ThemeData(accentColor: specificColor),
-                      child: ExpansionTile(backgroundColor: Color(0xffffffff),
-                          initiallyExpanded: true,
-                          title: Text("Resuscitation",textAlign: TextAlign.center),
-                          children: <Widget> [
-                            resuscCells
-                          ]
                       ),
+
+                      Theme(
+                        data: ThemeData(accentColor: specificColor),
+                        child: ExpansionTile(backgroundColor: Color(0xffffffff),
+                            initiallyExpanded: true,
+                            title: Text("Resuscitation",textAlign: TextAlign.center),
+                            children: <Widget> [
+                              resuscCells
+                            ]
+                        ),
+                      ),
+                      SizedBox(height: data.size.height/3)
+                    ],
                     ),
-                    SizedBox(height: data.size.height/3)
-                  ],
                   ),
-                ),
-              ]
+                ]
+            ),
           ),
         ),
-      ),
-      )
+        )
     );
   }
 }
