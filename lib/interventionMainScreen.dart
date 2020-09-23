@@ -20,6 +20,7 @@ import 'croup.dart';
 import 'analgesia.dart';
 import 'drugSearch.dart';
 import 'antidotes.dart';
+import 'package:flutter/cupertino.dart';
 
 var boolCount = 0;
 
@@ -202,153 +203,149 @@ class _DosingMainState extends State<InterventionMain> {
                   ]
               )
       ),*/
-        body:
-        CustomScrollView(
-          slivers: <Widget>[
-            SliverFixedExtentList(
-              itemExtent: 50,
-              delegate: SliverChildListDelegate([
-                Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(
-                        left: data.size.width*0.05,
-                        top: paddingVerticalBetweenButtons(context)
-                    ),
-                    child: Row(children: <Widget>[
-                      FaIcon(
-                          FontAwesomeIcons.balanceScaleLeft,
-                          size: data.size.width/12),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: data.size.width/25),
-                          child: Text(
-                            "$weight kg",
-                            textDirection: TextDirection.ltr,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: size20Text(context)
-                            ),
-                          )
-                      )
-                    ]
-                    )
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                          onTap: () {
-                            showSearch(
-                                context: context,
-                                delegate: DrugSearch()
-                            );
-                          },
-                          child:
-                          Material(
-                            borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                            color: Color(0xffe6e6e6),
-                            child:
-                            Row(
-                              children: [
-                                Material(
-                                    color: Color(0xffe6e6e6),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                                      child: Icon(
-                                          Icons.search,
-                                          color: Color(0xff808080)),
-                                    )
-                                ),
-                                Material(
-                                  borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                                  color: Color(0xffe6e6e6),
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 4*data.size.height/70,
-                                    width: data.size.width*0.8,
-                                    child: Padding(
-                                      padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                                      child: Text("Search",
-                                        style: TextStyle(
-                                          fontSize: size16Text(context),
-                                          color: Color(0xff808080)
-                                        )
+        body: 
+        CupertinoScrollbar(
+          child: CustomScrollView(
+              slivers: <Widget>[
+                SliverFixedExtentList(
+                  itemExtent: data.size.height*0.08,
+                  delegate: SliverChildListDelegate([
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: paddingVerticalBetweenButtons(context)
+                      ),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  showSearch(
+                                      context: context,
+                                      delegate: DrugSearch()
+                                  );
+                                },
+                                child:
+                                Container(
+                                  height: data.size.height*0.06,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                                    color: Color(0xffe6e6e6)),
+                                  child:
+                                  Row(
+                                    children: [
+                                      Material(
+                                          color: Color(0xffe6e6e6),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                                            child: Icon(
+                                                Icons.search,
+                                                color: Color(0xff808080)),
+                                          )
                                       ),
-                                    ),
+                                      Material(
+                                        borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                                        color: Color(0xffe6e6e6),
+                                        child: Container(
+                                          alignment: Alignment.centerLeft,
+                                          height: 4*data.size.height/70,
+                                          width: data.size.width*0.8,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(left: smallButtonPadding(context)),
+                                            child: Text("Search",
+                                                style: TextStyle(
+                                                    fontSize: size16Text(context),
+                                                    color: Color(0xff808080)
+                                                )
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
                                 )
-                              ],
-                            ),
+                            )
+                          ]
+                      ),
+                    ),
+                    Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.only(
+                            left: data.size.width*0.05,
+                        ),
+                        child: Row(children: <Widget>[
+                          FaIcon(
+                              FontAwesomeIcons.balanceScaleLeft,
+                              size: data.size.width/12),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: data.size.width/25),
+                              child: Text(
+                                "$weight kg",
+                                textDirection: TextDirection.ltr,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size20Text(context)
+                                ),
+                              )
                           )
-                      )
-                    ]
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    child: Text("Select an Intervention Below",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: size14Text(context)
+                        ]
                         )
-                    )
-                )
-              ]),
+                    ),
+                  ]),
+                ),
+                SliverPadding(
+                      padding: EdgeInsets.only(bottom: paddingVerticalBetweenButtons(context)),
+                      sliver:
+                      SliverGrid(
+                        delegate: SliverChildBuilderDelegate(
+                              (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: paddingHorizontalBetweenButtons(context),
+                                      vertical: paddingVerticalBetweenButtons(context)),
+                                  child: Material(
+                                    color: Colors.white,
+                                    elevation: buttonShadowElev,
+                                    shadowColor: shadowColour,
+                                    borderRadius: BorderRadius.circular(lrgBorderRad),
+                                    child:
+                                    InkWell(
+                                        onTap: () {
+                                          int = interventions[index];
+                                          specificColor = intColors[index];
+                                          Navigator.push(context, SlideLeftRoute(page: pages[index])
+                                          );
+                                        },
+                                        child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Center(
+                                                  child:  Text(interventions[index],
+                                                      textAlign: TextAlign.center,style:
+                                                      TextStyle(
+                                                          color: intColors[index],
+                                                          fontSize: size16Text(context))
+                                                  )
+                                              ),
+                                            ]
+                                        )
+                                    ),
+                                  ),
+                                );
+                              },
+                          childCount: interventions.length,
+                        ),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 0,
+                          crossAxisSpacing: 0,
+                          childAspectRatio: data.devicePixelRatio*0.75,
+                        ),
+                      )
+                  ),
+              ],
             ),
-            SliverPadding(
-                padding: EdgeInsets.only(bottom: paddingVerticalBetweenButtons(context)),
-                sliver:
-                SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: paddingHorizontalBetweenButtons(context),
-                                vertical: paddingVerticalBetweenButtons(context)),
-                            child: Material(
-                              color: Colors.white,
-                              elevation: buttonShadowElev,
-                              shadowColor: shadowColour,
-                              borderRadius: BorderRadius.circular(lrgBorderRad),
-                              child:
-                              InkWell(
-                                  onTap: () {
-                                    int = interventions[index];
-                                    specificColor = intColors[index];
-                                    Navigator.push(context, SlideLeftRoute(page: pages[index])
-                                    );
-                                  },
-                                  child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Center(
-                                            child:  Text(interventions[index],
-                                                textAlign: TextAlign.center,style:
-                                                TextStyle(
-                                                    color: intColors[index],
-                                                    fontSize: size16Text(context))
-                                            )
-                                        ),
-                                      ]
-                                  )
-                              ),
-                            ),
-                          );
-                        },
-                    childCount: interventions.length,
-                  ),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 0,
-                    crossAxisSpacing: 0,
-                    childAspectRatio: data.devicePixelRatio*0.75,
-                  ),
-                )
-            )
-          ],
-        )
+        ),
     );
   }
 }

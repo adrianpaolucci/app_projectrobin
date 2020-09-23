@@ -9,7 +9,6 @@ import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icons/my_flutter_app_icons.dart';
 
-
 class Anaphylaxis extends StatefulWidget {
 
   @override
