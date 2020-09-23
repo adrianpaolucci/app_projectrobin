@@ -86,23 +86,27 @@ class Home2State extends State<Home2> {
       var childBox;
       if (index.isOdd) {
         childBox = Container(
-          margin: EdgeInsets.only(right: smallButtonPadding(context)),
+          //margin: EdgeInsets.only(right: smallButtonPadding(context)),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                //borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                 color: Colors.white),
-            alignment: Alignment.center,
+            //alignment: Alignment.center,
             child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
               Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+               /* borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(mediumButtonRadius(context)),
                     bottomLeft: Radius.circular(mediumButtonRadius(context))
+                ),*/
+      color: boxColors[index]),
+                  width: data.size.width / 12),
+              SizedBox(
+                child: Text(textBox,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.black, fontSize: size18Text(context))
                 ),
-      color: boxColors[index]),width: data.size.width / 12),
-              Text(textBox,
-                  style: TextStyle(
-                      color: Colors.black, fontSize: size18Text(context))
               ),
               Padding(
                 padding: EdgeInsets.only(right: data.size.width/40),
@@ -114,15 +118,18 @@ class Home2State extends State<Home2> {
       }
       else {
         childBox = Container(
-          margin: EdgeInsets.only(left: smallButtonPadding(context)),
+          //margin: EdgeInsets.only(left: smallButtonPadding(context)),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                //borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
                 color: Colors.white),
             alignment: Alignment.center,
             child:
             Row(children: <Widget>[
               Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(mediumButtonRadius(context)),bottomLeft: Radius.circular(mediumButtonRadius(context))),
+                  decoration: BoxDecoration(
+                      /*borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(mediumButtonRadius(context)),
+                      bottomLeft: Radius.circular(mediumButtonRadius(context))),*/
                       color: boxColors[index]),
                   width: data.size.width / 12,
               ),
@@ -180,8 +187,8 @@ class Home2State extends State<Home2> {
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                  mainAxisSpacing: data.size.width/60,
-                  crossAxisSpacing: data.size.width/60,
+                  mainAxisSpacing: 0 ,//data.size.width/60,
+                  crossAxisSpacing: 0, //data.size.width/60,
                   childAspectRatio: 3,
                 )
               )
