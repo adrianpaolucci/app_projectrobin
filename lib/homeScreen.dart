@@ -82,67 +82,132 @@ class Home2State extends State<Home2> {
 
     final data = MediaQuery.of(context);
 
-    sliverBox(index, textBox) {
-      var childBox;
-      if (index.isOdd) {
-        childBox = Container(
-          //margin: EdgeInsets.only(right: smallButtonPadding(context)),
-            decoration: BoxDecoration(
-                //borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                color: Colors.white),
-            //alignment: Alignment.center,
-            child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
-              Container(
-            decoration: BoxDecoration(
-               /* borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(mediumButtonRadius(context)),
-                    bottomLeft: Radius.circular(mediumButtonRadius(context))
-                ),*/
-      color: boxColors[index]),
-                  width: data.size.width / 12),
-              SizedBox(
-                child: Text(textBox,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Colors.black, fontSize: size18Text(context))
-                ),
+    var homeListItems = ListView.builder(
+        shrinkWrap: true,
+        primary: false,
+        itemCount: 15,
+        itemBuilder: (BuildContext context, var i) {
+          return Container(
+            color: Color(0xffffffff),
+            height: data.size.height*0.1,
+            child: InkWell(
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: data.size.width*0.45,
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: smallButtonPadding(context)),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        iconRadius(context)
+                                    ),
+                                    color: boxColors[2*i]),
+                                width: data.size.width / 10,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(paddingHorizontalBetweenButtons(context)),
+                                child: Text(
+                                    ageWeightList[2*i],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: size18Text(context)
+                                    )
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: data.size.width*0.55,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: data.size.width*0.15
+                                ),
+                                child: SizedBox(
+                                  child: Text(
+                                      ageWeightList[2*i + 1],
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: size18Text(context))
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: data.size.width/40),
+                                child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(left: data.size.width*0.12),
+                      child: Divider(thickness: 1.0)
+                  )
+                ]
               ),
-              Padding(
-                padding: EdgeInsets.only(right: data.size.width/40),
-                child: Icon(Icons.arrow_forward_ios),
-              )
-            ]
-            )
-        );
-      }
-      else {
-        childBox = Container(
-          //margin: EdgeInsets.only(left: smallButtonPadding(context)),
-            decoration: BoxDecoration(
-                //borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                color: Colors.white),
-            alignment: Alignment.center,
-            child:
-            Row(children: <Widget>[
-              Container(
-                  decoration: BoxDecoration(
-                      /*borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(mediumButtonRadius(context)),
-                      bottomLeft: Radius.circular(mediumButtonRadius(context))),*/
-                      color: boxColors[index]),
-                  width: data.size.width / 12,
-              ),
-              Container(width: data.size.width / 12),
-              Text(textBox,
-                  style: TextStyle(
-                      color: Colors.black, fontSize: size18Text(context)))
-            ]
-            )
-        );
-      }
-      return childBox;
-    }
+              onTap: () {
+                specificRange = ranges[2*i];
+                List<Widget> actions = [];
+                for (var i = 0; i < specificRange.length; i++) {
+                  actions.add(
+                      CupertinoActionSheetAction(
+                        child:
+                            Text(
+                                "${specificRange[i]} kg",
+                                //style: TextStyle(
+                               //   color: weightColours(specificRange[i]))
+                      ),
+                        onPressed: () {
+                          weight = specificRange[i];
+                          weightIndex = allWeights.indexOf(weight);
+                          Navigator.push(
+                              context,
+                              SlideLeftRoute(page: InterventionMain())
+                          );
+                        }
+                      )
+                  );
+                }
+                final actionSheet = CupertinoActionSheet(
+                    title: Text(
+                        "Select Weight",
+                        style: TextStyle(
+                          fontSize: size16Text(context)
+                        )),
+                    actions: actions,
+                    cancelButton: CupertinoActionSheetAction(
+                      child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold
+                          )),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    )
+                );
+                showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) => actionSheet);
+              },
+            ),
+          );
+        });
 
 
     return Scaffold(
@@ -169,30 +234,10 @@ class Home2State extends State<Home2> {
       Container(
           color: Color(0xffcccccc),
           width: data.size.width,
-          child: CustomScrollView(
-            slivers: <Widget>[
-              SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      var textBox = ageWeightList[index];
-                      return GestureDetector(
-                          onTap: () {
-                            specificRange = ranges[index];
-                              return weightBox(context);
-                          },
-                        child: sliverBox(index, textBox)
-                      );
-                    },
-                  childCount: ageWeightList.length
-                ),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  mainAxisSpacing: 0 ,//data.size.width/60,
-                  crossAxisSpacing: 0, //data.size.width/60,
-                  childAspectRatio: 3,
-                )
-              )
-            ]
+          child: SingleChildScrollView(
+            child: Column(
+              children: [homeListItems],
+            ),
           )
       )
       ]
@@ -201,69 +246,7 @@ class Home2State extends State<Home2> {
   }
 }
 
-weightBox(BuildContext context) {
-  final data = MediaQuery.of(context);
-
-  List<Widget> chooseWeightPopup = [];
-
-  for (var i = 0; i < specificRange.length; i++) {
-
-    chooseWeightPopup.add(
-        Material(
-            elevation: 25, shadowColor: Colors.black,
-            borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)),
-            child:
-            InkWell(child:
-            Container(
-                decoration: BoxDecoration(
-                  //color: Color(0xfff2f2f2),
-                    borderRadius: BorderRadius.all(Radius.circular(data.size.width/30)
-                    )
-                ),
-                padding: EdgeInsets.all(data.size.width/20),
-                child:
-                Text(specificRange[i].toString() + " kg",style: TextStyle(fontSize: size16Text(context))
-                )
-            ),
-              onTap: () {
-                weight = specificRange[i];
-                weightIndex = allWeights.indexOf(weight);
-                Navigator.push(context, SlideLeftRoute(page: InterventionMain())
-                );
-              },
-            )
-        )
-    );
-    chooseWeightPopup.add(SizedBox(height: data.size.width/13));
-  }
-  chooseWeightPopup.removeLast();
-
-  var boxHeight = data.size.height*(0.1 +  0.1*specificRange.length);
-  var popup = new BackdropFilter(filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-    child: AlertDialog(
-        title: Text("Choose Weight", style: TextStyle(
-            fontSize: size18Text(context))),
-        content: Container(height: boxHeight,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: chooseWeightPopup)
-        ),
-        actions: <Widget>[
-          FlatButton(child: Text("Back",style: TextStyle(fontSize: size16Text(context))), onPressed: () {
-            Navigator.pop(context);
-          }
-          )
-        ]
-      ),
-  );
-  showDialog(context: context, builder: (context) {
-    return popup;
-  }
-  );
-}
-
-weightColours()
+weightColours(weight)
 {
   if (weight >= 2 && weight <= 9) {
     return Color(0xfff04747);
