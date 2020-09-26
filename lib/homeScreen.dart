@@ -234,9 +234,11 @@ class Home2State extends State<Home2> {
       Container(
           color: Color(0xffcccccc),
           width: data.size.width,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [homeListItems],
+          child: CupertinoScrollbar(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [homeListItems],
+              ),
             ),
           )
       )
