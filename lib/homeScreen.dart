@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'ios_search.dart';
 
 class Home2 extends StatefulWidget {
   State<StatefulWidget> createState() {
@@ -102,13 +102,15 @@ class Home2State extends State<Home2> {
                           child: Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(left: smallButtonPadding(context)),
+                                margin: EdgeInsets.only(
+                                    left: smallButtonPadding(context),
+                                    top: data.size.height/100),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
-                                        iconRadius(context)
+                                        data.size.width/40
                                     ),
                                     color: boxColors[2*i]),
-                                width: data.size.width / 10,
+                                width: data.size.width / 20,
                               ),
                               Padding(
                                 padding: EdgeInsets.all(paddingHorizontalBetweenButtons(context)),

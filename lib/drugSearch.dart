@@ -42,7 +42,7 @@ class DrugSearch extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     //show result based on selection
-    List searchInterventions = ["Seizures and Neurology","Asthma","Asthma","Intubation","Intubation","Electrolyte Abnormalities","Anaphylaxis and Arrithmyia","Resuscitation","Shock","Bleeding","Infection","Croup","Analgesia","Electrolyte Abnormalities", "Antidotes"];
+
 
     List allDrugSearch = [];
     List searchBools = [];
@@ -215,3 +215,4 @@ class DrugSearch extends SearchDelegate<String> {
     );
   }
 }
+
