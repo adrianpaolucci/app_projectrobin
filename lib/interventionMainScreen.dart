@@ -143,61 +143,73 @@ class _DosingMainState extends State<InterventionMain> {
         switch (index) {
           case 0:
             return CupertinoPageScaffold(
-              navigationBar: CupertinoNavigationBar(
-                leading: GestureDetector(
-                  child: Row(
-                      children: [
-                        Icon(
-                          CupertinoIcons.back,
-                          color: Colors.blue),
-                        Text("Back",
-                        style: TextStyle(
-                          fontSize: size18Text(context),
-                          color: Colors.blue
-                        ))
-                      ]
-                  ),
-                  onTap: () {
-                    return Navigator.pop(context);
-                  }
-              ),
-                middle: Text("Pedidosed"),
-                trailing: GestureDetector(
-                    child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(
-                                iconRadius(context)
-                              )
-                            ),
-                            child: Text(
-                                "$boolCount",
-                                style: TextStyle(
-                                  color: Colors.white
-                                ))
-                          ),
-                          Icon(
-                              CupertinoIcons.forward,
-                              color: Colors.blue),
-                        ]
-                    ),
-                    onTap: () {
-                      return Navigator.push(
-                        context,
-                        SlideLeftRoute(
-                          page: FinalDisplay()
-                        )
-                      );
-                    }
-                ),
-              ),
               child: SafeArea(
                 child: Material(
                   child: CupertinoScrollbar(
                     child: CustomScrollView(
                       slivers: <Widget>[
+                        CupertinoSliverNavigationBar(
+                          padding: EdgeInsetsDirectional.only(
+                            start: 0,
+                            end: 0,
+                            top: 0,
+                            bottom: 0
+                          ),
+                          leading: GestureDetector(
+                              child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                        CupertinoIcons.back,
+                                        color: Colors.blue),
+                                    Text("Back",
+                                        style: TextStyle(
+                                            fontSize: size18Text(context),
+                                            color: Colors.blue
+                                        ))
+                                  ]
+                              ),
+                              onTap: () {
+                                return Navigator.pop(context);
+                              }
+                          ),
+                          largeTitle: Text("PediDOSed"),
+                          trailing: GestureDetector(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                        width: data.size.width*0.05,
+                                        height: data.size.width*0.05,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(
+                                                data.size.width*0.025
+                                            )
+                                        ),
+                                        child: Text(
+                                            "$boolCount",
+                                            style: TextStyle(
+                                                color: Colors.white
+                                            )
+                                        )
+                                    ),
+                                    Icon(
+                                        CupertinoIcons.forward,
+                                        color: Colors.blue),
+                                  ]
+                              ),
+                              onTap: () {
+                                return Navigator.push(
+                                    context,
+                                    SlideLeftRoute(
+                                        page: FinalDisplay()
+                                    )
+                                );
+                              }
+                          ),
+                        ),
                         SliverFixedExtentList(
                           itemExtent: data.size.height * 0.08,
                           delegate: SliverChildListDelegate([
