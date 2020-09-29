@@ -72,6 +72,8 @@ class IntubationState extends State<Intubation> {
 
     //these are the cells that sit in the Expansion boxes for each type of drug
 
+    var modifiedInductionAgentCells = returnCells(context, 3);
+
     var inductionAgentCells = ListView.builder(
         shrinkWrap: true,
         primary: false,
@@ -137,6 +139,8 @@ class IntubationState extends State<Intubation> {
                 }
               });
         });
+
+    var modifiedParalyticAgentCells = returnCells(context, 4);
 
     var paralyticAgentCells = ListView.builder(
         shrinkWrap: true,
@@ -241,8 +245,6 @@ class IntubationState extends State<Intubation> {
               children: <Widget>[
                 topInterventionTitle(context, weight, specificColor, int),
                 Column(children: <Widget>[
-                  SizedBox(height: 30),
-                  Divider(thickness: 1.0),
                   Theme(
                     data: ThemeData(
                       accentColor: specificColor
@@ -250,56 +252,51 @@ class IntubationState extends State<Intubation> {
                     child: ExpansionTile(
                       initiallyExpanded: true,
                       title: Text(
-                          "Intubation Equipment Info"),
+                          "Intubation Equipment Info", textAlign: TextAlign.center),
                       children: intubationEquipmentInfo(context),
                     ),
                   ),
-                  Divider(thickness: 1.0),
-                  SizedBox(height: 10),
-                  Divider(thickness: 1.0),
+
+                  Container(
+                      height: data.size.height*0.05,
+                      color: Color(0xfff2f2f2)
+                  ),
+
                   Theme(
                     data: ThemeData(
                       accentColor: specificColor
                     ),
                     child: ExpansionTile(initiallyExpanded: true,
-                      title: Text("Induction Agents"),
+                      title: Text("Induction Agents", textAlign: TextAlign.center),
                       children: <Widget>[
-                        GestureDetector(
-                            child: Text("Select Drug from below",
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold
-                          ))
-                        ),
-                        SizedBox(
-                            width: 9*data.size.width/10,
-                            child: inductionAgentCells)
+                        modifiedParalyticAgentCells
                       ],
                     ),
                   ),
-                  Divider(thickness: 1.0),
-                  PlusMinus(),
-                  Divider(thickness: 1.0),
+
+                  Container(
+                    height: data.size.height*0.05,
+                    color: Color(0xfff2f2f2),
+                  ),
+
+
+
                   Theme(
                     data: ThemeData(
                       accentColor: specificColor
                     ),
                     child: ExpansionTile(
                         initiallyExpanded: true,
-                        title: Text("Paralytic Agents"),
+                        title: Text("Paralytic Agents", textAlign: TextAlign.center),
                         children: <Widget> [
-                          GestureDetector(
-                              child: Text("Select Drug from below",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic))
-                          ),
-                          SizedBox(width: 9*data.size.width/10, child: paralyticAgentCells)
+                          modifiedInductionAgentCells
                         ]
                     ),
                   ),
-                  Divider(thickness: 1.0),
-                  SizedBox(height: data.size.height/3)
+                  Container(
+                      height: data.size.height*0.6,
+                      color: Color(0xfff2f2f2)
+                  ),
                 ],
                 ),
               ]

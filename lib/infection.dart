@@ -110,7 +110,7 @@ class InfectionState extends State<Infection> {
               });
         });
 
-
+    var modifiedInfectionCells = returnCells(context, 10);
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -157,21 +157,20 @@ class InfectionState extends State<Infection> {
               children: <Widget>[
                 topInterventionTitle(context, weight, specificColor, int),
                 Column(children: <Widget>[
-                  SizedBox(height: 10),
-                  Divider(thickness: 1.0),
                   Theme(
                     data: ThemeData(accentColor: specificColor),
                     child: ExpansionTile(initiallyExpanded: true,
-                      title: Text("General Drugs"),
-                      children: <Widget>[GestureDetector(child: Text("Select Drug from below",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic))),
-                        SizedBox(width: 9*data.size.width/10, child: infectionCells)
+                      title: Text("General Drugs", textAlign: TextAlign.center),
+                      children: <Widget>[
+                        modifiedInfectionCells
                       ],
                     ),
                   ),
-                  Divider(thickness: 1.0),
+                  Container(
+                    height: data.size.height*0.6,
+                    color: Color(0xfff2f2f2)
+                  ),
+
                 ],
                 ),
               ]

@@ -66,7 +66,7 @@ class AntidotesState extends State<Antidotes> {
           return GestureDetector(
               child: Container(
                   width: 9*data.size.width/10,
-                  height: data.size.height/18.4,
+                  height: data.size.height/24,
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
@@ -116,7 +116,7 @@ class AntidotesState extends State<Antidotes> {
                 }
               });
         });
-
+    var modifiedAntidoteCells = returnCells(context, 14);
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -165,28 +165,22 @@ class AntidotesState extends State<Antidotes> {
                 topInterventionTitle(context, weight, specificColor, int),
                 Column(
                   children: <Widget>[
-                    SizedBox(height: 10),
-                    Divider(thickness: 1.0),
                     Theme(
                       data: ThemeData(accentColor: specificColor),
-                      child: ExpansionTile(
+                      child: ExpansionTile(backgroundColor: Color(0xffffffff),
                         initiallyExpanded: true,
-                        title: Text("General Drugs"),
+                        title: Text("General Drugs",textAlign: TextAlign.center),
                         children: <Widget>[
-                          GestureDetector(child: Text("Select Drug from below",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic)
-                          )
-                          ),
-                          SizedBox(
-                              width: 9*data.size.width/10,
-                              child: antidoteCells
-                          )
+                          modifiedAntidoteCells
                         ],
                       ),
                     ),
-                    Divider(thickness: 1.0),
+
+                    Container(
+                      height: data.size.height*0.6,
+                      color: Color(0xfff2f2f2)
+                    ),
+
                   ],
                 ),
               ]

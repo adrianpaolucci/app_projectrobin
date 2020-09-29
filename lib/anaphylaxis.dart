@@ -9,6 +9,12 @@ import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icons/my_flutter_app_icons.dart';
 
+
+
+
+
+
+
 class Anaphylaxis extends StatefulWidget {
 
   @override
@@ -54,6 +60,10 @@ class AnaphylaxisState extends State<Anaphylaxis> {
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
+
+    var testCells = returnCells(context, 6);
+
+
 
     var anaphylaxisCells = ListView.builder(
         shrinkWrap: true,
@@ -170,7 +180,11 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                   ),
                                 ),
                               ),
-                              Text(allDrugs[7][i],style: TextStyle(fontSize: size16Text(context))),
+                              Text(allDrugs[7][i],
+                                  style: TextStyle(
+                                      fontSize: size16Text(context)
+                                  )
+                              ),
                             ],
                           ),
 
@@ -281,7 +295,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                           initiallyExpanded: true,
                           title: Text("Anaphylaxis",textAlign: TextAlign.center),
                           children: <Widget>[
-                            anaphylaxisCells
+                            testCells
                           ],
                         ),
                       ),

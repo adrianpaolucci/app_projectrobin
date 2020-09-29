@@ -174,7 +174,7 @@ class _DosingMainState extends State<InterventionMain> {
                               }
                           ),
                           largeTitle: Text("PediDOSed"),
-                          trailing: GestureDetector(
+                          trailing: (boolCount != 0) ? GestureDetector(
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -194,7 +194,7 @@ class _DosingMainState extends State<InterventionMain> {
                                                 color: Colors.white
                                             )
                                         )
-                                    ),
+                                    ) ,
                                     Icon(
                                         CupertinoIcons.forward,
                                         color: Colors.blue),
@@ -208,7 +208,7 @@ class _DosingMainState extends State<InterventionMain> {
                                     )
                                 );
                               }
-                          ),
+                          ) : SizedBox(),
                         ),
                         SliverFixedExtentList(
                           itemExtent: data.size.height * 0.08,

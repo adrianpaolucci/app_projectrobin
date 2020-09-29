@@ -115,6 +115,7 @@ class AnalgesiaState extends State<Analgesia> {
           );
         });
 
+      var modifiedAnalgesiaCells = returnCells(context, 6);
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -161,8 +162,6 @@ class AnalgesiaState extends State<Analgesia> {
                 children: <Widget>[
                   topInterventionTitle(context, weight, specificColor, int),
                   Column(children: <Widget>[
-                    SizedBox(height: 10),
-                    Divider(thickness: 1.0),
                     Theme(
                       data: ThemeData(
                         accentColor: specificColor
@@ -171,19 +170,14 @@ class AnalgesiaState extends State<Analgesia> {
                         initiallyExpanded: true,
                         title: Text("General Drugs"),
                         children: <Widget>[
-                          GestureDetector(
-                              child: Text("Select Drug from below",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic)
-                              )
-                          ),
-                          SizedBox(width: 9*data.size.width/10, child: analgesiaCells)
+                          modifiedAnalgesiaCells
                         ],
                       ),
                     ),
-                    Divider(thickness: 1.0),
-                    SizedBox(height: data.size.height/3)
+                    Container(
+                      height: data.size.height*0.6,
+                      color: Color(0xfff2f2f2),
+                    ),
                   ],
                   ),
                 ]

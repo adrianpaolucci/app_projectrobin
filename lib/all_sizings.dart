@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'allDrugData.dart';
+import 'icons/my_flutter_app_icons.dart';
 
 
 paddingVerticalBetweenButtons(context) {
@@ -273,6 +274,90 @@ void errorAlert(BuildContext context, i, j, k ) {
 
   showDialog(context: context, builder: (BuildContext context) => popup);
 }
+returnCells(BuildContext context,var intIndex, ) {
+  final data = MediaQuery.of(context);
+  var cells = ListView.builder(
+      shrinkWrap: true,
+      primary: false,
+      itemCount: allDrugs[intIndex].length,
+      itemBuilder: (BuildContext context, var i) {
+        var column = Column(
+        children: [
+            GestureDetector(
+                child: Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            mediumButtonRadius(context)),
+                        color: Color(0xffffffff)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: data.size.width * 0.03),
+                              child: Material(
+                                color: specificColor,
+                                borderRadius: BorderRadius.circular(
+                                    iconRadius(context)),
+                                child: Padding(
+                                    padding: EdgeInsets.all(4.0),
+                                    child: Icon(MyFlutterApp.syringe,
+                                        size: genericIconSize(context),
+                                        color: Colors.white)
+                                ),
+                              ),
+                            ),
+                            Text(allDrugs[intIndex][i],
+                                style: TextStyle(fontSize: size16Text(context)))
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: data.size.width * 0.03),
+                          child: CupertinoSwitch(
+                              activeColor: Color(0xff39e600),
+                              value: allDrugBooleans[intIndex][i],
+                              onChanged: (bool newValue) {
+                                if (newValue == true) {
+                                  boolCount += 1;
+                                }
+                                else {
+                                  boolCount -= 1;
+                                }
+                                allDrugBooleans[intIndex][i] = newValue;
+
+                              }),
+                        ),
+                      ],
+                    )
+                ),
+                onTap: () {
+                  if (allDrugBooleans[intIndex][i] == false) {
+                    boolCount += 1;
+                  }
+                  else {
+                    boolCount -= 1;
+                  }
+                  allDrugBooleans[intIndex][i] = !allDrugBooleans[intIndex][i];
+
+                }),
+            i != allDrugs[intIndex].length - 1 ? Padding(
+                padding: EdgeInsets.only(left: data.size.width * 0.12),
+                child: Divider(
+                    thickness: 1.0)
+            ) : SizedBox(
+                height: smallButtonPadding(context)),
+          ],
+        );
+        return column;
+      });
+  return cells;
+}
+
+
 
 finalDisplayFull(
     var interventionColour,

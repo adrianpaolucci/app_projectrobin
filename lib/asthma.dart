@@ -9,6 +9,8 @@ import 'all_sizings.dart';
 import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'icons/my_flutter_app_icons.dart';
+
 class Asthma extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -58,46 +60,78 @@ class AsthmaState extends State<Asthma> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
+    var modifiedGeneralDrugCells = returnCells(context, 1);
+
     var asthmaDrugCells = ListView.builder(
         shrinkWrap: true,
         primary: false,
         itemCount: allDrugs[1].length,
         itemBuilder: (BuildContext context, var i) {
+
           return InkWell(
               child:
-              Container(width: 9*data.size.width/10,height: 40,
+              Container(
                   margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: getColor(i)),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                      color: Color(0xffffffff)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5),
-                      child: Text(allDrugs[1][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[1][i],
-                        onChanged: (bool newValue){
-                          if (weight < 10.0) {
-                            asthmuaDrugErrorAlert(context, i);
-                          }
-                          else {
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            allDrugBooleans[1][i] = newValue;
-                            items = badger.setBadge(items, "$boolCount", 1);
-                          });
-                          if (boolCount == 0) {
-                            clearAll();
-                          }
-                        }
-                        }
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
+                          child: Material(
+                            color: specificColor,
+                            borderRadius: BorderRadius.circular(iconRadius(context)),
+                            child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Icon(
+                                    MyFlutterApp.syringe,
+                                    size: genericIconSize(context),
+                                    color: Colors.white)
+                            ),
+                          ),
                         ),
+                        Text(allDrugs[1][i],
+                              style: TextStyle(
+                                    fontSize: size16Text(context)
+                              )
+                        ),
+                      ],
+                    ),
+
+
+
+
+
+                    Padding(
+                      padding: EdgeInsets.only(right: data.size.width*0.03),
+                      child: CupertinoSwitch(
+                          activeColor: Color(0xff39e600),
+                          value: allDrugBooleans[1][i],
+                          onChanged: (bool newValue){
+                            if (weight < 10.0) {
+                              asthmuaDrugErrorAlert(context, i);
+                            }
+                            else {
+                            if (newValue == true) {
+                              boolCount += 1;
+                            }
+                            else {
+                              boolCount -= 1;
+                            }
+                            setState(() {
+                              allDrugBooleans[1][i] = newValue;
+                              items = badger.setBadge(items, "$boolCount", 1);
+                            });
+                            if (boolCount == 0) {
+                              clearAll();
+                            }
+                          }
+                          }
+                          ),
+                    ),
                   ],
                   )
               ),
@@ -125,6 +159,9 @@ class AsthmaState extends State<Asthma> {
               );
         });
 
+
+    var modifiedAsthmaCorticoCells = returnCells(context, 2);
+
     var asthmaCorticoCells = ListView.builder(
         shrinkWrap: true,
         primary: false,
@@ -133,7 +170,8 @@ class AsthmaState extends State<Asthma> {
           return InkWell(
               child:
               Container(width: 9*data.size.width/10,height: 40,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: getColor(i)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                      color: getColor(i)),
                   margin: EdgeInsets.symmetric(vertical: 2.5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
@@ -223,47 +261,36 @@ class AsthmaState extends State<Asthma> {
                 children: <Widget>[
                   topInterventionTitle(context, weight, specificColor, int),
                   Column(children: <Widget>[
-                    SizedBox(height: 10),
-                    Divider(thickness: 1.0),
                     Theme(
                       data: ThemeData(
                         accentColor: specificColor
                       ),
                       child: ExpansionTile(initiallyExpanded: true,
-                        title: Text("General Drugs"),
-                        children: <Widget>[GestureDetector(
-                            child: Text("Select Drug from below",
-                                style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontWeight: FontWeight.bold))
-                        ),
-                          SizedBox(width: 9*data.size.width/10, child: asthmaDrugCells)
+                        title: Text("General Drugs", textAlign: TextAlign.center),
+                        children: <Widget>[
+                            modifiedGeneralDrugCells
                         ],
                       ),
                     ),
-                    Divider(thickness: 1.0),
-                    PlusMinus(),
-                    Divider(thickness: 1.0),
+                    Container(
+                      height: data.size.height*0.05,
+                      color: Color(0xfff2f2f2),
+                    ),
                     Theme(
                       data: ThemeData(
                           accentColor: specificColor
                       ),
                       child: ExpansionTile(initiallyExpanded: true,
-                          title: Text("Corticosteroids"),
-                          children: <Widget> [
-                            GestureDetector(child: Text(
-                                "Select Drug from below",
-                                style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontWeight: FontWeight.bold)
-                            )
-                            ),
-                            SizedBox(width: 9*data.size.width/10, child: asthmaCorticoCells)
-                          ]
+                          title: Text("Corticosteroids", textAlign: TextAlign.center),
+                        children: <Widget>[
+                          modifiedAsthmaCorticoCells
+                        ],
                       ),
                     ),
-                    Divider(thickness: 1.0),
-                    SizedBox(height: data.size.height/3)
+                    Container(
+                      height: data.size.height*0.55,
+                      color: Color(0xfff2f2f2),
+                    ),
                   ],
                   ),
                 ]
