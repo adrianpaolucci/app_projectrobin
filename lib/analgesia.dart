@@ -8,6 +8,8 @@ import 'all_sizings.dart';
 import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+var intIndex = 12;
+
 class Analgesia extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -35,6 +37,7 @@ class AnalgesiaState extends State<Analgesia> {
       boolCount = 0;
     }
 
+
     var clearAllIcon = BottomNavigationBarItem(
         icon: IconButton(
             icon: Icon(Icons.cancel),
@@ -57,65 +60,44 @@ class AnalgesiaState extends State<Analgesia> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    var analgesiaCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[12].length,
-        itemBuilder: (BuildContext context, var i) {
-          return InkWell(
-              child:
-              Container(width: 9*data.size.width/10,height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5),
-                      child: Text(allDrugs[12][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[12][i],
-                        onChanged: (bool newValue){
-                            if (newValue == true) {
-                              boolCount += 1;
-                            }
-                            else {
-                              boolCount -= 1;
-                            }
-                            setState(() {
-                              allDrugBooleans[12][i] = newValue;
-                              items = badger.setBadge(items, "$boolCount", 1);
-                              if (boolCount == 0) {
-                                clearAll();
-                              }
-                            }
-                            );
-                          }
-                    ),
-                  ],
-                  )
-              ),
-              onTap: () {
-                  if (allDrugBooleans[12][i] == false) {
-                    boolCount += 1;
-                  }
-                  else {
-                    boolCount -= 1;
-                  }
-                  setState(() {
-                    allDrugBooleans[12][i] = !allDrugBooleans[12][i];
-                    items = badger.setBadge(items, "$boolCount", 1);
-                    if (boolCount == 0) {
-                      clearAll();
-                    }
-                  }
-                  );
-              }
-          );
-        });
 
-      var modifiedAnalgesiaCells = returnCells(context, 6);
+    List<Widget> analgesiaCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex].length; i++) {
+
+      Widget iOSswitch(var intIndex) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex][i],
+              onChanged: (bool newValue) {
+
+
+                if (newValue == true) {
+                  boolCount += 1;
+                }
+                else {
+                  boolCount -= 1;
+                }
+
+                setState(() {
+                  items = badger.setBadge(items, "$boolCount", 1);
+                  allDrugBooleans[intIndex][i] = newValue;
+                });
+                if (boolCount == 0) {
+                  clearAll();
+                }
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex, i, iOSswitch(intIndex));
+
+      analgesiaCells.add(column);
+    }
+
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -169,9 +151,7 @@ class AnalgesiaState extends State<Analgesia> {
                       child: ExpansionTile(
                         initiallyExpanded: true,
                         title: Text("General Drugs"),
-                        children: <Widget>[
-                          modifiedAnalgesiaCells
-                        ],
+                        children: analgesiaCells
                       ),
                     ),
                     Container(

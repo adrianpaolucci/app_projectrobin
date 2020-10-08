@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
 
+
+
 pixelsToTextSize(pixel) {
     var textSize = 4*pixel/3;
     return textSize.roundToDouble();

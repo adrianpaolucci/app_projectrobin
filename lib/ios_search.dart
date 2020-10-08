@@ -126,71 +126,74 @@ class _SearchTabState extends State<SearchTab> {
         color: Colors.grey,
       ),
       child: SafeArea(
-        child: Column(
-          children: [
-            _buildSearchBox(),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) => 
-                    Material(
-                      child: ListTile(
-                      onTap: () {
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              _buildSearchBox(),
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) =>
+                      Material(
+                        child: ListTile(
+                        onTap: () {
 
-                        var i = searchBools[index][0];
-                        var j = searchBools[index][1];
+                          var i = searchBools[index][0];
+                          var j = searchBools[index][1];
 
-                        if ((weight < 6) && (i == 11)) {
-                          croupErrorAlert(context, j);
-                        }
-                        else if ((weight < 10) && (i == 3) && (j == 1)) {
-                          errorAlert(context, "Porpofol","less",10);
-                        }
-                        else if ((weight > 10) && (i == 0) && (j == 9)) {
-                          errorAlert(context, "Pyridoxine","more",10);
-                        }
-                        else {
-                          suggestionArray.add(suggestionList[index]);
-
-                          setState(() {
-                            boolCount += 1;
-                            allDrugBooleans[i][j] = true;
-                            items = badger.setBadge(items, "$boolCount", 1);
-                          });
-
-                          Navigator.push(
-                              context, CupertinoPageRoute(builder: (context) {
-                            return FinalDisplay();
+                          if ((weight < 6) && (i == 11)) {
+                            croupErrorAlert(context, j);
                           }
-                          )
-                          );
-                        }
-                      },
-                      leading: Icon(MyFlutterApp.syringe),
-                      title: RichText(
-                          text: TextSpan(
-                              text: suggestionList[index].substring(0,suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}")),
-                              style: TextStyle(
-                                  color: Colors.grey),
-                              children: [
-                                TextSpan(
-                                    text: suggestionList[index].substring(suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}"),suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}")+ _terms.length),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold
-                                    )
-                                ),
-                                TextSpan(
-                                    text: suggestionList[index].substring(suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}") + _terms.length),
-                                    style: TextStyle(color: Colors.grey))
-                              ]
-                          )
-                      )
+                          else if ((weight < 10) && (i == 3) && (j == 1)) {
+                            errorAlert(context, "Porpofol","less",10);
+                          }
+                          else if ((weight > 10) && (i == 0) && (j == 9)) {
+                            errorAlert(context, "Pyridoxine","more",10);
+                          }
+                          else {
+                            suggestionArray.add(suggestionList[index]);
+
+                            setState(() {
+                              boolCount += 1;
+                              allDrugBooleans[i][j] = true;
+                              items = badger.setBadge(items, "$boolCount", 1);
+                            });
+
+                            Navigator.push(
+                                context, CupertinoPageRoute(builder: (context) {
+                              return FinalDisplay();
+                            }
+                            )
+                            );
+                          }
+                        },
+                        leading: Icon(MyFlutterApp.syringe),
+                        title: RichText(
+                            text: TextSpan(
+                                text: suggestionList[index].substring(0,suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}")),
+                                style: TextStyle(
+                                    color: Colors.grey),
+                                children: [
+                                  TextSpan(
+                                      text: suggestionList[index].substring(suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}"),suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}")+ _terms.length),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      )
+                                  ),
+                                  TextSpan(
+                                      text: suggestionList[index].substring(suggestionList[index].toLowerCase().indexOf("${_terms.toLowerCase()}") + _terms.length),
+                                      style: TextStyle(color: Colors.grey))
+                                ]
+                            )
+                        )
+                  ),
+                      ),
+                  itemCount: suggestionList.length,
                 ),
-                    ),
-                itemCount: suggestionList.length,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

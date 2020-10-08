@@ -27,7 +27,7 @@ import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 var boolCount = 0;
 
-var pageIndex = 0;
+var pageIndex = 1;
 
 adrianDivider() {
   var divider = Divider(thickness: 1.0, color: Color(0xffa6a6a6));
@@ -108,56 +108,57 @@ class _DosingMainState extends State<InterventionMain> {
 
   @override
   Widget build(BuildContext context) {
-
-
     final data = MediaQuery.of(context);
+
 
     return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
           iconSize: 30,
-        currentIndex: pageIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.book),
-            title: Text("Interventions",
-                style: TextStyle(
-                    fontSize: size14Text(context)
-                )
-            ),
-          ),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.search),
-            title: Text("Search",
-            style: TextStyle(
-              fontSize: size14Text(context)
-            ))
-        ),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.check_mark_circled),
-              title: Text("Selected",
+          currentIndex: pageIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home),
+              title: Text("Home",
                   style: TextStyle(
                       fontSize: size14Text(context)
-                  ))
-          )],
-    ),
-      // ignore: missing_return
-      tabBuilder: (context, index) {
-        switch (index) {
-          case 0:
-            return CupertinoPageScaffold(
-              child: SafeArea(
+                  )
+              ),
+            ),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.book),
+                title: Text("Interventions",
+                    style: TextStyle(
+                        fontSize: size14Text(context)
+                    ))
+            ),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.check_mark_circled),
+                title: Text("Selected",
+                    style: TextStyle(
+                        fontSize: size14Text(context)
+                    ))
+            )],
+        ),
+        // ignore: missing_return
+        tabBuilder: (context, index) {
+          switch (index) {
+            case 0:
+              return Home2();
+            case 1:
+              return CupertinoPageScaffold(child: SafeArea(
                 child: Material(
                   child: CupertinoScrollbar(
                     child: CustomScrollView(
                       slivers: <Widget>[
                         CupertinoSliverNavigationBar(
                           padding: EdgeInsetsDirectional.only(
-                            start: 0,
-                            end: 0,
-                            top: 0,
-                            bottom: 0
+                              start: 0,
+                              end: 0,
+                              top: 0,
+                              bottom: 0
                           ),
                           leading: GestureDetector(
                               child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .center,
                                   children: [
                                     Icon(
                                         CupertinoIcons.back,
@@ -179,13 +180,13 @@ class _DosingMainState extends State<InterventionMain> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Container(
-                                        width: data.size.width*0.05,
-                                        height: data.size.width*0.05,
+                                        width: data.size.width * 0.06,
+                                        height: data.size.width * 0.06,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                             color: Colors.blue,
                                             borderRadius: BorderRadius.circular(
-                                                data.size.width*0.025
+                                                data.size.width * 0.03
                                             )
                                         ),
                                         child: Text(
@@ -194,7 +195,7 @@ class _DosingMainState extends State<InterventionMain> {
                                                 color: Colors.white
                                             )
                                         )
-                                    ) ,
+                                    ),
                                     Icon(
                                         CupertinoIcons.forward,
                                         color: Colors.blue),
@@ -203,10 +204,10 @@ class _DosingMainState extends State<InterventionMain> {
                               onTap: () {
                                 return Navigator.push(
                                     context,
-                                    SlideLeftRoute(
-                                        page: FinalDisplay()
-                                    )
-                                );
+                                    CupertinoPageRoute(
+                                        builder: (context) {
+                                          return FinalDisplay();
+                                        }));
                               }
                           ) : SizedBox(),
                         ),
@@ -225,9 +226,9 @@ class _DosingMainState extends State<InterventionMain> {
                                         onTap: () {
                                           /* showSearch(
 
-                                            context: context,
-                                            delegate: DrugSearch()
-                                        );*/
+                                              context: context,
+                                              delegate: DrugSearch()
+                                          );*/
                                           return Navigator.push(context,
                                               SlideLeftRoute(
                                                   page: SearchTab()));
@@ -238,7 +239,8 @@ class _DosingMainState extends State<InterventionMain> {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius
                                                   .circular(
-                                                  mediumButtonRadius(context)),
+                                                  mediumButtonRadius(
+                                                      context)),
                                               color: Color(0xffe6e6e6)),
                                           child:
                                           Row(
@@ -264,9 +266,11 @@ class _DosingMainState extends State<InterventionMain> {
                                                 child: Container(
                                                   alignment: Alignment
                                                       .centerLeft,
-                                                  height: 4 * data.size.height /
+                                                  height: 4 *
+                                                      data.size.height /
                                                       70,
-                                                  width: data.size.width * 0.8,
+                                                  width: data.size.width *
+                                                      0.8,
                                                   child: Padding(
                                                     padding: EdgeInsets.only(
                                                         left: smallButtonPadding(
@@ -317,62 +321,64 @@ class _DosingMainState extends State<InterventionMain> {
                         ),
                         SliverPadding(
                             padding: EdgeInsets.only(
-                                bottom: paddingVerticalBetweenButtons(context)),
+                                bottom: paddingVerticalBetweenButtons(
+                                    context)),
                             sliver:
                             SliverGrid(
                               delegate: SliverChildBuilderDelegate(
                                     (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: paddingHorizontalBetweenButtons(
-                                            context),
-                                        vertical: paddingVerticalBetweenButtons(
-                                            context)),
-                                    child: Material(
-                                      color: Colors.white,
-                                      elevation: buttonShadowElev,
-                                      shadowColor: shadowColour,
-                                      borderRadius: BorderRadius.circular(
-                                          lrgBorderRad),
-                                      child:
-                                      InkWell(
-                                          onTap: () {
-                                            int = interventions[index];
-                                            specificColor = intColors[index];
-                                            Navigator.push(context,
-                                                SlideLeftRoute(
-                                                    page: pages[index])
-                                            );
-                                          },
-                                          child: Column(
-                                              mainAxisAlignment: MainAxisAlignment
-                                                  .center,
-                                              children: <Widget>[
-                                                Center(
-                                                    child: Text(
-                                                        interventions[index],
-                                                        textAlign: TextAlign
-                                                            .center,
-                                                        style:
-                                                        TextStyle(
-                                                            color: intColors[index],
-                                                            fontSize: size16Text(
-                                                                context))
-                                                    )
-                                                ),
-                                              ]
-                                          )
-                                      ),
-                                    ),
-                                  );
-                                },
+                                      return Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: paddingHorizontalBetweenButtons(
+                                                context),
+                                            vertical: paddingVerticalBetweenButtons(
+                                                context)),
+                                        child: Material(
+                                          color: Colors.white,
+                                          elevation: buttonShadowElev,
+                                          shadowColor: shadowColour,
+                                          borderRadius: BorderRadius.circular(
+                                              lrgBorderRad),
+                                          child:
+                                          InkWell(
+                                              onTap: () {
+                                                int = interventions[index];
+                                                specificColor = intColors[index];
+                                                Navigator.push(context,
+                                                    SlideLeftRoute(
+                                                        page: pages[index])
+                                                );
+                                              },
+                                              child: Column(
+                                                  mainAxisAlignment: MainAxisAlignment
+                                                      .center,
+                                                  children: <Widget>[
+                                                    Center(
+                                                        child: Text(
+                                                            interventions[index],
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style:
+                                                            TextStyle(
+                                                                color: intColors[index],
+                                                                fontSize: size16Text(
+                                                                    context))
+                                                        )
+                                                    ),
+                                                  ]
+                                              )
+                                          ),
+                                        ),
+                                      );
+                                    },
                                 childCount: interventions.length,
                               ),
                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 0,
                                 crossAxisSpacing: 0,
-                                childAspectRatio: data.devicePixelRatio * 0.75,
+                                childAspectRatio: data.devicePixelRatio *
+                                    0.75,
                               ),
                             )
                         ),
@@ -381,16 +387,11 @@ class _DosingMainState extends State<InterventionMain> {
                   ),
                 ),
               ),
-            );
-          case 1:
-            return SearchTab();
-          case 2:
-            return FinalDisplay();
+              );
+            case 2:
+              return FinalDisplay();
+          }
         }
-      }
     );
-    }
   }
-
-
-
+}

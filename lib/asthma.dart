@@ -8,8 +8,10 @@ import 'dart:ui';
 import 'all_sizings.dart';
 import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'icons/my_flutter_app_icons.dart';
+
+var intIndex1 = 1;
+var intIndex2 = 2;
 
 class Asthma extends StatefulWidget {
   @override
@@ -57,164 +59,84 @@ class AsthmaState extends State<Asthma> {
             }),
         title: Text("Confirm"));
 
+
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    var modifiedGeneralDrugCells = returnCells(context, 1);
+    List<Widget> asthmaDrugCells = [];
 
-    var asthmaDrugCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[1].length,
-        itemBuilder: (BuildContext context, var i) {
+    for (var i = 0; i < allDrugs[intIndex1].length; i++) {
 
-          return InkWell(
-              child:
-              Container(
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: Color(0xffffffff)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal:data.size.width*0.03),
-                          child: Material(
-                            color: specificColor,
-                            borderRadius: BorderRadius.circular(iconRadius(context)),
-                            child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Icon(
-                                    MyFlutterApp.syringe,
-                                    size: genericIconSize(context),
-                                    color: Colors.white)
-                            ),
-                          ),
-                        ),
-                        Text(allDrugs[1][i],
-                              style: TextStyle(
-                                    fontSize: size16Text(context)
-                              )
-                        ),
-                      ],
-                    ),
+      Widget iOSswitch(var intIndex) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex][i],
+              onChanged: (bool newValue) {
 
 
-
-
-
-                    Padding(
-                      padding: EdgeInsets.only(right: data.size.width*0.03),
-                      child: CupertinoSwitch(
-                          activeColor: Color(0xff39e600),
-                          value: allDrugBooleans[1][i],
-                          onChanged: (bool newValue){
-                            if (weight < 10.0) {
-                              asthmuaDrugErrorAlert(context, i);
-                            }
-                            else {
-                            if (newValue == true) {
-                              boolCount += 1;
-                            }
-                            else {
-                              boolCount -= 1;
-                            }
-                            setState(() {
-                              allDrugBooleans[1][i] = newValue;
-                              items = badger.setBadge(items, "$boolCount", 1);
-                            });
-                            if (boolCount == 0) {
-                              clearAll();
-                            }
-                          }
-                          }
-                          ),
-                    ),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (weight < 10.0) {
-                  asthmuaDrugErrorAlert(context, i);
-                }
-                else {
-                  if (allDrugBooleans[1][i] == false) {
-                    boolCount += 1;
-                  }
-                  else {
-                    boolCount -= 1;
-                  }
-                  setState(() {
-                    allDrugBooleans[1][i] = !allDrugBooleans[1][i];
-                    items = badger.setBadge(items, "$boolCount", 1);
-                    if (boolCount == 0) {
-                      clearAll();
-                    }
-                  }
-                  );
-                }
-              }
-              );
-        });
-
-
-    var modifiedAsthmaCorticoCells = returnCells(context, 2);
-
-    var asthmaCorticoCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[2].length,
-        itemBuilder: (BuildContext context, var i) {
-          return InkWell(
-              child:
-              Container(width: 9*data.size.width/10,height: 40,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left: 5),child: Text(asthmaCorticos[i])),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[2][i],
-                        onChanged: (bool newValue){
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            items = badger.setBadge(items, "$boolCount", 1);
-                            allDrugBooleans[2][i] = newValue;
-                            if (boolCount == 0) {
-                              clearAll();
-                            }
-                          }
-                          );
-                        }),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (allDrugBooleans[2][i] == false) {
+                if (newValue == true) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
+
                 setState(() {
-                  allDrugBooleans[2][i] = !allDrugBooleans[2][i];
                   items = badger.setBadge(items, "$boolCount", 1);
-                  if (boolCount == 0) {
-                    clearAll();
-                  }
+                  allDrugBooleans[intIndex][i] = newValue;
+                });
+                if (boolCount == 0) {
+                  clearAll();
                 }
-                );
-              });
-        });
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex1, i, iOSswitch(intIndex1));
+
+      asthmaDrugCells.add(column);
+    }
+
+    List<Widget> asthmaCorticoCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex2].length; i++) {
+
+      Widget iOSswitch(var intIndex2) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex2][i],
+              onChanged: (bool newValue) {
+
+
+                if (newValue == true) {
+                  boolCount += 1;
+                }
+                else {
+                  boolCount -= 1;
+                }
+
+                setState(() {
+                  items = badger.setBadge(items, "$boolCount", 1);
+                  allDrugBooleans[intIndex2][i] = newValue;
+                });
+                if (boolCount == 0) {
+                  clearAll();
+                }
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex2, i, iOSswitch(intIndex2));
+
+      asthmaCorticoCells.add(column);
+    }
+
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -267,9 +189,7 @@ class AsthmaState extends State<Asthma> {
                       ),
                       child: ExpansionTile(initiallyExpanded: true,
                         title: Text("General Drugs", textAlign: TextAlign.center),
-                        children: <Widget>[
-                            modifiedGeneralDrugCells
-                        ],
+                        children: asthmaDrugCells
                       ),
                     ),
                     Container(
@@ -282,9 +202,7 @@ class AsthmaState extends State<Asthma> {
                       ),
                       child: ExpansionTile(initiallyExpanded: true,
                           title: Text("Corticosteroids", textAlign: TextAlign.center),
-                        children: <Widget>[
-                          modifiedAsthmaCorticoCells
-                        ],
+                        children: asthmaCorticoCells
                       ),
                     ),
                     Container(

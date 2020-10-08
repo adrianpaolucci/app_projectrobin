@@ -7,6 +7,8 @@ import 'all_sizings.dart';
 import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+var intIndex = 10;
+
 class Infection extends StatefulWidget {
 
   @override
@@ -51,66 +53,47 @@ class InfectionState extends State<Infection> {
             }),
         title: Text("Confirm"));
 
+
+
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    var infectionCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[10].length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(width: 9*data.size.width/10,height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(allDrugs[10][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[10][i],
-                        onChanged: (bool newValue){
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            items = badger.setBadge(items, "$boolCount", 1);
-                            allDrugBooleans[10][i] = newValue;
-                          });
-                          if (boolCount == 0) {
-                            clearAll();
-                          }
-                        }),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (allDrugBooleans[10][i] == false) {
+    List<Widget> infectionCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex].length; i++) {
+
+      Widget iOSswitch(var intIndex) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex][i],
+              onChanged: (bool newValue) {
+
+
+                if (newValue == true) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
+
                 setState(() {
-                  allDrugBooleans[10][i] = !allDrugBooleans[10][i];
                   items = badger.setBadge(items, "$boolCount", 1);
-                }
-                );
+                  allDrugBooleans[intIndex][i] = newValue;
+                });
                 if (boolCount == 0) {
                   clearAll();
                 }
-              });
-        });
+              }),
+        );
+      }
 
-    var modifiedInfectionCells = returnCells(context, 10);
+      var column = returnCell(context, intIndex, i, iOSswitch(intIndex));
+
+      infectionCells.add(column);
+    }
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -161,9 +144,7 @@ class InfectionState extends State<Infection> {
                     data: ThemeData(accentColor: specificColor),
                     child: ExpansionTile(initiallyExpanded: true,
                       title: Text("General Drugs", textAlign: TextAlign.center),
-                      children: <Widget>[
-                        modifiedInfectionCells
-                      ],
+                      children: infectionCells
                     ),
                   ),
                   Container(

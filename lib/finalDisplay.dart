@@ -17,7 +17,7 @@ import 'all_sizings.dart';
 import 'bleedingData.dart';
 import 'drugSearch.dart';
 import 'antidotesData.dart';
-
+import 'ios_search.dart';
 
 
 class FinalDisplay extends StatefulWidget {
@@ -98,44 +98,63 @@ void showFinalDropdowns(BuildContext context) {
       horizontal: 0.1*data.size.width,
       vertical: 0.02* data.size.height
     ),
-    child: InkWell(
-        onTap: () {
-          showSearch(
-              context: context,
-              delegate: DrugSearch()
-          );
-        },
-        child:
-        Material(
-          elevation: buttonShadowElev,
-          shadowColor: shadowColour,
-          borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
-          color: Colors.white,
-          child:
-          Row(
-            children: [
-              Material(
-                  color: Colors.white,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                    child: Icon(Icons.search),
-                  )
-              ),
-              Material(
-                borderRadius: BorderRadius.circular(mediumButtonRadius(context)*0.5),
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  height: 4*data.size.height/70,
-                  width: data.size.width*0.6,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: smallButtonPadding(context)),
-                    child: Text("Search Drugs..."),
+    child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          InkWell(
+              onTap: () {
+                return Navigator.push(context,
+                    SlideLeftRoute(
+                        page: SearchTab()));
+              },
+              child:
+              Container(
+                height: data.size.height * 0.06,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                        mediumButtonRadius(context)),
+                    color: Color(0xffe6e6e6)),
+                  child: Row(
+                    children: [
+                      Material(
+                          color: Color(0xffe6e6e6),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: smallButtonPadding(context)),
+                            child: Icon(
+                                Icons.search,
+                                color: Color(0xff808080)),
+                          )
+                      ),
+                      Material(
+                        borderRadius: BorderRadius.circular(
+                            mediumButtonRadius(
+                                context)),
+                        color: Color(0xffe6e6e6),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          height: 4*data.size.height/70,
+                          width: data.size.width*0.6,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: smallButtonPadding(
+                                    context)),
+                            child: Text("Search",
+                                style: TextStyle(
+                                    fontSize: size16Text(
+                                        context),
+                                    color: Color(
+                                        0xff808080)
+                                )
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               )
-            ],
-          ),
-        )
+        ]
     ),
   ));
 

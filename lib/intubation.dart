@@ -10,6 +10,9 @@ import 'allDrugData.dart';
 import 'all_sizings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+var intIndex1 = 3;
+var intIndex2 = 4;
+
 class Intubation extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -70,135 +73,81 @@ class IntubationState extends State<Intubation> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    //these are the cells that sit in the Expansion boxes for each type of drug
 
-    var modifiedInductionAgentCells = returnCells(context, 3);
+    List<Widget> inductionCells = [];
 
-    var inductionAgentCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: inductionAgents.length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(width: 9*data.size.width/10,height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(inductionAgents[i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[3][i],
-                        onChanged: (bool newValue){
-                          if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                            errorAlert(context, "Porpofol","less",10);
-                          }
-                          else {
-                            if (newValue == true) {
-                              boolCount += 1;
-                            }
-                            else {
-                              boolCount -= 1;
-                            }
-                            setState(() {
-                              items = badger.setBadge(items, "$boolCount", 1);
-                              allDrugBooleans[3][i] = newValue;
-                            });
-                            if (boolCount == 0) {
-                              clearAll();
-                            }
-                          }
-                        }),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (inductionAgents[i] == "Propofol" && weight < 10.0) {
-                  errorAlert(context, "Propofol","less",10);
-                }
-                else {
-                  if (allDrugBooleans[3][i] == false) {
-                    boolCount += 1;
-                  }
-                  else {
-                    boolCount -= 1;
-                  }
-                  setState(() {
-                    allDrugBooleans[3][i] = !allDrugBooleans[3][i];
-                    items = badger.setBadge(items, "$boolCount", 1);
-                  }
-                  );
-                  if (boolCount == 0) {
-                    clearAll();
-                  }
-                }
-              });
-        });
+    for (var i = 0; i < allDrugs[intIndex1].length; i++) {
 
-    var modifiedParalyticAgentCells = returnCells(context, 4);
+      Widget iOSswitch(var intIndex) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex][i],
+              onChanged: (bool newValue) {
 
-    var paralyticAgentCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: paralyticAgents.length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(width: 9*data.size.width/10, height: 40,
-              margin: EdgeInsets.symmetric(vertical: 2.5),
-              decoration: BoxDecoration(
-                  color: getColor(i),
-                  borderRadius: BorderRadius.circular(mediumButtonRadius(context))),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: Text(paralyticAgents[i]),
-                ),
-                Switch(
-                    activeColor: Color(0xff39e600),
-                    value: allDrugBooleans[4][i],
-                    onChanged: (bool newValue){
-                      paralyticAgentName = paralyticAgents[i];
-                      if (newValue == true) {
-                        boolCount += 1;
-                      }
-                      else {
-                        boolCount -=1;
-                      }
-                      setState(() {
-                        items = badger.setBadge(items, "$boolCount", 1);
-                        allDrugBooleans[4][i] = newValue;
-                      }
-                      );
-                      if (boolCount == 0) {
-                        clearAll();
-                      }
-                    }),
-              ]
-              )),
-              onTap: () {
-                if (allDrugBooleans[4][i] == false) {
+
+                if (newValue == true) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
+
                 setState(() {
                   items = badger.setBadge(items, "$boolCount", 1);
-                  allDrugBooleans[4][i] = !allDrugBooleans[4][i];
+                  allDrugBooleans[intIndex][i] = newValue;
                 });
                 if (boolCount == 0) {
                   clearAll();
                 }
-              }
-          );
-        }
-    );
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex1, i, iOSswitch(intIndex1));
+
+      inductionCells.add(column);
+    }
+
+    List<Widget> paralyticCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex2].length; i++) {
+
+      Widget iOSswitch(var intIndex2) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex2][i],
+              onChanged: (bool newValue) {
+
+
+                if (newValue == true) {
+                  boolCount += 1;
+                }
+                else {
+                  boolCount -= 1;
+                }
+
+                setState(() {
+                  items = badger.setBadge(items, "$boolCount", 1);
+                  allDrugBooleans[intIndex2][i] = newValue;
+                });
+                if (boolCount == 0) {
+                  clearAll();
+                }
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex2, i, iOSswitch(intIndex2));
+
+      paralyticCells.add(column);
+    }
+
 
 
     return Scaffold(
@@ -268,9 +217,7 @@ class IntubationState extends State<Intubation> {
                     ),
                     child: ExpansionTile(initiallyExpanded: true,
                       title: Text("Induction Agents", textAlign: TextAlign.center),
-                      children: <Widget>[
-                        modifiedParalyticAgentCells
-                      ],
+                      children: inductionCells
                     ),
                   ),
 
@@ -288,9 +235,7 @@ class IntubationState extends State<Intubation> {
                     child: ExpansionTile(
                         initiallyExpanded: true,
                         title: Text("Paralytic Agents", textAlign: TextAlign.center),
-                        children: <Widget> [
-                          modifiedInductionAgentCells
-                        ]
+                        children: paralyticCells
                     ),
                   ),
                   Container(

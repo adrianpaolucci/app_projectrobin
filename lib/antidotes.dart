@@ -8,8 +8,7 @@ import 'all_sizings.dart';
 import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-//stateless means it doesn't change AT ALL
-//stateful means something changes i.e. weight
+var intIndex = 14;
 
 class Antidotes extends StatefulWidget {
 
@@ -57,66 +56,46 @@ class AntidotesState extends State<Antidotes> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
+
     // Size(width: 392.7, height: 737.5)
-    var antidoteCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[14].length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(
-                  width: 9*data.size.width/10,
-                  height: data.size.height/24,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(allDrugs[14][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[14][i],
-                        onChanged: (bool newValue){
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            items = badger.setBadge(items, "$boolCount", 1);
-                            allDrugBooleans[14][i] = newValue;
-                          });
-                          if (boolCount == 0) {
-                            clearAll();
-                          }
-                        }),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (allDrugBooleans[14][i] == false) {
+
+    List<Widget> antidoteCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex].length; i++) {
+
+      Widget iOSswitch(var intIndex) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: CupertinoSwitch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex][i],
+              onChanged: (bool newValue) {
+
+
+                if (newValue == true) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
+
                 setState(() {
-                  allDrugBooleans[14][i] = !allDrugBooleans[14][i];
                   items = badger.setBadge(items, "$boolCount", 1);
-                }
-                );
+                  allDrugBooleans[intIndex][i] = newValue;
+                });
                 if (boolCount == 0) {
                   clearAll();
                 }
-              });
-        });
-    var modifiedAntidoteCells = returnCells(context, 14);
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex, i, iOSswitch(intIndex));
+
+      antidoteCells.add(column);
+    }
+
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -170,9 +149,7 @@ class AntidotesState extends State<Antidotes> {
                       child: ExpansionTile(backgroundColor: Color(0xffffffff),
                         initiallyExpanded: true,
                         title: Text("General Drugs",textAlign: TextAlign.center),
-                        children: <Widget>[
-                          modifiedAntidoteCells
-                        ],
+                        children: antidoteCells
                       ),
                     ),
 
