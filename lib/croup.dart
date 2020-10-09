@@ -216,18 +216,18 @@ class CroupState extends State<Croup> {
                 delegate: SliverChildListDelegate([
                   topInterventionTitle(context, weight, specificColor, int)
                 ]),
-              ),
-              SliverPadding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                sliver: SliverStaggeredGrid.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 12.0,
-                  children: addCroupIcons(context),
-                  staggeredTiles: [
-                    StaggeredTile.extent(1, largeButtonHeight(context)),
-                    StaggeredTile.extent(1, largeButtonHeight(context)),
-                    StaggeredTile.extent(2, largeButtonHeight(context)),
-                  ],
+                ),
+                  SliverPadding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    sliver: SliverStaggeredGrid.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 12.0,
+                      children: addCroupIcons(context),
+                      staggeredTiles: [
+                        StaggeredTile.extent(1, largeButtonHeight(context)),
+                        StaggeredTile.extent(1, largeButtonHeight(context)),
+                        StaggeredTile.extent(2, largeButtonHeight(context)),
+                      ],
                 ),
               )
             ]
