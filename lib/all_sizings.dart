@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'allDrugData.dart';
+import 'icons/my_flutter_app_icons.dart';
 
 
 paddingVerticalBetweenButtons(context) {
@@ -786,4 +787,9 @@ Widget finalDisplayTubeSize(BuildContext context, var instruction, var value) {
           ),
       ]
   );
+}
+
+iconRadius(context){
+  final data = MediaQuery.of(context);
+  return data.size.width/45;
 }

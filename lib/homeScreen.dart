@@ -160,7 +160,7 @@ class Home2State extends State<Home2> {
     ),
       body: Row(children: <Widget>[
       Container(
-          color: Color(0xffcccccc),
+          color: Color(0xffffffff),
           width: data.size.width,
           child: CustomScrollView(
             slivers: <Widget>[
