@@ -8,6 +8,8 @@ import 'all_sizings.dart';
 import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+final intIndex1 = 6;
+final intIndex2 = 7;
 
 class Anaphylaxis extends StatefulWidget {
 
@@ -55,120 +57,76 @@ class AnaphylaxisState extends State<Anaphylaxis> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    var anaphylaxisCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[6].length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(
-                  width: 0.9*data.size.width,
-                  height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 5.0),
-                        child: Text(allDrugs[6][i]),
-                      ),
-                      Switch(
-                          activeColor: Color(0xff39e600),
-                          value: allDrugBooleans[6][i],
-                          onChanged: (bool newValue){
-                            if (newValue == true) {
-                              boolCount += 1;
-                            }
-                            else {
-                              boolCount -= 1;
-                            }
-                            setState(() {
-                              items = badger.setBadge(items, "$boolCount", 1);
-                              allDrugBooleans[6][i] = newValue;
-                            });
-                            if (boolCount == 0) {
-                              clearAll();
-                            }
-                          }),
-                    ],
-                  )
-              ),
-              onTap: () {
-                  if (allDrugBooleans[6][i] == false) {
+    List<Widget> anaphylaxisCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex1].length; i++) {
+
+      Widget iOSswitch(var intIndex1) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: Switch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex1][i],
+              onChanged: (bool newValue) {
+
+                setState(() {
+                  if (newValue == true) {
                     boolCount += 1;
                   }
                   else {
                     boolCount -= 1;
                   }
-                  setState(() {
-                    allDrugBooleans[6][i] = !allDrugBooleans[6][i];
-                    items = badger.setBadge(items, "$boolCount", 1);
-                  }
-                  );
+                  items = badger.setBadge(items, "$boolCount", 1);
+                  allDrugBooleans[intIndex1][i] = newValue;
                   if (boolCount == 0) {
                     clearAll();
                   }
-              });
-        });
+                });
 
-    var resuscCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[7].length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(width: 9*data.size.width/10,height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(allDrugs[7][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[7][i],
-                        onChanged: (bool newValue){
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            items = badger.setBadge(items, "$boolCount", 1);
-                            allDrugBooleans[7][i] = newValue;
-                          });
-                          if (boolCount == 0) {
-                            clearAll();
-                          }
-                        }),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (allDrugBooleans[7][i] == false) {
+              }
+          ),
+        );
+      }
+
+
+      var column = returnCell(context, intIndex1, i, iOSswitch(intIndex1));
+
+      anaphylaxisCells.add(column);
+
+    List<Widget> resuscCells = [];
+
+
+    for (var i = 0; i < allDrugs[intIndex2].length; i++) {
+
+      Widget iOSswitch(var intIndex2) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: Switch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex2][i],
+              onChanged: (bool newValue) {
+                if (newValue == true) {
                   boolCount += 1;
                 }
                 else {
                   boolCount -= 1;
                 }
                 setState(() {
-                  allDrugBooleans[7][i] = !allDrugBooleans[7][i];
                   items = badger.setBadge(items, "$boolCount", 1);
-                }
-                );
+                  allDrugBooleans[intIndex2][i] = newValue;
+                });
                 if (boolCount == 0) {
                   clearAll();
                 }
-              });
-        });
+              }),
+        );
+      }
+
+      var column = returnCell(context, intIndex2, i, iOSswitch(intIndex2));
+
+      resuscCells.add(column);
 
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -225,7 +183,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                         style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontStyle: FontStyle.italic))),
-                      SizedBox(width: 9*data.size.width/10, child: anaphylaxisCells)
+                      SizedBox(width: 9*data.size.width/10,child: Column(children: anaphylaxisCells))
                     ],
                   ),
                 ),
@@ -245,7 +203,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                             fontStyle: FontStyle.italic),
                         )
                         ),
-                        SizedBox(width: 9*data.size.width/10, child: resuscCells)
+                        SizedBox(width: 9*data.size.width/10, child: Column(children: resuscCells))
                       ]
                   ),
                 ),

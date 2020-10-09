@@ -274,6 +274,57 @@ void errorAlert(BuildContext context, i, j, k ) {
   showDialog(context: context, builder: (BuildContext context) => popup);
 }
 
+returnCell(BuildContext context, var intIndex, var i, Widget function) {
+  final data = MediaQuery.of(context);
+  return Column(
+    children: [
+      GestureDetector(
+        child: Container(
+            height: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                    mediumButtonRadius(context)),
+                color: Color(0xffffffff)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: data.size.width * 0.03),
+                      child: Material(
+                        color: specificColor,
+                        borderRadius: BorderRadius.circular(
+                            iconRadius(context)),
+                        child: Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: Icon(MyFlutterApp.syringe,
+                                size: genericIconSize(context),
+                                color: Colors.white)
+                        ),
+                      ),
+                    ),
+                    Text(allDrugs[intIndex][i],
+                        style: TextStyle(fontSize: size16Text(context)))
+                  ],
+                ),
+                function
+              ],
+            )
+        ),
+      ),
+      i != allDrugs[intIndex].length - 1 ? Padding(
+          padding: EdgeInsets.only(left: data.size.width * 0.12),
+          child: Divider(
+              thickness: 1.0)
+      ) : SizedBox(
+          height: smallButtonPadding(context)),
+    ],
+  );
+}
+
+
 finalDisplayFull(
     var interventionColour,
     BuildContext context,
@@ -285,6 +336,8 @@ finalDisplayFull(
     ) {
 
   final data = MediaQuery.of(context);
+
+
 
   return Column(
       children: <Widget>[
