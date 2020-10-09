@@ -8,6 +8,7 @@ import 'all_sizings.dart';
 import 'finalDisplay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+final intIndex14 = 14;
 //stateless means it doesn't change AT ALL
 //stateful means something changes i.e. weight
 
@@ -57,143 +58,205 @@ class AntidotesState extends State<Antidotes> {
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
 
-    // Size(width: 392.7, height: 737.5)
-    var antidoteCells = ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemCount: allDrugs[14].length,
-        itemBuilder: (BuildContext context, var i) {
-          return GestureDetector(
-              child: Container(
-                  width: 9*data.size.width/10,
-                  height: data.size.height/18.4,
-                  margin: EdgeInsets.symmetric(vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                      color: getColor(i)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Text(allDrugs[14][i]),
-                    ),
-                    Switch(
-                        activeColor: Color(0xff39e600),
-                        value: allDrugBooleans[14][i],
-                        onChanged: (bool newValue){
-                          if (newValue == true) {
-                            boolCount += 1;
-                          }
-                          else {
-                            boolCount -= 1;
-                          }
-                          setState(() {
-                            items = badger.setBadge(items, "$boolCount", 1);
-                            allDrugBooleans[14][i] = newValue;
-                          });
-                          if (boolCount == 0) {
-                            clearAll();
-                          }
-                        }),
-                  ],
-                  )
-              ),
-              onTap: () {
-                if (allDrugBooleans[14][i] == false) {
-                  boolCount += 1;
-                }
-                else {
-                  boolCount -= 1;
-                }
+
+
+
+
+    List<Widget> antidoteCells = [];
+
+    for (var i = 0; i < allDrugs[intIndex14].length; i++) {
+      Widget iOSswitch(var intIndex14) {
+        return Padding(
+          padding: EdgeInsets.only(
+              right: data.size.width * 0.03),
+          child: Switch(
+              activeColor: Color(0xff39e600),
+              value: allDrugBooleans[intIndex14][i],
+              onChanged: (bool newValue) {
                 setState(() {
-                  allDrugBooleans[14][i] = !allDrugBooleans[14][i];
+                  if (newValue == true) {
+                    boolCount += 1;
+                  }
+                  else {
+                    boolCount -= 1;
+                  }
                   items = badger.setBadge(items, "$boolCount", 1);
-                }
-                );
-                if (boolCount == 0) {
-                  clearAll();
-                }
-              });
-        });
-
-
-    return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 1,
-          items: items,
-        ),
-        appBar: AppBar(
-          centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () {
-              Navigator.pop(context, CupertinoPageRoute(builder: (context) {
-                return InterventionMain();
+                  allDrugBooleans[intIndex14][i] = newValue;
+                  if (boolCount == 0) {
+                    clearAll();
+                  }
+                });
               }
-              )
-              );
-            },
           ),
-          title: Padding(
-            padding: EdgeInsets.only(left: 70),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "PediDosED",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  IconButton(
-                      icon: FaIcon(
-                          FontAwesomeIcons.home
-                      ),
-                      color: Colors.black,
-                      onPressed: () {
-                        Navigator.push(context, SlideRightRoute(page: Home2()));
-                      }
-                  )
-                ]
-            ),
-          ),
-          backgroundColor: Colors.white,
-        ),
-        body: SingleChildScrollView(
-          child: Material(
-            child: Column(
-              children: <Widget>[
-                topInterventionTitle(context, weight, specificColor, int),
-                Column(
-                  children: <Widget>[
-                    SizedBox(height: 10),
-                    Divider(thickness: 1.0),
-                    Theme(
-                      data: ThemeData(accentColor: specificColor),
-                      child: ExpansionTile(
-                        initiallyExpanded: true,
-                        title: Text("General Drugs"),
-                        children: <Widget>[
-                          GestureDetector(child: Text("Select Drug from below",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic)
-                          )
+        );
+      }
+
+
+      var column = returnCell(context, intIndex14, i, iOSswitch(intIndex14));
+
+      antidoteCells.add(column);
+    }
+
+
+
+    return SafeArea(
+        child: Material(
+            color: Color(0xfff2f2f2),
+            child: CupertinoScrollbar(
+                child: CustomScrollView(
+                    slivers: [
+                      CupertinoSliverNavigationBar(
+                        padding: EdgeInsetsDirectional.only(
+                            start: 0,
+                            end: 0,
+                            top: 0,
+                            bottom: 0
+                        ),
+                        leading: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: data.size.height*0.01
                           ),
-                          SizedBox(
-                              width: 9*data.size.width/10,
-                              child: antidoteCells
-                          )
-                        ],
+                          child: Center(
+                            child: GestureDetector(
+                                child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Center(
+                                        child: Icon(
+                                            CupertinoIcons.back,
+                                            color: Colors.blue),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        child: Text("Back",
+                                            style: TextStyle(
+                                                fontSize: size18Text(context),
+                                                color: Colors.blue
+                                            )),
+                                      )
+                                    ]
+                                ),
+                                onTap: () {
+                                  return Navigator.pop(context);
+                                }
+                            ),
+                          ),
+                        ),
+                        largeTitle: Text("Antidotes"),
+                        trailing: (boolCount != 0) ? GestureDetector(
+                            child: SizedBox(
+                              width: data.size.width*0.25,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                        width: data.size.width * 0.06,
+                                        height: data.size.width * 0.06,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(
+                                                data.size.width * 0.03
+                                            )
+                                        ),
+                                        child: Text(
+                                            "$boolCount",
+                                            style: TextStyle(
+                                                color: Colors.white
+                                            )
+                                        )
+                                    ),
+                                    Icon(
+                                        CupertinoIcons.forward,
+                                        color: Colors.blue),
+                                  ]
+                              ),
+                            ),
+                            onTap: () {
+                              return Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) {
+                                        return FinalDisplay();
+                                      }));
+                            }
+                        ) : SizedBox(),
                       ),
-                    ),
-                    Divider(thickness: 1.0),
-                  ],
-                ),
-              ]
-            ),
-          ),
+                      SliverFixedExtentList(
+                          itemExtent: data.size.height,
+                          delegate: SliverChildListDelegate([
+                            Material(
+                              color: Color(0xfff2f2f2),
+                              child: Theme(
+                                data: ThemeData(
+                                    backgroundColor: Color(0xfff2f2f2)),
+                                child: Column(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: data.size.height*0.025
+                                        ),
+                                        child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Container(
+                                                width: data.size.width*0.15,
+                                                alignment: Alignment.centerRight,
+                                                color: Color(0xfff2f2f2),
+                                                child: FaIcon(
+                                                    FontAwesomeIcons.balanceScaleLeft,
+                                                    size: data.size.width/12),
+                                              ),
+                                              Container(
+                                                width: data.size.width*0.25,
+                                                alignment: Alignment.center,
+                                                color: Color(0xfff2f2f2),
+                                                child: Text(
+                                                  "$weight kg",
+                                                  textDirection: TextDirection.ltr,
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: size20Text(context)
+                                                  ),
+                                                ),
+                                              )
+                                            ]
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Color(0xfff2f2f2),
+                                        child: Column(children: <Widget>[
+
+                                          Theme(
+                                            data: ThemeData(accentColor: specificColor),
+                                            child: ExpansionTile(
+                                                backgroundColor: Color(0xffffffff),
+                                                initiallyExpanded: true,
+                                                title: Text("General Drugs",textAlign: TextAlign.center),
+                                                children: antidoteCells
+                                            ),
+                                          ),
+
+                                          Container(
+                                            height: data.size.height*0.1,
+                                            color: Color(0xfff2f2f2),
+                                          ),
+
+
+                                        ],
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              ),
+                            ),
+                          ]
+                          )
+                      ),
+                    ]
+                )
+            )
         )
     );
   }
 }
-
