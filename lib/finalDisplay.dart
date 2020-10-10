@@ -229,6 +229,7 @@ intubationFinal(BuildContext context) {
   var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context),fentanylInfusionDisplay(context)];
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
   List<Widget>intubationList = intubationEquipmentInfo(context);
+  intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
       //intubation boolean is true, therefore it is shown on the final screen

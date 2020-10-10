@@ -756,10 +756,11 @@ finalDisplayIntubationEquip(
                 vertical: smallButtonPadding(context)),
             width: 0.8*data.size.width,
             decoration: lightBoxDec(context),
-            child: function6
+            child: function7
         ),
       SizedBox(height: 15),
-      SizedBox(width: data.size.width*0.9, child: adrianDivider())]
+      //SizedBox(width: data.size.width*0.9, child: adrianDivider())
+      ]
   );
 }
 

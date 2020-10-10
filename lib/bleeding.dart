@@ -105,163 +105,80 @@ class BleedingState extends State<Bleeding> {
 
 
 
-    return SafeArea(
-        child: Material(
+
+    return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          items: items,
+        ),
+        appBar: AppBar(
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context, CupertinoPageRoute(builder: (context) {
+                return InterventionMain();
+              }
+              )
+              );
+            },
+          ),
+          title: Padding(
+            padding: EdgeInsets.only(left: 70),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "PediDosED",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  IconButton(
+                      icon: FaIcon(
+                          FontAwesomeIcons.home
+                      ),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.push(context, SlideRightRoute(page: Home2()));
+                      }
+                  )
+                ]
+            ),
+          ),
+          backgroundColor: Colors.white,
+        ),
+        body: SingleChildScrollView(child: Material(
             color: Color(0xfff2f2f2),
-            child: CupertinoScrollbar(
-                child: CustomScrollView(
-                    slivers: [
-                      CupertinoSliverNavigationBar(
-                        padding: EdgeInsetsDirectional.only(
-                            start: 0,
-                            end: 0,
-                            top: 0,
-                            bottom: 0
-                        ),
-                        leading: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: data.size.height*0.01
-                          ),
-                          child: Center(
-                            child: GestureDetector(
-                                child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Center(
-                                        child: Icon(
-                                            CupertinoIcons.back,
-                                            color: Colors.blue),
-                                      ),
-                                      Container(
-                                        alignment: Alignment.center,
-                                        child: Text("Back",
-                                            style: TextStyle(
-                                                fontSize: size18Text(context),
-                                                color: Colors.blue
-                                            )),
-                                      )
-                                    ]
-                                ),
-                                onTap: () {
-                                  return Navigator.pop(context);
-                                }
+            child: Theme(
+                data: ThemeData(
+                    backgroundColor: Color(0xfff2f2f2)),
+                child: Column(
+                    children: <Widget>[
+                      topInterventionTitle(context, weight, specificColor, int),
+                      Material(
+                        color: Color(0xfff2f2f2),
+                        child: Column(children: <Widget>[
+
+                          Theme(
+                            data: ThemeData(accentColor: specificColor),
+                            child: ExpansionTile(
+                                backgroundColor: Color(0xffffffff),
+                                initiallyExpanded: true,
+                                title: Text("General Drugs",textAlign: TextAlign.center),
+                                children: bleedingCells
                             ),
                           ),
+
+                          Container(
+                            height: data.size.height*0.05,
+                            color: Color(0xfff2f2f2),
+                          ),
+
+                        ],
                         ),
-                        largeTitle: Text("Bleeding"),
-                        trailing: (boolCount != 0) ? GestureDetector(
-                            child: SizedBox(
-                              width: data.size.width*0.25,
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                        width: data.size.width * 0.06,
-                                        height: data.size.width * 0.06,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius: BorderRadius.circular(
-                                                data.size.width * 0.03
-                                            )
-                                        ),
-                                        child: Text(
-                                            "$boolCount",
-                                            style: TextStyle(
-                                                color: Colors.white
-                                            )
-                                        )
-                                    ),
-                                    Icon(
-                                        CupertinoIcons.forward,
-                                        color: Colors.blue),
-                                  ]
-                              ),
-                            ),
-                            onTap: () {
-                              return Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (context) {
-                                        return FinalDisplay();
-                                      }));
-                            }
-                        ) : SizedBox(),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: data.size.height,
-                          delegate: SliverChildListDelegate([
-                            Material(
-                              color: Color(0xfff2f2f2),
-                              child: Theme(
-                                data: ThemeData(
-                                    backgroundColor: Color(0xfff2f2f2)),
-                                child: Column(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: data.size.height*0.025
-                                        ),
-                                        child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            children: <Widget>[
-                                              Container(
-                                                width: data.size.width*0.15,
-                                                alignment: Alignment.centerRight,
-                                                color: Color(0xfff2f2f2),
-                                                child: FaIcon(
-                                                    FontAwesomeIcons.balanceScaleLeft,
-                                                    size: data.size.width/12),
-                                              ),
-                                              Container(
-                                                width: data.size.width*0.25,
-                                                alignment: Alignment.center,
-                                                color: Color(0xfff2f2f2),
-                                                child: Text(
-                                                  "$weight kg",
-                                                  textDirection: TextDirection.ltr,
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: size20Text(context)
-                                                  ),
-                                                ),
-                                              )
-                                            ]
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Color(0xfff2f2f2),
-                                        child: Column(children: <Widget>[
-
-                                          Theme(
-                                            data: ThemeData(accentColor: specificColor),
-                                            child: ExpansionTile(
-                                                backgroundColor: Color(0xffffffff),
-                                                initiallyExpanded: true,
-                                                title: Text("General Drugs",textAlign: TextAlign.center),
-                                                children: bleedingCells
-                                            ),
-                                          ),
-
-                                          Container(
-                                            height: data.size.height*0.1,
-                                            color: Color(0xfff2f2f2),
-                                          ),
-
-
-                                        ],
-                                        ),
-                                      ),
-                                    ]
-                                ),
-                              ),
-                            ),
-                          ]
-                          )
-                      ),
-                    ]
-                )
+                    ])
             )
+        )
         )
     );
   }
