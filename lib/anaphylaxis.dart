@@ -26,17 +26,17 @@ class AnaphylaxisState extends State<Anaphylaxis> {
     final data = MediaQuery.of(context);
 
     clearAll() {
-      for (var i = 0; i < allDrugs.length; i++) {
-        for (var j = 0; j < allDrugs[i].length; j++) {
-          setState(() {
-            allDrugBooleans[i][j] = false;
-            items = badger.removeBadge(items, 1);
-          });
-        }
-      }
-      boolCount = 0;
-    }
 
+    for (var i = 0; i < allDrugs.length; i++) {
+      for (var j = 0; j < allDrugs[i].length; j++) {
+        setState(() {
+          allDrugBooleans[i][j] = false;
+          items = badger.removeBadge(items, 1);
+        });
+      }
+    }
+    boolCount = 0;
+  }
     var clearAllIcon = BottomNavigationBarItem(
         icon: IconButton(
             icon: Icon(Icons.cancel),
@@ -176,7 +176,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                     ),
                   ),
                 ),
-                largeTitle: Text("Anaphylaxis"),
+                largeTitle: Text("Anaphylaxis \nand Resuscitation"),
                 trailing: (boolCount != 0) ? GestureDetector(
                     child: SizedBox(
                       width: data.size.width*0.25,

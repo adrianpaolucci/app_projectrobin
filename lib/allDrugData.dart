@@ -44,7 +44,10 @@ final allDrugs = [
   ["Calcium chloride","Calcium gluconate","Salbutamol","Insulin and glucose","Sodium bicarbonate","Hyponatraemia with seizures","Sympometic Hypocalcaemia","Hypomagnasaemia","Glucose","Glucagon","Hypokalaemia with arrhythmia"],
 
   //14 -- antidotes
-  ["Atropine","Pralidoxime","Prazosin","N-Acetylcysteine"]
+  ["Atropine","Pralidoxime","Prazosin","N-Acetylcysteine"],
+
+  //15 - intubation Equipment
+  ["ETT Tubes"]
 ];
 
 final allDrugBooleans = [
@@ -62,6 +65,7 @@ final allDrugBooleans = [
   [false,false,false],
   [false,false],
   [false,false,false,false,false,false,false,false,false,false,false],
-  [false,false,false,false]
+  [false,false,false,false],
+  [false]
 ];
 
