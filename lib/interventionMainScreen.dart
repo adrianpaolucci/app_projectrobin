@@ -24,6 +24,7 @@ import 'drugSearch.dart';
 import 'antidotes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'shock.dart';
 
 var boolCount = 0;
 

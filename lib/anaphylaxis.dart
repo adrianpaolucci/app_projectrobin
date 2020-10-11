@@ -255,24 +255,24 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                               ),
                             )
                             ]
-                      ),
+                            ),
                           ),
-                  Material(
-                  color: Color(0xfff2f2f2),
-          child: Column(children: <Widget>[
+                              Material(
+                                color: Color(0xfff2f2f2),
+                                child: Column(children: <Widget>[
 
-            Theme(
-              data: ThemeData(accentColor: specificColor),
-              child: ExpansionTile(
-                  backgroundColor: Color(0xffffffff),
-                  initiallyExpanded: true,
-                  title: Text("Anaphylaxis",textAlign: TextAlign.center),
-                  children: anaphylaxisCells
-              ),
-            ),
+                                  Theme(
+                                    data: ThemeData(accentColor: specificColor),
+                                    child: ExpansionTile(
+                                        backgroundColor: Color(0xffffffff),
+                                        initiallyExpanded: true,
+                                        title: Text("Anaphylaxis",textAlign: TextAlign.center),
+                                        children: anaphylaxisCells
+                                    ),
+                                  ),
 
-            Container(
-              height: data.size.height*0.05,
+                                  Container(
+                                    height: data.size.height*0.05,
                                     color: Color(0xfff2f2f2),
                                   ),
 
@@ -288,7 +288,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                 ),
                               ),
                             ]
-                        ),
+                          ),
                       ),
                     ),
                   ]

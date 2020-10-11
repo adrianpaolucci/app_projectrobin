@@ -27,7 +27,6 @@ class CroupState extends State<Croup> {
 
   @override
   Widget build(BuildContext context) {
-
     final data = MediaQuery.of(context);
 
     clearAll() {
@@ -77,7 +76,7 @@ class CroupState extends State<Croup> {
                       allDrugBooleans[11][i] = !allDrugBooleans[11][i];
                       items = badger.setBadge(items, "$boolCount", 1);
                       if (boolCount == 0) {
-                          clearAll();
+                        clearAll();
                       }
                     });
                   }
@@ -91,11 +90,14 @@ class CroupState extends State<Croup> {
                 child: Material(
                   elevation: 14.0,
                   shadowColor: Color(0x802196F3),
-                  borderRadius: BorderRadius.circular(data.size.height/30.73),
+                  borderRadius: BorderRadius.circular(data.size.height / 30.73),
                   child: AnimatedContainer(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(largeButtonRadius(context)),
-                        color: allDrugBooleans[11][i] ? Color(0xffc7defa) : Colors.white
+                        borderRadius: BorderRadius.circular(
+                            largeButtonRadius(context)),
+                        color: allDrugBooleans[11][i]
+                            ? Color(0xffc7defa)
+                            : Colors.white
                     ),
                     duration: Duration(milliseconds: 250),
                     child: Center(
@@ -111,15 +113,23 @@ class CroupState extends State<Croup> {
                                     child: Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Text(heading,
-                                          style: TextStyle(color: Colors.black, fontSize: size16Text(context))),
+                                          style: TextStyle(color: Colors.black,
+                                              fontSize: size14Text(context))),
                                     )
                                 ),
                                 Material(
                                   color: colour,
-                                  borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
+                                  borderRadius: BorderRadius.circular(
+                                      mediumButtonRadius(context)),
                                   child: Padding(
                                       padding: EdgeInsets.all(4.0),
-                                      child: i % 2 == 0 ? Icon(MyFlutterApp.syringe, size: genericIconSize(context), color: Colors.white) : Icon(MyFlutterApp.pipette, size: genericIconSize(context), color: Colors.white)
+                                      child: i % 2 == 0 ? Icon(
+                                          MyFlutterApp.syringe,
+                                          size: genericIconSize(context),
+                                          color: Colors.white) : Icon(
+                                          MyFlutterApp.pipette,
+                                          size: genericIconSize(context),
+                                          color: Colors.white)
                                   ),
                                 ),
                               ],
@@ -133,108 +143,194 @@ class CroupState extends State<Croup> {
             ),
           ),
           onTap: () {
-
-              if (weight < 6) {
-                croupErrorAlert(context,i);
+            if (weight < 6) {
+              croupErrorAlert(context, i);
+            }
+            else {
+              if (allDrugBooleans[11][i] == false) {
+                boolCount += 1;
               }
               else {
-                if (allDrugBooleans[11][i] == false) {
-                  boolCount += 1;
-                }
-                else {
-                  boolCount -= 1;
-                }
-                setState(() {
-                  allDrugBooleans[11][i] = !allDrugBooleans[11][i];
-                  items = badger.setBadge(items, "$boolCount", 1);
-                  if (boolCount == 0) {
-                    clearAll();
-                  }
-                });
+                boolCount -= 1;
               }
+              setState(() {
+                allDrugBooleans[11][i] = !allDrugBooleans[11][i];
+                items = badger.setBadge(items, "$boolCount", 1);
+                if (boolCount == 0) {
+                  clearAll();
+                }
+              });
+            }
           }
       );
     }
 
     addCroupIcons(BuildContext context) {
-
       List<Widget> croupItems = [
       ];
 
       for (var i = 0; i < allDrugs[11].length; i++) {
-        croupItems.add(myItems(i, MyFlutterApp.pipette, "${allDrugs[11][i]}", specificColor));
+        croupItems.add(myItems(
+            i, MyFlutterApp.pipette, "${allDrugs[11][i]}", specificColor));
       }
 
       return croupItems;
     }
 
-    return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 1,
-          items: items,
-        ),
-        appBar: AppBar(
-          centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () {
-              Navigator.pop(context, CupertinoPageRoute(builder: (context) {
-                return InterventionMain();
-              }
-              )
-              );
-            },
-          ),
-          title: Padding(
-            padding: EdgeInsets.only(left: 70),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "PediDosED",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  IconButton(
-                      icon: FaIcon(
-                          FontAwesomeIcons.home
+    return SafeArea(
+        child: Material(
+            color: Color(0xfff2f2f2),
+            child: CupertinoScrollbar(
+                child: CustomScrollView(
+                    slivers: [
+                      CupertinoSliverNavigationBar(
+                        padding: EdgeInsetsDirectional.only(
+                            start: 0,
+                            end: 0,
+                            top: 0,
+                            bottom: 0
+                        ),
+                        leading: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: data.size.height * 0.01
+                          ),
+                          child: Center(
+                            child: GestureDetector(
+                                child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .center,
+                                    children: [
+                                      Center(
+                                        child: Icon(
+                                            CupertinoIcons.back,
+                                            color: Colors.blue),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        child: Text("Back",
+                                            style: TextStyle(
+                                                fontSize: size18Text(context),
+                                                color: Colors.blue
+                                            )),
+                                      )
+                                    ]
+                                ),
+                                onTap: () {
+                                  return Navigator.pop(context);
+                                }
+                            ),
+                          ),
+                        ),
+                        largeTitle: Text("Croup"),
+                        trailing: (boolCount != 0) ? GestureDetector(
+                            child: SizedBox(
+                              width: data.size.width * 0.25,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                        width: data.size.width * 0.06,
+                                        height: data.size.width * 0.06,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(
+                                                data.size.width * 0.03
+                                            )
+                                        ),
+                                        child: Text(
+                                            "$boolCount",
+                                            style: TextStyle(
+                                                color: Colors.white
+                                            )
+                                        )
+                                    ),
+                                    Icon(
+                                        CupertinoIcons.forward,
+                                        color: Colors.blue),
+                                  ]
+                              ),
+                            ),
+                            onTap: () {
+                              return Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) {
+                                        return FinalDisplay();
+                                      }));
+                            }
+                        ) : SizedBox(),
                       ),
-                      color: Colors.black,
-                      onPressed: () {
-                        Navigator.push(context, SlideRightRoute(page: Home2()));
-                      }
-                  )
-                ]
-            ),
-          ),
-          backgroundColor: Colors.white,
-        ),
-        body:
-        CustomScrollView(
-            slivers: [
-              SliverFixedExtentList(
-                itemExtent: 100,
-                delegate: SliverChildListDelegate([
-                  topInterventionTitle(context, weight, specificColor, int)
-                ]),
-                ),
-                  SliverPadding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    sliver: SliverStaggeredGrid.count(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 12.0,
-                      children: addCroupIcons(context),
-                      staggeredTiles: [
-                        StaggeredTile.extent(1, largeButtonHeight(context)),
-                        StaggeredTile.extent(1, largeButtonHeight(context)),
-                        StaggeredTile.extent(2, largeButtonHeight(context)),
-                      ],
-                ),
-              )
-            ]
+                      SliverFixedExtentList(
+                          itemExtent: data.size.height*0.10,
+                          delegate: SliverChildListDelegate([
+                            Material(
+                              color: Color(0xfff2f2f2),
+                              child: Theme(
+                                data: ThemeData(
+                                    backgroundColor: Color(0xfff2f2f2)),
+                                child: Column(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: data.size.height * 0.025
+                                        ),
+                                        child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Container(
+                                                width: data.size.width * 0.15,
+                                                alignment: Alignment.centerRight,
+                                                color: Color(0xfff2f2f2),
+                                                child: FaIcon(
+                                                    FontAwesomeIcons.balanceScaleLeft,
+                                                    size: data.size.width / 12),
+                                              ),
+                                              Container(
+                                                width: data.size.width * 0.25,
+                                                alignment: Alignment.center,
+                                                color: Color(0xfff2f2f2),
+                                                child: Text(
+                                                  "$weight kg",
+                                                  textDirection: TextDirection.ltr,
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      fontSize: size20Text(context)
+                                                  ),
+                                                ),
+                                              )
+                                            ]
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              ),
+                            ),
+                          ]
+                          )
+                      ),
+                      SliverPadding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8),
+                        sliver: SliverStaggeredGrid.count(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 12.0,
+                          children: addCroupIcons(context),
+                          staggeredTiles: [
+                            StaggeredTile.extent(
+                                1, largeButtonHeight(context)),
+                            StaggeredTile.extent(
+                                1, largeButtonHeight(context)),
+                            StaggeredTile.extent(
+                                2, largeButtonHeight(context)),
+                          ],
+                        ),
+                      ),
+                    ]
+                )
+            )
         )
     );
   }
 }
-
-
-
