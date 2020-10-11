@@ -246,8 +246,16 @@ intubationFinal(BuildContext context) {
   var paralyticBoolean = allDrugBooleans[4];
   final data = MediaQuery.of(context);
   var inductionWidgets = [ketamineDisplay(context),propofolDisplay(context),thiopentoneDisplay(context),fentanylBolusDisplay(context),midazolamDisplay(context),fentanylInfusionDisplay(context)];
+
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
+
   List<Widget>intubationList = intubationEquipmentInfo(context);
+
+  if (allDrugBooleans[15][0]==true){
+    displayBools[3] = true ;
+  }
+
+
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
       //intubation boolean is true, therefore it is shown on the final screen

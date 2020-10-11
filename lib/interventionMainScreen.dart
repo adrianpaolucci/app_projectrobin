@@ -35,7 +35,7 @@ adrianDivider() {
   return divider;
 }
 
-List searchInterventions = ["Seizures and Neurology","Asthma","Asthma","Intubation","Intubation","Electrolyte Abnormalities","Anaphylaxis and Arrithmyia","Resuscitation","Shock","Bleeding","Infection","Croup","Analgesia","Electrolyte Abnormalities", "Antidotes"];
+List searchInterventions = ["Seizures and Neurology","Asthma","Asthma","Intubation","Intubation","Electrolyte Abnormalities","Anaphylaxis and Arrithmyia","Resuscitation","Shock","Bleeding","Infection","Croup","Analgesia","Electrolyte Abnormalities", "Antidotes","Intubation"];
 var suggestionArray = [];
 List allDrugSearch = [];
 List searchBools = [];

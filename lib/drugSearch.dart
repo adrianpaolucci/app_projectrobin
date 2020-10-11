@@ -130,7 +130,7 @@ class DrugSearch extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
 
-    List searchInterventions = ["Seizures and Neurology","Asthma","Asthma","Intubation","Intubation","Electrolyte Abnormalities","Anaphylaxis and Arrithmyia","Resuscitation","Shock","Bleeding","Infection","Croup","Analgesia","Electrolyte Abnormalities","Antidotes"];
+    List searchInterventions = ["Seizures and Neurology","Asthma","Asthma","Intubation","Intubation","Electrolyte Abnormalities","Anaphylaxis and Arrithmyia","Resuscitation","Shock","Bleeding","Infection","Croup","Analgesia","Electrolyte Abnormalities","Antidotes","Intubation"];
 
     List allDrugSearch = [];
     List searchBools = [];

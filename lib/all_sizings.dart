@@ -401,7 +401,7 @@ finalDisplayFull(
         SizedBox(height: 15),
         Container(
             width: 0.8*data.size.width,
-            decoration: lightBoxDec(context),
+            decoration: whiteBoxDec(context),
             child: Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
@@ -436,7 +436,7 @@ finalDisplayFull(
                 horizontal: 3*smallButtonPadding(context),
                 vertical: smallButtonPadding(context)),
             width: 0.8*data.size.width,
-            decoration: lightBoxDec(context),
+            decoration: whiteBoxDec(context),
             child: function4
         ),
         SizedBox(height: 15)]
@@ -682,10 +682,7 @@ finalDisplayIndividual(
                 horizontal: 3*smallButtonPadding(context),
                 vertical: smallButtonPadding(context)),
             width: 0.8*data.size.width,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(mediumButtonRadius(context)),
-                color: Color(0xfff2f2f2)
-            ),
+            decoration: whiteBoxDec(context),
             child: function4
         ),
         SizedBox(height: 15)]
@@ -707,7 +704,7 @@ Widget finalDisplaySteps(BuildContext context,var color,var drugName, var counte
   columnChildren.add(
     Container(
         width: 0.8*data.size.width,
-        decoration: lightBoxDec(context),
+        decoration: whiteBoxDec(context),
         child: Center(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
@@ -757,7 +754,7 @@ finalDisplayIntubationEquip(
         SizedBox(height: 15),
         Container(
             width: 0.8*data.size.width,
-            decoration: lightBoxDec(context),
+            decoration: whiteBoxDec(context),
             child: Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
