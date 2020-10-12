@@ -84,9 +84,11 @@ class BleedingState extends State<Bleeding> {
 
                 if (newValue == true) {
                   boolCount += 1;
+                  intCount[finalIndex] += 1;
                 }
                 else {
                   boolCount -= 1;
+                  intCount[finalIndex] -= 1;
                 }
 
                 setState(() {

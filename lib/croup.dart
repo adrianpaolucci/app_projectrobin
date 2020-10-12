@@ -149,9 +149,11 @@ class CroupState extends State<Croup> {
             else {
               if (allDrugBooleans[11][i] == false) {
                 boolCount += 1;
+                intCount[finalIndex] += 1;
               }
               else {
                 boolCount -= 1;
+                intCount[finalIndex] -= 1;
               }
               setState(() {
                 allDrugBooleans[11][i] = !allDrugBooleans[11][i];

@@ -26,6 +26,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'shock.dart';
 
+var intCount = [0,0,0,0,0,0,0,0,0,0,0];
+
+var finalIndex = 0;
+
 var boolCount = 0;
 
 var pageIndex = 1;
@@ -344,6 +348,7 @@ class _DosingMainState extends State<InterventionMain> {
                                           InkWell(
                                               onTap: () {
                                                 int = interventions[index];
+                                                finalIndex = interventions.indexOf(int);
                                                 specificColor = intColors[index];
                                                 Navigator.push(context,
                                                     SlideLeftRoute(
@@ -351,14 +356,12 @@ class _DosingMainState extends State<InterventionMain> {
                                                 );
                                               },
                                               child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment
-                                                      .center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Center(
                                                         child: Text(
                                                             interventions[index],
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                            textAlign: TextAlign.center,
                                                             style:
                                                             TextStyle(
                                                                 color: intColors[index],

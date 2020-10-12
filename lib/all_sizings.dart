@@ -398,25 +398,27 @@ finalDisplayFull(
 
   return Column(
       children: <Widget>[
-        SizedBox(height: 15),
-        Container(
-            width: 0.8*data.size.width,
-            decoration: whiteBoxDec(context),
-            child: Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
-                  child: Text(
-                      "$drugName",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: size18Text(context),
-                          color: interventionColour,
-                          fontWeight: FontWeight.bold)
-                  ),
-                )
-            )
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Container(
+              width: 0.8*data.size.width,
+              decoration: whiteBoxDec(context),
+              child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: smallButtonPadding(context)),
+                    child: Text(
+                        "$drugName",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: size18Text(context),
+                            color: interventionColour,
+                            fontWeight: FontWeight.bold)
+                    ),
+                  )
+              )
+          ),
         ),
-        Container(padding: EdgeInsets.all(10.0),
+        Container(padding: EdgeInsets.all(8),
           decoration: whiteBoxDec(context),
           width: 0.8 * data.size.width,
           child:
@@ -751,7 +753,6 @@ finalDisplayIntubationEquip(
 
   return Column(
       children: <Widget>[
-        SizedBox(height: 15),
         Container(
             width: 0.8*data.size.width,
             decoration: whiteBoxDec(context),
@@ -769,7 +770,9 @@ finalDisplayIntubationEquip(
                 )
             )
         ),
-        Container(padding: EdgeInsets.all(10.0),
+        Container(
+          margin: EdgeInsets.only(top: 10),
+          padding: EdgeInsets.all(10.0),
           decoration: whiteBoxDec(context),
           width: 0.8 * data.size.width,
           child:

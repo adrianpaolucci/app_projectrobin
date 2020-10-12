@@ -75,9 +75,11 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                 setState(() {
                   if (newValue == true) {
                     boolCount += 1;
+                    intCount[finalIndex] += 1;
                   }
                   else {
                     boolCount -= 1;
+                    intCount[finalIndex] -= 1;
                   }
                   items = badger.setBadge(items, "$boolCount", 1);
                   allDrugBooleans[intIndex][i] = newValue;
@@ -112,9 +114,11 @@ class AnaphylaxisState extends State<Anaphylaxis> {
               onChanged: (bool newValue) {
                 if (newValue == true) {
                   boolCount += 1;
+                  intCount[finalIndex] += 1;
                 }
                 else {
                   boolCount -= 1;
+                  intCount[finalIndex] -= 1;
                 }
                 setState(() {
                   items = badger.setBadge(items, "$boolCount", 1);

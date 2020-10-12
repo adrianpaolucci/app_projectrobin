@@ -150,9 +150,11 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
             else {
               if (allDrugBooleans[0][i] == false) {
                 boolCount += 1;
+                intCount[finalIndex] += 1;
               }
               else {
                 boolCount -= 1;
+                intCount[finalIndex] -= 1;
               }
               setState(() {
                 allDrugBooleans[0][i] = !allDrugBooleans[0][i];

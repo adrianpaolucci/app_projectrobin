@@ -10,6 +10,8 @@ import 'allDrugData.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icons/my_flutter_app_icons.dart';
 
+
+
 var intIndex1 = 1;
 var intIndex2 = 2;
 
@@ -79,9 +81,11 @@ class AsthmaState extends State<Asthma> {
 
                 if (newValue == true) {
                   boolCount += 1;
+                  intCount[finalIndex] += 1;
                 }
                 else {
                   boolCount -= 1;
+                  intCount[finalIndex] -= 1;
                 }
 
                 setState(() {
@@ -116,9 +120,11 @@ class AsthmaState extends State<Asthma> {
 
                 if (newValue == true) {
                   boolCount += 1;
+                  intCount[finalIndex] += 1;
                 }
                 else {
                   boolCount -= 1;
+                  intCount[finalIndex] -= 1;
                 }
 
                 setState(() {

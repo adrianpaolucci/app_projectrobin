@@ -145,9 +145,11 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
           onTap: () {
               if (allDrugBooleans[13][i] == false) {
                   boolCount += 1;
+                  intCount[finalIndex] += 1;
               }
               else {
                   boolCount -= 1;
+                  intCount[finalIndex] -= 1;
               }
               setState(() {
                 allDrugBooleans[13][i] = !allDrugBooleans[13][i];

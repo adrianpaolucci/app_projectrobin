@@ -157,9 +157,11 @@ class ShockState extends State<Shock> {
           onTap: () {
               if (allDrugBooleans[8][i] == false) {
                 boolCount += 1;
+                intCount[finalIndex] += 1;
               }
               else {
                 boolCount -= 1;
+                intCount[finalIndex] -= 1;
               }
               setState(() {
                 allDrugBooleans[8][i] = !allDrugBooleans[8][i];

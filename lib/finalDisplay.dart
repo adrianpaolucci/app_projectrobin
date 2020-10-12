@@ -54,9 +54,12 @@ class FinalDisplayState extends State<FinalDisplay> {
         backgroundColor: Colors.white
       ),
       body: SingleChildScrollView(
-          child: Center(child:
-            Column(children: list),
-      )
+          child: Material(
+            color: Color(0xfff2f2f2),
+            child: Center(child:
+              Column(children: list),
+      ),
+          )
       )
     );
   }
@@ -159,14 +162,35 @@ void showFinalDropdowns(BuildContext context) {
   ));
 
   for (var i = 0; i < interventions.length; i++) {
+
     if (displayBools[i] == true) {
      // list.add(Divider(thickness: 1.0, color: Colors.black));
       list.add(ExpansionTile(
         initiallyExpanded: true,
-        title: Text("${interventions[i]}",
-            style: TextStyle(
-                color: intColors[i],
-                fontSize: size18Text(context))),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text("${interventions[i]}",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                    color: intColors[i],
+                    fontSize: size18Text(context))),
+            Container(
+                height: data.size.width*0.06,
+                width: data.size.width*0.06,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(data.size.width*0.03),
+                  color: intColors[i]),
+                child: Center(
+                    child: Text("${intCount[i]}",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white)
+                    )
+                )
+            )
+
+          ],
+        ),
         children: allFinalDisplays[i],
       ));
       //list.add(Divider(thickness: 1.0, color: Colors.black));
