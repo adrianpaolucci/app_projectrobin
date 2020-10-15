@@ -123,7 +123,7 @@ class _DosingMainState extends State<InterventionMain> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home),
-              title: Text("Home",
+              title: Text("Weights",
                   style: TextStyle(
                       fontSize: size14Text(context)
                   )
