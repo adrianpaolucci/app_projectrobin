@@ -1,3 +1,4 @@
+import 'dart:core';
 import 'package:app_search_bar/anaphylaxis.dart';
 import 'package:app_search_bar/drugSearch.dart';
 import 'package:app_search_bar/electrolyteAbnormalities.dart';
@@ -24,7 +25,9 @@ import 'drugSearch.dart';
 import 'antidotes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'shock.dart';
+import 'package:path/path.dart';
+
+
 
 var intCount = [0,0,0,0,0,0,0,0,0,0,0];
 
@@ -32,7 +35,7 @@ var finalIndex = 0;
 
 var boolCount = 0;
 
-var pageIndex = 1;
+
 
 adrianDivider() {
   var divider = Divider(thickness: 1.0, color: Color(0xffa6a6a6));
@@ -115,287 +118,357 @@ class _DosingMainState extends State<InterventionMain> {
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
 
+    var navBarIndex = 1;
 
-    return CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          iconSize: 30,
-          currentIndex: pageIndex,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
-              title: Text("Weights",
-                  style: TextStyle(
-                      fontSize: size14Text(context)
-                  )
-              ),
-            ),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.book),
-                title: Text("Interventions",
-                    style: TextStyle(
-                        fontSize: size14Text(context)
-                    ))
-            ),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.check_mark_circled),
-                title: Text("Selected",
-                    style: TextStyle(
-                        fontSize: size14Text(context)
-                    ))
-            )],
-        ),
-        // ignore: missing_return
-        tabBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return Home2();
-            case 1:
-              return CupertinoPageScaffold(child: SafeArea(
-                child: Material(
-                  child: CupertinoScrollbar(
-                    child: CustomScrollView(
-                      slivers: <Widget>[
-                        CupertinoSliverNavigationBar(
-                          padding: EdgeInsetsDirectional.only(
-                              start: 0,
-                              end: 0,
-                              top: 0,
-                              bottom: 0
-                          ),
-                          leading: GestureDetector(
-                              child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment
-                                      .center,
-                                  children: [
-                                    Icon(
-                                        CupertinoIcons.back,
-                                        color: Colors.blue),
-                                    Text("Back",
-                                        style: TextStyle(
-                                            fontSize: size18Text(context),
-                                            color: Colors.blue
-                                        ))
-                                  ]
-                              ),
-                              onTap: () {
-                                return Navigator.pop(context);
-                              }
-                          ),
-                          largeTitle: Text("PediDOSed"),
-                          trailing: (boolCount != 0) ? GestureDetector(
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                        width: data.size.width * 0.06,
-                                        height: data.size.width * 0.06,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius: BorderRadius.circular(
-                                                data.size.width * 0.03
-                                            )
-                                        ),
-                                        child: Text(
-                                            "$boolCount",
-                                            style: TextStyle(
-                                                color: Colors.white
-                                            )
-                                        )
-                                    ),
-                                    Icon(
-                                        CupertinoIcons.forward,
-                                        color: Colors.blue),
-                                  ]
-                              ),
-                              onTap: () {
-                                return Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (context) {
-                                          return FinalDisplay();
-                                        }));
-                              }
-                          ) : SizedBox(),
-                        ),
-                        SliverFixedExtentList(
-                          itemExtent: data.size.height * 0.08,
-                          delegate: SliverChildListDelegate([
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: paddingVerticalBetweenButtons(
-                                      context)
-                              ),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    InkWell(
-                                        onTap: () {
-                                          /* showSearch(
-
-                                              context: context,
-                                              delegate: DrugSearch()
-                                          );*/
-                                          return Navigator.push(context,
-                                              SlideLeftRoute(
-                                                  page: SearchTab()));
-                                        },
-                                        child:
-                                        Container(
-                                          height: data.size.height * 0.06,
+    return CupertinoPageScaffold(child: SafeArea(
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Material(
+                    child: CupertinoScrollbar(
+                      child: CustomScrollView(
+                        slivers: <Widget>[
+                          CupertinoSliverNavigationBar(
+                            padding: EdgeInsetsDirectional.only(
+                                start: 0,
+                                end: 0,
+                                top: 0,
+                                bottom: 0
+                            ),
+                            leading: GestureDetector(
+                                child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .center,
+                                    children: [
+                                      Icon(
+                                          CupertinoIcons.back,
+                                          color: Colors.blue),
+                                      Text("Back",
+                                          style: TextStyle(
+                                              fontSize: size18Text(context),
+                                              color: Colors.blue
+                                          ))
+                                    ]
+                                ),
+                                onTap: () {
+                                  return Navigator.pop(context);
+                                }
+                            ),
+                            largeTitle: Text("PediDOSed"),
+                            trailing: (boolCount != 0) ? GestureDetector(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                          width: data.size.width * 0.06,
+                                          height: data.size.width * 0.06,
+                                          alignment: Alignment.center,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius
-                                                  .circular(
-                                                  mediumButtonRadius(
-                                                      context)),
-                                              color: Color(0xffe6e6e6)),
+                                              color: Colors.blue,
+                                              borderRadius: BorderRadius.circular(
+                                                  data.size.width * 0.03
+                                              )
+                                          ),
+                                          child: Text(
+                                              "$boolCount",
+                                              style: TextStyle(
+                                                  color: Colors.white
+                                              )
+                                          )
+                                      ),
+                                      Icon(
+                                          CupertinoIcons.forward,
+                                          color: Colors.blue),
+                                    ]
+                                ),
+                                onTap: () {
+                                   return Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) {
+                                            return FinalDisplay();
+                                          }));
+                                }
+                            ) : SizedBox(),
+                          ),
+                          SliverFixedExtentList(
+                            itemExtent: data.size.height * 0.08,
+                            delegate: SliverChildListDelegate([
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: paddingVerticalBetweenButtons(
+                                        context)
+                                ),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                          onTap: () {
+                                            /* showSearch(
+
+                                                context: context,
+                                                delegate: DrugSearch()
+                                            );*/
+                                            return Navigator.push(context,
+                                                SlideLeftRoute(
+                                                    page: SearchTab()));
+                                          },
                                           child:
-                                          Row(
-                                            children: [
-                                              Material(
-                                                  color: Color(0xffe6e6e6),
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: smallButtonPadding(
-                                                            context)),
-                                                    child: Icon(
-                                                        Icons.search,
-                                                        color: Color(
-                                                            0xff808080)),
-                                                  )
-                                              ),
-                                              Material(
+                                          Container(
+                                            height: data.size.height * 0.06,
+                                            decoration: BoxDecoration(
                                                 borderRadius: BorderRadius
                                                     .circular(
                                                     mediumButtonRadius(
                                                         context)),
-                                                color: Color(0xffe6e6e6),
-                                                child: Container(
-                                                  alignment: Alignment
-                                                      .centerLeft,
-                                                  height: 4 *
-                                                      data.size.height /
-                                                      70,
-                                                  width: data.size.width *
-                                                      0.8,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: smallButtonPadding(
-                                                            context)),
-                                                    child: Text("Search",
-                                                        style: TextStyle(
-                                                            fontSize: size16Text(
-                                                                context),
-                                                            color: Color(
-                                                                0xff808080)
-                                                        )
+                                                color: Color(0xffe6e6e6)),
+                                            child:
+                                            Row(
+                                              children: [
+                                                Material(
+                                                    color: Color(0xffe6e6e6),
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: smallButtonPadding(
+                                                              context)),
+                                                      child: Icon(
+                                                          Icons.search,
+                                                          color: Color(
+                                                              0xff808080)),
+                                                    )
+                                                ),
+                                                Material(
+                                                  borderRadius: BorderRadius
+                                                      .circular(
+                                                      mediumButtonRadius(
+                                                          context)),
+                                                  color: Color(0xffe6e6e6),
+                                                  child: Container(
+                                                    alignment: Alignment
+                                                        .centerLeft,
+                                                    height: 4 *
+                                                        data.size.height /
+                                                        70,
+                                                    width: data.size.width *
+                                                        0.8,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: smallButtonPadding(
+                                                              context)),
+                                                      child: Text("Search",
+                                                          style: TextStyle(
+                                                              fontSize: size16Text(
+                                                                  context),
+                                                              color: Color(
+                                                                  0xff808080)
+                                                          )
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              )
-                                            ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                      )
+                                    ]
+                                ),
+                              ),
+                              Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: data.size.width * 0.05,
+                                  ),
+                                  child: Row(children: <Widget>[
+                                    FaIcon(
+                                        FontAwesomeIcons.balanceScaleLeft,
+                                        size: data.size.width / 12),
+                                    Padding(
+                                        padding: EdgeInsets.only(
+                                            left: data.size.width / 25),
+                                        child: Text(
+                                          "$weight kg",
+                                          textDirection: TextDirection.ltr,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: size20Text(context)
                                           ),
                                         )
                                     )
                                   ]
-                              ),
-                            ),
-                            Container(
-                                alignment: Alignment.centerLeft,
-                                padding: EdgeInsets.only(
-                                  left: data.size.width * 0.05,
-                                ),
-                                child: Row(children: <Widget>[
-                                  FaIcon(
-                                      FontAwesomeIcons.balanceScaleLeft,
-                                      size: data.size.width / 12),
-                                  Padding(
-                                      padding: EdgeInsets.only(
-                                          left: data.size.width / 25),
-                                      child: Text(
-                                        "$weight kg",
-                                        textDirection: TextDirection.ltr,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: size20Text(context)
-                                        ),
-                                      )
                                   )
-                                ]
-                                )
-                            ),
-                          ]),
-                        ),
-                        SliverPadding(
-                            padding: EdgeInsets.only(
-                                bottom: paddingVerticalBetweenButtons(
-                                    context)),
-                            sliver:
-                            SliverGrid(
-                              delegate: SliverChildBuilderDelegate(
-                                    (context, index) {
-                                      return Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: paddingHorizontalBetweenButtons(
-                                                context),
-                                            vertical: paddingVerticalBetweenButtons(
-                                                context)),
-                                        child: Material(
-                                          color: Colors.white,
-                                          elevation: buttonShadowElev,
-                                          shadowColor: shadowColour,
-                                          borderRadius: BorderRadius.circular(
-                                              lrgBorderRad),
-                                          child:
-                                          InkWell(
-                                              onTap: () {
-                                                int = interventions[index];
-                                                finalIndex = interventions.indexOf(int);
-                                                specificColor = intColors[index];
-                                                Navigator.push(context,
-                                                    SlideLeftRoute(
-                                                        page: pages[index])
-                                                );
-                                              },
-                                              child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Center(
-                                                        child: Text(
-                                                            interventions[index],
-                                                            textAlign: TextAlign.center,
-                                                            style:
-                                                            TextStyle(
-                                                                color: intColors[index],
-                                                                fontSize: size16Text(
-                                                                    context))
-                                                        )
-                                                    ),
-                                                  ]
-                                              )
+                              ),
+                            ]),
+                          ),
+                          SliverPadding(
+                              padding: EdgeInsets.only(
+                                  bottom: data.size.height*0.1),
+                              sliver:
+                              SliverGrid(
+                                delegate: SliverChildBuilderDelegate(
+                                      (context, index) {
+                                        return Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: paddingHorizontalBetweenButtons(
+                                                  context),
+                                              vertical: paddingVerticalBetweenButtons(
+                                                  context)),
+                                          child: Material(
+                                            color: Colors.white,
+                                            elevation: buttonShadowElev,
+                                            shadowColor: shadowColour,
+                                            borderRadius: BorderRadius.circular(
+                                                lrgBorderRad),
+                                            child:
+                                            InkWell(
+                                                onTap: () {
+                                                  int = interventions[index];
+                                                  finalIndex = interventions.indexOf(int);
+                                                  specificColor = intColors[index];
+                                                  Navigator.push(
+                                                      context,
+                                                      CupertinoPageRoute(
+                                                          builder: (context) {
+                                                            return pages[index];
+                                                          }));
+                                                },
+                                                child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: <Widget>[
+                                                      Center(
+                                                          child: Text(
+                                                              interventions[index],
+                                                              textAlign: TextAlign.center,
+                                                              style:
+                                                              TextStyle(
+                                                                  color: intColors[index],
+                                                                  fontSize: size16Text(
+                                                                      context))
+                                                          )
+                                                      ),
+                                                    ]
+                                                )
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                childCount: interventions.length,
-                              ),
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 0,
-                                crossAxisSpacing: 0,
-                                childAspectRatio: data.devicePixelRatio *
-                                    0.75,
-                              ),
-                            )
-                        ),
-                      ],
+                                        );
+                                      },
+                                  childCount: interventions.length,
+                                ),
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  mainAxisSpacing: 0,
+                                  crossAxisSpacing: 0,
+                                  childAspectRatio: data.devicePixelRatio *
+                                      0.75,
+                                ),
+                              )
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                  Material(
+                    child: Container(
+                      alignment: Alignment.center,
+                      color: Color(0xfff2f2f2),
+                      height: data.size.height*0.09,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                      CupertinoIcons.home,
+                                      size: genericIconSize(context)*1.5,
+                                      color: Colors.grey,
+                                  ),
+                                  Text("Weights",
+                                    style: TextStyle(
+                                      fontSize: size14Text(context),
+                                      color: Colors.grey
+                                  ))
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            }
+                          ),
+                          GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.book,
+                                    size: genericIconSize(context)*1.5,
+                                    color: navBarIndex == 1 ? Colors.blue : Colors.grey,
+                                  ),
+                                  Text("Interventions",
+                                      style: TextStyle(
+                                          fontSize: size14Text(context),
+                                        color: navBarIndex == 1 ? Colors.blue : Colors.grey
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              if (navBarIndex != 1) {
+                                Navigator.pop(context);
+                              }
+                            }
+                          ),
+                          GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 40,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.check_mark_circled,
+                                    size: genericIconSize(context)*1.5,
+                                    color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                  ),
+                                  Text("Selected",
+                                      style: TextStyle(
+                                          fontSize: size14Text(context),
+                                          color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                              onTap: () {
+                                if (navBarIndex != 3) {
+                                  Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) {
+                                            return FinalDisplay();
+                                          })
+                                  );
+                                }
+                              }
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                  ]
                 ),
               ),
               );
-            case 2:
-              return FinalDisplay();
-          }
-        }
-    );
   }
 }

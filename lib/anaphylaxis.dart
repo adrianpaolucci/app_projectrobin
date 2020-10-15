@@ -10,7 +10,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icons/my_flutter_app_icons.dart';
 
 
-
 var intIndex = 6;
 var intIndex2 = 7;
 
@@ -30,7 +29,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
       for (var i = 0; i < allDrugs.length; i++) {
         for (var j = 0; j < allDrugs[i].length; j++) {
           setState(() {
-            allDrugBooleans[i][j] = false;
+            allDrugBooleans[i][j] = false; intCount = [0,0,0,0,0,0,0,0,0,0,0];
             items = badger.removeBadge(items, 1);
           });
         }
@@ -131,254 +130,331 @@ class AnaphylaxisState extends State<Anaphylaxis> {
       resuscCells.add(column);
     }
 
+    navBarIndex = 2;
 
-    return CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          iconSize: 30,
-          currentIndex: 1,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
-              title: Text("Weights",
-                  style: TextStyle(
-                      fontSize: size14Text(context)
-                  )
-              ),
-            ),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.book),
-                title: Text("Interventions",
-                    style: TextStyle(
-                        fontSize: size14Text(context)
-                    ))
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.check_mark_circled),
-                title: Text("Selected",
-                    style: TextStyle(
-                        fontSize: size14Text(context)
-                    ))
-            )
-          ],
-        ),
-        // ignore: missing_return
-        tabBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return Home2();
-            case 1:
-              return CupertinoPageScaffold(
-                  child: SafeArea(
-                      child: Material(
-                          color: Color(0xfff2f2f2),
-                          child: CupertinoScrollbar(
-                              child: CustomScrollView(
-                                  slivers: [
-                                    CupertinoSliverNavigationBar(
-                                      padding: EdgeInsetsDirectional.only(
-                                          start: 0,
-                                          end: 0,
-                                          top: 0,
-                                          bottom: 0
-                                      ),
-                                      leading: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: data.size.height * 0.01
-                                        ),
-                                        child: Center(
-                                          child: GestureDetector(
-                                              child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment
-                                                      .center,
-                                                  children: [
-                                                    Center(
-                                                      child: Icon(
-                                                          CupertinoIcons.back,
-                                                          color: Colors.blue),
-                                                    ),
-                                                    Container(
-                                                      alignment: Alignment
-                                                          .center,
-                                                      child: Text("Back",
-                                                          style: TextStyle(
-                                                              fontSize: size18Text(
-                                                                  context),
-                                                              color: Colors.blue
-                                                          )),
-                                                    )
-                                                  ]
+    return CupertinoPageScaffold(
+        child: SafeArea(
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: data.size.height*0.1
+                  ),
+                  child: Material(
+                    color: Color(0xfff2f2f2),
+                    child: CupertinoScrollbar(
+                        child: CustomScrollView(
+                            slivers: [
+                              CupertinoSliverNavigationBar(
+                                padding: EdgeInsetsDirectional.only(
+                                    start: 0,
+                                    end: 0,
+                                    top: 0,
+                                    bottom: 0
+                                ),
+                                leading: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: data.size.height * 0.01
+                                  ),
+                                  child: Center(
+                                    child: GestureDetector(
+                                        child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .center,
+                                            children: [
+                                              Center(
+                                                child: Icon(
+                                                    CupertinoIcons.back,
+                                                    color: Colors.blue),
                                               ),
-                                              onTap: () {
-                                                return Navigator.pop(context);
-                                              }
-                                          ),
+                                              Container(
+                                                alignment: Alignment
+                                                    .center,
+                                                child: Text("Back",
+                                                    style: TextStyle(
+                                                        fontSize: size18Text(
+                                                            context),
+                                                        color: Colors.blue
+                                                    )),
+                                              )
+                                            ]
                                         ),
-                                      ),
-                                      largeTitle: Text(
-                                          "Anaphylaxis \nand Resuscitation"),
-                                      trailing: (boolCount != 0)
-                                          ? GestureDetector(
-                                          child: SizedBox(
-                                            width: data.size.width * 0.25,
-                                            child: Row(
-                                                mainAxisAlignment: MainAxisAlignment
-                                                    .end,
-                                                children: [
-                                                  Container(
-                                                      width: data.size.width *
-                                                          0.06,
-                                                      height: data.size.width *
-                                                          0.06,
-                                                      alignment: Alignment
-                                                          .center,
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.blue,
-                                                          borderRadius: BorderRadius
-                                                              .circular(
-                                                              data.size.width *
-                                                                  0.03
-                                                          )
-                                                      ),
-                                                      child: Text(
-                                                          "$boolCount",
-                                                          style: TextStyle(
-                                                              color: Colors
-                                                                  .white
-                                                          )
-                                                      )
-                                                  ),
-                                                  Icon(
-                                                      CupertinoIcons.forward,
-                                                      color: Colors.blue),
-                                                ]
-                                            ),
-                                          ),
-                                          onTap: () {
-                                            return Navigator.push(
-                                                context,
-                                                CupertinoPageRoute(
-                                                    builder: (context) {
-                                                      return FinalDisplay();
-                                                    }));
-                                          }
-                                      )
-                                          : SizedBox(),
+                                        onTap: () {
+                                          return Navigator.pop(context);
+                                        }
                                     ),
-                                    SliverFixedExtentList(
-                                        itemExtent: data.size.height,
-                                        delegate: SliverChildListDelegate([
-                                          Material(
-                                            color: Color(0xfff2f2f2),
-                                            child: Theme(
-                                              data: ThemeData(
-                                                  backgroundColor: Color(
-                                                      0xfff2f2f2)),
-                                              child: Column(
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding: EdgeInsets
-                                                          .symmetric(
-                                                          vertical: data.size
-                                                              .height * 0.025
-                                                      ),
-                                                      child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment
-                                                              .start,
-                                                          children: <Widget>[
-                                                            Container(
-                                                              width: data.size
-                                                                  .width * 0.15,
-                                                              alignment: Alignment
-                                                                  .centerRight,
-                                                              color: Color(
-                                                                  0xfff2f2f2),
-                                                              child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .balanceScaleLeft,
-                                                                  size: data
-                                                                      .size
-                                                                      .width /
-                                                                      12),
-                                                            ),
-                                                            Container(
-                                                              width: data.size
-                                                                  .width * 0.25,
-                                                              alignment: Alignment
-                                                                  .center,
-                                                              color: Color(
-                                                                  0xfff2f2f2),
-                                                              child: Text(
-                                                                "$weight kg",
-                                                                textDirection: TextDirection
-                                                                    .ltr,
-                                                                style: TextStyle(
-                                                                    fontWeight: FontWeight
-                                                                        .bold,
-                                                                    fontSize: size20Text(
-                                                                        context)
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ]
-                                                      ),
-                                                    ),
-                                                    Material(
-                                                      color: Color(0xfff2f2f2),
-                                                      child: Column(
-                                                        children: <Widget>[
-
-                                                          Theme(
-                                                            data: ThemeData(
-                                                                accentColor: specificColor),
-                                                            child: ExpansionTile(
-                                                                backgroundColor: Color(
-                                                                    0xffffffff),
-                                                                initiallyExpanded: true,
-                                                                title: Text(
-                                                                    "Anaphylaxis",
-                                                                    textAlign: TextAlign
-                                                                        .center),
-                                                                children: anaphylaxisCells
-                                                            ),
-                                                          ),
-
-                                                          Container(
-                                                            height: data.size
-                                                                .height * 0.05,
-                                                            color: Color(
-                                                                0xfff2f2f2),
-                                                          ),
-
-                                                          Theme(
-                                                            data: ThemeData(
-                                                                accentColor: specificColor),
-                                                            child: ExpansionTile(
-                                                                backgroundColor: Color(
-                                                                    0xffffffff),
-                                                                initiallyExpanded: true,
-                                                                title: Text(
-                                                                    "Resuscitation",
-                                                                    textAlign: TextAlign
-                                                                        .center),
-                                                                children: resuscCells
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ]
-                                              ),
+                                  ),
+                                ),
+                                largeTitle: Text("Anaphylaxis"),
+                                trailing: (boolCount != 0)
+                                    ? GestureDetector(
+                                    child: SizedBox(
+                                      width: data.size.width * 0.25,
+                                      child: Row(
+                                          mainAxisAlignment: MainAxisAlignment
+                                              .end,
+                                          children: [
+                                            Container(
+                                                width: data.size.width *
+                                                    0.06,
+                                                height: data.size.width *
+                                                    0.06,
+                                                alignment: Alignment
+                                                    .center,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.blue,
+                                                    borderRadius: BorderRadius
+                                                        .circular(
+                                                        data.size.width *
+                                                            0.03
+                                                    )
+                                                ),
+                                                child: Text(
+                                                    "$boolCount",
+                                                    style: TextStyle(
+                                                        color: Colors
+                                                            .white
+                                                    )
+                                                )
                                             ),
-                                          ),
-                                        ]
-                                        )
+                                            Icon(
+                                                CupertinoIcons.forward,
+                                                color: Colors.blue),
+                                          ]
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      return Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) {
+                                                return FinalDisplay();
+                                              }));
+                                    }
+                                )
+                                    : SizedBox(),
+                              ),
+                              SliverFixedExtentList(
+                                  itemExtent: data.size.height,
+                                  delegate: SliverChildListDelegate([
+                                    Material(
+                                      color: Color(0xfff2f2f2),
+                                      child: Theme(
+                                        data: ThemeData(
+                                            backgroundColor: Color(
+                                                0xfff2f2f2)),
+                                        child: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: EdgeInsets
+                                                    .symmetric(
+                                                    vertical: data.size
+                                                        .height * 0.025
+                                                ),
+                                                child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .start,
+                                                    children: <Widget>[
+                                                      Container(
+                                                        width: data.size
+                                                            .width * 0.15,
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        color: Color(
+                                                            0xfff2f2f2),
+                                                        child: FaIcon(
+                                                            FontAwesomeIcons
+                                                                .balanceScaleLeft,
+                                                            size: data
+                                                                .size
+                                                                .width /
+                                                                12),
+                                                      ),
+                                                      Container(
+                                                        width: data.size
+                                                            .width * 0.25,
+                                                        alignment: Alignment
+                                                            .center,
+                                                        color: Color(
+                                                            0xfff2f2f2),
+                                                        child: Text(
+                                                          "$weight kg",
+                                                          textDirection: TextDirection
+                                                              .ltr,
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight
+                                                                  .bold,
+                                                              fontSize: size20Text(
+                                                                  context)
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ]
+                                                ),
+                                              ),
+                                              Material(
+                                                color: Color(0xfff2f2f2),
+                                                child: Column(
+                                                  children: <Widget>[
+
+                                                    Theme(
+                                                      data: ThemeData(
+                                                          accentColor: specificColor),
+                                                      child: ExpansionTile(
+                                                          backgroundColor: Color(
+                                                              0xffffffff),
+                                                          initiallyExpanded: true,
+                                                          title: Text(
+                                                              "Anaphylaxis",
+                                                              textAlign: TextAlign
+                                                                  .center),
+                                                          children: anaphylaxisCells
+                                                      ),
+                                                    ),
+
+                                                    Container(
+                                                      height: data.size
+                                                          .height * 0.05,
+                                                      color: Color(
+                                                          0xfff2f2f2),
+                                                    ),
+
+                                                    Theme(
+                                                      data: ThemeData(
+                                                          accentColor: specificColor),
+                                                      child: ExpansionTile(
+                                                          backgroundColor: Color(
+                                                              0xffffffff),
+                                                          initiallyExpanded: true,
+                                                          title: Text(
+                                                              "Resuscitation",
+                                                              textAlign: TextAlign
+                                                                  .center),
+                                                          children: resuscCells
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ]
+                                        ),
+                                      ),
                                     ),
                                   ]
-                              )
-                          )
-                      )
-                  ));
-            case 2:
-              return FinalDisplay();
-          }
-        });
-  }}
+                                  )
+                              ),
+                            ]
+                        )
+                    )
+              ),
+                ),
+                Material(
+                  color: Color(0xfff2f2f2),
+                  child: Container(
+                    alignment: Alignment.center,
+                    color: Color(0xfff2f2f2),
+                    height: data.size.height*0.09,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 40,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.home,
+                                    size: genericIconSize(context)*1.5,
+                                    color: Colors.grey,
+                                  ),
+                                  Text("Weights",
+                                      style: TextStyle(
+                                          fontSize: size14Text(context),
+                                          color: Colors.grey
+                                      ))
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            }
+                        ),
+                        GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.book,
+                                    size: genericIconSize(context)*1.5,
+                                    color: navBarIndex != 3 ? Colors.blue : Colors.grey,
+                                  ),
+                                  Text("Interventions",
+                                      style: TextStyle(
+                                          fontSize: size14Text(context),
+                                          color: navBarIndex != 3 ? Colors.blue : Colors.grey
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              if (navBarIndex != 1) {
+                                Navigator.pop(context);
+                              }
+                            }
+                        ),
+                        GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 40,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.check_mark_circled,
+                                    size: genericIconSize(context)*1.5,
+                                    color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                  ),
+                                  Text("Selected",
+                                      style: TextStyle(
+                                        fontSize: size14Text(context),
+                                        color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              print(navBarIndex);
+                              if (navBarIndex != 3) {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) {
+                                          return FinalDisplay();
+                                        })
+                                );
+                              }
+                            }
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ]
+            )
+        )
+    );
+
+  }
+}

@@ -34,7 +34,7 @@ class AsthmaState extends State<Asthma> {
       for (var i = 0; i < allDrugs.length; i++) {
         for (var j = 0; j < allDrugs[i].length; j++) {
           setState(() {
-            allDrugBooleans[i][j] = false;
+            allDrugBooleans[i][j] = false; intCount = [0,0,0,0,0,0,0,0,0,0,0];
             items = badger.removeBadge(items, 1);
           });
         }

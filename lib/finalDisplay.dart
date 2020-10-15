@@ -50,203 +50,260 @@ class FinalDisplayState extends State<FinalDisplay> {
 
     final data = MediaQuery.of(context);
 
+    navBarIndex = 3;
+
+    clearAll() {
+      for (var i = 0; i < allDrugs.length; i++) {
+        for (var j = 0; j < allDrugs[i].length; j++) {
+          setState(() {
+            items = badger.removeBadge(items, 1);
+            allDrugBooleans[i][j] = false; intCount = [0,0,0,0,0,0,0,0,0,0,0];
+          });
+        }
+      }
+      boolCount = 0;
+    }
+
     showFinalDropdowns(context);
-    return CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          iconSize: 30,
-          currentIndex: 2,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
-              title: Text("Weights",
-                  style: TextStyle(
-                      fontSize: size14Text(context)
-                  )
-              ),
-            ),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.book),
-                title: Text("Interventions",
-                    style: TextStyle(
-                        fontSize: size14Text(context)
-                    ))
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.check_mark_circled),
-                title: Text("Selected",
-                    style: TextStyle(
-                        fontSize: size14Text(context)
-                    ))
-            )
-          ],
-        ),
-        // ignore: missing_return
-        tabBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return Home2();
-            case 1:
-              return CupertinoPageScaffold(
-                  child: SafeArea(
-                      child: Material(
-                          color: Color(0xfff2f2f2),
-                          child: CupertinoScrollbar(
-                              child: CustomScrollView(
-                                  slivers: [
-                                    CupertinoSliverNavigationBar(
-                                      padding: EdgeInsetsDirectional.only(
-                                          start: 0,
-                                          end: 0,
-                                          top: 0,
-                                          bottom: 0
-                                      ),
-                                      leading: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: data.size.height * 0.01
-                                        ),
-                                        child: Center(
-                                          child: GestureDetector(
-                                              child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment
-                                                      .center,
-                                                  children: [
-                                                    Center(
-                                                      child: Icon(
-                                                          CupertinoIcons.back,
-                                                          color: Colors.blue),
-                                                    ),
-                                                    Container(
-                                                      alignment: Alignment
-                                                          .center,
-                                                      child: Text("Back",
-                                                          style: TextStyle(
-                                                              fontSize: size18Text(
-                                                                  context),
-                                                              color: Colors.blue
-                                                          )),
-                                                    )
-                                                  ]
-                                              ),
-                                              onTap: () {
-                                                return Navigator.pop(context);
-                                              }
-                                          ),
-                                        ),
-                                      ),
-                                      largeTitle: Text(
-                                          "Anaphylaxis \nand Resuscitation"),
-                                      trailing: (boolCount != 0)
-                                          ? GestureDetector(
-                                          child: SizedBox(
-                                            width: data.size.width * 0.25,
-                                            child: Row(
-                                                mainAxisAlignment: MainAxisAlignment
-                                                    .end,
-                                                children: [
-                                                  Container(
-                                                      width: data.size.width * 0.06,
-                                                      height: data.size.width * 0.06,
-                                                      alignment: Alignment.center,
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.blue,
-                                                          borderRadius: BorderRadius.circular(
-                                                              data.size.width * 0.03
-                                                          )
-                                                      ),
-                                                      child: Text(
-                                                          "$boolCount",
-                                                          style: TextStyle(
-                                                              color: Colors.white
-                                                          )
-                                                      )
-                                                  ),
-                                                  Icon(
-                                                      CupertinoIcons.forward,
+
+    return CupertinoPageScaffold(
+        child: SafeArea(
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: data.size.height*0.1
+                  ),
+                  child: Material(
+                    color: Color(0xfff2f2f2),
+                    child: CupertinoScrollbar(
+                        child: CustomScrollView(
+                            slivers: [
+                              CupertinoSliverNavigationBar(
+                                  padding: EdgeInsetsDirectional.only(
+                                      start: 0,
+                                      end: 0,
+                                      top: 0,
+                                      bottom: 0
+                                  ),
+                                  leading: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: data.size.height * 0.01
+                                    ),
+                                    child: Center(
+                                      child: GestureDetector(
+                                          child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .center,
+                                              children: [
+                                                Center(
+                                                  child: Icon(
+                                                      CupertinoIcons.back,
                                                       color: Colors.blue),
-                                                ]
-                                            ),
+                                                ),
+                                                Container(
+                                                  alignment: Alignment
+                                                      .center,
+                                                  child: Text("Back",
+                                                      style: TextStyle(
+                                                          fontSize: size18Text(
+                                                              context),
+                                                          color: Colors.blue
+                                                      )),
+                                                )
+                                              ]
                                           ),
                                           onTap: () {
-                                            return Navigator.push(
-                                                context,
-                                                CupertinoPageRoute(
-                                                    builder: (context) {
-                                                      return FinalDisplay();
-                                                    }));
+                                            Navigator.pop(context);
                                           }
-                                      )
-                                          : SizedBox(),
+                                      ),
                                     ),
-                                    SliverFixedExtentList(
-                                        itemExtent: data.size.height,
-                                        delegate: SliverChildListDelegate([
-                                          Material(
-                                            color: Color(0xfff2f2f2),
-                                            child: Theme(
-                                              data: ThemeData(
-                                                  backgroundColor: Color(
-                                                      0xfff2f2f2)),
-                                              child: Column(
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding: EdgeInsets
-                                                          .symmetric(
-                                                          vertical: data.size
-                                                              .height * 0.025
+                                  ),
+                                  largeTitle: Text(
+                                      "Drugs"),
+                                  trailing: Material(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        right: 10
+                                      ),
+                                      child: IconButton(
+                                        icon: Icon(CupertinoIcons.delete_simple,
+                                            size: 30),
+                                        onPressed: () {
+                                            clearAll();
+                                        },
+                                      ),
+                                    ),
+                                  )
+                              ),
+                              SliverFixedExtentList(
+                                  itemExtent: data.size.height,
+                                  delegate: SliverChildListDelegate([
+                                    Material(
+                                      color: Color(0xfff2f2f2),
+                                      child: Theme(
+                                        data: ThemeData(
+                                            backgroundColor: Color(
+                                                0xfff2f2f2)),
+                                        child: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: data.size.height * 0.025
+                                                ),
+                                                child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    children: <Widget>[
+                                                      Container(
+                                                        width: data.size.width * 0.15,
+                                                        alignment: Alignment.centerRight,
+                                                        color: Color(0xfff2f2f2),
+                                                        child: FaIcon(
+                                                            FontAwesomeIcons.balanceScaleLeft,
+                                                            size: data.size.width / 12),
                                                       ),
-                                                      child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment.start,
-                                                          children: <Widget>[
-                                                            Container(
-                                                              width: data.size.width * 0.15,
-                                                              alignment: Alignment.centerRight,
-                                                              color: Color(
-                                                                  0xfff2f2f2),
-                                                              child: FaIcon(
-                                                                  FontAwesomeIcons.balanceScaleLeft,
-                                                                  size: data.size.width / 12),
-                                                            ),
-                                                            Container(
-                                                              width: data.size.width * 0.25,
-                                                              alignment: Alignment.center,
-                                                              color: Color(
-                                                                  0xfff2f2f2),
-                                                              child: Text(
-                                                                "$weight kg",
-                                                                textDirection: TextDirection.ltr,
-                                                                style: TextStyle(
-                                                                    fontWeight: FontWeight.bold,
-                                                                    fontSize: size20Text(
-                                                                        context)
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ]
-                                                      ),
-                                                    ),
-                                                    Material(
-                                                      color: Color(0xfff2f2f2),
-                                                      child: Center(child:
-                                                      Column(children: list),
-                                                      ),
-                                                    )
-
-                                                  ]
+                                                      Container(
+                                                        width: data.size.width * 0.25,
+                                                        alignment: Alignment.center,
+                                                        color: Color(
+                                                            0xfff2f2f2),
+                                                        child: Text(
+                                                          "$weight kg",
+                                                          textDirection: TextDirection.ltr,
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: size20Text(
+                                                                  context)
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ]
+                                                ),
                                               ),
-                                            ),
-                                          ),
-                                        ]
-                                        )
+                                              Material(
+                                                color: Color(0xfff2f2f2),
+                                                child: Center(child:
+                                                Column(children: list),
+                                                ),
+                                              )
+
+                                            ]
+                                        ),
+                                      ),
                                     ),
                                   ]
-                              )
-                          )
-                      )
-                  ));
-            case 2:
-              return FinalDisplay();
-          }
-        });
-
+                                  )
+                              ),
+                            ]
+                        )
+                    )
+              ),
+                ),
+                Material(
+                  child: Container(
+                    alignment: Alignment.center,
+                    color: Color(0xfff2f2f2),
+                    height: data.size.height*0.09,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 40,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.home,
+                                    size: genericIconSize(context)*1.5,
+                                    color: Colors.grey,
+                                  ),
+                                  Text("Weights",
+                                      style: TextStyle(
+                                          fontSize: size14Text(context),
+                                          color: Colors.grey
+                                      ))
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            }
+                        ),
+                        GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.book,
+                                    size: genericIconSize(context)*1.5,
+                                    color: navBarIndex == 1 ? Colors.blue : Colors.grey,
+                                  ),
+                                  Text("Interventions",
+                                      style: TextStyle(
+                                          fontSize: size14Text(context),
+                                          color: navBarIndex == 1 ? Colors.blue : Colors.grey
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              if (navBarIndex != 1) {
+                                Navigator.pop(context);
+                              }
+                            }
+                        ),
+                        GestureDetector(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 40,
+                                  vertical: data.size.height*0.01
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    CupertinoIcons.check_mark_circled,
+                                    size: genericIconSize(context)*1.5,
+                                    color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                  ),
+                                  Text("Selected",
+                                      style: TextStyle(
+                                        fontSize: size14Text(context),
+                                        color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              if (navBarIndex != 3) {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) {
+                                          return FinalDisplay();
+                                        })
+                                );
+                              }
+                            }
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ]
+            )
+        )
+    );
   }
 }
 
@@ -264,27 +321,11 @@ void showFinalDropdowns(BuildContext context) {
     antidotesFinal(context)
   ];
 
-  list.add(
-    Container(
-      padding: EdgeInsets.only(right: appBarPadding(context), top: appBarPadding(context)),
-      child: Row(mainAxisAlignment: MainAxisAlignment.end,children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(right: smallButtonPadding(context)),
-          child: FaIcon(FontAwesomeIcons.balanceScaleLeft, size: genericIconSize(context)),
-        ),
-        Text("$weight kg",
-          textDirection: TextDirection.ltr,
-          style: TextStyle(
-              fontSize: size20Text(context),
-          fontWeight: FontWeight.bold),
-        ),
-      ]
-      )
-  ));
+
   list.add(Padding(
     padding: EdgeInsets.symmetric(
       horizontal: 0.1*data.size.width,
-      vertical: 0.02* data.size.height
+      vertical: 0.01* data.size.height
     ),
     child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

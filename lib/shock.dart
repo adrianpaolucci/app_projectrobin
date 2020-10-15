@@ -43,7 +43,7 @@ class ShockState extends State<Shock> {
         for (var j = 0; j < allDrugs[i].length; j++) {
           setState(() {
             items = badger.removeBadge(items, 1);
-            allDrugBooleans[i][j] = false;
+            allDrugBooleans[i][j] = false; intCount = [0,0,0,0,0,0,0,0,0,0,0];
           });
         }
       }

@@ -9,7 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ios_search.dart';
 
 
-
+var navBarIndex = 1;
 
 class Home2 extends StatefulWidget {
   State<StatefulWidget> createState() {
