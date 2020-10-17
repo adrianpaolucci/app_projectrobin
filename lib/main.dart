@@ -2,7 +2,7 @@ import 'package:app_search_bar/blocs/theme.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wakelock/wakelock.dart';
+
 
 
 
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Wakelock.enable();
 
     return MaterialAppWithTheme();
   }
