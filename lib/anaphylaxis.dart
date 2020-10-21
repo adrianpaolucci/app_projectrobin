@@ -139,7 +139,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                    bottom: data.size.height*0.1
+                    bottom: data.size.height*0.09
                   ),
                   child: Material(
                     color: Color(0xfff2f2f2),
