@@ -263,10 +263,8 @@ class CroupState extends State<Croup> {
                             }
                         ) : SizedBox(),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: data.size.height*0.10,
-                          delegate: SliverChildListDelegate([
-                            Material(
+                      SliverToBoxAdapter(
+                            child: Material(
                               color: Color(0xfff2f2f2),
                               child: Theme(
                                 data: ThemeData(
@@ -309,8 +307,6 @@ class CroupState extends State<Croup> {
                                 ),
                               ),
                             ),
-                          ]
-                          )
                       ),
                       SliverPadding(
                         padding: EdgeInsets.symmetric(

@@ -268,10 +268,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                             }
                         ) : SizedBox(),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: data.size.height*0.1,
-                          delegate: SliverChildListDelegate([
-                            Material(
+                      SliverToBoxAdapter(
+                        child:Material(
                               color: Color(0xfff2f2f2),
                               child: Theme(
                                 data: ThemeData(
@@ -313,8 +311,6 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                                 ),
                               ),
                             ),
-                          ]
-                          )
                       ),
                       SliverPadding(
                         padding: EdgeInsets.symmetric(horizontal: 8),

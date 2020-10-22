@@ -202,10 +202,8 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                             }
                         ) : SizedBox(),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: data.size.height*2,
-                          delegate: SliverChildListDelegate([
-                            Material(
+                      SliverToBoxAdapter(
+                           child: Material(
                               color: Color(0xfff2f2f2),
                               child: Theme(
                                 data: ThemeData(
@@ -392,8 +390,6 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                 ),
             ),
         ),
-        ]
-    )
     ),
     ]
     )

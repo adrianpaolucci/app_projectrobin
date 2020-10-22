@@ -184,10 +184,8 @@ class AnalgesiaState extends State<Analgesia> {
                             }
                         ) : SizedBox(),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: data.size.height,
-                          delegate: SliverChildListDelegate([
-                            Material(
+                      SliverToBoxAdapter(
+                            child: Material(
                               color: Color(0xfff2f2f2),
                               child: Theme(
                                 data: ThemeData(
@@ -251,8 +249,6 @@ class AnalgesiaState extends State<Analgesia> {
                                 ),
                               ),
                             ),
-                          ]
-                          )
                       ),
                     ]
                 )

@@ -273,10 +273,8 @@ class ShockState extends State<Shock> {
                             }
                         ) : SizedBox(),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: data.size.height*0.1,
-                          delegate: SliverChildListDelegate([
-                            Material(
+                      SliverToBoxAdapter(
+                          child: Material(
                               color: Color(0xfff2f2f2),
                               child: Theme(
                                 data: ThemeData(
@@ -318,8 +316,6 @@ class ShockState extends State<Shock> {
                                 ),
                               ),
                             ),
-                          ]
-                          )
                       ),
                       SliverPadding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
