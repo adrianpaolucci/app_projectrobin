@@ -137,10 +137,8 @@ class FinalDisplayState extends State<FinalDisplay> {
                                     ),
                                   )
                               ),
-                              SliverFixedExtentList(
-                                  itemExtent: data.size.height,
-                                  delegate: SliverChildListDelegate([
-                                    Material(
+                              SliverToBoxAdapter(
+                                  child: Material(
                                       color: Color(0xfff2f2f2),
                                       child: Theme(
                                         data: ThemeData(
@@ -192,8 +190,7 @@ class FinalDisplayState extends State<FinalDisplay> {
                                         ),
                                       ),
                                     ),
-                                  ]
-                                  )
+
                               ),
                             ]
                         )
