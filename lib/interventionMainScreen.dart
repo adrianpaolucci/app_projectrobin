@@ -204,14 +204,10 @@ class _DosingMainState extends State<InterventionMain> {
                                     children: [
                                       InkWell(
                                           onTap: () {
-                                            /* showSearch(
-
+                                            showSearch(
                                                 context: context,
                                                 delegate: DrugSearch()
-                                            );*/
-                                            return Navigator.push(context,
-                                                SlideLeftRoute(
-                                                    page: SearchTab()));
+                                            );
                                           },
                                           child:
                                           Container(
