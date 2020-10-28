@@ -305,12 +305,10 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                                           initiallyExpanded: true,
                                                           title: Text(
                                                               "Anaphylaxis",
-                                                              textAlign: TextAlign
-                                                                  .center),
+                                                              textAlign: TextAlign.center),
                                                           children: anaphylaxisCells
                                                       ),
                                                     ),
-
                                                     Container(
                                                       height: data.size
                                                           .height * 0.05,

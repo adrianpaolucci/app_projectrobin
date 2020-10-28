@@ -329,9 +329,10 @@ void showFinalDropdowns(BuildContext context) {
         children: [
           InkWell(
               onTap: () {
-                return Navigator.push(context,
-                    SlideLeftRoute(
-                        page: SearchTab()));
+                showSearch(
+                    context: context,
+                    delegate: DrugSearch()
+                );
               },
               child:
               Container(

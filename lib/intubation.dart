@@ -153,8 +153,17 @@ class IntubationState extends State<Intubation> {
     }
 
 
-    return SafeArea(
-        child: Material(
+    return CupertinoPageScaffold(
+        child: SafeArea(
+          child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+            Padding(
+               padding: EdgeInsets.only(
+                bottom: data.size.height*0.09
+                 ),
+
+            child: Material(
             color: Color(0xfff2f2f2),
             child: CupertinoScrollbar(
                 child: CustomScrollView(
@@ -329,7 +338,113 @@ class IntubationState extends State<Intubation> {
                     ]
                 )
             )
+        ),
+    ),
+        Material(
+          color: Color(0xfff2f2f2),
+          child: Container(
+            alignment: Alignment.center,
+            color: Color(0xfff2f2f2),
+            height: data.size.height*0.09,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 40,
+                          vertical: data.size.height*0.01
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            CupertinoIcons.home,
+                            size: genericIconSize(context)*1.5,
+                            color: Colors.grey,
+                          ),
+                          Text("Weights",
+                              style: TextStyle(
+                                  fontSize: size14Text(context),
+                                  color: Colors.grey
+                              ))
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    }
+                ),
+                GestureDetector(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: data.size.height*0.01
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            CupertinoIcons.book,
+                            size: genericIconSize(context)*1.5,
+                            color: navBarIndex != 3 ? Colors.blue : Colors.grey,
+                          ),
+                          Text("Interventions",
+                              style: TextStyle(
+                                  fontSize: size14Text(context),
+                                  color: navBarIndex != 3 ? Colors.blue : Colors.grey
+                              )
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      if (navBarIndex != 1) {
+                        Navigator.pop(context);
+                      }
+                    }
+                ),
+                GestureDetector(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 40,
+                          vertical: data.size.height*0.01
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            CupertinoIcons.check_mark_circled,
+                            size: genericIconSize(context)*1.5,
+                            color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                          ),
+                          Text("Selected",
+                              style: TextStyle(
+                                fontSize: size14Text(context),
+                                color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                              )
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      print(navBarIndex);
+                      if (navBarIndex != 3) {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) {
+                                  return FinalDisplay();
+                                })
+                        );
+                      }
+                    }
+                ),
+              ],
+            ),
+          ),
         )
+        ]
+    )
+    ),
     );
   }
 }
