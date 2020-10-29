@@ -230,6 +230,9 @@ intubationFinal(BuildContext context) {
   var paralyticWidgets = [suxamethoniumDisplay(context),rocuroniumDisplay(context),vecuroniumDisplay(context),atracuriumDisplay(context)];
   List<Widget>intubationList = intubationEquipmentInfo(context);
   intubationList.add(SizedBox(width: data.size.width*0.9, child: adrianDivider()));
+  if (allDrugBooleans[15][0]){
+    displayBools[3] = true;
+  }
   for (var i=0; i < inductionAgents.length; i++) {
     if (inductionBoolean[i] == true) {
       //intubation boolean is true, therefore it is shown on the final screen
