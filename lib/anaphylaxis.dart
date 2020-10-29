@@ -36,27 +36,6 @@ class AnaphylaxisState extends State<Anaphylaxis> {
       }
       boolCount = 0;
     }
-    var clearAllIcon = BottomNavigationBarItem(
-        icon: IconButton(
-            icon: Icon(Icons.cancel),
-            onPressed: () {
-              clearAll();
-            }),
-        title: Text("Clear All"));
-
-    var confirmIcon = BottomNavigationBarItem(
-        icon: IconButton(
-            icon: Icon(Icons.check),
-            onPressed: () {
-              Navigator.push(context, CupertinoPageRoute(builder: (context) {
-                return FinalDisplay();
-              })
-              );
-            }),
-        title: Text("Confirm"));
-
-    items[0] = clearAllIcon;
-    items[2] = confirmIcon;
 
     List<Widget> anaphylaxisCells = [];
 
@@ -160,8 +139,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                   child: Center(
                                     child: GestureDetector(
                                         child: Row(
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Center(
                                                 child: Icon(
@@ -169,12 +147,10 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                                     color: Colors.blue),
                                               ),
                                               Container(
-                                                alignment: Alignment
-                                                    .center,
+                                                alignment: Alignment.center,
                                                 child: Text("Back",
                                                     style: TextStyle(
-                                                        fontSize: size18Text(
-                                                            context),
+                                                        fontSize: size18Text(context),
                                                         color: Colors.blue
                                                     )),
                                               )
@@ -190,31 +166,25 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                 trailing: (boolCount != 0)
                                     ? GestureDetector(
                                     child: SizedBox(
-                                      width: data.size.width * 0.25,
+                                      width: data.size.width*0.25,
                                       child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .end,
+                                          mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             Container(
-                                                width: data.size.width *
-                                                    0.06,
-                                                height: data.size.width *
-                                                    0.06,
-                                                alignment: Alignment
-                                                    .center,
+                                                width: data.size.width * 0.06,
+                                                height: data.size.width * 0.06,
+                                                alignment: Alignment.center,
                                                 decoration: BoxDecoration(
                                                     color: Colors.blue,
                                                     borderRadius: BorderRadius
                                                         .circular(
-                                                        data.size.width *
-                                                            0.03
+                                                        data.size.width*0.03
                                                     )
                                                 ),
                                                 child: Text(
                                                     "$boolCount",
                                                     style: TextStyle(
-                                                        color: Colors
-                                                            .white
+                                                        color: Colors.white
                                                     )
                                                 )
                                             ),
@@ -225,12 +195,11 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                       ),
                                     ),
                                     onTap: () {
-                                      return Navigator.push(
+                                      return Navigator.pushReplacement(
                                           context,
                                           CupertinoPageRoute(
                                               builder: (context) {
-                                                return FinalDisplay();
-                                              }));
+                                                return FinalDisplay();}));
                                     }
                                 )
                                     : SizedBox(),

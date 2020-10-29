@@ -103,6 +103,22 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                   if (boolCount == 0) {
                     clearAll();
                   }
+                  if(allDrugBooleans[intIndex][0] && allDrugBooleans[intIndex][1] && allDrugBooleans[intIndex][2] && allDrugBooleans[intIndex][3] && allDrugBooleans[intIndex][4]) {
+                    setState(() {
+                      hyperkalaemiaBool = true;
+                    });
+                  }
+                  else {
+                    hyperkalaemiaBool = false;
+                  }
+                  if(allDrugBooleans[intIndex][8] && allDrugBooleans[intIndex][9]) {
+                    setState(() {
+                      hypoglycaemiaBool = true;
+                    });
+                  }
+                  else {
+                    hypoglycaemiaBool = false;
+                  }
                 }),
           );
 
