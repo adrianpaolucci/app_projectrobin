@@ -2,7 +2,7 @@ import 'package:app_search_bar/blocs/theme.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter/cupertino.dart';
 
 
 
@@ -27,9 +27,8 @@ class MyApp extends StatelessWidget {
 class MaterialAppWithTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'SF-UI'
+    return CupertinoApp(
+      theme: CupertinoThemeData(
       ),
     debugShowCheckedModeBanner: false,
     title: "Pediatric Dosing",

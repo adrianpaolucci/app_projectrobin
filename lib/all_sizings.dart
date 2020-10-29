@@ -178,9 +178,9 @@ appBarPadding(context) {
   return data.size.width/20;
 }
 
-class SlideRightRoute extends PageRouteBuilder {
+class BackRoute extends PageRouteBuilder {
   final Widget page;
-  SlideRightRoute({this.page})
+  BackRoute({this.page})
       : super(
     pageBuilder: (
         BuildContext context,
@@ -188,7 +188,7 @@ class SlideRightRoute extends PageRouteBuilder {
         Animation<double> secondaryAnimation,
         ) =>
     page,
-    transitionDuration: Duration(milliseconds: 250),
+    transitionDuration: Duration(milliseconds: 300),
     transitionsBuilder: (
         BuildContext context,
         Animation<double> animation,
@@ -205,9 +205,9 @@ class SlideRightRoute extends PageRouteBuilder {
   );
 }
 
-class SlideLeftRoute extends PageRouteBuilder {
+class ForwardRoute extends PageRouteBuilder {
   final Widget page;
-  SlideLeftRoute({this.page})
+  ForwardRoute({this.page})
       : super(
     pageBuilder: (
         BuildContext context,
@@ -215,7 +215,7 @@ class SlideLeftRoute extends PageRouteBuilder {
         Animation<double> secondaryAnimation,
         ) =>
     page,
-    transitionDuration: Duration(milliseconds: 250),
+    transitionDuration: Duration(milliseconds: 300),
     transitionsBuilder: (
         BuildContext context,
         Animation<double> animation,

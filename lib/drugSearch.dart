@@ -33,7 +33,7 @@ class DrugSearch extends SearchDelegate<String> {
             progress: transitionAnimation),
       onPressed: () {
             close(context, null);
-            Navigator.push(context, SlideRightRoute(page: InterventionMain())
+            Navigator.push(context, BackRoute(page: InterventionMain())
             );
       },
     );

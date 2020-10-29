@@ -8,6 +8,7 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ios_search.dart';
 
+var previousPage = Home2();
 
 var navBarIndex = 1;
 
@@ -182,7 +183,7 @@ class Home2State extends State<Home2> {
                           weightIndex = allWeights.indexOf(weight);
                           Navigator.push(
                               context,
-                              SlideLeftRoute(page: InterventionMain())
+                              ForwardRoute(page: InterventionMain())
                           );
                         }
                       )

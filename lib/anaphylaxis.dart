@@ -195,11 +195,10 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                       ),
                                     ),
                                     onTap: () {
-                                      return Navigator.pushReplacement(
+                                      return Navigator.push(
                                           context,
-                                          CupertinoPageRoute(
-                                              builder: (context) {
-                                                return FinalDisplay();}));
+                                          ForwardRoute(
+                                              page: FinalDisplay()));
                                     }
                                 )
                                     : SizedBox(),

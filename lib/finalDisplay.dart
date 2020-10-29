@@ -18,7 +18,7 @@ import 'bleedingData.dart';
 import 'drugSearch.dart';
 import 'antidotesData.dart';
 import 'ios_search.dart';
-
+import 'anaphylaxis.dart';
 
 
 
@@ -115,7 +115,12 @@ class FinalDisplayState extends State<FinalDisplay> {
                                               ]
                                           ),
                                           onTap: () {
-                                            Navigator.pop(context);
+                                            Navigator.push(
+                                              context,
+                                              BackRoute(
+                                                page: Anaphylaxis()
+                                              )
+                                            );
                                           }
                                       ),
                                     ),
