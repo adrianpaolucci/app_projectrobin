@@ -13,6 +13,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final intIndex = 13;
 
+bool hyperkalaemiaBool = false;
+
+bool hypoglycaemiaBool = false;
+
+
+
 class ElectrolyteAbnormalities extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -75,7 +81,6 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
     for (var i = 0; i < allDrugs[intIndex].length; i++) {
 
       Widget iOSswitch(var intIndex) {
-        if ((i == 5) | (i == 6) | (i == 7) | (i ==10)  ){
           return Padding(
             padding: EdgeInsets.only(
                 right: data.size.width * 0.03),
@@ -100,11 +105,6 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                   }
                 }),
           );
-        }
-        else
-        {
-          return SizedBox();
-        }
 
 
 
@@ -267,17 +267,25 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                                                     horizontal: data.size.width * 0.015),
                                                 child: CupertinoSwitch(
                                                     activeColor: Color(0xff39e600),
-                                                    value: allDrugBooleans[intIndex][0],
+                                                    value: hyperkalaemiaBool,
                                                     onChanged: (bool newValue) {
-                                                      if (newValue == true) {
-                                                        boolCount += 5;
-                                                        intCount[finalIndex] += 5;
-                                                      }
-                                                      else {
-                                                        boolCount -= 5;
-                                                        intCount[finalIndex] -= 5;
+
+                                                      for (var i =0;i < 5; i++)
+                                                      {
+                                                        if (allDrugBooleans[intIndex][i] != newValue) {
+
+                                                          if(newValue == true) {
+                                                            boolCount += 1;
+                                                            intCount[finalIndex] += 1;
+                                                          }
+                                                          else {
+                                                            boolCount -= 1;
+                                                            intCount[finalIndex] -= 1;
+                                                          }
+                                                        }
                                                       }
                                                       setState(() {
+                                                        hyperkalaemiaBool = !hyperkalaemiaBool;
                                                         items = badger.setBadge(items, "$boolCount", 1);
                                                         allDrugBooleans[intIndex][0]= newValue;
                                                         allDrugBooleans[intIndex][1]= newValue;
@@ -350,17 +358,24 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                                       left: data.size.width *0.02),
                                   child: CupertinoSwitch(
                                       activeColor: Color(0xff39e600),
-                                      value: allDrugBooleans[intIndex][8],
+                                      value: hypoglycaemiaBool,
                                       onChanged: (bool newValue) {
-                                        if (newValue == true) {
-                                          boolCount += 2;
-                                          intCount[finalIndex] += 2;
-                                        }
-                                        else {
-                                          boolCount -= 2;
-                                          intCount[finalIndex] -= 2;
+                                        for (var i =8;i < 10; i++)
+                                        {
+                                          if (allDrugBooleans[intIndex][i] != newValue) {
+
+                                            if(newValue == true) {
+                                              boolCount += 1;
+                                              intCount[finalIndex] += 1;
+                                            }
+                                            else {
+                                              boolCount -= 1;
+                                              intCount[finalIndex] -= 1;
+                                            }
+                                          }
                                         }
                                         setState(() {
+                                          hypoglycaemiaBool = !hypoglycaemiaBool;
                                           items = badger.setBadge(items, "$boolCount", 1);
                                           allDrugBooleans[intIndex][8]= newValue;
                                           allDrugBooleans[intIndex][9]= newValue;
