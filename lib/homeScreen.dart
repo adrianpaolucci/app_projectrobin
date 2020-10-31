@@ -8,9 +8,9 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ios_search.dart';
 
-var previousPage = Home2();
+var previousPage;
 
-var navBarIndex = 1;
+var navBarIndex = 0;
 
 class Home2 extends StatefulWidget {
   State<StatefulWidget> createState() {
@@ -66,7 +66,7 @@ class Home2State extends State<Home2> {
   final ranges = [
     [2.0,2.5,3.0,3.5],[2.0,2.5,3.0,3.5],
     [4.0,4.5,5.0],[4.0,4.5,5.0],
-    [5.5,6.0,6.5],[5.5,6.0,6.5],
+    [5.5,6.0],[5.5,6.0],
     [7.0,8.0],[7.0,8.0],
     [9.0,10.0],[9.0,10.0],
     [10.0,11.0,12.0],[10.0,11.0,12.0],

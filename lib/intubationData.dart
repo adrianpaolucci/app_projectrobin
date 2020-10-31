@@ -254,7 +254,7 @@ intubationEquipmentInfo(BuildContext context) {
         interventionColour,
         context,
         "Intubation Equipment",
-        finalDisplayGive(context, "Depth:", ettDepthOral[weightIndex][1].toString() + " cm to lip, " + ettDepthNasal[weightIndex][1].toString() + " cm to nose"),
+        finalDisplayDilute(context, "Depth:", ettDepthOral[weightIndex][1].toString() + " cm to lip",  ettDepthNasal[weightIndex][1].toString() + " cm to nose"),
         finalDisplayGive(context, "LMA Size:", lmaSize[weightIndex][1].toString()),
         finalDisplayGive(context, "Laryngoscope:", layngoscope[weightIndex][1].toString()),
         finalDisplayGive(context, "Suction:", suction[weightIndex][1].toString() + " Fr"),

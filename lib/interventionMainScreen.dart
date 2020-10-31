@@ -151,7 +151,9 @@ class _DosingMainState extends State<InterventionMain> {
                                     ]
                                 ),
                                 onTap: () {
-                                  return Navigator.pop(context);
+                                  return Navigator.push(context, BackRoute(
+                                    page: Home2()
+                                  ));
                                 }
                             ),
                             largeTitle: Text("PediDOSed"),
@@ -204,6 +206,7 @@ class _DosingMainState extends State<InterventionMain> {
                                     children: [
                                       InkWell(
                                           onTap: () {
+                                            previousPage = InterventionMain();
                                             showSearch(
                                                 context: context,
                                                 delegate: DrugSearch()
@@ -393,7 +396,9 @@ class _DosingMainState extends State<InterventionMain> {
                               ),
                             ),
                             onTap: () {
-                              Navigator.pop(context);
+                              Navigator.push(context, BackRoute(
+                                page: Home2()
+                              ));
                             }
                           ),
                           GestureDetector(
@@ -435,19 +440,19 @@ class _DosingMainState extends State<InterventionMain> {
                                   Icon(
                                     CupertinoIcons.check_mark_circled,
                                     size: genericIconSize(context)*1.5,
-                                    color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                    color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                                   ),
                                   Text("Selected",
                                       style: TextStyle(
                                           fontSize: size14Text(context),
-                                          color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                          color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                                       )
                                   )
                                 ],
                               ),
                             ),
                               onTap: () {
-                                if (navBarIndex != 3) {
+                                if (navBarIndex != 2) {
                                   Navigator.push(
                                       context,
                                       CupertinoPageRoute(

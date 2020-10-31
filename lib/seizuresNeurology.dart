@@ -35,6 +35,8 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
   Widget build(BuildContext context) {
 
     final data = MediaQuery.of(context);
+
+    var navBarIndex = 1;
     
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
@@ -231,7 +233,9 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                                     ]
                                 ),
                                 onTap: () {
-                                  return Navigator.pop(context);
+                                  return Navigator.push(context, BackRoute(
+                                    page: InterventionMain()
+                                  ));
                                 }
                             ),
                           ),
@@ -267,12 +271,12 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                               ),
                             ),
                             onTap: () {
+                              previousPage = SeizuresNeurology();
                               return Navigator.push(
                                   context,
-                                  CupertinoPageRoute(
-                                      builder: (context) {
-                                        return FinalDisplay();
-                                      }));
+                                  ForwardRoute(
+                                    page: FinalDisplay()
+                                  ));
                             }
                         ) : SizedBox(),
                       ),
@@ -380,7 +384,9 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.push(context, BackRoute(
+                        page: Home2()
+                      ));
                     }
                 ),
                 GestureDetector(
@@ -394,12 +400,12 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                           Icon(
                             CupertinoIcons.book,
                             size: genericIconSize(context)*1.5,
-                            color: navBarIndex != 3 ? Colors.blue : Colors.grey,
+                            color: navBarIndex != 2 ? Colors.blue : Colors.grey,
                           ),
                           Text("Interventions",
                               style: TextStyle(
                                   fontSize: size14Text(context),
-                                  color: navBarIndex != 3 ? Colors.blue : Colors.grey
+                                  color: navBarIndex != 2 ? Colors.blue : Colors.grey
                               )
                           )
                         ],
@@ -407,7 +413,9 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                     ),
                     onTap: () {
                       if (navBarIndex != 1) {
-                        Navigator.pop(context);
+                        Navigator.push(context, BackRoute(
+                            page: InterventionMain()
+                        ));
                       }
                     }
                 ),
@@ -422,26 +430,25 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
                           Icon(
                             CupertinoIcons.check_mark_circled,
                             size: genericIconSize(context)*1.5,
-                            color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                            color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                           ),
                           Text("Selected",
                               style: TextStyle(
                                 fontSize: size14Text(context),
-                                color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                               )
                           )
                         ],
                       ),
                     ),
                     onTap: () {
-                      print(navBarIndex);
-                      if (navBarIndex != 3) {
+                      previousPage = SeizuresNeurology();
+                       {
                         Navigator.push(
                             context,
-                            CupertinoPageRoute(
-                                builder: (context) {
-                                  return FinalDisplay();
-                                })
+                            ForwardRoute(
+                              page: FinalDisplay()
+                            )
                         );
                       }
                     }

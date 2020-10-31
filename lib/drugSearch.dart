@@ -7,6 +7,8 @@ import 'interventionMainScreen.dart';
 import 'all_sizings.dart';
 import 'homeScreen.dart';
 
+final lookup = [4,5,5,3,3,9,0,0,1,2,6,7,8,9,10,3];
+
 
 
 class DrugSearch extends SearchDelegate<String> {
@@ -78,7 +80,7 @@ class DrugSearch extends SearchDelegate<String> {
                   croupErrorAlert(context, j);
                 }
                 else if ((weight < 10) && (i == 3) && (j == 1)) {
-                  errorAlert(context, "Porpofol","less",10);
+                  errorAlert(context, "Propofol","less",10);
                 }
                 else if ((weight > 10) && (i == 0) && (j == 9)) {
                   errorAlert(context, "Pyridoxine","more",10);
@@ -86,12 +88,15 @@ class DrugSearch extends SearchDelegate<String> {
                 else {
                   suggestionArray.add(suggestionList[index]);
 
-                  setState(() {
-                    boolCount += 1;
-                    allDrugBooleans[i][j] = true;
-                    items = badger.setBadge(items, "$boolCount", 1);
-                  });
-
+                  if (!allDrugBooleans[i][j]) {
+                    setState(() {
+                      boolCount += 1;
+                      intCount[lookup[i]] += 1;
+                      allDrugBooleans[i][j] = true;
+                      items = badger.setBadge(items, "$boolCount", 1);
+                    });
+                  }
+                  
                   Navigator.push(
                       context, CupertinoPageRoute(builder: (context) {
                     return FinalDisplay();
@@ -174,12 +179,14 @@ class DrugSearch extends SearchDelegate<String> {
                 else {
                   suggestionArray.add(suggestionList[index]);
 
-                  setState(() {
-                    boolCount += 1;
-                    allDrugBooleans[i][j] = true;
-                    items = badger.setBadge(items, "$boolCount", 1);
-                  });
-
+                  if (!allDrugBooleans[i][j]) {
+                    setState(() {
+                      boolCount += 1;
+                      intCount[lookup[i]] += 1;
+                      allDrugBooleans[i][j] = true;
+                      items = badger.setBadge(items, "$boolCount", 1);
+                    });
+                  }
                   Navigator.push(
                       context, CupertinoPageRoute(builder: (context) {
                     return FinalDisplay();

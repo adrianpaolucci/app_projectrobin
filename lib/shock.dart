@@ -38,6 +38,8 @@ class ShockState extends State<Shock> {
 
     final data = MediaQuery.of(context);
 
+    var navBarIndex = 1;
+
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
         for (var j = 0; j < allDrugs[i].length; j++) {
@@ -237,7 +239,9 @@ class ShockState extends State<Shock> {
                                     ]
                                 ),
                                 onTap: () {
-                                  return Navigator.pop(context);
+                                  return Navigator.push(context, BackRoute(
+                                    page: InterventionMain()
+                                  ));
                                 }
                             ),
                           ),
@@ -273,12 +277,12 @@ class ShockState extends State<Shock> {
                               ),
                             ),
                             onTap: () {
+                              previousPage = Shock();
                               return Navigator.push(
                                   context,
-                                  CupertinoPageRoute(
-                                      builder: (context) {
-                                        return FinalDisplay();
-                                      }));
+                                  ForwardRoute(
+                                    page: FinalDisplay()
+                                  ));
                             }
                         ) : SizedBox(),
                       ),
@@ -379,7 +383,9 @@ class ShockState extends State<Shock> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.push(context, BackRoute(
+                        page: Home2()
+                      ));
                     }
                 ),
                 GestureDetector(
@@ -393,12 +399,12 @@ class ShockState extends State<Shock> {
                           Icon(
                             CupertinoIcons.book,
                             size: genericIconSize(context)*1.5,
-                            color: navBarIndex != 3 ? Colors.blue : Colors.grey,
+                            color: navBarIndex != 2 ? Colors.blue : Colors.grey,
                           ),
                           Text("Interventions",
                               style: TextStyle(
                                   fontSize: size14Text(context),
-                                  color: navBarIndex != 3 ? Colors.blue : Colors.grey
+                                  color: navBarIndex != 2 ? Colors.blue : Colors.grey
                               )
                           )
                         ],
@@ -406,7 +412,9 @@ class ShockState extends State<Shock> {
                     ),
                     onTap: () {
                       if (navBarIndex != 1) {
-                        Navigator.pop(context);
+                        Navigator.push(context, BackRoute(
+                            page: InterventionMain()
+                        ));
                       }
                     }
                 ),
@@ -421,26 +429,25 @@ class ShockState extends State<Shock> {
                           Icon(
                             CupertinoIcons.check_mark_circled,
                             size: genericIconSize(context)*1.5,
-                            color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                            color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                           ),
                           Text("Selected",
                               style: TextStyle(
                                 fontSize: size14Text(context),
-                                color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                               )
                           )
                         ],
                       ),
                     ),
                     onTap: () {
-                      print(navBarIndex);
-                      if (navBarIndex != 3) {
+                      previousPage = Shock();
+                      {
                         Navigator.push(
                             context,
-                            CupertinoPageRoute(
-                                builder: (context) {
-                                  return FinalDisplay();
-                                })
+                            ForwardRoute(
+                              page: FinalDisplay()
+                            )
                         );
                       }
                     }

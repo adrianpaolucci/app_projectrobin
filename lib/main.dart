@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
 class MaterialAppWithTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      theme: CupertinoThemeData(
+    return MaterialApp(
+      theme: ThemeData(
       ),
     debugShowCheckedModeBanner: false,
     title: "Pediatric Dosing",

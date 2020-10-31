@@ -22,6 +22,8 @@ class InfectionState extends State<Infection> {
 
     final data = MediaQuery.of(context);
 
+    var navBarIndex = 1;
+
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
         for (var j = 0; j < allDrugs[i].length; j++) {
@@ -143,7 +145,9 @@ class InfectionState extends State<Infection> {
                                     ]
                                 ),
                                 onTap: () {
-                                  return Navigator.pop(context);
+                                  return Navigator.push(context, BackRoute(
+                                    page: InterventionMain()
+                                  ));
                                 }
                             ),
                           ),
@@ -179,12 +183,12 @@ class InfectionState extends State<Infection> {
                               ),
                             ),
                             onTap: () {
+                              previousPage = Infection();
                               return Navigator.push(
                                   context,
-                                  CupertinoPageRoute(
-                                      builder: (context) {
-                                        return FinalDisplay();
-                                      }));
+                                  ForwardRoute(
+                                    page: FinalDisplay()
+                                  ));
                             }
                         ) : SizedBox(),
                       ),
@@ -290,7 +294,9 @@ class InfectionState extends State<Infection> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.push(context, BackRoute(
+                        page: Home2()
+                      ));
                     }
                 ),
                 GestureDetector(
@@ -304,12 +310,12 @@ class InfectionState extends State<Infection> {
                           Icon(
                             CupertinoIcons.book,
                             size: genericIconSize(context)*1.5,
-                            color: navBarIndex != 3 ? Colors.blue : Colors.grey,
+                            color: navBarIndex != 2 ? Colors.blue : Colors.grey,
                           ),
                           Text("Interventions",
                               style: TextStyle(
                                   fontSize: size14Text(context),
-                                  color: navBarIndex != 3 ? Colors.blue : Colors.grey
+                                  color: navBarIndex != 2 ? Colors.blue : Colors.grey
                               )
                           )
                         ],
@@ -317,7 +323,9 @@ class InfectionState extends State<Infection> {
                     ),
                     onTap: () {
                       if (navBarIndex != 1) {
-                        Navigator.pop(context);
+                        Navigator.push(context, BackRoute(
+                            page: InterventionMain()
+                        ));
                       }
                     }
                 ),
@@ -332,26 +340,25 @@ class InfectionState extends State<Infection> {
                           Icon(
                             CupertinoIcons.check_mark_circled,
                             size: genericIconSize(context)*1.5,
-                            color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                            color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                           ),
                           Text("Selected",
                               style: TextStyle(
                                 fontSize: size14Text(context),
-                                color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                               )
                           )
                         ],
                       ),
                     ),
                     onTap: () {
-                      print(navBarIndex);
-                      if (navBarIndex != 3) {
+                      previousPage = Infection();
+                      {
                         Navigator.push(
                             context,
-                            CupertinoPageRoute(
-                                builder: (context) {
-                                  return FinalDisplay();
-                                })
+                            ForwardRoute(
+                              page: FinalDisplay()
+                            )
                         );
                       }
                     }

@@ -22,6 +22,7 @@ import 'anaphylaxis.dart';
 
 
 
+
 class FinalDisplay extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -50,7 +51,7 @@ class FinalDisplayState extends State<FinalDisplay> {
 
     final data = MediaQuery.of(context);
 
-    navBarIndex = 3;
+    navBarIndex = 2;
 
     clearAll() {
       for (var i = 0; i < allDrugs.length; i++) {
@@ -118,7 +119,7 @@ class FinalDisplayState extends State<FinalDisplay> {
                                             Navigator.push(
                                               context,
                                               BackRoute(
-                                                page: Anaphylaxis()
+                                                page: previousPage
                                               )
                                             );
                                           }
@@ -233,7 +234,9 @@ class FinalDisplayState extends State<FinalDisplay> {
                               ),
                             ),
                             onTap: () {
-                              Navigator.pop(context);
+                              Navigator.push(context, BackRoute(
+                                page: Home2()
+                              ));
                             }
                         ),
                         GestureDetector(
@@ -260,7 +263,9 @@ class FinalDisplayState extends State<FinalDisplay> {
                             ),
                             onTap: () {
                               if (navBarIndex != 1) {
-                                Navigator.pop(context);
+                                Navigator.push(context, BackRoute(
+                                  page: previousPage
+                                ));
                               }
                             }
                         ),
@@ -275,19 +280,19 @@ class FinalDisplayState extends State<FinalDisplay> {
                                   Icon(
                                     CupertinoIcons.check_mark_circled,
                                     size: genericIconSize(context)*1.5,
-                                    color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                    color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                                   ),
                                   Text("Selected",
                                       style: TextStyle(
                                         fontSize: size14Text(context),
-                                        color: navBarIndex == 3 ? Colors.blue : Colors.grey,
+                                        color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                                       )
                                   )
                                 ],
                               ),
                             ),
                             onTap: () {
-                              if (navBarIndex != 3) {
+                              if (navBarIndex != 2) {
                                 Navigator.push(
                                     context,
                                     CupertinoPageRoute(
@@ -334,6 +339,7 @@ void showFinalDropdowns(BuildContext context) {
         children: [
           InkWell(
               onTap: () {
+                previousPage = InterventionMain();
                 showSearch(
                     context: context,
                     delegate: DrugSearch()
@@ -504,8 +510,10 @@ intubationFinal(BuildContext context) {
 
   List<Widget>intubationList = intubationEquipmentInfo(context);
 
-  if (allDrugBooleans[15][0]==true){
+  if (allDrugBooleans[15][0]==true ){
+
     displayBools[3] = true ;
+    intubationList.add(SizedBox());
   }
 
 
