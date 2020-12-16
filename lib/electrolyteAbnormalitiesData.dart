@@ -116,11 +116,11 @@ hypomagDisplay(BuildContext context) {
 
   var popup = finalDisplayFull(interventionColour,
       context,
-      "Symptomatic Hypocalcaemia",
+      "Hypomagnasaemia",
       finalDisplayDilute(context, "Dilute:", "to at least ${currentData[3]} mL", ""),
       finalDisplayGive(context, "Give:", "${currentData[1]} mg"),
       finalDisplaySecondary(context, "", "", "${currentData[2]} mL of 50% MgS04\nover 15 - 30 minutes"),
-      finalDisplayFormula(context, "50 mg/kg"));
+      finalDisplayFormula(context, "100 mg/kg"));
 
   return popup;
 }
@@ -134,7 +134,7 @@ hypomglyGlucoseDisplay(BuildContext context) {
       finalDisplayBold(context, "Give:", "","${currentData[1]} mL ", "of glucose 10%"),
       finalDisplayEmpty(),
       finalDisplayBold(context, "or","", "${currentData[2]} mL ", "of glucose 25%"),
-      finalDisplayFormula(context, "5 mL/kg of glucose 10%\n2 mL/kg of glucose 25%"));
+      finalDisplayFormula(context, "2 mL/kg of glucose 10%\n2 mL/kg of glucose 25%"));
   return popup;
 }
 
@@ -145,7 +145,7 @@ hypomglyGlucagonDisplay(BuildContext context) {
       context,
       "Hypoglycaemia - glucagon",
       finalDisplayBold(context, "Give:", "","${currentData[3]} mL", ""),
-      finalDisplaySecondary(context, "or ", " ${currentData[4]} mg", ""),
+      finalDisplaySecondary(context, "or ", " ${currentData[4]} (mg)", ""),
       finalDisplayEmpty(),
       finalDisplayFormula(context, "0.5 mg when weight < 25 kg\notherwise use 1 mg"));
   return popup;

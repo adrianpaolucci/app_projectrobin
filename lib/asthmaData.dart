@@ -31,7 +31,7 @@ inhaledSalbutamolDisplay(BuildContext context) {
       finalDisplayDilute(context, "Give", "${currentData[1]} puffs of MDI with spacer", "repeated every 20 - 30 minutes"),
       finalDisplayGive(context, "or", "${currentData[2]} mg"),
       finalDisplaySecondary(context, "", "", "nebulised Salbutamol"),
-      finalDisplayFormula(context, "Puffs varying with weight"));
+      finalDisplayFormula(context, "6 puffs (2.5 mg neb) <6 years\n12 puffs (5mg neb) 6+ years"));
 
   return popup;
 }
@@ -45,7 +45,7 @@ inhaledIpratropiumDisplay(BuildContext context) {
       finalDisplayDilute(context, "Give", "${currentData[1]} puffs of MDI with spacer", "x 3 in first hour, then 4 - 6 hourly"),
       finalDisplayGive(context, "or", "${currentData[2]} \u03bcg"),
       finalDisplaySecondary(context, "", "", "nebulised Salbutamol"),
-      finalDisplayFormula(context, "Puffs varying with weight"));
+      finalDisplayFormula(context, "4 puffs (250 \u03bcg neb) ipratropium for <6 years\n8 puffs (500 \u03bcg neb) 6+ years"));
 
   return popup;
 }
@@ -73,7 +73,7 @@ ivAminophyllineDisplay(BuildContext context) {
       finalDisplayEmpty(),
       finalDisplayDilute(context, "Give:", "${currentData[1]} mg", "or ${currentData[2]} mL"),
       finalDisplayEmpty(),
-      finalDisplayFormula(context, "5 mg/kg"));
+      finalDisplayFormula(context, "10 mg/kg"));
 
   return popup;
 }

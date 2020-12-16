@@ -58,7 +58,7 @@ sAndNDiazepamDisplay(BuildContext context) {
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
       finalDisplaySecondary(context, "(max 10 mg)","",""),
-      finalDisplayFormula(context, "0.2 mg/kg"));
+      finalDisplayFormula(context, "0.25 mg/kg"));
 
   return popup;
 }

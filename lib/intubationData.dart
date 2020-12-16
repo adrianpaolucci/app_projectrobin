@@ -84,7 +84,7 @@ thiopentoneDisplay(BuildContext context) {
       finalDisplayDilute(context, "Reconstitute: ", "500 mg in 20 mL water", "(for injection)"),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mg"),
       finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", " mL of undiluted solution)"),
-      finalDisplayFormula(context, "2 - 4 mg/kg"));
+      finalDisplayFormula(context, "2.5 - 5 mg/kg"));
 
   return popup;
 }
@@ -98,7 +98,7 @@ fentanylBolusDisplay(BuildContext context) {
       finalDisplayDilute(context, "Dilute: ", "100 \u03bcg in 10 mL", " "),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} \u03bcg"),
       finalDisplaySecondary(context, "(", "${currentData[3]} - ${currentData[4]} ", " mL of diluted solution)"),
-      finalDisplayFormula(context, "2 - 4 \u03bcg/kg IV"));
+      finalDisplayFormula(context, "2 \u03bcg/kg IV"));
 
   return popup;
 }
@@ -142,7 +142,7 @@ rocuroniumDisplay(BuildContext context) {
       finalDisplayEmpty(),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mg"),
       finalDisplaySecondary(context, "(", "${currentData[2]}", " mL of undiluted solution)"),
-      finalDisplayFormula(context, "1 mg/kg"));
+      finalDisplayFormula(context, "1.2 mg/kg"));
 
   return popup;
 }
