@@ -452,6 +452,7 @@ class _DosingMainState extends State<InterventionMain> {
                               ),
                             ),
                               onTap: () {
+                                previousPage = InterventionMain();
                                 if (navBarIndex != 2) {
                                   Navigator.push(
                                       context,
