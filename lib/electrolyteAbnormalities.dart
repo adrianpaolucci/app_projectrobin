@@ -277,7 +277,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                                             data: ThemeData(accentColor: specificColor),
                                             child: ExpansionTile(
                                                 backgroundColor: Color(0xffffffff),
-                                                initiallyExpanded: true,
+                                                initiallyExpanded: false,
                                                 title: Row(
                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                   children: <Widget>[
@@ -332,7 +332,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                             Theme(
                               data: ThemeData(accentColor: specificColor),
                               child: ExpansionTile(backgroundColor: Color(0xffffffff),
-                                  initiallyExpanded: true,
+                                  initiallyExpanded: false,
                                   title: Text("Hyponatraemia",textAlign: TextAlign.center),
                                   children: [electrolyteCells[5]]
                               ),
@@ -344,7 +344,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                             Theme(
                               data: ThemeData(accentColor: specificColor),
                               child: ExpansionTile(backgroundColor: Color(0xffffffff),
-                                  initiallyExpanded: true,
+                                  initiallyExpanded: false,
                                   title: Text("Sympotmatic hypocalcaemia",textAlign: TextAlign.center),
                                   children: [electrolyteCells[6]]
                               ),
@@ -356,7 +356,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                             Theme(
                               data: ThemeData(accentColor: specificColor),
                               child: ExpansionTile(backgroundColor: Color(0xffffffff),
-                                  initiallyExpanded: true,
+                                  initiallyExpanded: false,
                                   title: Text("Hypomagnasaemia",textAlign: TextAlign.center),
                                   children: [electrolyteCells[7]]
                               ),
@@ -368,7 +368,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                             Theme(
                               data: ThemeData(accentColor: specificColor),
                               child: ExpansionTile(backgroundColor: Color(0xffffffff),
-                                  initiallyExpanded: true,
+                                  initiallyExpanded: false,
                                   title: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
@@ -417,7 +417,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
                             Theme(
                               data: ThemeData(accentColor: specificColor),
                               child: ExpansionTile(backgroundColor: Color(0xffffffff),
-                                  initiallyExpanded: true,
+                                  initiallyExpanded: false,
                                   title: Text("Hypokalaemia",textAlign: TextAlign.center),
                                   children: [electrolyteCells[10]]
                               ),

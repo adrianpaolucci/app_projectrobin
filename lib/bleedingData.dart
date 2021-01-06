@@ -63,7 +63,7 @@ cryoprecipitateDisplay(BuildContext context) {
       finalDisplayCentre(context, "If fibrinogen < 2 g/L", "", ""),
       finalDisplayGive(context, "Give: ", "${currentData[1]} mL"),
       finalDisplayEmpty(),
-      finalDisplayFormula(context, "5 mL/kg"));
+      finalDisplayFormula(context, "5-10 mL/kg"));
 
   return popup;
 }
