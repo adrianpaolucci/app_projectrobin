@@ -80,21 +80,26 @@ class AsthmaState extends State<Asthma> {
               onChanged: (bool newValue) {
 
 
-                if (newValue == true) {
-                  boolCount += 1;
-                  intCount[finalIndex] += 1;
+                if (weight < 10) {
+                  errorAlert(context, allDrugs[intIndex][i], "less", "10");
                 }
                 else {
-                  boolCount -= 1;
-                  intCount[finalIndex] -= 1;
-                }
+                  if (newValue == true) {
+                    boolCount += 1;
+                    intCount[finalIndex] += 1;
+                  }
+                  else {
+                    boolCount -= 1;
+                    intCount[finalIndex] -= 1;
+                  }
 
-                setState(() {
-                  items = badger.setBadge(items, "$boolCount", 1);
-                  allDrugBooleans[intIndex][i] = newValue;
-                });
-                if (boolCount == 0) {
-                  clearAll();
+                  setState(() {
+                    items = badger.setBadge(items, "$boolCount", 1);
+                    allDrugBooleans[intIndex][i] = newValue;
+                  });
+                  if (boolCount == 0) {
+                    clearAll();
+                  }
                 }
               }),
         );
