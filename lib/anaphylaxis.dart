@@ -199,6 +199,7 @@ class AnaphylaxisState extends State<Anaphylaxis> {
                                       ),
                                     ),
                                     onTap: () {
+                                      previousPage = Anaphylaxis();
                                       return Navigator.push(
                                           context,
                                           ForwardRoute(
