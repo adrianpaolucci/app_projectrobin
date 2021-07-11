@@ -340,7 +340,7 @@ class _DosingMainState extends State<InterventionMain> {
                                                               style:
                                                               TextStyle(
                                                                   color: Colors.white,
-                                                                  fontSize: 15,
+                                                                  fontSize: 14,
                                                                 fontWeight: FontWeight.bold
                                                               )
                                                           )
