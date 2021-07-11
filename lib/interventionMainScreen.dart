@@ -312,7 +312,7 @@ class _DosingMainState extends State<InterventionMain> {
                                               vertical: paddingVerticalBetweenButtons(
                                                   context)),
                                           child: Material(
-                                            color: Colors.white,
+                                            color: intColors[index].withOpacity(0.9),
                                             elevation: buttonShadowElev,
                                             shadowColor: shadowColour,
                                             borderRadius: BorderRadius.circular(
@@ -339,9 +339,10 @@ class _DosingMainState extends State<InterventionMain> {
                                                               textAlign: TextAlign.center,
                                                               style:
                                                               TextStyle(
-                                                                  color: intColors[index],
-                                                                  fontSize: size16Text(
-                                                                      context))
+                                                                  color: Colors.white,
+                                                                  fontSize: 15,
+                                                                fontWeight: FontWeight.bold
+                                                              )
                                                           )
                                                       ),
                                                     ]
