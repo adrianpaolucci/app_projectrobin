@@ -228,6 +228,14 @@ class Home2State extends State<Home2> {
             padding: EdgeInsets.only(left: data.size.width/5),
             child: FaIcon(FontAwesomeIcons.calendarDay, color: Colors.black, size: genericIconSize(context)),
           ),
+
+          Padding(
+            padding: EdgeInsets.only(left: 5, right: 5),
+            child: Image.asset('lib/icons/m_health.png'),
+          ),
+
+
+
           Padding(
             padding: EdgeInsets.only(right: data.size.width/5),
             child: FaIcon(FontAwesomeIcons.balanceScale, color: Colors.black, size: genericIconSize(context)),

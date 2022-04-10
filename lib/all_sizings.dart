@@ -26,7 +26,7 @@ Color getColor(i) {
 
 genericIconSize(context) {
   final data = MediaQuery.of(context);
-  return data.size.width/18;
+  return 20.0;
 }
 
 

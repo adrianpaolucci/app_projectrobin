@@ -156,7 +156,9 @@ class _DosingMainState extends State<InterventionMain> {
                                   ));
                                 }
                             ),
-                            largeTitle: Text("PediDOSed"),
+
+                            largeTitle: Text("Interventions"),
+
                             trailing: (boolCount != 0) ? GestureDetector(
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -278,12 +280,17 @@ class _DosingMainState extends State<InterventionMain> {
                                     left: data.size.width * 0.05,
                                   ),
                                   child: Row(children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(right: data.size.width/6),
+                                      child: Image.asset('lib/icons/m_banner.png'),),
+
                                     FaIcon(
                                         FontAwesomeIcons.balanceScaleLeft,
-                                        size: data.size.width / 12),
+                                        size: data.size.width / 12,),
+
                                     Padding(
                                         padding: EdgeInsets.only(
-                                            left: data.size.width / 25),
+                                            left: data.size.width / 15),
                                         child: Text(
                                           "$weight kg",
                                           textDirection: TextDirection.ltr,
@@ -292,7 +299,8 @@ class _DosingMainState extends State<InterventionMain> {
                                               fontSize: size20Text(context)
                                           ),
                                         )
-                                    )
+                                    ),
+
                                   ]
                                   )
                               ),
@@ -370,7 +378,7 @@ class _DosingMainState extends State<InterventionMain> {
                     child: Container(
                       alignment: Alignment.center,
                       color: Color(0xfff2f2f2),
-                      height: data.size.height*0.09,
+                      height: 70.0,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -385,7 +393,7 @@ class _DosingMainState extends State<InterventionMain> {
                                 children: [
                                   Icon(
                                       CupertinoIcons.home,
-                                      size: genericIconSize(context)*1.5,
+                                      size: 25.0,
                                       color: Colors.grey,
                                   ),
                                   Text("Weights",
@@ -412,7 +420,7 @@ class _DosingMainState extends State<InterventionMain> {
                                 children: [
                                   Icon(
                                     CupertinoIcons.book,
-                                    size: genericIconSize(context)*1.5,
+                                    size: 25.0,
                                     color: navBarIndex == 1 ? Colors.blue : Colors.grey,
                                   ),
                                   Text("Interventions",
@@ -440,7 +448,7 @@ class _DosingMainState extends State<InterventionMain> {
                                 children: [
                                   Icon(
                                     CupertinoIcons.check_mark_circled,
-                                    size: genericIconSize(context)*1.5,
+                                    size: 25.0,
                                     color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                                   ),
                                   Text("Selected",

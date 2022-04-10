@@ -275,7 +275,7 @@ class BleedingState extends State<Bleeding> {
                     child: Container(
                       alignment: Alignment.center,
                       color: Color(0xfff2f2f2),
-                      height: data.size.height*0.09,
+                      height: 70.0,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -290,7 +290,7 @@ class BleedingState extends State<Bleeding> {
                                   children: [
                                     Icon(
                                       CupertinoIcons.home,
-                                      size: genericIconSize(context)*1.5,
+                                      size: 25.0,
                                       color: Colors.grey,
                                     ),
                                     Text("Weights",
@@ -317,7 +317,7 @@ class BleedingState extends State<Bleeding> {
                                   children: [
                                     Icon(
                                       CupertinoIcons.book,
-                                      size: genericIconSize(context)*1.5,
+                                      size: 25.0,
                                       color: navBarIndex != 2 ? Colors.blue : Colors.grey,
                                     ),
                                     Text("Interventions",
@@ -347,7 +347,7 @@ class BleedingState extends State<Bleeding> {
                                   children: [
                                     Icon(
                                       CupertinoIcons.check_mark_circled,
-                                      size: genericIconSize(context)*1.5,
+                                      size: 25.0,
                                       color: navBarIndex == 2 ? Colors.blue : Colors.grey,
                                     ),
                                     Text("Selected",

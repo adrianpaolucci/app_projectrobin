@@ -45,7 +45,7 @@ inhaledIpratropiumDisplay(BuildContext context) {
       finalDisplayDilute(context, "Give", "${currentData[1]} puffs of MDI with spacer", "x 3 in first hour, then 4 - 6 hourly"),
       finalDisplayGive(context, "or", "${currentData[2]} \u03bcg"),
       finalDisplaySecondary(context, "", "", "nebulised Salbutamol"),
-      finalDisplayFormula(context, "4 puffs (250 \u03bcg neb) ipratropium for <6 years\n8 puffs (500 \u03bcg neb) 6+ years"));
+      finalDisplayFormula(context, "4 puffs (250 \u03bcg neb)\nipratropium for <6 years\n8 puffs (500 \u03bcg neb) 6+ years"));
 
   return popup;
 }
