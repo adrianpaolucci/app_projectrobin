@@ -60,11 +60,7 @@ class ShockState extends State<Shock> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All",
-        style: TextStyle(
-          fontSize: size14Text(context)
-        )
-        )
+        label: "Clear All"
     );
     
 
@@ -77,10 +73,7 @@ class ShockState extends State<Shock> {
               })
               );
             }),
-        title: Text("Confirm",
-            style: TextStyle(
-                fontSize: size14Text(context))
-    )
+        label: "Confirm"
     );
 
     items[0] = clearAllIcon;

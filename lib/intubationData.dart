@@ -194,60 +194,7 @@ fentanylInfusionDisplay(BuildContext context) {
 intubationEquipmentInfo(BuildContext context) {
   final data = MediaQuery.of(context);
 
-  /*firstTextSpan(firstString, secondString) {
-    var textBox = Text.rich(
-        TextSpan(
-            text: "",
-            children: <TextSpan>[
-              TextSpan(text: firstString,style: TextStyle(fontSize: size16Text(context), decoration: TextDecoration.underline)),
-              TextSpan(text: secondString, style: TextStyle(fontSize: size16Text(context)))
-            ]
-        )
-    );
-    return textBox;
-  }
 
-  etTubeDisplayBox(tubeType,tubeSize) {
-    var box = Container(alignment: Alignment.centerLeft, decoration: BoxDecoration(borderRadius: BorderRadius.circular(mediumButtonRadius(context)), color: Color(0xffcccccc)),width: 0.95*data.size.width, height: 25,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget> [
-          Padding(
-            padding: const EdgeInsets.only(left: 5.0),
-            child: Text(tubeType, style: TextStyle(fontSize: 15)),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 5.0),
-            child: Text(tubeSize, style: TextStyle(fontWeight: FontWeight.bold)),
-          )
-        ]));
-    return box;
-  }
-
-
-  var box = [
-    Text("General Information", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-    SizedBox(height: 10),
-    firstTextSpan("Depth",
-        ":  " + ettDepthOral[weightIndex][1].toString() + " cm to lip, " +
-            ettDepthNasal[weightIndex][1].toString() + " cm to nose"),
-    SizedBox(height: 10),
-    firstTextSpan("LMA Size", ":  " + lmaSize[weightIndex][1].toString()),
-    SizedBox(height: 10),
-    firstTextSpan("Laryngoscope", ":  " + layngoscope[weightIndex][1].toString()),
-    SizedBox(height: 10),
-    firstTextSpan("Suction", ":  " + suction[weightIndex][1].toString() + " Fr"),
-    SizedBox(height: 20),
-    Text("ET Tubes", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-    etTubeDisplayBox("Uncuffed", ettUncuffedSize[weightIndex][1].toString()),
-    SizedBox(height: 15),
-    etTubeDisplayBox("Microcuff", ettMicroCuffSize[weightIndex][1].toString()),
-    SizedBox(height: 15),
-    etTubeDisplayBox("Cuffed", ettCuffedSize[weightIndex][1].toString())
-  ];
-  box.add(SizedBox(width: data.size.width*0.9, child: Divider(thickness: 0.5, color: Colors.black)));
-
-  return box;
-
-   */
 
   List<Widget> popup = [
     finalDisplayIntubationEquip(

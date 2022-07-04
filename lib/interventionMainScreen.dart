@@ -90,14 +90,14 @@ List<BottomNavigationBarItem> items = [
       Icons.cancel,
     ),
     onPressed: () {}),
-      title: Text("Clear All")
+      label: "Clear All"
   ),
   BottomNavigationBarItem(icon: Icon(Icons.format_list_numbered),
-      title: Text("Drugs")
+      label: "Drugs"
   ),
   BottomNavigationBarItem(icon: IconButton(
     icon: Icon(Icons.check), onPressed: () {}),
-      title: Text("Confirm")
+      label: "Confirm"
   )
 ];
 
@@ -275,9 +275,13 @@ class _DosingMainState extends State<InterventionMain> {
                                 ),
                               ),
                               Container(
-                                  alignment: Alignment.centerLeft,
+                                  alignment: Alignment.center,
                                   padding: EdgeInsets.only(
-                                    left: data.size.width * 0.05,
+
+
+                                  ),
+                                  margin: EdgeInsets.only(
+                                    right:10
                                   ),
                                   child: Row(children: <Widget>[
                                     Padding(
@@ -290,7 +294,7 @@ class _DosingMainState extends State<InterventionMain> {
 
                                     Padding(
                                         padding: EdgeInsets.only(
-                                            left: data.size.width / 15),
+                                            left: 5),
                                         child: Text(
                                           "$weight kg",
                                           textDirection: TextDirection.ltr,

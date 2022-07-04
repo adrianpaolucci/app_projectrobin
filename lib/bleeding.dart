@@ -46,7 +46,7 @@ class BleedingState extends State<Bleeding> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     //this defines the confirm button on the nav bar with functionality
 
@@ -59,7 +59,7 @@ class BleedingState extends State<Bleeding> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
     //items is how the nav bar icons are defined
     //im just assigning the values in the variable to the nav bar icons I've defined above

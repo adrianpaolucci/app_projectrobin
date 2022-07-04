@@ -1,6 +1,7 @@
 import 'package:app_search_bar/blocs/theme.dart';
 import 'package:app_search_bar/homeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -11,7 +12,10 @@ pixelsToTextSize(pixel) {
     return textSize.roundToDouble();
 }
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((value)=> runApp(MyApp()));
+}
 
 class MyApp extends StatelessWidget {
 

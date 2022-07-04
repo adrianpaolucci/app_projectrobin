@@ -49,7 +49,7 @@ class CroupState extends State<Croup> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -60,7 +60,7 @@ class CroupState extends State<Croup> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;

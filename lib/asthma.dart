@@ -49,7 +49,7 @@ class AsthmaState extends State<Asthma> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -60,7 +60,7 @@ class AsthmaState extends State<Asthma> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
 
     items[0] = clearAllIcon;
@@ -442,9 +442,9 @@ buildNavigationBar() {
 
   var navBar = BottomNavigationBar(
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.cancel),title: Text("Clear All"),backgroundColor: Color(0xfff2f2f2)),
-        BottomNavigationBarItem(icon: Icon(Icons.stop, color:  Colors.white),title: Text("0 item(s) selected")),
-        BottomNavigationBarItem(icon: Icon(Icons.check),title: Text("Confirm"),backgroundColor: Color(0xfff2f2f2))
+        BottomNavigationBarItem(icon: Icon(Icons.cancel),label: "Clear All",backgroundColor: Color(0xfff2f2f2)),
+        BottomNavigationBarItem(icon: Icon(Icons.stop, color:  Colors.white), label: "0 item(s) selected"),
+        BottomNavigationBarItem(icon: Icon(Icons.check),label: "Confirm", backgroundColor: Color(0xfff2f2f2))
       ]
   );
   return navBar;

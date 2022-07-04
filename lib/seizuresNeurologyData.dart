@@ -167,7 +167,7 @@ sAndNMidazolamInfusionDisplay(BuildContext context) {
       context,
       "Midazolam Infusion",
       finalDisplayDilute(context,"Dilute: ","${currentData[1]} mg to 50 mL",""),
-      finalDisplayBold(context, "Give: ","Start at","${currentData[2]} mL/hr",""),
+      finalDisplayBold(context, "Give: ","Start at ","${currentData[2]} mL/hr",""),
       finalDisplaySecondary(context, "increase by 1 mL/hr every 15 minutes\nuntil seizures are controlled", "", ""),
       finalDisplayFormula(context, "3 mg/kg"));
 

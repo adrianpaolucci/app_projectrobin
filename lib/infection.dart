@@ -42,7 +42,7 @@ class InfectionState extends State<Infection> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -53,7 +53,7 @@ class InfectionState extends State<Infection> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
 
 

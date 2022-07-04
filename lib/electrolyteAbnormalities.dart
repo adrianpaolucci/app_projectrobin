@@ -62,7 +62,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -73,7 +73,7 @@ class ElectrolyteAbnormalitiesState extends State<ElectrolyteAbnormalities> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;

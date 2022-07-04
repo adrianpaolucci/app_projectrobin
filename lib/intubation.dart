@@ -59,7 +59,7 @@ class IntubationState extends State<Intubation> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -70,7 +70,7 @@ class IntubationState extends State<Intubation> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;

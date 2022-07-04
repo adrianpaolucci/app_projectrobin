@@ -514,13 +514,19 @@ Widget finalDisplayDilute(BuildContext context, var instruction, var value1, var
               Text("$instruction",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: size16Text(context)
+                      fontSize: size16Text(context),
                   )
+
               ),
-              Text("$value1",
-                  style: TextStyle(
-                      fontSize: size16Text(context)
-                  ))
+              Flexible(
+                child: Text("$value1",
+                    style: TextStyle(
+                        fontSize: size16Text(context)
+                    )
+                ,textAlign: TextAlign.right,
+                ),
+              )
+              ,
             ],
           ),
         ),
@@ -563,7 +569,7 @@ Widget finalDisplayGive(BuildContext context, var instruction, var value) {
           Text("$value",
               textAlign: TextAlign.end,
               style: TextStyle(
-                  fontSize: size16Text(context),
+                  fontSize: 15,
                   fontWeight: FontWeight.bold
               ))
         ],
@@ -615,7 +621,7 @@ Widget finalDisplayFormula(BuildContext context, var formula) {
           Text("$formula",
               textAlign: TextAlign.end,
               style: TextStyle(
-                  fontSize: size16Text(context),
+                  fontSize: 13,
                   decoration: TextDecoration.underline
               )
           ),

@@ -45,7 +45,7 @@ class AnalgesiaState extends State<Analgesia> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -56,7 +56,7 @@ class AnalgesiaState extends State<Analgesia> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
@@ -386,9 +386,9 @@ buildNavigationBar() {
 
   var navBar = BottomNavigationBar(
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.cancel),title: Text("Clear All"),backgroundColor: Color(0xfff2f2f2)),
-        BottomNavigationBarItem(icon: Icon(Icons.stop, color:  Colors.white),title: Text("0 item(s) selected")),
-        BottomNavigationBarItem(icon: Icon(Icons.check),title: Text("Confirm"),backgroundColor: Color(0xfff2f2f2))
+        BottomNavigationBarItem(icon: Icon(Icons.cancel),label: "Clear All",backgroundColor: Color(0xfff2f2f2)),
+        BottomNavigationBarItem(icon: Icon(Icons.stop, color:  Colors.white),label: "0 item(s) selected"),
+        BottomNavigationBarItem(icon: Icon(Icons.check),label: "Confirm",backgroundColor: Color(0xfff2f2f2))
       ]
   );
   return navBar;

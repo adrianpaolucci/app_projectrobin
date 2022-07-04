@@ -1,5 +1,6 @@
 import 'package:app_search_bar/analgesiaData.dart';
 import 'package:app_search_bar/croupData.dart';
+import 'package:app_search_bar/electrolyteAbnormalities.dart';
 import 'package:app_search_bar/electrolyteAbnormalitiesData.dart';
 import 'package:app_search_bar/infectionData.dart';
 import 'package:app_search_bar/shockData.dart';
@@ -62,6 +63,8 @@ class FinalDisplayState extends State<FinalDisplay> {
           });
         }
       }
+      hyperkalaemiaBool = false;
+      hypoglycaemiaBool = false;
       boolCount = 0;
     }
 

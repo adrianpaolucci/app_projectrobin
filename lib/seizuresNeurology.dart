@@ -56,7 +56,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
             onPressed: () {
               clearAll();
             }),
-        title: Text("Clear All"));
+        label: "Clear All");
 
     var confirmIcon = BottomNavigationBarItem(
         icon: IconButton(
@@ -67,7 +67,7 @@ class SeizuresNeurologyState extends State<SeizuresNeurology> {
               })
               );
             }),
-        title: Text("Confirm"));
+        label: "Confirm");
 
     items[0] = clearAllIcon;
     items[2] = confirmIcon;
