@@ -21,7 +21,7 @@ shockFluidDisplay(BuildContext context) {
       finalDisplayDilute(context, "Drug:", "sodium chloride 0.9%", ""),
       finalDisplayGive(context, "Give: ", "${currentData[1]} - ${currentData[2]} mL"),
       finalDisplayEmpty(),
-      finalDisplayFormula(context, "5 - 10 mL/kg"));
+      finalDisplayFormula(context, "10 - 20 mL/kg"));
   return popup;
 }
 

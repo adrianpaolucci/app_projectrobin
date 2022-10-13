@@ -443,7 +443,7 @@ anaphylaxisFinal(BuildContext context) {
   var resuscBoolean = allDrugBooleans[7];
   final data = MediaQuery.of(context);
   var anaphylaxisWidgets = [anaphylaxisAdrenalineIMDisplay(context),anaphylaxisFluidDisplay(context),anaphylaxisInitialAdrenalineDisplay(context)];
-  var resuscWidgets = [resuscAdrenalineIVDisplay(context),resuscDCshockDisplay(context),resuscAtropineDisplay(context),resuscAmlodaroneDisplay(context),resuscLignocaineDisplay(context),resuscAdenosineDisplay(context)];
+  var resuscWidgets = [resuscAdrenalineIVDisplay(context),resuscDCshockDisplay(context),resuscAtropineDisplay(context),resuscAmiodaroneDisplay(context),resuscLignocaineDisplay(context),resuscAdenosineDisplay(context)];
   List<Widget>anaphylaxisList = [];
   for (var i = 0; i < anaphylaxisBoolean.length; i++) {
     if (anaphylaxisBoolean[i] == true) {
@@ -628,7 +628,7 @@ croupFinal(BuildContext context) {
 analgesiaFinal(BuildContext context) {
   var bools = allDrugBooleans[12];
   final data = MediaQuery.of(context);
-  var widgets = [analgesiaParacetDisplay(context),analgesiaMorphineDisplay(context)];
+  var widgets = [analgesiaParacetDisplay(context),analgesiaMorphineDisplay(context),analgesiaIbuprofenDisplay(context)];
   List<Widget> analgesiaList = [];
   for (var i = 0; i < bools.length; i++) {
     if (bools[i] == true) {

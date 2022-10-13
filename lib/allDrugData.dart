@@ -23,7 +23,7 @@ final allDrugs = [
   ["IM Adrenaline","IV Fluid Bolus","Initial (ward) Adrenaline Infusion"],
 
   //7 resuscitation -- on anaphylaxis page
-  ["Adrenaline IV (cardiac arrest)","DC Shock","Atropine","Amlodarone","Lignocaine","Adenosine (3 stages)"],
+  ["Adrenaline IV (cardiac arrest)","DC Shock","Atropine","Amiodarone","Lignocaine","Adenosine (3 stages)"],
 
   //8 shock
   ["Fluid Bolus","Adrenaline","Noradrenaline","Dobutamine","Dopamine","Stress-Dose (Hydrocortisone)"],
@@ -38,7 +38,7 @@ final allDrugs = [
   ["Nebulised Adrenaline","Dexamethasone","Prednisolone"],
 
   //12 analgesia
-  ["Paracetamol Acetaminophen","Morphine"],
+  ["Paracetamol Acetaminophen","Morphine", "Ibuprofen"],
 
   //13 electrolyte abnormalities
   ["Calcium chloride","Calcium gluconate","Salbutamol","Insulin and glucose","Sodium bicarbonate","Hyponatraemia with seizures","Sympometic Hypocalcaemia","Hypomagnasaemia","Glucose","Glucagon","Hypokalaemia with arrhythmia"],
@@ -63,7 +63,7 @@ final allDrugBooleans = [
   [false,false,false,false,false],
   [false,false,false,false,false,false,false],
   [false,false,false],
-  [false,false],
+  [false,false,false],
   [false,false,false,false,false,false,false,false,false,false,false],
   [false,false,false,false],
   [false]

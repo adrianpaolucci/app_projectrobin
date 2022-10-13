@@ -762,6 +762,7 @@ Widget finalDisplaySteps(BuildContext context,var color,var drugName, var counte
   columnChildren.add(SizedBox(height: 15));
   columnChildren.add(
     Container(
+        margin: EdgeInsets.only(bottom: 20),
         width: 0.8*data.size.width,
         decoration: whiteBoxDec(context),
         child: Center(
@@ -905,4 +906,29 @@ Widget finalDisplayTubeSize(BuildContext context, var instruction, var value) {
 iconRadius(context){
   final data = MediaQuery.of(context);
   return data.size.width/45;
+}
+
+finalDisplayNoFormula(
+    var interventionColour,
+    BuildContext context,
+    Widget function1
+    ) {
+
+  final data = MediaQuery.of(context);
+
+  return Column(
+      children: <Widget>[
+        Container(padding: EdgeInsets.all(8),
+          decoration: whiteBoxDec(context),
+          width: 0.8 * data.size.width,
+          child:
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                function1
+              ]
+          ),
+        )]
+  );
 }
